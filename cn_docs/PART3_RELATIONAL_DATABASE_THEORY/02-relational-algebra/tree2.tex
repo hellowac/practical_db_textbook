@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{tikz}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+\begin{document}
+
+\Large
+
+\begin{tikzpicture}
+\node {$\pi_{\text{title}}$}
+  child {
+    node {$\sigma_{\text{name} = \text{J.R.R. Tolkien}}$}
+    child {
+      node {$\Join$} [sibling distance=3cm]
+      child {
+        node {$\sigma_{\text{year} > 1950}$}
+        child {
+          node (last) {$\text{books}$}
+        }
+      }
+      child {
+        node {$\text{authors}$}
+      }
+    }
+  }
+;
+\draw (last.south) ++(0, -0.5cm);
+\end{tikzpicture}
+
+\end{document}
