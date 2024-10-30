@@ -30,6 +30,7 @@ extensions: list[str] = [
     "sphinx_immaterial.kbd_keys",
     "sphinx_immaterial.graphviz",
     "myst_parser",
+    "sphinx_togglebutton",
     "sphinx_immaterial",
 ]
 

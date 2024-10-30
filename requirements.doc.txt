@@ -1,2 +1,3 @@
 pymdown-extensions
 sphinx-immaterial
+sphinx-togglebutton
