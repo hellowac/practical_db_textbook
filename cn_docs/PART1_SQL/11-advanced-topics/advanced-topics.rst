@@ -4,6 +4,14 @@
 Advanced topics
 ===============
 
+.. md-tab-set::
+
+    .. md-tab-item:: 中文
+
+
+
+    .. md-tab-item:: 英文
+
 This chapter provides brief coverage of some advanced SQL capabilities that did not fit neatly into previous chapters: views, common table expressions, and window functions.  These topics are not thoroughly covered (particularly common table expressions and window functions).  It is hoped that this introduction will suffice to give you some understanding of the additional possibilities within SQL.
 
 Tables used in this chapter

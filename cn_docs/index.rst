@@ -12,6 +12,7 @@
 
     <h3>Christopher Painter&#8209;Wakefield, Colorado School of Mines</h3>
 
+原文参考: `<https://runestone.academy/ns/books/published/practical_db/index.html?mode=browsing>`_
 
 目录
 :::::::::::::::::
