@@ -6,6 +6,12 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import sphinx
+from sphinx.application import Sphinx
+from docutils import nodes
+from docutils.parsers.rst import Directive
+
+
 project = 'practical_db_textbook'
 copyright = '2024, Christopher Painter&#8209;Wakefield'
 author = 'Christopher Painter&#8209;Wakefield'
@@ -173,3 +179,50 @@ html_theme_options = {
     # ],
     # END: social icons
 }
+
+# 创建自定义 Directive 类
+class ActiveCodeDirective(Directive):
+    required_arguments = 0
+    optional_arguments = 0
+    has_content = True
+    option_spec = {
+        'language': str,
+        'dburl': str,
+    }
+
+    def run(self):
+        # 获取参数
+        dburl = self.options.get('dburl', '')
+        language = self.options.get('language', 'plaintext')
+        code_content = "\n".join(self.content)
+
+        # 创建下载链接
+        download_link = nodes.reference(
+            '', 
+            'sqlite3 file', 
+            refuri=dburl
+        )
+
+        # 创建节点
+        code_node = nodes.literal_block(code_content, code_content)
+        code_node['language'] = language  # 设置语言属性
+        paragraph = nodes.paragraph(text="download: ")
+        paragraph += download_link
+        
+        return [paragraph, code_node]
+
+
+# 注册自定义 Directive
+def setup(app: Sphinx):
+    app.add_directive("activecode", ActiveCodeDirective)
+
+
+# 使用自定义 Directive
+"""
+.. activecode::
+    :language: sql
+    :dburl: /_static/textbook.sqlite3
+
+    SELECT * FROM fruit_stand;
+
+"""
