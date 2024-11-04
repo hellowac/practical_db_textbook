@@ -12,16 +12,15 @@ from docutils import nodes
 from docutils.parsers.rst import Directive
 
 
-project = 'practical_db_textbook'
-copyright = '2024, Christopher Painter&#8209;Wakefield'
-author = 'Christopher Painter&#8209;Wakefield'
-release = '0.0'
+project = "数据库实用入门"
+copyright = "2024, Christopher Painter&#8209;Wakefield"
+author = "Christopher Painter&#8209;Wakefield"
+# release = "0.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions: list[str] = [
-
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
@@ -34,28 +33,30 @@ extensions: list[str] = [
     "sphinx_immaterial",
 ]
 
+# language = "zh-CN"
+
 intersphinx_mapping = {
     "python": ("https://docs.python.org/zh-cn/3", None),
     "sphinx_docs": ("https://www.sphinx-doc.org/en/master", None),
     "MyST parser docs": ("https://myst-parser.readthedocs.io/en/latest", None),
 }
 
-templates_path = ['_templates']
+templates_path = ["_templates"]
 exclude_patterns: list[str] = []
-
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_immaterial'
-html_static_path = ['_static']
+# html_theme = "furo"
+html_theme = "sphinx_immaterial"
+html_static_path = ["_static"]
 
 # material theme options (see theme.conf for more information)
 html_theme_options111 = {
     "font": {
         "text": "Roboto",  # used for all the pages' text
-        "code": "Roboto Mono"  # used for literal code blocks
+        "code": "Roboto Mono",  # used for literal code blocks
     },
     "site_url": "https://hellowac.github.io/practical_db_textbook-zh-cn/",
     "repo_url": "https://github.com/hellowac/practical_db_textbook-zh-cn/",
@@ -114,7 +115,7 @@ html_theme_options = {
     "globaltoc_collapse": True,
     "features": [
         # "navigation.expand",
-        "navigation.tabs",  # 
+        "navigation.tabs",  #
         # "toc.integrate",
         "navigation.sections",
         # "navigation.instant",
@@ -181,35 +182,32 @@ html_theme_options = {
     # END: social icons
 }
 
+
 # 创建自定义 Directive 类
 class ActiveCodeDirective(Directive):
     required_arguments = 0
     optional_arguments = 0
     has_content = True
     option_spec = {
-        'language': str,
-        'dburl': str,
+        "language": str,
+        "dburl": str,
     }
 
     def run(self):
         # 获取参数
-        dburl = self.options.get('dburl', '')
-        language = self.options.get('language', 'plaintext')
+        dburl = self.options.get("dburl", "")
+        language = self.options.get("language", "plaintext")
         code_content = "\n".join(self.content)
 
         # 创建下载链接
-        download_link = nodes.reference(
-            '', 
-            'sqlite3 file', 
-            refuri=dburl
-        )
+        download_link = nodes.reference("", "sqlite3 file", refuri=dburl)
 
         # 创建节点
         code_node = nodes.literal_block(code_content, code_content)
-        code_node['language'] = language  # 设置语言属性
+        code_node["language"] = language  # 设置语言属性
         paragraph = nodes.paragraph(text="download: ")
         paragraph += download_link
-        
+
         return [paragraph, code_node]
 
 
