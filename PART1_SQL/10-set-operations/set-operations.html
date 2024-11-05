@@ -1,0 +1,1431 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>1.10. 集合运算 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.10. 集合运算
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">SQL</span></a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">SQL</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-sql-basics/sql-basics.html" class="md-nav__link">
+        <span class="md-ellipsis">基础</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-data-retrieval/data-retrieval.html" class="md-nav__link">
+        <span class="md-ellipsis">数据检索</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-expressions/expressions.html" class="md-nav__link">
+        <span class="md-ellipsis">表达式</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-multiple-tables/multiple-tables.html" class="md-nav__link">
+        <span class="md-ellipsis">多个表上的查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-data-modification/data-modification.html" class="md-nav__link">
+        <span class="md-ellipsis">修改数据</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-table-creation/table-creation.html" class="md-nav__link">
+        <span class="md-ellipsis">数据类型和创建表</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-constraints/constraints.html" class="md-nav__link">
+        <span class="md-ellipsis">键和约束</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-subqueries/subqueries.html" class="md-nav__link">
+        <span class="md-ellipsis">子查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-grouping-and-aggregation/grouping-and-aggregation.html" class="md-nav__link">
+        <span class="md-ellipsis">分组和聚合</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">集合运算</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">集合运算</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">集合运算</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">集合复习</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">表作为集合</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="表作为集合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">并集</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="并集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">多重集合复杂化</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">交集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">集合差集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11" class="md-nav__link">
+    <span class="md-ellipsis">链接运算</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id12" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-advanced-topics/advanced-topics.html" class="md-nav__link">
+        <span class="md-ellipsis">高级主题</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">集合运算</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">集合复习</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">表作为集合</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="表作为集合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">并集</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="并集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">多重集合复杂化</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">交集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">集合差集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11" class="md-nav__link">
+    <span class="md-ellipsis">链接运算</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id12" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART1_SQL/10-set-operations/set-operations.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="sets-chapter"><span id="id1"></span><span class="section-number">1.10. </span>集合运算<a class="headerlink" href="#sets-chapter" title="Link to this heading">¶</a></h1>
+<p><strong>Set operations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2" id="index-0">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系数据库理论基于数学集合理论。尽管关系数据库的实现因某些重要方面偏离了理论，但集合的概念仍然很重要。在本章中，我们将探讨 SQL 中可用的三种集合操作。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Relational database theory is based on mathematical set theory.  Even though relational database implementations stray from the theory in some important regards, the notion of sets remains important.  In this chapter, we examine the three set operations available to us in SQL.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">1.10.1. </span>本章中使用的表<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Tables used in this chapter</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本章中，我们将使用书籍数据集（表 <strong>books</strong>、<strong>authors</strong> 等），该数据集在 <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">附录 A</span></a> 中进行了描述。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>For this chapter we will be using the books dataset (tables <strong>books</strong>, <strong>authors</strong>, etc.), which is described in <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>.</p>
+</div>
+</div>
+</div><h2 id="index-1"><span id="id3"></span><span class="section-number">1.10.2. </span>集合复习<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h2>
+<p><strong>Sets refresher</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>如果您已经熟悉集合及其基本运算（并集、交集和集合差），那么可以跳过本节。否则，请继续阅读一些非常基础的背景知识。</p>
+<p><em>集合</em> 是一个数学对象，表示一组不同的值。对于给定的集合和任何值，我们可以询问该集合是否包含该值。集合可以通过某些共同属性来定义，或者简单地列出集合中的所有值。例如，在下图中，蓝色圆圈（包括重叠部分）表示一个包含数字 0、2、4、6、8 和 10 的集合。更简洁地说，这个集合包含 0 到 10 之间的 2 的倍数。该图还包含一个黄色圆圈，包含 0 到 10 之间的 3 的倍数。</p>
+<figure class="align-default" id="id13">
+<img alt="../../_images/venn_diagram.svg" src="../../_images/venn_diagram.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+说明集合运算的维恩图。左侧（蓝色）圆圈包含范围 [0, 10] 内的 2 的倍数。右侧（黄色）圆圈包含相同范围内的 3 的倍数。</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<p>这种类型的图称为维恩图，常用于说明集合及其运算。我们将用它来讨论集合上的三种二元运算：<em>并集</em>、<em>交集</em> 和 <em>集合差</em>。</p>
+<p>两个集合的 <strong>并集</strong> 是另一个集合： <strong>该集合包含在任一集合中的所有值</strong>。在上面的图中，两个集合的并集包含值 0、2、3、4、6、8、9 和 10。在图中，这些是包含在任一圆圈中的所有数字。注意，我们不重复值；即使 6 在两个集合中，并集也不会包含两次 6。一个数字要么在集合中出现一次，要么根本不在集合中。值的并集与布尔 <strong>OR</strong> 运算符有关：这两个集合的并集包含 0 到 10 之间的整数，它们是 2 的倍数 或 3 的倍数。</p>
+<p>两个集合的 <strong>交集</strong> 也是一个集合，这次只 <strong>包含在两个原始集合中都出现的值</strong> 。在上面的图中，交集由两个圆圈之间的重叠部分表示，包含值 0 和 6。交集与布尔 <strong>AND</strong> 操作有关；这两个集合的交集包含 0 到 10 之间的整数，它们是 2 的倍数 并且 是 3 的倍数。</p>
+<p>虽然并集和交集是交换的——参与运算的集合可以互换，结果相同——但 <strong>集合差</strong> 却不是。在集合差中，您是 <strong>将一个集合“减去”另一个集合</strong> ，以获得一个新集合。结果是第一个集合中的所有值，排除第二个集合中也包含的任何值。上图显示了我们可以使用这两个集合获得的两种可能的集合差。这是圆圈中位于交集外的部分。例如，如果我们将 3 的倍数集合从 2 的倍数集合中减去，我们会得到左侧圆圈中不在右侧圆圈中的数字，即值 2、4、8 和 10。集合差并不直接对应于基本布尔运算，但我们可以使用 <strong>NOT</strong> 和 <strong>AND</strong> 来近似集合差：上面的集合差（2 的倍数减去 3 的倍数）是 0 到 10（含）之间的整数集合，它们是 2 的倍数 并且 不是 3 的倍数。</p>
+<p>从这个简单的例子中，想象集合在数学和计算机科学中所有令人惊叹的应用可能会很困难。然而，集合理论是一个非常强大的工具。正如我们将在 <a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html#relational-theory-part"><span class="std std-numref">Part 3</span></a> 中讨论的那样，关系数据库是将集合理论应用于数据管理问题的结果。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>If you are already familiar with sets, and with basic operations on sets (union, intersection, and set difference), then you can skip this section.  Otherwise, please continue reading for some very basic background.</p>
+<p>A <em>set</em> is a mathematical object that represents a collection of distinct values.  For a given set and any value, we can ask whether or not the set contains the value.  Sets can be defined by some property that values have in common, or simply by listing all of the values in the set.  For example, in the figure below, the blue circle (including the overlapping portion) represents a set containing the numbers 0, 2, 4, 6, 8, and 10.  More succinctly, this set contains the multiples of 2 between 0 and 10.  The figure also contains a yellow circle containing the multiples of 3 between 0 and 10.</p>
+<figure class="align-default" id="id14">
+<img alt="../../_images/venn_diagram.svg" src="../../_images/venn_diagram.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+A Venn diagram illustrating set operations.  The left (blue) circle contains multiples of 2 in the range [0, 10].  The right (yellow) circle contains multiples of 3 in the same range.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<p>This type of diagram is known as a Venn diagram, and it is frequently used to illustrate sets and operations on them.  We will use it to discuss three binary operations on sets: <em>union</em>, <em>intersection</em>, and <em>set difference</em>.</p>
+<p>The union of two sets is another set: the set containing all values that are in either set.  In the diagram above, the union of the two sets contains the values 0, 2, 3, 4, 6, 8, 9, and 10.  In the diagram, this is every number that is contained in either circle.  Note that we do not duplicate values; even though 6 is in both sets, the union of the sets does not contain 6 twice.  A number is either in the set once, or it is not in the set at all.  A union of values is related to the Boolean <strong>OR</strong> operator: the union of these two sets contains integers between 0 and 10 which are multiples of 2 OR multiples of 3.</p>
+<p>The intersection of two sets is again a set, this time containing only values which appear in both of the original sets.  In the diagram above, the intersection is represented by the overlap between the two circles, containing the values 0 and 6.  Intersection is related to the Boolean <strong>AND</strong> operation; the intersection of these two sets contains integers between 0 and 10 which are multiples of 2 AND multiples of 3.</p>
+<p>While union and intersection are commutative - the sets involved in an operation can be exchanged and get the same result - set difference is not.  In set difference, you are “subtracting” one set from another to obtain a new set.  The result is all values in the first set excluding any values also in the second set.  The diagram above shows the two possible set differences we can obtain using our two sets.  These are the portions of the circles that are outside the intersection.  For example, if we subtract the set of multiples of 3 from the set of multiples of 2, we get the numbers in the left circle which are not in the right circle, that is, the values 2, 4, 8, and 10.  Set difference does not correspond directly to a basic Boolean operation, but we can approximate set difference using <strong>NOT</strong> and <strong>AND</strong>:  the set difference above (multiples of 2 minus multiples of 3) is the set of integers between 0 and 10 inclusive which are multiples of 2 AND NOT multiples of 3.</p>
+<p>It may be difficult to imagine all of the amazing applications of sets in both mathematics and computer science from this simple example.  However, set theory is a very powerful tool.  As we will discuss in <a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html#relational-theory-part"><span class="std std-numref">Part 3</span></a>, relational databases resulted from the application of set theory to the problems of data management.</p>
+</div>
+</div>
+</div><h2 id="index-2"><span id="id4"></span><span class="section-number">1.10.3. </span>表作为集合<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h2>
+<p><strong>Tables as sets</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在数学上，集合是不同值的集合。在关系数据库的最初构思中，表和数据检索查询的结果被视为真实的集合；也就是说，行的集合中没有两行是完全相同的。出于性能考虑，SQL 数据库允许在表中以及查询结果中存在重复行。例如，如果我们运行以下查询，我们会得到一些重复的行。</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在 SQL 中，用来描述表和查询结果的术语是 <em>多重集合</em> （multiset）。多重集合是来自同一值域的值的集合，但值可以在集合中出现多次。这种实际关系数据库与理论之间的差异导致了一些复杂情况，正如我们将很快看到的那样。</p>
+<p>SQL 支持的三种基本集合操作是并集、交集和集合差。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Mathematically, sets are collections of distinct values.  In the original conception of relational databases, tables and the results of data retrieval queries were intended to be true sets; that is, collections of rows, with no two rows being exactly the same.  For performance reasons, SQL databases allow duplicate rows in both tables and in the results of queries.  For example, if we run the following query, we get some duplicate rows.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>The term used to describe tables and query results in SQL is <em>multiset</em>.  A multiset is a collection of values from the same domain of values, but values can appear more than once in the set.  This difference between relational databases in practice and in theory results in some complications, as we will soon see.</p>
+<p>The three basic set operations that SQL supports are union, intersection, and set difference.</p>
+</div>
+</div>
+</div><h3 id="index-3"><span id="id5"></span><span class="section-number">1.10.3.1. </span>并集<a class="headerlink" href="#index-3" title="Link to this heading">¶</a></h3>
+<p><strong>Union</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>集合并集在 SQL 中是对两个 <strong>SELECT</strong> 查询的操作。查询的写法是一个 <strong>SELECT</strong> 查询，后跟关键字 <strong>UNION</strong>，再后跟另一个 <strong>SELECT</strong> 查询。这两个查询的结果必须在列数上兼容，并且列的数据类型应该兼容。查询的并集包含从任一查询返回的每个不同的行。作为一个非常简单的例子，我们可以用 <strong>UNION</strong> 查询来代替布尔 <strong>OR</strong> 条件。比较以下两个查询：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">sets_example_aggregate</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">OR</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在这种情况下，两个查询返回相同的结果。然而，它们之间有一个细微的区别。当我们使用 <strong>UNION</strong> 时，SQL 将其视为真正的集合操作，并返回一组不同的行——任何重复的行都会被移除。为了完全等价，我们应该在第二个查询中使用 <strong>DISTINCT</strong> 关键字。</p>
+<p>在这种情况下，没有特别的理由选择并集查询而不是 <strong>OR</strong> 表达式；这仅仅是用于说明。在其他场景中，例如涉及复杂条件逻辑时，<strong>UNION</strong> 可能是更可取的替代方案。作为一个简单的例子，考虑提供一个列来标记作者为“活着”、“已故”（给出死亡日期）或“未知”（出生和死亡日期未知）。我们可以使用 <strong>CASE</strong> 表达式，或者使用三个查询的 <a href="#id6"><span class="problematic" id="id7">**</span></a>UNION**（可以想象为前两个查询的并集，然后将结果与第三个查询进行并集）：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;living&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">status</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;died &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">death</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+
+<span class="k">SELECT</span>
+<span class="n">name</span><span class="p">,</span>
+<span class="k">CASE</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;living&#39;</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;died &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">death</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span>
+<span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">status</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>如果你运行上述并集查询，你会看到整个查询结果的列名来自第一个 <strong>SELECT</strong> 查询，使用集合操作时也是如此。</p>
+<p>在某些情况下，<strong>UNION</strong> 可能是你唯一的选择——例如当你要合并来自不同表的结果时。这种情况的一个例子可能是，当一家公司希望创建一个与公司相关的所有人的电子邮件列表时：公司的数据库可能包含一个员工表、一个客户表和一个供应商表。并集查询将轻松地从这三个表创建一个邮件列表，并消除重复（因为，例如，员工也可能是客户）。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Set union in SQL is an operation on two <strong>SELECT</strong> queries.  The query is written as one <strong>SELECT</strong> query, followed by the keyword <strong>UNION</strong>, followed by another <strong>SELECT</strong> query.  The two query results must be compatible in the sense that they must both return the same number of columns, and the columns should have compatible types.  The union of the queries contains every distinct row that is returned from either query.  As a very simple example, we can use a <strong>UNION</strong> query in place of a Boolean <strong>OR</strong> condition.  Compare these two queries:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">sets_example_aggregate</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">OR</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>In this case, the queries return the same results.  However, there is a subtle difference between them.  When we use <strong>UNION</strong>, SQL treats it as a true set operation and returns a set of distinct rows - any duplicates are removed.  To be completely equivalent, we should use the <strong>DISTINCT</strong> keyword in the second query.</p>
+<p>There is no particular reason to choose a union query over the <strong>OR</strong> expression in this case; it is merely used for illustration.  <strong>UNION</strong> may be a more preferable alternative in other scenarios, such as those involving complex conditional logic.  As a simple example, consider providing a column labeling authors as “living”, “dead” (giving the date of death), or “unknown” (where the birth and death dates are unknown).  We could do this with a <strong>CASE</strong> expression, or with a <strong>UNION</strong> of three queries (think of a union of the first two queries, then a union of the result with the third query):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;living&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">status</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;died &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">death</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+
+<span class="k">SELECT</span>
+<span class="n">name</span><span class="p">,</span>
+<span class="k">CASE</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;living&#39;</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;died &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">death</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span>
+<span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">status</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>If you run the union query above, you will see that column names for the result of the whole query come from the first <strong>SELECT</strong> query when using set operations.</p>
+<p>In some cases, <strong>UNION</strong> may be your only choice - such as when you are combining results from different tables.  One example of this might occur when a company wishes to create an email list for everyone related to the company in some way: the company’s database might contain one table for employees, another for customers, and a third for vendors  A union query would easily create one mailing list from these three tables, and eliminate duplicates (since, for example, employees might also be customers).</p>
+</div>
+</div>
+</div><h4 id="index-4"><span id="id8"></span><span class="section-number">1.10.3.1.1. </span>多重集合复杂化<a class="headerlink" href="#index-4" title="Link to this heading">¶</a></h4>
+<p><strong>Multiset complication</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>单独使用 <strong>UNION</strong> 会导致从查询结果集中移除所有重复项。在某些情况下，这可能不是所期望的行为；如果你希望保留重复记录（保留任一查询返回的所有行），只需在 <strong>UNION</strong> 后添加关键字 <strong>ALL</strong>。下面的查询将返回重复记录：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>Used by itself, <strong>UNION</strong> results in the removal of all duplicates from the result set of the query.  There may be occasions when this is not the desired behavior; if you wish to retain duplicate records (keeping all rows returned by either query), simply add the keyword <strong>ALL</strong> after <strong>UNION</strong>.  The query below will result in duplicate records:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h3 id="index-5"><span id="id9"></span><span class="section-number">1.10.3.2. </span>交集<a class="headerlink" href="#index-5" title="Link to this heading">¶</a></h3>
+<p><strong>Intersection</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在 SQL 中，集合交集通过关键字 <strong>INTERSECT</strong> 实现。使用 <strong>INTERSECT</strong> 的规则与使用 <strong>UNION</strong> 相同，但其结果仅包含在 <em>两个</em> 查询结果中都存在的每个唯一行：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">INTERSECT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>这个结果类似于在单个查询的 <strong>WHERE</strong> 子句中使用 <strong>AND</strong> 表达式所实现的结果：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>然而，与 <strong>UNION</strong> 一样，你可以使用 <strong>INTERSECT</strong> 对多个表进行查询。</p>
+<p>SQL 标准允许在 <strong>INTERSECT</strong> 后使用关键字 <strong>ALL</strong>，但大多数数据库（包括 SQLite）不支持这种用法。</p>
+<p>（针对 MySQL 用户：MySQL 不实现 <strong>INTERSECT</strong>。）</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Set intersection in SQL is accomplished by the keyword <strong>INTERSECT</strong>.  The rules for using <strong>INTERSECT</strong> are the same as for using <strong>UNION</strong>, but its result contains only every distinct row that is contained in <em>both</em> query results:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">INTERSECT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>This result is similar to that achieved by using an <strong>AND</strong> expression in the <strong>WHERE</strong> clause of a single query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>However, as with <strong>UNION</strong>, you can use <strong>INTERSECT</strong> to perform queries against multiple tables.</p>
+<p>The SQL standard allows the keyword <strong>ALL</strong> after <strong>INTERSECT</strong>, but most databases (including SQLite) do not support this usage.</p>
+<p>(Note for MySQL users: MySQL does not implement <strong>INTERSECT</strong>.)</p>
+</div>
+</div>
+</div><h3 id="index-6"><span id="id10"></span><span class="section-number">1.10.3.3. </span>集合差集<a class="headerlink" href="#index-6" title="Link to this heading">¶</a></h3>
+<p><strong>Set difference</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在 SQL 中，集合差集通过关键字 <strong>EXCEPT</strong> 实现。使用 <strong>EXCEPT</strong> 的规则与 <strong>UNION</strong> 和 <strong>INTERSECT</strong> 相同，但请注意 <strong>EXCEPT</strong> 不是交换的——查询的顺序很重要。下面是我们之前相同的示例，使用 <strong>EXCEPT</strong>：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>这个结果类似于在单个查询的 <strong>WHERE</strong> 子句中要求一个条件 <strong>AND NOT</strong> 另一个条件所实现的结果：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>然而，与 <strong>UNION</strong> 和 <strong>INTERSECT</strong> 一样，你可以使用 <strong>EXCEPT</strong> 对多个表进行查询。</p>
+<p>SQL 标准允许在 <strong>EXCEPT</strong> 后使用关键字 <strong>ALL</strong>，但大多数数据库（包括 SQLite）不支持这种用法。</p>
+<p><strong>EXCEPT</strong> 操作符的一个应用是确定两个查询结果是否相同；如果你进行双向的集合差集运算，当两个查询返回相同的唯一行时，结果应该为空（重复行的计数可能会有所不同）。另一种方法是查看两个查询的并集和交集是否包含相同数量的行。</p>
+<p>（针对 MySQL 用户：MySQL 不实现 <strong>EXCEPT</strong>。）</p>
+<p>（针对 Oracle 用户：Oracle 使用关键字 <strong>MINUS</strong> 而不是 <strong>EXCEPT</strong>。）</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Set difference in SQL is accomplished by the keyword <strong>EXCEPT</strong>.  The rules for using <strong>EXCEPT</strong> are again the same as for <strong>UNION</strong> and <strong>INTERSECT</strong>, but note that <strong>EXCEPT</strong> is not commutative - the order of the queries matters.  Here is our same example again, using <strong>EXCEPT</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>This result is similar to that achieved by requiring one condition <strong>AND NOT</strong> the other condition in the <strong>WHERE</strong> clause of a single query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;W%&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1995</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>However, as with <strong>UNION</strong> and <strong>INTERSECT</strong>, you can use <strong>EXCEPT</strong> to perform queries against multiple tables.</p>
+<p>The SQL standard allows the keyword <strong>ALL</strong> after <strong>EXCEPT</strong>, but most databases (including SQLite) do not support this usage.</p>
+<p>One application of the <strong>EXCEPT</strong> operator is determining if two query results are identical; if you take the set difference in both directions, your result should be empty if the two queries return the same distinct rows (there could be a difference in the counts of duplicate rows).  An alternate approach is to see if the union and intersection of the two queries contain the same count of rows.</p>
+<p>(Note for MySQL users: MySQL does not implement <strong>EXCEPT</strong>.)</p>
+<p>(Note for Oracle users: Oracle uses the keyword <strong>MINUS</strong> rather than <strong>EXCEPT</strong>.)</p>
+</div>
+</div>
+</div><h3 id="id11"><span class="section-number">1.10.3.4. </span>链接运算<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p><strong>Chaining operations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>正如我们在 <strong>UNION</strong> 中看到的，可以在单个查询中执行多个集合操作。对于仅涉及 <strong>UNION</strong> 的查询，查询的顺序并不重要，因为 <strong>UNION</strong> 是既交换的又结合的。仅涉及 <strong>INTERSECT</strong> 的查询也是如此。然而，对于涉及 <strong>EXCEPT</strong> 的查询，或混合集合操作的查询，情况就复杂了。<strong>EXCEPT</strong> 既不是交换的也不是结合的。链式混合运算符的查询在所有数据库中的表现并不相同，因此在尝试此操作时要谨慎；某些数据库允许使用括号来强制指定希望执行操作的顺序。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>As we saw with <strong>UNION</strong>, it is possible to do more than one set operation in a single query.  For queries just involving <strong>UNION</strong>, the order of queries does not matter, as <strong>UNION</strong> is both commutative and associative.  The same is true for a query just involving <strong>INTERSECT</strong>.  For queries involving <strong>EXCEPT</strong>, or queries mixing set operations, the situation is more complicated.  <strong>EXCEPT</strong> is neither commutative nor associative.  Queries that chain mixed operators do not behave the same in all databases, so be cautious when attempting this; some databases allow you to use parentheses to force the order in which you want operations to be performed.</p>
+</div>
+</div>
+</div><h2 id="id12"><span class="section-number">1.10.4. </span>自检练习<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p><strong>Self-check exercises</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节包含一些使用书籍数据集的练习（提醒：您可以在 <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">附录 A</span></a> 中获取所有表的完整描述）。如果您遇到困难，请单击练习下方的“显示答案”按钮以查看正确答案。回答这些问题有多种方法；请尝试使用集合操作来解决每个问题。</p>
+<ul class="simple">
+<li><p>编写查询以查找诗人艾伦·金斯堡（Allen Ginsberg）作为作者或书籍所获的所有奖项。您的输出应包含三列：奖项名称、获奖年份，以及获奖理由——书籍奖的书名或作者奖的“作品集”。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">bo</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Awarded For&quot;</span>
+<span class="k">FROM</span>
+<span class="n">awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">aw</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">books_awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="n">award_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">award_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">bo</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bo</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="n">book_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bo</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Allen Ginsberg&#39;</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">aa</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;body of work&#39;</span>
+<span class="k">FROM</span>
+<span class="n">awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">aw</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">authors_awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">aa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">aa</span><span class="p">.</span><span class="n">award_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">award_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aa</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Allen Ginsberg&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找曾因书籍或作者作品集而获得的奖项列表（即，奖项应同时出现在 <strong>authors_awards</strong> 和 <strong>books_awards</strong> 中）。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">awards</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books_awards</span><span class="p">)</span>
+<span class="k">INTERSECT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">awards</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors_awards</span><span class="p">)</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找获得作者奖但未获得书籍奖的作者列表。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors_awards</span><span class="p">)</span>
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">book_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">book_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books_awards</span><span class="p">))</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>This section contains some exercises using the books data set (reminder: you can get full descriptions of all tables in <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>).  If you get stuck, click on the “Show answer” button below the exercise to see a correct answer.  There are many ways to answer these questions; try to use a set operation to solve each.</p>
+<ul class="simple">
+<li><p>Write a query to find all of the awards won by poet Allen Ginsberg, either as an author or for a book.  Your output should have three columns: the name of the award, the year of the award, and what the award was won for - the book title for book awards, or “body of work” for author awards.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">bo</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Awarded For&quot;</span>
+<span class="k">FROM</span>
+<span class="n">awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">aw</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">books_awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="n">award_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">award_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">bo</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bo</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="n">book_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bo</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Allen Ginsberg&#39;</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">aa</span><span class="p">.</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;body of work&#39;</span>
+<span class="k">FROM</span>
+<span class="n">awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">aw</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">authors_awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">aa</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">aa</span><span class="p">.</span><span class="n">award_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aw</span><span class="p">.</span><span class="n">award_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aa</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Allen Ginsberg&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find a list of awards that have been given for either books or an author’s body of work (i.e., the award(s) should show up in both <strong>authors_awards</strong> and <strong>books_awards</strong>).</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">awards</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books_awards</span><span class="p">)</span>
+<span class="k">INTERSECT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">awards</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">award_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors_awards</span><span class="p">)</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find a list of authors who won author awards but no book awards.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors_awards</span><span class="p">)</span>
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">book_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">book_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books_awards</span><span class="p">))</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../09-grouping-and-aggregation/grouping-and-aggregation.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1.9. 分组和聚合" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              1.9. 分组和聚合
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../11-advanced-topics/advanced-topics.html" class="md-footer__link md-footer__link--next" aria-label="Next: 1.11. 高级主题" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              1.11. 高级主题
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

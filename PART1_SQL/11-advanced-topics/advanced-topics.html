@@ -1,0 +1,1160 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>1.11. 高级主题 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.11. 高级主题
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">SQL</span></a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">SQL</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-sql-basics/sql-basics.html" class="md-nav__link">
+        <span class="md-ellipsis">基础</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-data-retrieval/data-retrieval.html" class="md-nav__link">
+        <span class="md-ellipsis">数据检索</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-expressions/expressions.html" class="md-nav__link">
+        <span class="md-ellipsis">表达式</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-multiple-tables/multiple-tables.html" class="md-nav__link">
+        <span class="md-ellipsis">多个表上的查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-data-modification/data-modification.html" class="md-nav__link">
+        <span class="md-ellipsis">修改数据</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-table-creation/table-creation.html" class="md-nav__link">
+        <span class="md-ellipsis">数据类型和创建表</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-constraints/constraints.html" class="md-nav__link">
+        <span class="md-ellipsis">键和约束</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-subqueries/subqueries.html" class="md-nav__link">
+        <span class="md-ellipsis">子查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-grouping-and-aggregation/grouping-and-aggregation.html" class="md-nav__link">
+        <span class="md-ellipsis">分组和聚合</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-set-operations/set-operations.html" class="md-nav__link">
+        <span class="md-ellipsis">集合运算</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">高级主题</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">高级主题</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">高级主题</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-0" class="md-nav__link">
+    <span class="md-ellipsis">视图</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">常用表表达式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">窗口函数</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">高级主题</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-0" class="md-nav__link">
+    <span class="md-ellipsis">视图</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">常用表表达式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">窗口函数</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART1_SQL/11-advanced-topics/advanced-topics.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="advanced-sql-chapter"><span id="id1"></span><span class="section-number">1.11. </span>高级主题<a class="headerlink" href="#advanced-sql-chapter" title="Link to this heading">¶</a></h1>
+<p><strong>Advanced topics</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本章简要介绍了一些未能很好融入前几章的高级 SQL 功能：视图、公共表表达式和窗口函数。这些主题并未被彻底涵盖（特别是公共表表达式和窗口函数）。希望这个介绍能够让您对 SQL 中的额外可能性有一些了解。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>This chapter provides brief coverage of some advanced SQL capabilities that did not fit neatly into previous chapters: views, common table expressions, and window functions.  These topics are not thoroughly covered (particularly common table expressions and window functions).  It is hoped that this introduction will suffice to give you some understanding of the additional possibilities within SQL.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">1.11.1. </span>本章中使用的表<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Tables used in this chapter</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本章中，我们将使用书籍数据集（包含表 <strong>books</strong>、 <strong>authors</strong> 等），其描述可在 <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">附录 A</span></a> 中找到。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>For this chapter we will be using the books dataset (with tables <strong>books</strong>, <strong>authors</strong>, etc.), a description of which can be found in <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>.</p>
+</div>
+</div>
+</div><h2 id="index-0"><span id="id3"></span><span class="section-number">1.11.2. </span>视图<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h2>
+<p><strong>Views</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p><em>视图</em> 是一个数据库对象，充当已保存的 <strong>SELECT</strong> 查询，其结果可以直接像表一样被查询。数据本身并不存储；每次查询视图时，必须执行该视图所表示的查询，以确保返回最新的数据 <a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. 视图特别适用于保存需要频繁执行的复杂查询，或者将被 SQL 技能较少的人使用的查询；查询的复杂部分可以编写一次、测试并保存，从而减少后续使用中的错误。</p>
+<p>要创建视图，请使用 <strong>CREATE VIEW</strong> 语句：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">advanced_example_view</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">book_editions</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">publication_year</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">publisher</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">publisher_location</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">published_title</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">pages</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">isbn10</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">isbn13</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">editions</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">book_id</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span>
+<span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">published_title</span><span class="p">,</span><span class="w"> </span><span class="n">publication_year</span><span class="p">,</span><span class="w"> </span><span class="n">publisher</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">book_editions</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;The Two Towers&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>要删除视图，请使用 <strong>DROP VIEW</strong> 语句：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">book_editions</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>A <em>view</em> is a database object that acts as a saved <strong>SELECT</strong> query, the result of which can be queried directly as if it were a table.  The data itself is not stored; the query that the view represents must be executed each time the view is queried, ensuring that up-to-date data is returned <a class="footnote-reference brackets" href="#id9" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.  Views are particularly useful for saving complex queries that must be executed frequently, or that will be used by people with minimal SQL skills; the complex parts of the query can be written once, tested, and saved, reducing errors in later usage.</p>
+<p>To create a view, use the <strong>CREATE VIEW</strong> statement:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">advanced_example_view</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">book_editions</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">publication_year</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">publisher</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">publisher_location</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">published_title</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">pages</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">isbn10</span><span class="p">,</span>
+<span class="w">  </span><span class="n">e</span><span class="p">.</span><span class="n">isbn13</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">editions</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">book_id</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span>
+<span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">published_title</span><span class="p">,</span><span class="w"> </span><span class="n">publication_year</span><span class="p">,</span><span class="w"> </span><span class="n">publisher</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">book_editions</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;The Two Towers&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>To remove a view, use the <strong>DROP VIEW</strong> statement:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">book_editions</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h2 id="index-1"><span id="id6"></span><span class="section-number">1.11.3. </span>常用表表达式<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h2>
+<p><strong>Common table expressions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>与视图和子查询相关的 <em>公用表表达式*（CTE）允许我们定义一个 **SELECT*</em> 查询，并为其分配一个名称以在更大 <strong>SELECT</strong> 查询的上下文中使用。在一个查询中可以使用多个 CTE。与视图不同，CTE 仅在其定义的查询的生命周期内存在。与子查询不同，CTE 不能与主查询相关联（除非在子查询中使用自身）。CTE 的一个常见用法是替代在主查询的 <strong>FROM</strong> 子句中使用的子查询；CTE 实际上将子查询移出主查询的主体，这使得阅读更容易。此外，一个 CTE 可以引用查询中之前定义的另一个 CTE，从而消除嵌套此类子查询的需要。</p>
+<p>CTE 在主 <strong>SELECT</strong> 子句之前定义，使用 <strong>WITH</strong> 子句：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">WITH</span>
+<span class="w">  </span><span class="n">name1</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">  </span><span class="n">name2</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+</div>
+<p>以下是一个示例，列出书籍及其一些附加信息：书籍获奖数量和印刷版数量（请注意，我们只有 J.R.R. 托尔金的书籍的版本信息）。我们可以简单地使用连接和分组聚合提供其中任意一条信息，但在同一查询中提供这两条信息将需要编写至少一个子查询或使用窗口函数（将在下一节讨论）。在这里，我们使用 CTE 分别完成分组和聚合步骤，然后在主查询中连接这些结果。</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">advanced_example_cte</span>
+
+<span class="k">WITH</span>
+<span class="w">  </span><span class="n">ec</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">book_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">count</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">editions</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">book_id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">ac</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">ba</span><span class="p">.</span><span class="n">book_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">count</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">      </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span>
+<span class="w">      </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books_awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="n">book_id</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="p">)</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">au</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ac</span><span class="p">.</span><span class="k">count</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;awards won&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ec</span><span class="p">.</span><span class="k">count</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;editions in print&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">title</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">au</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">author_id</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">ac</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ac</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span>
+<span class="w">  </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">ec</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ec</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>Related to both views and subqueries, <em>common table expressions</em> (CTEs) let us define a <strong>SELECT</strong> query and assign it a name for use within the context of a larger <strong>SELECT</strong> query.  Multiple CTEs may be used within a query.  Unlike views, CTEs only exist for the lifetime of the query in which they are defined.  Unlike subqueries, CTEs may not be correlated with the main query (unless used itself in a subquery).  A common use of CTEs is in place of subqueries used in the <strong>FROM</strong> clause of the main query; the CTE effectively moves the subquery out of the body of the main query, which makes it easier to read.  In addition, one CTE can refer to another CTE defined earlier in the query, which eliminates the need to nest subqueries of this type.</p>
+<p>CTEs are defined prior to the main <strong>SELECT</strong> clause, using a <strong>WITH</strong> clause:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">WITH</span>
+<span class="w">  </span><span class="n">name1</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">  </span><span class="n">name2</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+</div>
+<p>Here is an example listing books along with some additional pieces of information: the number of awards the book has won, and the number of printed editions of the book (keeping in mind that we only have edition information for books by J.R.R. Tolkien).  We could easily provide either one of these pieces of information simply using joins and grouping and aggregation, but providing both in the same query would require writing at least one subquery or using window functions (which are discussed in the next section).  Here we use CTEs to do our grouping and aggregation steps separately, then we join those results in the main query.</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">advanced_example_cte</span>
+
+<span class="k">WITH</span>
+<span class="w">  </span><span class="n">ec</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">book_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">count</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">editions</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">book_id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">ac</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">ba</span><span class="p">.</span><span class="n">book_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">count</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">      </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span>
+<span class="w">      </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books_awards</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ba</span><span class="p">.</span><span class="n">book_id</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="p">)</span>
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">au</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ac</span><span class="p">.</span><span class="k">count</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;awards won&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ec</span><span class="p">.</span><span class="k">count</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;editions in print&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">title</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">au</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">au</span><span class="p">.</span><span class="n">author_id</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">ac</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ac</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span>
+<span class="w">  </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">ec</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ec</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h2 id="index-2"><span id="id7"></span><span class="section-number">1.11.4. </span>窗口函数<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h2>
+<p><strong>Window functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>正如我们在 <a class="reference internal" href="../09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a> 中看到的，分组和聚合使我们能够报告有关数据组的聚合统计信息，以及与该组共同的属性（通常是我们用于分组的属性）。然而，组中的个别元素并不可见。<em>窗口函数</em> 提供了一种机制，可以在报告与某些数据分组相关的信息的同时列出所有个别行。一般而言，所有聚合函数都可作为窗口函数使用，还有一些额外的函数可以将行与其在组中的成员关系（例如，根据某种排序的组内排名）关联起来。</p>
+<p>作为一个例子，假设我们希望列出所有书籍，以及同一作者的书籍数量和该书在作者作品中的序号，并按出版年份排序（例如，这是作者的第一本、第二本还是第三本书？）。我们可以使用窗口函数实现这一点：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">advanced_example_window</span>
+
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span>
+<span class="w">    </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">author_count</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span>
+<span class="w">    </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">publication_year</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">book_rank</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">publication_year</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">book_rank</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>请注意，窗口计算发生在任何 <strong>WHERE</strong> 条件应用之后，甚至在分组和 <strong>HAVING</strong> 条件应用之后。这使得窗口函数在应用于已分组数据时非常有用，但这也意味着您不能对窗口函数的结果本身应用 <strong>WHERE</strong> 或 <strong>HAVING</strong> 条件。</p>
+<p>窗口函数还有许多额外选项，允许进行相当复杂的处理，但我们在这里不做详细讨论。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>As we saw in <a class="reference internal" href="../09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a>, grouping and aggregation let us report aggregate statistics on groups of data, along with attributes common to the group (typically, attributes that we grouped by).  However, the individual elements of the group are not visible.  <em>Window functions</em> provide a mechanism for reporting information related to some grouping of data while also listing all individual rows.  In general, all aggregate functions are available as window functions, and there are additional functions that relate a row to its membership in the group (such as its rank within the group according to some ordering).</p>
+<p>As an example, suppose we wish to list all books, along with the number of books by the same author, and the ordinal number of the book as part of the author’s body of work, in order by publication year (e.g., was this the author’s first, second, or third book?).  We can do this with window functions:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">advanced_example_window</span>
+
+<span class="k">SELECT</span>
+<span class="w">  </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span>
+<span class="w">    </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">author_count</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span>
+<span class="w">    </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">publication_year</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">book_rank</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">publication_year</span>
+<span class="k">FROM</span>
+<span class="w">  </span><span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span>
+<span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">book_rank</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Note that windowing occurs <em>after</em> application of any <strong>WHERE</strong> conditions, and even after grouping and application of <strong>HAVING</strong> conditions.  This makes window functions useful in application to already grouped data, for example, but it also means that you cannot apply <strong>WHERE</strong> or <strong>HAVING</strong> conditions to the window function result itself.</p>
+<p>Window functions have a number of additional options allowing for fairly complex processing, which we do not cover here.</p>
+</div>
+</div>
+</div><hr class="docutils" />
+<p><strong>Notes</strong></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p>一些数据库还提供 <em>物化视图</em>，它们存储实际数据；当执行视图查询所需时间过长时使用这种视图。这种视图会变得过时，必须定期刷新。</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>Some databases also provide <em>materialized views</em>, which store actual data; these are used when executing the query for a view would take too long.  Such views do become out of date and must be refreshed periodically.</p>
+</aside>
+</aside>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../10-set-operations/set-operations.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1.10. 集合运算" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              1.10. 集合运算
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../PART2_DATA_MODELING/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: 2. 数据模型" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              2. 数据模型
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

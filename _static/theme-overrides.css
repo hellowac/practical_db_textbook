@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif:ital,wght@0,400;0,700;1,400');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:wght@700');
+@import url('https://fonts.googleapis.com/css?family=Sora:wght@600');
+
+:root {
+    --componentBgColor: #CED5DD;
+    --questionBgColor: #CED5DD;
+    --contentWidthRegular: 800px;
+    --contentWidthWide: 800px;
+}
+
+body {
+    font-family: 'Noto Serif', serif !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+}
+
+h1 {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 3rem !important;
+    font-weight:  600 !important;
+    color: #21314D !important;
+    border-top: solid 1px #92A2BD !important;
+    border-bottom: solid 1px #92A2BD !important;
+    margin-top: 72pt !important;
+    margin-bottom: 36pt !important;
+    line-height: 2 !important;
+}
+
+h2 {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-size: 1.875rem !important;
+    font-weight:  700 !important;
+    color: #21314D !important;
+    margin-top: 24pt !important;
+}
+
+h3 {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-size: 1.25rem !important;
+    font-weight:  700 !important;
+    color: #21314D !important;
+}
+
+h4 {
+    font-size: 1.25rem !important;
+    font-style: italic !important;
+    color: #21314D !important;
+}
+
+pre {
+    font-family: monospace !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+}
+
+code {
+    font-family: monospace !important;
+    color: #a11 !important;
+    background-color: white !important;
+    font-size: 100% !important;
+    padding: 0px !important;
+}
+
+dt:not(.footnote dt) {
+    margin-top: 1.25rem !important;
+}
+
+dd:not(.footnote dd) {
+    margin-left: 1.875rem !important;
+}
+
+table.htCore {
+    font-family: monospace !important;
+}
+
+table:not(.htCore) td {
+    text-align: left !important;
+}
+
+table.lined-table {
+    width: auto !important;
+}
+
+table.lined-table thead tr th {
+    border-style: solid !important;
+    border-color: #ddd !important;
+    border-width: 1px 1px 2px 1px !important;
+    padding: 4px !important;
+}
+
+table.lined-table tbody tr td {
+    border: 1px solid #ddd !important;
+    padding: 4px !important;
+}
+
+a.footnote-reference {
+    font-size: 0.85rem !important;
+    vertical-align: text-top !important;
+}
+
+span.caption-text {
+    font-size: 0.95rem !important;
+}
+
+/* Runestone elements and page layout */
+
+.CodeMirror {
+    height: auto !important;
+}
+
+.ac_sql_result {
+    background-color: white !important;
+}
+
+.ac_output pre {
+    min-height: 0px;
+    background-color: #B2B4B3 !important;
+    display: contents;
+}
+
+::-webkit-scrollbar {
+    background-color: #B2B4B3 !important;
+    border-radius: 4px !important;
+    width: 14px !important;
+}
+
+div[class*="highlight-"] {
+  margin-bottom: 10px;
+}
+
+/*
+    some overrides to change Pygments highlighting to follow CodeMirror theming,
+    at least for SQL.  Nasty kludge.
+*/
+.highlight .c1 { color: #a50 !important; font-style: normal !important } /* Comment.Single */
+.highlight .cm { color: #a50 !important; font-style: normal !important } /* Comment.Multiline */
+.highlight .k { color: #708 !important; font-weight: normal !important } /* Keyword */
+.highlight .o { color: #000 !important } /* Operator */
+.highlight .m { color: #164 !important } /* Literal.Number */
+.highlight .s1 { color: #a11 !important } /* Literal.String.Single */
+
+/* custom classes for this textbook */
+.data-dictionary {
+  border-radius: 10px !important;
+  background-color: lightgray !important;
+  padding: 12px !important;
+  margin-bottom: 10px;
+}

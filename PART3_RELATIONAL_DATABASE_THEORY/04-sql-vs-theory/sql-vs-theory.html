@@ -1,0 +1,860 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>3.4. SQL 与关系模型之间的差异 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.4. SQL 与关系模型之间的差异
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">关系数据库理论</span></a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关系数据库理论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">关系数据库理论</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-relational-model/relational-model.html" class="md-nav__link">
+        <span class="md-ellipsis">数据库的关系模型</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-relational-algebra/relational-algebra.html" class="md-nav__link">
+        <span class="md-ellipsis">关系代数</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-normalization/normalization.html" class="md-nav__link">
+        <span class="md-ellipsis">常规化</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">SQL 与关系模型之间的差异</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">SQL 与关系模型之间的差异</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">SQL 与关系模型之间的差异</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    <span class="md-ellipsis">关系作为集合</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">元组和属性</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">逻辑混淆</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">SQL 与关系模型之间的差异</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    <span class="md-ellipsis">关系作为集合</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">元组和属性</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">逻辑混淆</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART3_RELATIONAL_DATABASE_THEORY/04-sql-vs-theory/sql-vs-theory.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="sql"><span id="sql-vs-theory-chapter"></span><span class="section-number">3.4. </span>SQL 与关系模型之间的差异<a class="headerlink" href="#sql" title="Link to this heading">¶</a></h1>
+<p><strong>Differences between SQL and the relational model</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系数据库模型启发并影响关系数据库系统。然而，该模型与大多数此类系统的实际实现存在差异。结构化查询语言（SQL，详见 <a class="reference internal" href="../../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a>）在很大程度上决定了关系数据库系统的行为，因此我们将本章框架设置为 SQL 与关系模型之间的比较。本章旨在为已经学习关系模型的学生提供关于这些差异的实用指南，同时也为学习关系模型的 SQL 用户提供帮助。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The relational model of the database inspires and informs relational database systems.  However, the model differs from the actual implementation of most such systems.  The structured query language (SQL, covered in <a class="reference internal" href="../../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a>) largely dictates the behavior of relational database systems, and therefore we frame this chapter as a comparison between SQL and the relational model.  This chapter is intended as a practical guide to these differences for students who have learned the relational model and must now learn SQL, or users of SQL learning the relational model.</p>
+</div>
+</div>
+</div><h2 id="id1"><span class="section-number">3.4.1. </span>关系作为集合<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p><strong>Relations as sets</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 和关系模型之间的一个关键区别在于对关系中重复元组的处理。由于关系是集合，在模型中不存在“重复”元组的概念。一个元组要么在关系中，要么不在关系中，没有重复性。相比之下，SQL 允许重复。一个 SQL 关系（或 <em>表</em>）可以包含多个相同的元组（或 <em>行</em>），如果没有主键约束——我们称 SQL 关系为 <em>多重集</em> 而不是集合。SQL 查询也可能返回重复的行，例如，当查询请求从一个关系或关系的连接中获取某些属性的子集（一个投影）时。</p>
+<p>如果不加小心，重复元组可能会导致严重错误。例如，考虑一个假设的数据库，其中包含以下关系：第一个关系列出了公司的员工，属性包括员工薪水，第二个关系列出了公司中的项目，而第三个关系将前两个关系连接在一个多对多关系中。假设员工表的主键是 <strong>employee_id</strong>，项目表的主键是 <strong>project_id</strong>，那么第三个关系只包含名为 <strong>project_id</strong> 和 <strong>employee_id</strong> 的属性，这些都是前两个表中同名属性的外键。该关系中存在的一个元组表示某特定员工在某特定项目上工作。</p>
+<p>现在，考虑一个查询，询问公司在一系列项目上的总员工薪资成本。使用关系代数或 SQL 解决此问题的一种方法是简单地将三张表连接在一起，然后对员工 ID 和薪水属性进行投影。最终答案通过对员工薪水求和获得。使用关系代数，这将产生正确的结果，因为每个参与感兴趣项目的员工只列出一次。然而，使用 SQL，如果任何员工参与了多个感兴趣的项目，则求和将不正确，因为这些员工将在连接结果中列出多次。</p>
+<p>当然，针对上述假设问题有多种解决方案。如果 SQL 查询被重构为使用子查询（使用 <strong>IN</strong>）而不是连接，或者如果交叉引用关系被重新设计为包含例如某个员工在特定项目上的工作百分比，那么可能会得到更准确的结果。然而，这需要 SQL 数据库的设计者和程序员付出一些努力，以防止出现使用关系代数时不会发生的结果。反论点是，使用关系代数时也必须小心；假设连接结果仅对员工薪水属性进行投影，毕竟，这是我们需要求和的唯一值。在这种情况下，如果两名员工的薪水相同，我们将获得错误结果！</p>
+<p>选择在查询结果中允许重复元组或许基于实际的性能考虑。为了确保查询结果的唯一性（例如，使用 SQL 的 <strong>DISTINCT</strong> 操作符时），数据库系统通常会对结果进行排序或索引，这会增加操作的成本。如果查询的结果非常大（在现代“数据大”时代并不少见），成本可能变得不可承受。虽然在某些情况下，数据库引擎可以利用查询中涉及的原始表上已经存在的索引来高效地产生唯一结果，但这并不适用于所有查询（可以假设，如果早期的数据库设计者选择强制唯一性，技术和实际应用将会演变得大大消除这些顾虑；然而，性能对于早期的关系数据库在与更成熟的非关系系统竞争时是一个严重的关注点）。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A key difference between SQL and the relational model regards the treatment of duplicate tuples in a relation.  Since relations are sets, in the model there can be no notion of “duplicate” tuples.  A tuple either is or is not in the relation, without multiplicity.  By contrast, SQL permits duplicates.  A SQL relation (or <em>table</em>) may contain multiple identical tuples (or <em>rows</em>) if it is not constrained with a primary key - we say that SQL relations are <em>multisets</em> rather than sets.  SQL queries may also return duplicate rows, for example, if a query asks for some subset of attributes (a projection) from a relation or a join of relations.</p>
+<p>Duplicate tuples can be the source of serious errors if care is not taken.  As an example, consider a hypothetical database with the following relations: the first relation lists employees of a company with attributes including employee salary, the second lists projects in the company, while the third relation connects the first two relations in a many-to-many relationship.  Assuming that the primary key for the employee table is <strong>employee_id</strong> and the primary key for the project table is <strong>project_id</strong>, then the third relation contains only the attributes named <strong>project_id</strong> and <strong>employee_id</strong>, which are foreign keys on the attributes of the same name in the first two tables.  The existence of a tuple in this relation indicates that a particular employee works on a particular project.</p>
+<p>Now, consider a query asking for the total employee salary costs to the company for a list of projects.  One approach to this problem using relational algebra or SQL involves a simple join of the three tables followed by projection onto the employee id and salary attributes.  The final answer is obtained by summing the salaries of the employees.  Using relational algebra, this produces the correct result, because each employee engaged in any of the projects of interest is listed only once.  Using SQL, however, the sum is incorrect if any employees work on more than one of the projects of interest, because those employees will be listed more than once in the join result.</p>
+<p>There are, of course, multiple solutions to the hypothetical problem described above.  If the SQL query is restructured to use subqueries (using <strong>IN</strong>) instead of a join, or if the cross-reference relation is redesigned to include, say, a percentage of effort for an employee attributable to a particular project, then a more accurate result can occur.  However, this requires some effort on the designers and programmers of the SQL database to prevent a result that cannot happen using relational algebra.  The counter argument is that care must also be taken when applying relational algebra; suppose the join result is projected solely onto the employee salary attribute, which is, after all, the only value we need to sum.  In this case, we will obtain an incorrect result if two employees have the same salary!</p>
+<p>The choice to permit duplicate tuples in query results is perhaps based on practical performance considerations.  To ensure uniqueness in a query result (e.g., when using the SQL <strong>DISTINCT</strong> operator), database systems typically sort or index the result, which adds cost to the operation.  If a query has a very large result (not uncommon in the modern era of “big data”) the cost may become prohibitive.  While there are situations which permit the database engine to utilize indexes already available on the original tables involved in a query in order to produce a unique result efficiently, this is not possible for all queries in the general case. (One can posit that, had early database designers chosen to enforce uniqueness, technology and practical use would have evolved to largely erase these concerns; however, performance was a serious concern for the early relational databases in competition with more mature non-relational systems.)</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">3.4.2. </span>元组和属性<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Tuples and attributes</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 也在元组（或行）的某些方面与关系模型有所不同。在关系模型中，元组由值组成，每个值都与一个特定命名的属性相关联，并且这些值属于该属性的值域。模型中的元组有时可以被视为有序值的列表，但仅在隐含理解每个值与某个关系模式中定义的属性相关联的情况下。最后，元组中的属性名称必须是唯一的。</p>
+<p>在 SQL 中，行的处理方式更为灵活。存储在关系（或表）中的行通常符合上述对元组的要求。然而，从查询中返回的行可能没有与每个值关联的明确属性。当查询从某个表中返回列值时，这些值可以被视为与原始表的定义相关联的明确属性。SQL 还允许查询返回基于值的操作或函数结果的值；在大多数 SQL 数据库系统中，这些值至少会有一个关联类型，如“整数”或“字符字符串”。然而，除非查询明确为每个值提供名称，否则数据库系统可能选择提供一个通用名称或根本不提供名称。这些匿名值只能通过它们在行中的位置来识别。在某些 SQL 系统中，也可能有多个值与相同名称相关联。</p>
+<p>这些差异在通常实践中可能不会带来严重困难。然而，可以说这些值缺乏给予它们意义所需的上下文，因此有可能构造出出现问题的场景。例如，考虑一家根据某些复杂的数学公式在每年年底向员工颁发奖金和加薪的公司。可以使用 SQL 查询来计算这两个值。如果每个数字仅通过其在返回行中的列位置来识别，那么一名开发公司会计软件的开发者在短暂分心的情况下就可能会反转每个数字的预期应用。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>SQL also differs from the relational model regarding some aspects of tuples (or rows).  In the relational model, tuples are composed of values which are each associated with a specific named attribute and which are members of the domain of values for the attribute.  Tuples in the model may sometimes be treated as ordered lists of values, but only with the implicit understanding that each value is associated with an attribute as defined in some relation schema.  Finally, attribute names within a tuple must be unique.</p>
+<p>In SQL, rows are treated somewhat more flexibly.  Rows stored in a relation (or table) generally conform to the above requirements on tuples.  However, rows returned from a query may not have well defined attributes associated with each value.  Where the query returns column values from some table, the values can be considered to be associated with a well defined attribute, following the definition of the original table.  SQL also permits queries to return values that are the results of operations or functions invoked on values; in most SQL database systems, those values will at least have an associated type, such as “integer” or “character string”.  However, unless the query specifically provides a name for each such value, the database system may choose to provide a generic name or no name at all.  These anonymous values can be identified solely by their position in the row.  In some SQL systems, it is also possible to have multiple values associated with the same name.</p>
+<p>These differences may not present serious difficulties in usual practice.  However, there is a sense in which such values lack the context necessary to give them meaning, and it is therefore possible to contrive scenarios in which problems arise.  For example, consider a company which awards bonuses as well as pay raises to its employees at the end of each year based on some complex mathematical formulas.  A SQL query may be used to calculate both values.  It would take only a momentary distraction for a developer programming the company’s accounting software to reverse the intended application of each number if each number is identified solely by its columnar position within the returned rows.</p>
+</div>
+</div>
+</div><h2 id="id3"><span class="section-number">3.4.3. </span>逻辑混淆<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p><strong>Logical confusions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>虽然这不是关系模型与 SQL 之间的具体冲突，但 SQL 通过使用 NULL 实现三值逻辑可能会导致一些令人困惑的情况。其中一个被广泛引用的问题与 <em>重言式(tautological)</em> 表达式相关——即在逻辑上总是为真的表达式。例如，假设某个整数变量 <em>x</em> ，在没有 NULL 的情况下，“<em>x</em> 小于 17 或 <em>x</em> 大于等于 17”的陈述必须为真。</p>
+<p>然而，如果允许 NULL 并且 <em>x</em> 是 NULL，那么使用三值逻辑将 <em>x</em> 与 17 进行比较的结果为 <em>未知(unknown)</em>。在 SQL 中，两个未知值的 <strong>OR</strong> 运算会产生另一个未知值，而不是预期的真值。这个结果部分是由于实际限制；要求 SQL 解释器推理任意逻辑表达式以揭示重言式会影响查询的响应速度。如果我们的逻辑预期是该表达式在关系模型中必须为真，那么这就代表了 SQL 与关系模型之间的差异。</p>
+<p>然而，可以辩称这实际上是我们如何赋予 NULL 含义的问题。NULL 可能意味着 <em>x</em> 是某个整数，但我们不知道具体是哪个整数。然而，NULL 也用于其他含义，例如 <em>x</em> 是 <em>不适用(not applicable)</em> 。考虑一个存储某国居民数据的关系，其中包括一个人的护照号码属性。如果一个人从未出国旅行，他们可能没有护照，因此护照号码属性对该人没有意义。在这种情况下，很难争辩说像“该人护照号码的第一位数字小于 5 或第一位数字大于等于 5”这样的表达式应该评估为真。</p>
+<p>作为一个更简单的重言式问题示例，考虑下面的 SQL 查询，它返回没有将 NULL 指派给列 <em>x</em> 的行：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">some_table</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在关系模型中包含 NULL 至少部分是因为这种类型的混淆而引发争议。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>While not specifically a conflict between the relational model and SQL, SQL’s implementation of three-valued logic using NULL can lead to some puzzling situations.  One of the more cited issues relates to <em>tautological</em> expressions - expressions which are logically always true.  For example, assuming some integer variable <em>x</em>, in the absence of NULL, the statement that “<em>x</em> is less than 17 or <em>x</em> is greater than or equal to 17” must be true.</p>
+<p>However, if NULL is permitted and <em>x</em> is NULL, then comparing <em>x</em> to 17 using three-valued logic gives us the result <em>unknown</em>.  In SQL, the <strong>OR</strong> of two unknown values yields another unknown, rather than the expected true.  This outcome is partially a result of practical limitations; asking the SQL interpreter to reason about arbitrary logical expressions in order to reveal tautologies would impact the speed with which queries can be answered.  If our logical expectation is that the expression must be true in the relational model, then this represents a difference between SQL and the relational model.</p>
+<p>It can be argued, though, that this is really a problem in how we assign meaning to NULL.  NULL may mean that <em>x</em> is some integer, but we do not know which integer it is.  However, NULL is also used for other meanings, such as that <em>x</em> is <em>not applicable</em>.  Consider a relation storing data on the inhabitants of some country where the relation includes an attribute for the person’s passport number.  If a person never travels outside the country, they may not have a passport, and the passport number attribute has no meaning for the person.  In this case it is difficult to argue that an expression such as “the first digit of the person’s passport number is less than 5 OR the first digit is greater than or equal to 5” should evaluate to true.</p>
+<p>As an even simpler example of a problem with tautology, consider the SQL query below, which returns no rows in which NULL is assigned to the column <em>x</em>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">some_table</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>The inclusion of NULL in the relational model is controversial at least in part due to confusions of this type.</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../03-normalization/normalization.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.3. 常规化" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              3.3. 常规化
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../references/references.html" class="md-footer__link md-footer__link--next" aria-label="Next: 引用" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              引用
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

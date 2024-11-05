@@ -1,0 +1,1175 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>2.4. ERD 替代方案和变体 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#index-0" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.4. ERD 替代方案和变体
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">数据模型</span></a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="数据模型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">数据模型</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction/introduction.html" class="md-nav__link">
+        <span class="md-ellipsis">数据建模简介</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-ERD/ERD.html" class="md-nav__link">
+        <span class="md-ellipsis">实体关系图</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-ERD-to-relational/ERD-to-relational.html" class="md-nav__link">
+        <span class="md-ellipsis">将 ERD 转换为关系模型</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">ERD 替代方案和变体</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">ERD 替代方案和变体</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">ERD 替代方案和变体</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#index-0" class="md-nav__link">
+    <span class="md-ellipsis">乌鸦脚符号</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="乌鸦脚符号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">实体关系建模</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">低级模型</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">常见变化</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见变化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">基数比率和参与度</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">属性</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">ERD 替代方案和变体</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#index-0" class="md-nav__link">
+    <span class="md-ellipsis">乌鸦脚符号</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="乌鸦脚符号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">实体关系建模</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">低级模型</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">常见变化</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见变化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">基数比率和参与度</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">属性</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART2_DATA_MODELING/04-other-notations/other-notations.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="erd"><span id="other-notations-chapter"></span><span class="section-number">2.4. </span>ERD 替代方案和变体<a class="headerlink" href="#erd" title="Link to this heading">¶</a></h1>
+<p><strong>ERD alternatives and variations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本章中，我们探讨替代陈述法(Chen notation)的实体-关系数据建模以及其他变体。我们从 <em>乌鸦脚</em> 符号开始，这是实体-关系建模中一种流行的符号。我们将展示如何使用基本的乌鸦脚符号在较低的抽象层次上建模关系数据库。最后，我们将概述一些您在陈述法和乌鸦脚符号中可能遇到的更常见的变体。整个过程中使用的示例对应于 <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">Chapter 2.2</span></a> 中开发的计算机制造商数据模型。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In this chapter we explore alternatives to Chen notation entity-relationship data modeling as well as other variations.  We start with <em>crow’s foot</em> notation, a popular notation for entity-relationship modeling.  We will show how the basic crow’s foot notation can be used to model relational databases at lower levels of abstraction.  We will finish with an overview of some of the more common variations you are likely to encounter in both Chen and crow’s foot notation.  The examples used throughout correspond to the computer manufacturer data model developed in <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">Chapter 2.2</span></a>.</p>
+</div>
+</div>
+</div><h2 id="index-0"><span id="id1"></span><span class="section-number">2.4.1. </span>乌鸦脚符号<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h2>
+<p><strong>Crow’s foot notation</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>“乌鸦脚”是指一系列建模符号的昵称，这些符号起源于 1976 年戈登·埃弗雷斯特(Gordon Everest)的一篇 <a class="reference internal" href="../../references/references.html#data-modeling-references"><span class="std std-ref">论文</span></a>。自那时以来，该符号已被广泛采用、扩展和修改。这个名字来源于用来表示关系中“多”基数的符号，它类似于乌鸦的脚(埃弗雷斯特最初称这个符号为“倒箭头”，后来称为“叉”)。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>“Crow’s foot” is the nickname given to a family of modeling notations that originated in a <a class="reference internal" href="../../references/references.html#data-modeling-references"><span class="std std-ref">paper by Gordon Everest</span></a> in 1976.  The notation has been widely adopted, expanded, and modified since.  The name comes from the symbol used to represent the “many” cardinality in relationships, which resembles a crow’s foot (Everest originally called the symbol an “inverted arrow”, and later a “fork”).</p>
+</div>
+</div>
+</div><h3 id="id2"><span class="section-number">2.4.1.1. </span>实体关系建模<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><strong>Entity-relationship modeling</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在乌鸦脚符号中，实体用简单的矩形表示。实体可以仅用名称标记以实现更高层次的抽象，或者可以包含名称和属性列表。关键属性可以通过多种方式表示；我们将用粗体和下划线样式表示关键。 在我们的示例数据模型中，我们有一个实体用于建模关于我们虚构的计算机制造商员工的数据：</p>
+<img alt="一个矩形，上方标注“employee”，并列出员工实体的属性；ID 属性为粗体和下划线" src="../../_images/crows_foot_entity.svg" />
+<p>关系用连接实体的线表示。基数比率通过不同的线端符号指定。可能的基数如下：</p>
+<table class="docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><img alt="A horizontal line ending in a symbol composed of an open circle and a vertical line" src="../../_images/crows_foot_zero_or_one.svg" /></p></td>
+<td><p>零或一个</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="A horizontal line ending in a symbol composed of two vertical lines" src="../../_images/crows_foot_one_exactly.svg" /></p></td>
+<td><p>一个</p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="A horizontal line ending in a symbol composed of an open circle and three branching lines" src="../../_images/crows_foot_zero_or_more.svg" /></p></td>
+<td><p>零或多个</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="A horizontal line ending in a symbol composed of a vertical line and three branching lines" src="../../_images/crows_foot_one_or_more.svg" /></p></td>
+<td><p>一个或多个</p></td>
+</tr>
+</tbody>
+</table>
+<p>这些基数符号有两个部分。离实体最近的符号表示最大基数——要么是 <em>一</em> (用垂直线表示)，要么是 <em>多</em> (用分支的“乌鸦脚”表示)。离实体更远的符号表示最小基数——要么是 <em>零</em> (用开放圆表示)，要么是 <em>一</em> 。最小基数为一有时用实体是 <em>强制的</em> 来描述，而最小基数为零表示 <em>可选</em> 实体。</p>
+<p>考虑下面所示的关系：</p>
+<img alt="一个标记为“A”的矩形与一个标记为“B”的矩形相连；在 A 侧的连接器是“一个”的连接器，而在 B 侧的连接器是“零或多个”的连接器" src="../../_images/crows_foot_cardinality_example.svg" />
+<p>该图告诉我们，<strong>A</strong> 实体的一个实例可以与零个或多个 <strong>B</strong> 实体的实例关联。一个 <strong>B</strong> 实体的实例必须与恰好一个 <strong>A</strong> 实体的实例关联。</p>
+<p>关系还可以用文本进一步注释，以命名或描述关系。</p>
+<p>在我们的示例数据模型中，<strong>employee</strong> 实体参与了与其自身及 <strong>factory</strong> 实体的多个关系：</p>
+<img alt="实体 employee 和 factory 及其关系；员工实体具有 ID(关键)、名称、职位、薪资率和薪资类型属性；工厂实体具有关键属性 city；关系为员工和工厂之间的多对一(两边可选)关系，标记为“works at”，员工和工厂之间的一对一(员工侧恰好一个)关系，标记为“manages”，以及员工与自身之间的多对一(两边可选)关系，标记为“supervises”。" src="../../_images/crows_foot_relationships.svg" />
+<p>基本的乌鸦脚符号可以扩展以包含与陈符号相同的高级元素，例如复合、派生和多值属性、弱实体和部分键、关系属性以及更高的基数关系。不同的绘图和建模工具可能提供或不提供对这些元素的直接支持，符号的变化也很大。</p>
+<p>一些数据库设计师更倾向于使用乌鸦脚符号而不是陈符号进行实体-关系建模，部分原因在于其相对紧凑的形式。我们可以将上述图与其在陈符号中的等效图并排比较：</p>
+<img alt="并排显示的乌鸦脚和陈符号的图，展示了员工和工厂实体及其属性和关系" src="../../_images/comparison.svg" />
+<p>最终，您使用哪种符号将取决于您的偏好以及您在特定项目中与之合作的人员的偏好。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In crow’s foot notation, entities are represented with simple rectangles.  Entities can be labeled simply with a name for a higher level of abstraction, or they can contain a name and a list of attributes.  Key attributes can be indicated in various ways; we will style keys with bold type and underlining.  In our example data model, we have an entity modeling data regarding employees of our fictional computer manufacturer:</p>
+<img alt="A rectangle with the header &quot;employee&quot; and a list of the attributes of the employee entity; the ID attribute is boldface and underlined" src="../../_images/crows_foot_entity.svg" />
+<p>Relationships are represented with lines connecting entities.  Cardinality ratios are specified with different line ending symbols.  The possible cardinalities are:</p>
+<table class="docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><img alt="A horizontal line ending in a symbol composed of an open circle and a vertical line" src="../../_images/crows_foot_zero_or_one.svg" /></p></td>
+<td><p>Zero or one</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="A horizontal line ending in a symbol composed of two vertical lines" src="../../_images/crows_foot_one_exactly.svg" /></p></td>
+<td><p>One exactly</p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="A horizontal line ending in a symbol composed of an open circle and three branching lines" src="../../_images/crows_foot_zero_or_more.svg" /></p></td>
+<td><p>Zero or more</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="A horizontal line ending in a symbol composed of a vertical line and three branching lines" src="../../_images/crows_foot_one_or_more.svg" /></p></td>
+<td><p>One or more</p></td>
+</tr>
+</tbody>
+</table>
+<p>These cardinality symbols have two parts.  The symbol closest to the entity indicates the maximum cardinality - either <em>one</em> (represented by a vertical line) or <em>many</em> (represented by the branching “crow’s foot”).  The symbol further from the entity indicates minimum cardinality - either <em>zero</em> (represented by the open circle) or <em>one</em>.  A minimum cardinality of one is sometimes stated in terms of the entity being <em>mandatory</em>, while a minimum cardinality of zero indicates an <em>optional</em> entity.</p>
+<p>Consider the relationship pictured below:</p>
+<img alt="A rectangle labeled &quot;A&quot; connected to a rectangle labeled &quot;B&quot;; the connector on the A side is the &quot;one exactly&quot; connector, while the connector on the &quot;B&quot; side is the &quot;zero or more&quot; connector" src="../../_images/crows_foot_cardinality_example.svg" />
+<p>This diagram tells us that an instance of the <strong>A</strong> entity can be associated with zero or more instances of <strong>B</strong>.  An instance of <strong>B</strong> must be associated with exactly one instance of <strong>A</strong>.</p>
+<p>Relationships may be further annotated with text to name or describe the relationship.</p>
+<p>In our example data model, the <strong>employee</strong> entity participates in several relationships with itself and the <strong>factory</strong> entity:</p>
+<img alt="Entities employee and factory and their relationships; the employee entity has attributes ID (key), name, position, pay rate, and pay type; the factory entity has the key attribute city; the relationships are the many-to-one (optional on both sides) relationship between employee and factory labeled &quot;works at&quot;, the one-to-one (exactly one on the employee side) relationship between employee and factory labeled &quot;manages&quot;, and the many-to-one (optional on both sides) relationship between employee and itself labeled &quot;supervises&quot;." src="../../_images/crows_foot_relationships.svg" />
+<p>The basic crow’s foot notation can be extended to encompass the same advanced elements as Chen’s notation, such as composite, derived, and multivalued attributes, weak entities and partial keys, relationship attributes, and higher arity relationships.  Different drawing and modeling tools may or may not provide direct support for these, and notations vary widely.</p>
+<p>Some database designers prefer crow’s foot notation over Chen’s notation for entity-relationship modeling, in part due to its relatively compact form.  We can compare the above diagram side-by-side with its equivalent in Chen notation:</p>
+<img alt="Side-by-side diagrams in crow's foot and Chen's notation showing the employee and factory entities and their attributes and relationships" src="../../_images/comparison.svg" />
+<p>Ultimately which notation you use will depend on your preferences and the preferences of the people you are working with on a given project.</p>
+</div>
+</div>
+</div><h3 id="index-1"><span id="id3"></span><span class="section-number">2.4.1.2. </span>低级模型<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h3>
+<p><strong>Lower level models</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>到目前为止，我们一直在讨论抽象层次的数据建模，我们可以称之为 <em>概念</em> 层。在概念层，重点在于基本数据实体及其关系，而不是实现它们所需的关系数据库结构。例如，在概念建模中，我们通常不包括交叉引用表的描绘，这在实现多对多关系时是必要的，但这些表本身并不代表感兴趣的实体。我们可以说，概念模型专注于 <em>数据</em> 而不是 <em>数据库</em>。</p>
+<p>在下一个抽象层次是 <em>逻辑</em> 模型，它包括从应用 <a class="reference internal" href="../03-ERD-to-relational/ERD-to-relational.html#erd-to-relational-chapter"><span class="std std-numref">Chapter 2.3</span></a> 中描述的技术所产生的所有关系数据库结构。乌鸦脚符号非常适合在这个层次上建模。</p>
+<p>以下展示了我们示例数据模型的两个部分的概念和逻辑版本。逻辑模型中的矩形现在代表实际的表，并列出表中的所有列。我们用粗体和下划线表示参与主键的列；外键列用斜体表示。逻辑模型通常包括数据类型，但我们现在省略这些细节。</p>
+<figure class="align-default" id="id9">
+<img alt="../../_images/crows_foot_conceptual_1.svg" src="../../_images/crows_foot_conceptual_1.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+一个概念模型，显示实体 <strong>employee</strong> 和 <strong>factory</strong> 及其关系。</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<img alt="../../_images/crows_foot_logical_1.svg" src="../../_images/crows_foot_logical_1.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+从上述概念模型构建的逻辑模型。注意两个表中外键列的添加。</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<img alt="../../_images/crows_foot_conceptual_2.svg" src="../../_images/crows_foot_conceptual_2.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+一个概念模型，显示实体 <strong>part</strong> 和 <strong>vendor</strong> 及其之间的多对多关系。该关系具有一个属性，我们已将其显示为连接到关系线的矩形。</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<figure class="align-default" id="id12">
+<img alt="../../_images/crows_foot_logical_2.svg" src="../../_images/crows_foot_logical_2.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+从上述概念模型构建的逻辑模型。多对多关系已实现为一个交叉引用表。</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<p>如果我们选择，还可以添加更多细节来创建 <em>物理</em> 模型。物理模型肯定会包括数据类型以及对列或表的任何约束，并可能包括诸如索引或表在磁盘或网络上位置的细节。</p>
+<p>每个抽象层次都有其价值，但是否在特定层次创建模型将取决于您的需求。如 <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">Chapter 2.2</span></a> 中讨论的，最高抽象层次的模型在开发数据库的早期阶段以及与项目中各种利益相关者沟通时特别有价值。概念模型可以直接用于生成数据库，或者您可能更倾向于创建逻辑模型作为中间阶段。另一方面，对于某些项目，您可能会跳过概念层，直接开始使用逻辑模型。保持逻辑模型作为数据库的文档是非常有用的；在大型复杂的数据库中，即使是数据库的常规用户也可能忘记表和列的名称！物理模型主要由数据库管理员（DBA）在非常复杂的项目中使用，通常是在可以生成创建数据库的 SQL 代码的软件工具中创建。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We have so far been discussing data modeling at an abstract level, which we might call the <em>conceptual</em> level.  At the conceptual level, the emphasis is on the fundamental data entities and their relationships, rather than the relational database constructs necessary to implement them.  For example, in conceptual modeling we typically do not include depictions of cross-reference tables, which are necessary in the implementation of many-to-many relationships, but which do not themselves represent entities of interest.  We might say that the conceptual model is focused on the <em>data</em> rather than the <em>database</em>.</p>
+<p>At the next level of abstraction lives the <em>logical</em> model, which includes all of the relational database structure that results from applying the techniques described in <a class="reference internal" href="../03-ERD-to-relational/ERD-to-relational.html#erd-to-relational-chapter"><span class="std std-numref">Chapter 2.3</span></a>.  Crow’s foot notation is well suited to modeling at this level.</p>
+<p>Below we show the conceptual and logical versions of two parts of our example data model.  Rectangles in the logical model now represent actual tables and list all columns in the table.  We show columns participating in primary keys in boldface and underlined; foreign key columns are italicized.  Logical models often include data types, but we have omitted those details for now.</p>
+<figure class="align-default" id="id13">
+<img alt="../../_images/crows_foot_conceptual_1.svg" src="../../_images/crows_foot_conceptual_1.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+A conceptual model showing entities <strong>employee</strong> and <strong>factory</strong> and their relationships.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<figure class="align-default" id="id14">
+<img alt="../../_images/crows_foot_logical_1.svg" src="../../_images/crows_foot_logical_1.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+The logical model constructed from the above conceptual model.  Note the addition of foreign key columns in both tables.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<figure class="align-default" id="id15">
+<img alt="../../_images/crows_foot_conceptual_2.svg" src="../../_images/crows_foot_conceptual_2.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+A conceptual model showing entities <strong>part</strong> and <strong>vendor</strong> and the many-to-many relationship between them.  The relationship has an attribute, which we have shown as a rectangle connected to the relationship line.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<figure class="align-default" id="id16">
+<img alt="../../_images/crows_foot_logical_2.svg" src="../../_images/crows_foot_logical_2.svg" />
+<figcaption>
+<p><span class="caption-text"><span class="caption-text">
+The logical model constructed from the above conceptual model.  The many-to-many relationship has been realized as a cross-reference table.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></figcaption>
+</figure>
+<p>If we choose, we can add even more detail to create a <em>physical</em> model.  The physical model would definitely include data types as well as any constraints on columns or tables, and might include details such as indexes or even where a table lives on disk or on the network.</p>
+<p>Each level of abstraction has value, but whether or not you create models at a particular level will depend on your needs.  As discussed in <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">Chapter 2.2</span></a>, models at the highest levels of abstraction are particularly valuable in the early stages of developing a database, and in communicating with all of the various stakeholders in a project.  The conceptual model can be used to produce a database directly, or you may prefer to create a logical model as an intermediate stage.  On the other hand, for some projects you may skip the conceptual level and start with a logical model.  It can be very useful to maintain a logical model as documentation for a database; with large and complex databases, even regular users of the database can forget the names of tables and columns!  Physical models are mostly used by database administrators (DBAs) on very complex projects and are usually created in software tools that can also generate the SQL code to create the database.</p>
+</div>
+</div>
+</div><h2 id="id4"><span class="section-number">2.4.2. </span>常见变化<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p><strong>Common variations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2" id="index-2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>大多数数据建模的可视化语言在不同程度上源于陈氏符号或乌鸦脚符号，尽管也存在替代方案。一种流行的替代方案是 <a href="#id5"><span class="problematic" id="id6">*</span></a>统一建模语言*（UML）。虽然 UML 并非专门用于数据库设计，但它已被调整以满足这一目的。UML 特别适用于涉及实体继承层次结构的更高级设置。陈氏符号也已为这些设置进行了扩展。我们在本书中不讨论继承。</p>
+<p>所有数据建模语言都有一些共同点，例如实体、属性、键、关系和基数比率。大多数都有参与或最小基数的概念。基本概念是相同的，但符号有所不同。我们在下面概述您可能遇到的最常见的变体。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Most visual languages for data modeling derive in greater or lesser degree from Chen’s notation or crow’s foot notation, although alternatives exist.  One popular alternative is the <em>unified modeling language</em> (UML).  While UML is not specifically intended for database design, it has been adapted for the purpose.  UML is especially applicable in more advanced settings involving inheritance hierarchies for entities.  Chen’s notation has also been extended for these settings.  We do not cover inheritance in this book.</p>
+<p>All data modeling languages share certain commonalities, such as entities, attributes, keys, relationships, and cardinality ratios.  Most have some notion of participation or minimum cardinality.  The basic concepts are the same, but the notations vary.  We give an overview of the most common variations you are likely to encounter below.</p>
+</div>
+</div>
+</div><h3 id="index-3"><span id="id7"></span><span class="section-number">2.4.2.1. </span>基数比率和参与度<a class="headerlink" href="#index-3" title="Link to this heading">¶</a></h3>
+<p><strong>Cardinality ratios and participation</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>参与和最小基数在处理二元关系时可以等同。如果一个实体在二元关系中有完全参与，那么另一个实体的最小基数为一（或至少不是零）。反之，实体的部分参与意味着另一个实体的最小基数为零。通常，您将使用参与或最小基数，而不是两者。</p>
+<table class="docutils data align-default" id="id17">
+<caption><span class="caption-text">参与</span><a class="headerlink" href="#id17" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>This book</p></th>
+<th class="head"><p>Alternative notation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Partial participation</p></td>
+<td><p><img alt="A single line" src="../../_images/single_line.svg" /></p></td>
+<td><p><img alt="A dashed line" src="../../_images/dotted_line.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>Total participation</p></td>
+<td><p><img alt="A double line" src="../../_images/double_line.svg" /></p></td>
+<td><p><img alt="A single line" src="../../_images/single_line.svg" /></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils data align-default" id="id18">
+<caption><span class="caption-text">最小和最大基数</span><a class="headerlink" href="#id18" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Crow’s foot notation</p></th>
+<th class="head" colspan="2"><p>Alternative notations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Zero or one</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of an open circle and a vertical line" src="../../_images/crows_foot_zero_or_one.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(0,1)&quot; at one end" src="../../_images/zero_or_one_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;0..1&quot; at one end" src="../../_images/zero_or_one_range.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>Exactly one</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of two vertical lines" src="../../_images/crows_foot_one_exactly.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(1,1)&quot; at one end" src="../../_images/one_exactly_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;1..1&quot; at one end" src="../../_images/one_exactly_range.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Zero or more</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of an open circle and three branching lines" src="../../_images/crows_foot_zero_or_more.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(0,N)&quot; at one end" src="../../_images/zero_or_more_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;0..N&quot; at one end" src="../../_images/zero_or_more_range.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>One or more</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of a vertical line and three branching lines" src="../../_images/crows_foot_one_or_more.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(1,N)&quot; at one end" src="../../_images/one_or_more_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;1..N&quot; at one end" src="../../_images/one_or_more_range.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Specified min/max</p></td>
+<td></td>
+<td><p><img alt="A line annotated with &quot;(2,3)&quot; at one end" src="../../_images/two_or_three_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;2..3&quot; at one end" src="../../_images/two_or_three_range.svg" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>Participation and minimum cardinality can be equated when working with binary relationships.  If an entity has total participation in a binary relationship, then the minimum cardinality of the other entity is one (or at least, not zero).  Conversely, partial participation of an entity implies a minimum cardinality of zero for the other entity.  Typically you will use either participation or minimum cardinality, but not both.</p>
+<table class="docutils data align-default" id="id19">
+<caption><span class="caption-text">Participation</span><a class="headerlink" href="#id19" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>This book</p></th>
+<th class="head"><p>Alternative notation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Partial participation</p></td>
+<td><p><img alt="A single line" src="../../_images/single_line.svg" /></p></td>
+<td><p><img alt="A dashed line" src="../../_images/dotted_line.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>Total participation</p></td>
+<td><p><img alt="A double line" src="../../_images/double_line.svg" /></p></td>
+<td><p><img alt="A single line" src="../../_images/single_line.svg" /></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils data align-default" id="id20">
+<caption><span class="caption-text">Minimum and maximum cardinality</span><a class="headerlink" href="#id20" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Crow’s foot notation</p></th>
+<th class="head" colspan="2"><p>Alternative notations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Zero or one</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of an open circle and a vertical line" src="../../_images/crows_foot_zero_or_one.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(0,1)&quot; at one end" src="../../_images/zero_or_one_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;0..1&quot; at one end" src="../../_images/zero_or_one_range.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>Exactly one</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of two vertical lines" src="../../_images/crows_foot_one_exactly.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(1,1)&quot; at one end" src="../../_images/one_exactly_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;1..1&quot; at one end" src="../../_images/one_exactly_range.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Zero or more</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of an open circle and three branching lines" src="../../_images/crows_foot_zero_or_more.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(0,N)&quot; at one end" src="../../_images/zero_or_more_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;0..N&quot; at one end" src="../../_images/zero_or_more_range.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>One or more</p></td>
+<td><p><img alt="A horizontal line ending in a symbol composed of a vertical line and three branching lines" src="../../_images/crows_foot_one_or_more.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;(1,N)&quot; at one end" src="../../_images/one_or_more_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;1..N&quot; at one end" src="../../_images/one_or_more_range.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Specified min/max</p></td>
+<td></td>
+<td><p><img alt="A line annotated with &quot;(2,3)&quot; at one end" src="../../_images/two_or_three_parenthetical.svg" /></p></td>
+<td><p><img alt="A line annotated with &quot;2..3&quot; at one end" src="../../_images/two_or_three_range.svg" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h3 id="id8"><span class="section-number">2.4.2.2. </span>属性<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在我们上面的乌鸦脚逻辑模型展示中，我们使用文本样式（加粗和下划线）来表示主键。我们使用斜体来表示外键。许多绘图和建模工具同样使用文本样式来指示键，但不一定是我们使用的样式。这些工具也可能使用背景色或前景色来表示键和列的其他属性。</p>
+<p>许多工具还会（或直接）用文本指示符来表示主键和外键列，通常为“PK”和“FK”。一些工具通过将主键与其他列分开来突出显示主键：</p>
+<img alt="实体员工，主键属性标记为“PK”，外键属性标记为“FK”" src="../../_images/entity_alternative.svg" />
+</div>
+<div class="tabbed-block docutils">
+<p>In our presentation of crow’s foot logical models above, we used text styling (boldface and underlining) to indicate primary keys.  We used italics to indicate foreign keys.  Many drawing and modeling tools similarly use text styling to indicate keys, although not necessarily the styling we used.  Tools may also or instead use background or foreground colors to indicate keys and other properties of columns.</p>
+<p>Many tools will also (or instead) indicate primary and foreign key columns with text indicators, usually “PK” and “FK”.  Some will highlight primary keys by separating them from the other columns:</p>
+<img alt="The entity employee with the primary key attribute labeled with &quot;PK&quot; and with the foreign key attributes labeled with &quot;FK&quot;" src="../../_images/entity_alternative.svg" />
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../03-ERD-to-relational/ERD-to-relational.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2.3. 将 ERD 转换为关系模型" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              2.3. 将 ERD 转换为关系模型
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3. 关系数据库理论" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              3. 关系数据库理论
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

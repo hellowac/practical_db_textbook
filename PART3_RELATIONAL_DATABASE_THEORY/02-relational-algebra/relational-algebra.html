@@ -1,0 +1,2983 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>3.2. 关系代数 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.2. 关系代数
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">关系数据库理论</span></a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关系数据库理论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">关系数据库理论</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-relational-model/relational-model.html" class="md-nav__link">
+        <span class="md-ellipsis">数据库的关系模型</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">关系代数</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">关系代数</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">关系代数</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">一元运算</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一元运算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">选择</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">投影</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">重命名</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">交叉积和连接</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="交叉积和连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">交叉积</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">连接</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theta" class="md-nav__link">
+    <span class="md-ellipsis">Theta 连接和等值连接</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">自然连接</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">集合运算</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">除法</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id20" class="md-nav__link">
+    <span class="md-ellipsis">查询</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id23" class="md-nav__link">
+    <span class="md-ellipsis">操作序列</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-8" class="md-nav__link">
+    <span class="md-ellipsis">表达式树</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-normalization/normalization.html" class="md-nav__link">
+        <span class="md-ellipsis">常规化</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-sql-vs-theory/sql-vs-theory.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL 与关系模型之间的差异</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">关系代数</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">一元运算</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一元运算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">选择</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">投影</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">重命名</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">交叉积和连接</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="交叉积和连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">交叉积</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">连接</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theta" class="md-nav__link">
+    <span class="md-ellipsis">Theta 连接和等值连接</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">自然连接</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">集合运算</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">除法</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id20" class="md-nav__link">
+    <span class="md-ellipsis">查询</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id23" class="md-nav__link">
+    <span class="md-ellipsis">操作序列</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-8" class="md-nav__link">
+    <span class="md-ellipsis">表达式树</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART3_RELATIONAL_DATABASE_THEORY/02-relational-algebra/relational-algebra.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="relational-algebra-chapter"><span id="id1"></span><span class="section-number">3.2. </span>关系代数<a class="headerlink" href="#relational-algebra-chapter" title="Link to this heading">¶</a></h1>
+<p><strong>Relational algebra</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2" id="index-0">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在上一章中，我们介绍了数据库的关系模型，并定义了模型中的基本数学对象—— <em>关系(relation)</em>。在本章中，我们讨论 <em>关系代数(relational algebra)</em> ，它是可以对关系执行的一组代数运算。关系代数可以看作是表达存储在关系中的数据查询的一种机制，理解关系代数对于理解关系数据库如何表示和优化查询非常重要。我们将仅覆盖基本的关系代数，排除后来的扩展，如分组和聚合操作以及外连接。</p>
+<p>一个相关的话题是 <em>关系演算(relational calculus)</em> ，但我们在本书中不予覆盖。关系演算提供了对关系查询的另一种数学表达，其表达能力与关系代数相等。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In the last chapter, we introduced the relational model of the database, and defined the fundamental mathematical object in the model, the <em>relation</em>.  In this chapter, we discuss <em>relational algebra</em>, which is the set of algebraic operations that can be performed on relations.  Relational algebra can be viewed as one mechanism for expressing queries on data stored in relations, and an understanding of relational algebra is important in understanding how relational databases represent and optimize queries.  We will cover only basic relational algebra, excluding later extensions such as those for group and aggregate operations and those for outer joins.</p>
+<p>A related topic, which we do not cover in this book, is <em>relational calculus</em>.  Relational calculus provides another mathematical expression of queries on relations, and is equivalent in expressiveness to relational algebra.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">3.2.1. </span>一元运算<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Unary operations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2" id="index-1">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系代数中的一元运算作用于一个关系并产生另一个关系。一元运算包括 <em>选择</em> 、 <em>投影</em> 和 <em>重命名</em> ，其相关操作符通常用与运算名称首字母相匹配的希腊字母表示：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> (sigma): 选择(selection)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi\)</span> (pi): 投影(projection)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho\)</span> (rho): 重命名(renaming)</p></li>
+</ul>
+<p>我们将探讨这些一元运算符在下面的 <strong>books</strong> 关系中的应用：</p>
+<table class="lined-table docutils data align-default" id="id33">
+<caption><span class="caption-text"><strong>books</strong></span><a class="headerlink" href="#id33" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6</p></td>
+<td><p><em>The Hobbit</em></p></td>
+<td><p>1937</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>5</p></td>
+<td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>books</strong> 关系的主键是 <strong>book_id</strong>，而 <strong>author_id</strong> 是指向我们将在本章后面使用的另一个表的外键。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The unary operations in relational algebra act on one relation and result in another relation.  The unary operations are <em>selection</em>, <em>projection</em>, and <em>renaming</em>, and their associated operators are typically written as the Greek letters which match the starting letters of the operation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> (sigma): selection</p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi\)</span> (pi): projection</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho\)</span> (rho): renaming</p></li>
+</ul>
+<p>We will explore each of these unary operators in application to the relation <strong>books</strong> shown below:</p>
+<table class="lined-table docutils data align-default" id="id34">
+<caption><span class="caption-text"><strong>books</strong></span><a class="headerlink" href="#id34" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6</p></td>
+<td><p><em>The Hobbit</em></p></td>
+<td><p>1937</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>5</p></td>
+<td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>books</strong> relation has primary key <strong>book_id</strong>, while <strong>author_id</strong> is a foreign key to another table we will use later in this chapter.</p>
+</div>
+</div>
+</div><h3 id="id3"><span class="section-number">3.2.1.1. </span>选择<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><strong>Selection</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>选择运算对关系中的元组应用布尔条件。选择操作的结果是一个关系，包含正好那些使选择条件为真的元组。例如，如果我们对1960年以后出版的书籍感兴趣，可以写出选择操作以检索这些书籍：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year} &gt; 1960}(\text{books})\]</div>
+<p>操作符以布尔条件作为下标，然后在括号中给出操作数（输入关系）。请注意，布尔条件指的是 <strong>books</strong> 关系中的一个属性，并将其与一个常量值进行比较。此操作的结果是一个与 <strong>books</strong> 具有相同模式的关系，但没有名称：</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>5</p></td>
+<td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>关系代数中的简单布尔表达式通常涉及一个属性与常量的比较，使用任何比较运算符。更复杂的布尔表达式可以通过使用 <strong>AND</strong>、 <strong>OR</strong> 和 <strong>NOT</strong> 从简单表达式构造。例如，如果我们对1960年后出版的书籍以及 <strong>author_id</strong> 等于6的书籍感兴趣，我们可以写：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year} &gt; 1960 \text{ OR } \text{author_id} = 6}(\text{books})\]</div>
+<p>选择操作的结果可以是一个包含原始关系中所有元组的关系（与原始关系等效），也可以是一些原始元组，或者完全没有元组（一个空集）。在空关系的情况下，我们仍然认为该关系具有与原始关系相同的模式。</p>
+<p>由于选择的结果是一个关系，我们可以对结果应用另一个选择。例如，我们可以找到1950年后出版的书籍，然后从该结果中选择 <strong>author_id</strong> 等于6的书籍：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{author_id} = 6}(\sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>这将给我们一个结果，其中包含一个元组：</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+</tr>
+</tbody>
+</table>
+<p>这种选择操作的组合等同于使用选择条件的 <em>合取(conjunction)</em> （AND）进行单一选择操作：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{author_id} = 6 \text{ AND } \text{year} &gt; 1950}(\text{books})\]</div>
+</div>
+<div class="tabbed-block docutils">
+<p>Selection applies a Boolean condition to the tuples in a relation.  The result of a selection operation is a relation containing exactly those tuples for which the selection condition is true.  For example, if we are interested in books published after 1960, we can write the selection operation to retrieve just those books as:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year} &gt; 1960}(\text{books})\]</div>
+<p>The operator is written with the Boolean condition as a subscript, and then the operand (the input relation) is given in parentheses.  Note that the Boolean condition refers to an attribute of the <strong>books</strong> relation, comparing it to a constant value.  The result of this operation is a relation with the same schema as <strong>books</strong>, but with no name:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>5</p></td>
+<td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>Simple Boolean expressions in the relational algebra usually involve comparisons of an attribute with a constant, using any comparison operator.  More complex Boolean expressions can be constructed from simple expressions using <strong>AND</strong>, <strong>OR</strong>, and <strong>NOT</strong>.  For instance, if we are interested in books published after 1960 as well as books by the author with <strong>author_id</strong> equal to 6, we could write:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year} &gt; 1960 \text{ OR } \text{author_id} = 6}(\text{books})\]</div>
+<p>Selection can result in a relation that has all of the tuples from the original (a relation equivalent to the original), some of the tuples from the original, or no tuples at all (an empty set).  In the case of an empty relation, we still consider the relation to have the same schema as the original relation.</p>
+<p>Since the result of a selection is a relation, we can apply another selection to the result.  For example, we could find the books published after 1950, and then select from that result the books with <strong>author_id</strong> equal to 6:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{author_id} = 6}(\sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>This would give us a result with one tuple:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+</tr>
+</tbody>
+</table>
+<p>This composition of selection operations is equivalent to a single selection operation using a <em>conjunction</em> (AND) of the selection conditions:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{author_id} = 6 \text{ AND } \text{year} &gt; 1950}(\text{books})\]</div>
+</div>
+</div>
+</div><h3 id="id4"><span class="section-number">3.2.1.2. </span>投影<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p><strong>Projection</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>投影操作创建一个新关系，该关系具有输入关系的属性子集。例如，我们可以使用投影来获取一个元组集合，仅表示书籍的标题和出版年份。我们将投影操作符写成属性名称列表作为下标，后面跟着括号中的操作数：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title, year}}(\text{books})\]</div>
+<p>这个结果包含 <strong>books</strong> 中每个元组的一个元组，但结果中的元组仅具有投影操作指定的属性，因此结果关系与原始关系具有不同的模式：</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+</tr>
+<tr class="row-even"><td><p><em>The Hobbit</em></p></td>
+<td><p>1937</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-even"><td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>乍一看，投影的结果似乎总是与输入关系具有相同数量的元组，但实际上并非如此。考虑如果我们将 <strong>books</strong> 投影到单个属性 <strong>year</strong> 时会发生什么。<strong>books</strong> 中有两个元组具有相同的 <strong>year</strong> 值 1968。由于关系不能包含重复项，我们的投影操作的结果只能包含一个 <strong>year</strong> 等于 1968 的元组。因此，结果的元组数量比输入关系 <em>少</em>：</p>
+<table class="lined-table docutils data align-default" id="id35">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\pi_{\text{year}}(\text{books})\)</span></span><a class="headerlink" href="#id35" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p>1952</p></td>
+</tr>
+<tr class="row-even"><td><p>1937</p></td>
+</tr>
+<tr class="row-odd"><td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p>1954</p></td>
+</tr>
+<tr class="row-odd"><td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>由于投影的结果是一个关系，我们可以对结果应用选择：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year}=1968}(\pi_{\text{title, year}}(\text{books}))\]</div>
+<p>注意这里的操作顺序：首先，我们将 <strong>books</strong> 作为输入提供给投影操作；其次，投影的结果作为选择操作的输入。</p>
+<p>同样，由于选择的结果是一个关系，我们可以在选择后应用投影。上面的表达式等同于：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title, year}}(\sigma_{\text{year}=1968}(\text{books}))\]</div>
+<p>在这两种情况下的结果都是：</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>然而，需要注意的是，并不总是可以改变投影和选择的顺序以获得等效的结果。考虑以下表达式：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{year}=1968}(\text{books}))\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year}=1968}(\pi_{\text{title}}(\text{books}))\]</div>
+<p>在第一个表达式中，我们选择1968年出版的书籍，然后将结果元组投影到 <strong>title</strong> 属性上。这个结果是：</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>House Made of Dawn</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>A Wizard of Earthsea</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>然而，第二个表达式是不正确的表达式。投影首先发生，生成一个只有一个名为 <strong>title</strong> 的属性的关系。随后的选择则不正确，因为它引用了一个在输入关系中不存在的属性 <strong>year</strong> 。</p>
+<p>投影也可以应用于另一个投影的结果；然而，结果等同于仅执行第二个投影。比较：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\pi_{\text{title, year}}(\text{books}))\]</div>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\text{books})\]</div>
+<p>请注意，我们不能改变第一个表达式中两个投影操作的顺序，因为表达式将变得不正确。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The projection operation creates a new relation which has a subset of the attributes of the input relation.  We could use projection, for example, to get a set of tuples expressing just the title and publication year of our books.  We write the projection operator with the list of attribute names in the subscript, followed by the operand in parentheses:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title, year}}(\text{books})\]</div>
+<p>This result contains a tuple for each tuple in <strong>books</strong>, but the tuples in the result only have the attributes specified by the projection operation, thus the result relation has a different schema from the original:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+</tr>
+<tr class="row-even"><td><p><em>The Hobbit</em></p></td>
+<td><p>1937</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-even"><td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>At first glance, it might seem the result of a projection will always have the same number of tuples as the input relation, but this is not the case.  Consider what happens if we project <strong>books</strong> onto the single attribute <strong>year</strong>.  There are two tuples in <strong>books</strong> with the same <strong>year</strong> value of 1968.  Since relations cannot contain duplicates, the result of our projection operation can contain only one tuple with <strong>year</strong> equal to 1968.  Thus, the result has <em>fewer</em> tuples than the input relation:</p>
+<table class="lined-table docutils data align-default" id="id36">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\pi_{\text{year}}(\text{books})\)</span></span><a class="headerlink" href="#id36" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1982</p></td>
+</tr>
+<tr class="row-odd"><td><p>1952</p></td>
+</tr>
+<tr class="row-even"><td><p>1937</p></td>
+</tr>
+<tr class="row-odd"><td><p>2008</p></td>
+</tr>
+<tr class="row-even"><td><p>1954</p></td>
+</tr>
+<tr class="row-odd"><td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>Since the result of projection is a relation, we can apply selection to the result:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year}=1968}(\pi_{\text{title, year}}(\text{books}))\]</div>
+<p>Note the order of operations here: first, we supply <strong>books</strong> as an input to the projection operation; second, the result of the projection is given as the input to the selection operation.</p>
+<p>Similarly, since the result of a selection is a relation, we can apply projection after selection.  The above expression is equivalent to:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title, year}}(\sigma_{\text{year}=1968}(\text{books}))\]</div>
+<p>The result in both cases is:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+</tr>
+</tbody>
+</table>
+<p>It is important to note, however, that you cannot always change the order of projection and selection for an equivalent result.  Consider the following expressions:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{year}=1968}(\text{books}))\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year}=1968}(\pi_{\text{title}}(\text{books}))\]</div>
+<p>In the first expression, we select the books which were published in 1968, and then project the resulting tuples onto the <strong>title</strong> attribute.  This result is:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>House Made of Dawn</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>A Wizard of Earthsea</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>However, the second expression is not a correct expression.  The projection occurs first, yielding a relation with just one attribute named <strong>title</strong>.  The following selection is then incorrect, because it makes reference to an attribute, <strong>year</strong>, which does not exist in the input relation.</p>
+<p>Projection can also be applied to the result of another projection; however, the result is equivalent to just performing the second projection.  Compare:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\pi_{\text{title, year}}(\text{books}))\]</div>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\text{books})\]</div>
+<p>Note that we cannot change the order of the two projection operations in the first expression above, as the expression would then be incorrect.</p>
+</div>
+</div>
+</div><h3 id="id5"><span class="section-number">3.2.1.3. </span>重命名<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p><strong>Renaming</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>最后一种一元操作允许对关系及其属性进行重命名。正如我们将看到的，这个操作主要用于消除某些二元操作中的名称冲突，即涉及两个关系的表达式，其中某个属性的名称在两个关系中相同。重命名操作符的一般形式允许我们为关系及其所有属性提供新名称：</p>
+<div class="math notranslate nohighlight">
+\[\rho_{\text{mybooks(b_id, a_id, title, year)}}(\text{books})\]</div>
+<p>这将产生一个名为 <strong>mybooks</strong> 的关系，具有属性 <strong>b_id</strong>、 <strong>a_id</strong>、 <strong>title</strong> 和 <strong>year</strong>。新关系的元组具有与旧关系元组相同的值，但这些值与新属性名称相关联。</p>
+<p>如同这个例子所示，并不需要更改每个属性的名称（我们将属性名称 <strong>title</strong> 和 <strong>year</strong> 保持不变），但每个属性都必须提供一个名称。一种非标准的替代符号允许我们仅重命名我们想要更改的属性：</p>
+<div class="math notranslate nohighlight">
+\[\rho_{\text{mybooks(book_id} \rightarrow \text{b_id, author_id} \rightarrow \text{a_id)}}(\text{books})\]</div>
+<p>我们可以选择性地省略关系名称或属性列表。例如，以下表达式是正确的，结果是一个名为 <strong>books</strong> 的关系，具有属性 <strong>book_id</strong>、 <strong>author_id</strong>、 <strong>title</strong> 和 <strong>publication_year</strong>：</p>
+<div class="math notranslate nohighlight">
+\[\rho_{\text{(year} \rightarrow \text{publication_year)}}(\text{books})\]</div>
+</div>
+<div class="tabbed-block docutils">
+<p>The final unary operation allows for relations and their attributes to be renamed.  As we will see, this operation is primarily useful in eliminating name conflicts in certain binary operations - that is, in expressions involving two relations in which the name of some attribute is the same in both relations.  The general form of the renaming operator lets us provide new names for the relation and all of its attributes:</p>
+<div class="math notranslate nohighlight">
+\[\rho_{\text{mybooks(b_id, a_id, title, year)}}(\text{books})\]</div>
+<p>This results in a relation with the name <strong>mybooks</strong> with attributes <strong>b_id</strong>, <strong>a_id</strong>, <strong>title</strong>, and <strong>year</strong>.  The tuples of the new relation have the same values as the tuples of the old relation, but the values are associated with the new attribute names.</p>
+<p>As in this example, it is not necessary to alter the name of every attribute (we left unchanged the attribute names <strong>title</strong> and <strong>year</strong>), but some name must be provided for every attribute.  A non-standard alternative notation allows us to rename only the attributes we want to change:</p>
+<div class="math notranslate nohighlight">
+\[\rho_{\text{mybooks(book_id} \rightarrow \text{b_id, author_id} \rightarrow \text{a_id)}}(\text{books})\]</div>
+<p>We can optionally leave out either the relation name or the list of attributes.  For example, the following expression is correct and results in a relation named <strong>books</strong> with attributes <strong>book_id</strong>, <strong>author_id</strong>, <strong>title</strong>, and <strong>publication_year</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\rho_{\text{(year} \rightarrow \text{publication_year)}}(\text{books})\]</div>
+</div>
+</div>
+</div><h2 id="id6"><span class="section-number">3.2.2. </span>交叉积和连接<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p><strong>Cross products and joins</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>我们现在将注意力转向将一个关系中的元组与另一个关系中的元组扩展的操作。在本节中，我们将使用 <strong>books</strong> 和第二个关系 <strong>authors</strong>：</p>
+<table class="lined-table docutils data align-default" id="id37">
+<caption><span class="caption-text"><strong>authors</strong></span><a class="headerlink" href="#id37" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author_id</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>birth</p></th>
+<th class="head"><p>death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>N. Scott Momaday</p></td>
+<td><p>1934-02-27</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Kazuo Ishiguro</p></td>
+<td><p>1954-11-08</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>authors</strong> 关系的主键是 <strong>author_id</strong> 。 <strong>books</strong> 关系通过 <strong>author_id</strong> 上的外键与 <strong>authors</strong> 相关联。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We now turn our attention to operations which extend tuples in one relation with tuples from another relation.  For this section, we will be using <strong>books</strong> and a second relation, <strong>authors</strong>:</p>
+<table class="lined-table docutils data align-default" id="id38">
+<caption><span class="caption-text"><strong>authors</strong></span><a class="headerlink" href="#id38" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author_id</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>birth</p></th>
+<th class="head"><p>death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>N. Scott Momaday</p></td>
+<td><p>1934-02-27</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Kazuo Ishiguro</p></td>
+<td><p>1954-11-08</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>authors</strong> relation has a primary key of <strong>author_id</strong>.  The <strong>books</strong> relation is related to <strong>authors</strong> via a foreign key on <strong>author_id</strong>.</p>
+</div>
+</div>
+</div><h3 id="index-2"><span id="id7"></span><span class="section-number">3.2.2.1. </span>交叉积<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h3>
+<p><strong>Cross product</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>两个关系 <strong>A</strong> 和 <strong>B</strong> 的交叉积（或 <em>笛卡尔积(Cartesian product)</em> ）是一个新关系，包含可以通过将 <strong>B</strong> 中的某个元组与 <strong>A</strong> 中的某个元组连接而创建的所有元组 <a class="footnote-reference brackets" href="#id25" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. 这里我们使用元组的定义为有序值列表。新关系的属性通常是 <strong>A</strong> 和 <strong>B</strong> 的属性的连接。然而，如果存在名称冲突，例如，如果 <strong>A</strong> 和 <strong>B</strong> 都有某个属性 <strong>x</strong>，我们将通过在新关系的属性前加上关系名来消除歧义，也就是说，交叉积将具有属性 <strong>A.x</strong> 和 <strong>B.x</strong>；如果我们首先对一个关系进行重命名，则可以避免这样做。</p>
+<p>交叉积运算符用 <span class="math notranslate nohighlight">\(\times\)</span> 表示，并写在两个操作数之间。首先，考虑两个相对抽象的关系 <strong>S</strong> 和 <strong>T</strong>：</p>
+<table class="lined-table docutils data align-default" id="id39">
+<caption><span class="caption-text"><strong>S</strong></span><a class="headerlink" href="#id39" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>u</p></th>
+<th class="head"><p>v</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>one</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>two</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id40">
+<caption><span class="caption-text"><strong>T</strong></span><a class="headerlink" href="#id40" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+<th class="head"><p>z</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>green</p></td>
+<td><p>3.1415</p></td>
+<td><p>apple</p></td>
+</tr>
+<tr class="row-odd"><td><p>blue</p></td>
+<td><p>2.71828</p></td>
+<td><p>pear</p></td>
+</tr>
+<tr class="row-even"><td><p>yellow</p></td>
+<td><p>1.618</p></td>
+<td><p>mango</p></td>
+</tr>
+</tbody>
+</table>
+<p>我们将 <strong>S</strong> 和 <strong>T</strong> 的交叉积写为：</p>
+<div class="math notranslate nohighlight">
+\[\text{S} \times \text{T}\]</div>
+<p>这将给我们一个包含每个元组从 <strong>S</strong> 与每个元组从 <strong>T</strong> 配对的关系：</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>u</p></th>
+<th class="head"><p>v</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+<th class="head"><p>z</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>one</p></td>
+<td><p>green</p></td>
+<td><p>3.1415</p></td>
+<td><p>apple</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>one</p></td>
+<td><p>blue</p></td>
+<td><p>2.71828</p></td>
+<td><p>pear</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>one</p></td>
+<td><p>yellow</p></td>
+<td><p>1.618</p></td>
+<td><p>mango</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>two</p></td>
+<td><p>green</p></td>
+<td><p>3.1415</p></td>
+<td><p>apple</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>two</p></td>
+<td><p>blue</p></td>
+<td><p>2.71828</p></td>
+<td><p>pear</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>two</p></td>
+<td><p>yellow</p></td>
+<td><p>1.618</p></td>
+<td><p>mango</p></td>
+</tr>
+</tbody>
+</table>
+<p>根据定义，很容易确定交叉积的大小是操作数大小的乘积。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The cross product (or <em>Cartesian product</em>) of two relations <strong>A</strong> and <strong>B</strong> is a new relation containing all tuples that can be created by concatenating some tuple from <strong>B</strong> onto some tuple from <strong>A</strong> <a class="footnote-reference brackets" href="#id26" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.  Here we are using the definition of tuple as an ordered list of values.  The attributes of the new relation are normally the attributes of <strong>A</strong> and <strong>B</strong> concatenated.  However, if there is a name collision, e.g., if both <strong>A</strong> and <strong>B</strong> have some attribute <strong>x</strong>, we will disambiguate the attributes in the new relation by prepending the relation names, that is, the cross product will have attributes <strong>A.x</strong> and <strong>B.x</strong>; we can avoid having to do this if we first apply renaming to one relation or the other.</p>
+<p>The cross product operator is denoted <span class="math notranslate nohighlight">\(\times\)</span>, and is written between its two operands. To start, consider two rather abstract relations <strong>S</strong> and <strong>T</strong>:</p>
+<table class="lined-table docutils data align-default" id="id41">
+<caption><span class="caption-text"><strong>S</strong></span><a class="headerlink" href="#id41" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>u</p></th>
+<th class="head"><p>v</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>one</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>two</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id42">
+<caption><span class="caption-text"><strong>T</strong></span><a class="headerlink" href="#id42" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+<th class="head"><p>z</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>green</p></td>
+<td><p>3.1415</p></td>
+<td><p>apple</p></td>
+</tr>
+<tr class="row-odd"><td><p>blue</p></td>
+<td><p>2.71828</p></td>
+<td><p>pear</p></td>
+</tr>
+<tr class="row-even"><td><p>yellow</p></td>
+<td><p>1.618</p></td>
+<td><p>mango</p></td>
+</tr>
+</tbody>
+</table>
+<p>We write the cross product of <strong>S</strong> and <strong>T</strong> as:</p>
+<div class="math notranslate nohighlight">
+\[\text{S} \times \text{T}\]</div>
+<p>which gives us the relation containing every pairing of a tuple from <strong>S</strong> with every tuple from <strong>T</strong>:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>u</p></th>
+<th class="head"><p>v</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+<th class="head"><p>z</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>one</p></td>
+<td><p>green</p></td>
+<td><p>3.1415</p></td>
+<td><p>apple</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>one</p></td>
+<td><p>blue</p></td>
+<td><p>2.71828</p></td>
+<td><p>pear</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>one</p></td>
+<td><p>yellow</p></td>
+<td><p>1.618</p></td>
+<td><p>mango</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>two</p></td>
+<td><p>green</p></td>
+<td><p>3.1415</p></td>
+<td><p>apple</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>two</p></td>
+<td><p>blue</p></td>
+<td><p>2.71828</p></td>
+<td><p>pear</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>two</p></td>
+<td><p>yellow</p></td>
+<td><p>1.618</p></td>
+<td><p>mango</p></td>
+</tr>
+</tbody>
+</table>
+<p>From the definition, it is trivial to determine that the size of the cross product is the product of the sizes of the operands.</p>
+</div>
+</div>
+</div><h3 id="index-3"><span id="id10"></span><span class="section-number">3.2.2.2. </span>连接<a class="headerlink" href="#index-3" title="Link to this heading">¶</a></h3>
+<p><strong>Join</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>交叉积是关系代数中的一个基本操作，但在考虑实际数据时并不普遍有用。考虑 <strong>books</strong> 和 <strong>authors</strong> 的交叉积：</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \times \text{authors}\]</div>
+<p>这个关系中的元组全集非常大（书籍数量乘以作者数量），因此我们只在下面展示一个子集：</p>
+<p><em>The House of the Spirits</em> 的作者是 Isabel Allende。那么，将 <em>The House of the Spirits</em> 与作者 Ralph Ellison（<em>Invisible Man</em> 的作者）配对的元组有什么意义呢？</p>
+<p>我们通常只对将关系的某些元组与另一关系的某些元组配对感兴趣。在上面的例子中，我们感兴趣的是 <strong>books</strong> 中的 <strong>author_id</strong> 属性与 <strong>authors</strong> 中的 <strong>author_id</strong> 属性相符的元组。这种关系不仅通过我们为属性使用的名称来指示，还通过 <strong>books</strong> 和 <strong>authors</strong> 之间的外键约束来指示。为了保留仅具有匹配 <strong>author_id</strong> 值的元组，我们可以对交叉积的结果应用选择操作：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{books.author_id}=\text{authors.author_id}}(\text{books} \times \text{authors})\]</div>
+<p>这将产生一个有用的结果：</p>
+<p>由于在交叉积之后应用选择的模式如此常见，我们有一个将两者结合为称为 <em>连接</em> 的操作的运算符 <a class="footnote-reference brackets" href="#id27" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. 使用连接运算符，上面的表达式变为：</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \Join_{\text{books.author_id}=\text{authors.author_id}} \text{authors}\]</div>
+<p>或者，您也可以将表达式格式化为：</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \underset{\text{books.author_id}=\text{authors.author_id}}\Join \text{authors}\]</div>
+<p>注意，<strong>authors</strong> 中的一个元组没有对连接产生贡献。这个元组的 <strong>author_id</strong> 与 <strong>books</strong> 中的任何元组都不匹配，因此使用它的组合元组不会出现在连接结果中。我们称这个元组为 <em>悬挂元组</em>。悬挂元组可能表明数据中存在问题；在这个例子中，这可能表明我们缺少有关某位作者的书籍的信息。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The cross product is a fundamental operation in relational algebra, but not a generally useful one when we consider actual data.  Consider the cross product of <strong>books</strong> and <strong>authors</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \times \text{authors}\]</div>
+<p>The full set of tuples in this relation is large (the number of books multiplied by the number of authors), so we only show a subset below:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>books.author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>authors.author_id</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>birth</p></th>
+<th class="head"><p>death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+<td><p>1</p></td>
+<td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+<td><p>2</p></td>
+<td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+<td><p>3</p></td>
+<td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+<td><p>1</p></td>
+<td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+<td><p>2</p></td>
+<td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+<td><p>3</p></td>
+<td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The author of <em>The House of the Spirits</em> is Isabel Allende.  What meaning, then, can we make of a tuple that pairs <em>The House of the Spirits</em> with the author Ralph Ellison (the author of <em>Invisible Man</em>)?</p>
+<p>We are typically interested in pairing only certain tuples of a relation with certain tuples of another.  In the above example, we are interested in tuples where the <strong>author_id</strong> attribute from <strong>books</strong> agrees with the <strong>author_id</strong> attribute from <strong>authors</strong>.  This relationship is indicated not only by the names we have used for attributes, but also by the foreign key constraint on <strong>books</strong> and <strong>authors</strong>.  To retain only the tuples with matching <strong>author_id</strong> values, we can apply a selection operation to the result of our cross product:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{books.author_id}=\text{authors.author_id}}(\text{books} \times \text{authors})\]</div>
+<p>This yields a useful result:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>books.author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>authors.author_id</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>birth</p></th>
+<th class="head"><p>death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+<td><p>3</p></td>
+<td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+<td><p>1</p></td>
+<td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6</p></td>
+<td><p><em>The Hobbit</em></p></td>
+<td><p>1937</p></td>
+<td><p>6</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+<td><p>2</p></td>
+<td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+<td><p>6</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+<td><p>4</p></td>
+<td><p>N. Scott Momaday</p></td>
+<td><p>1934-02-27</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>5</p></td>
+<td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+<td><p>5</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+</tr>
+</tbody>
+</table>
+<p>Since this pattern of applying a selection after a cross product is so common, we have an operator that combines the two into an operation known as a <em>join</em> <a class="footnote-reference brackets" href="#id28" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.  Using the join operator, the above expression becomes:</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \Join_{\text{books.author_id}=\text{authors.author_id}} \text{authors}\]</div>
+<p>or, you can instead format the expression as:</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \underset{\text{books.author_id}=\text{authors.author_id}}\Join \text{authors}\]</div>
+<p>Note that one tuple from <strong>authors</strong> does not contribute to the join.  This tuple’s <strong>author_id</strong> matches none of the tuples in <strong>books</strong>, and thus no combined tuple using it can appear in the join result.  We call this tuple a <em>dangling tuple</em>.  Dangling tuples may be an indication of a problem in the data; in this example, it may suggest that we are missing information about books by one author.</p>
+</div>
+</div>
+</div><h3 id="theta"><span id="index-4"></span><span class="section-number">3.2.2.3. </span>Theta 连接和等值连接<a class="headerlink" href="#theta" title="Link to this heading">¶</a></h3>
+<p><strong>Theta-join and equijoin</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>虽然在连接中通常使用等式条件，但更一般地，可以使用以下形式的任何条件：</p>
+<div class="math notranslate nohighlight">
+\[\text{A.x } \Theta \text{ B.y}\]</div>
+<p>其中 <strong>A.x</strong> 是一个关系中的属性， <strong>B.y</strong> 是另一个关系中的属性，而 <span class="math notranslate nohighlight">\(\Theta\)</span> 是一个比较运算符（例如 =、&lt; 等）。这种形式的条件称为 <em>theta 条件</em>，使用这种条件或其结合（AND）的连接称为 <em>theta-join</em>。</p>
+<p>仅使用等式比较的 theta-join（如我们上面的例子所示）进一步称为 <em>equijoin</em>。</p>
+<p>这个术语在理解代数时并不是特别重要，但如果您打算深入研究关系代数，您可能会遇到它。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>While an equality condition is typically used in joins, more generally any condition of the following form can be used:</p>
+<div class="math notranslate nohighlight">
+\[\text{A.x } \Theta \text{ B.y}\]</div>
+<p>where <strong>A.x</strong> is an attribute from one relation, <strong>B.y</strong> is an attribute from the other relation, and <span class="math notranslate nohighlight">\(\Theta\)</span> is a comparison operator (such as =, &lt;, etc.).  A condition of this form is known as a <em>theta condition</em>, and a join using such a condition or a conjunction (AND) of such conditions is known as a <em>theta-join</em>.</p>
+<p>A theta-join using only equality comparisons (as in our example above) is further known as an <em>equijoin</em>.</p>
+<p>This terminology is not especially important in understanding the algebra, but is something you may encounter if you intend a deeper study of  relational algebra.</p>
+</div>
+</div>
+</div><h3 id="index-5"><span id="id13"></span><span class="section-number">3.2.2.4. </span>自然连接<a class="headerlink" href="#index-5" title="Link to this heading">¶</a></h3>
+<p><strong>Natural join</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>当我们将 <strong>books</strong> 与 <strong>authors</strong> 连接时，会遇到两个关系都包含名为 <strong>author_id</strong> 的属性的问题。由于一个关系不能有多个同名属性，因此连接（或对这两个关系进行笛卡尔积）要求我们以某种方式重命名属性。这可以通过在连接之前进行显式的重命名操作来完成，或者通过在原始关系名前添加前缀（如我们在示例中所做的）。由于我们的连接条件是在 <strong>author_id</strong> 属性上的相等，因此结果关系中的 <strong>books.author_id</strong> 和 <strong>authors.author_id</strong> 始终相等。可以通过投影和重命名来消除这种不必要的冗余。</p>
+<p>在这种特殊情况下，我们希望通过在两个关系中相等的同名属性来进行连接，并随后去除“重复”属性，我们可以进行 <em>自然连接</em>。我们可以使用不带条件的连接运算符表示自然连接 <a class="footnote-reference brackets" href="#id29" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> ：</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \Join \text{authors}\]</div>
+<p>这将产生简化后的关系：</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>birth</p></th>
+<th class="head"><p>death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+<td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+<td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6</p></td>
+<td><p><em>The Hobbit</em></p></td>
+<td><p>1937</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+<td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+<td><p>N. Scott Momaday</p></td>
+<td><p>1934-02-27</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>5</p></td>
+<td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>When we join <strong>books</strong> with <strong>authors</strong> we run into the issue that both relations contain an attribute named <strong>author_id</strong>.  Since a relation cannot have more than one attribute with the same name, joining (or taking a cross product of) these two relations requires us to rename the attributes in some fashion. This can be done either by an explicit renaming operation prior to joining or by prepending the original relation name (as we did in our example).  Because our join condition was equality on the <strong>author_id</strong> attributes, both the <strong>books.author_id</strong> and <strong>authors.author_id</strong> in the resulting relation always agree.  This unnecessary redundancy can be removed using projection and renaming.</p>
+<p>In this special situation in which we wish to join specifically by equating the attributes with the same names in both relations - subsequently removing the “duplicate” attributes - we can instead do a <em>natural join</em>.  We can indicate a natural join using the join operator with no conditions <a class="footnote-reference brackets" href="#id30" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[\text{books} \Join \text{authors}\]</div>
+<p>which yields the simplified relation:</p>
+<table class="lined-table docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>book_id</p></th>
+<th class="head"><p>author_id</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>birth</p></th>
+<th class="head"><p>death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><em>The House of the Spirits</em></p></td>
+<td><p>1982</p></td>
+<td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><em>Invisible Man</em></p></td>
+<td><p>1952</p></td>
+<td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6</p></td>
+<td><p><em>The Hobbit</em></p></td>
+<td><p>1937</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><em>Unaccustomed Earth</em></p></td>
+<td><p>2008</p></td>
+<td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>6</p></td>
+<td><p><em>The Fellowship of the Ring</em></p></td>
+<td><p>1954</p></td>
+<td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p><em>House Made of Dawn</em></p></td>
+<td><p>1968</p></td>
+<td><p>N. Scott Momaday</p></td>
+<td><p>1934-02-27</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>5</p></td>
+<td><p><em>A Wizard of Earthsea</em></p></td>
+<td><p>1968</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h2 id="index-6"><span id="id16"></span><span class="section-number">3.2.3. </span>集合运算<a class="headerlink" href="#index-6" title="Link to this heading">¶</a></h2>
+<p><strong>Set operations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2">
+<input checked type="radio" id="__tabbed_11_1" name="__tabbed_11"><input type="radio" id="__tabbed_11_2" name="__tabbed_11"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_11_1">
+中文</label><label class="tabbed-label" for="__tabbed_11_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>不出所料，由于关系是集合，关系代数包含了通常的集合操作——<em>并集</em>、<em>交集*和*集合差</em>，但有一些限制。这些二元操作用以下符号表示：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\cup\)</span>: 并集</p></li>
+<li><p><span class="math notranslate nohighlight">\(\cap\)</span>: 交集</p></li>
+<li><p><span class="math notranslate nohighlight">\(-\)</span>: 集合差</p></li>
+</ul>
+<p>给定两个关系 <strong>A</strong> 和 <strong>B</strong>，并集 <span class="math notranslate nohighlight">\(\text{A} \cup \text{B}\)</span> 是存在于 <strong>A</strong> 中、存在于 <strong>B</strong> 中或同时存在于两者中的所有元组的集合。交集 <span class="math notranslate nohighlight">\(\text{A} \cap \text{B}\)</span> 是同时存在于 <strong>A</strong> 和 <strong>B</strong> 中的所有元组的集合。最后，集合差 <span class="math notranslate nohighlight">\(\text{A} - \text{B}\)</span> 是存在于 <strong>A</strong> 中但不在 <strong>B</strong> 中的所有元组的集合。</p>
+<p>例如，让 <strong>A</strong> 和 <strong>B</strong> 为以下关系：</p>
+<table class="lined-table docutils data align-default" id="id43">
+<caption><span class="caption-text"><strong>A</strong></span><a class="headerlink" href="#id43" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-odd"><td><p>orange</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-even"><td><p>cherry</p></td>
+<td><p>77</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id44">
+<caption><span class="caption-text"><strong>B</strong></span><a class="headerlink" href="#id44" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>banana</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-even"><td><p>coconut</p></td>
+<td><p>17</p></td>
+</tr>
+</tbody>
+</table>
+<p>那么我们有：</p>
+<table class="lined-table docutils data align-default" id="id45">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{A} \cup \text{B}\)</span></span><a class="headerlink" href="#id45" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-odd"><td><p>orange</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-even"><td><p>cherry</p></td>
+<td><p>77</p></td>
+</tr>
+<tr class="row-odd"><td><p>banana</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>coconut</p></td>
+<td><p>17</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id46">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{A} \cap \text{B}\)</span></span><a class="headerlink" href="#id46" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id47">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{A} - \text{B}\)</span></span><a class="headerlink" href="#id47" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>orange</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p>cherry</p></td>
+<td><p>77</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id48">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{B} - \text{A}\)</span></span><a class="headerlink" href="#id48" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>banana</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>coconut</p></td>
+<td><p>17</p></td>
+</tr>
+</tbody>
+</table>
+<p>请注意，并集和交集是可交换的，但集合差则不是。</p>
+<p>关系代数中对集合操作的重要限制是关系的模式必须兼容。“兼容”的含义有所不同，但对于我们的目的，假设我们将关系中的元组视为有序值列表，其中列表中的每个位置与特定属性和类型域相关联。那么，如果我们有两个关系，我们要求对于任一关系中元组的给定位置，属性和类型域必须相同。对于上述的 <strong>A</strong> 和 <strong>B</strong>，我们可以断言第一个位置对应属性 <strong>x</strong> 并包含字符字符串，而第二个位置 (<strong>y</strong>) 包含整数。</p>
+<p>一个更宽松的要求允许属性名称（但不允许类型域）在关系之间不同。这个要求与上一章中给出的元组的第二个定义不太一致，但它消除了在应用集合操作之前偶尔需要重命名操作的需求。如果两个关系中的属性名称不匹配，我们将采用左操作数的属性名称作为结果关系的属性名称。</p>
+<p>虽然交集是一个有用的操作，但在代数中并不严格必要，因为可以通过集合差得到相同的结果：</p>
+<div class="math notranslate nohighlight">
+\[\text{A} \cap \text{B} \equiv \text{A} - (\text{A} - \text{B})\]</div>
+</div>
+<div class="tabbed-block docutils">
+<p>Unsurprisingly, given that relations are sets, relational algebra includes the usual set operations - <em>union</em>, <em>intersection</em>, and <em>set difference</em> - with some restrictions.  These binary operations are denoted by:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\cup\)</span>: union</p></li>
+<li><p><span class="math notranslate nohighlight">\(\cap\)</span>: intersection</p></li>
+<li><p><span class="math notranslate nohighlight">\(-\)</span>: set difference</p></li>
+</ul>
+<p>Given two relations <strong>A</strong> and <strong>B</strong>, the union <span class="math notranslate nohighlight">\(\text{A} \cup \text{B}\)</span> is the set of all tuples that exist in <strong>A</strong>, or exist in <strong>B</strong>, or both.  The intersection <span class="math notranslate nohighlight">\(\text{A} \cap \text{B}\)</span> is the set of all tuples that exist in both <strong>A</strong> and <strong>B</strong>.  Finally, the set difference <span class="math notranslate nohighlight">\(\text{A} - \text{B}\)</span> is the set of all tuples that exist in <strong>A</strong> but do not exist in <strong>B</strong>.</p>
+<p>For example, let <strong>A</strong> and <strong>B</strong> be the relations below:</p>
+<table class="lined-table docutils data align-default" id="id49">
+<caption><span class="caption-text"><strong>A</strong></span><a class="headerlink" href="#id49" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-odd"><td><p>orange</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-even"><td><p>cherry</p></td>
+<td><p>77</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id50">
+<caption><span class="caption-text"><strong>B</strong></span><a class="headerlink" href="#id50" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>banana</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-even"><td><p>coconut</p></td>
+<td><p>17</p></td>
+</tr>
+</tbody>
+</table>
+<p>Then we have:</p>
+<table class="lined-table docutils data align-default" id="id51">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{A} \cup \text{B}\)</span></span><a class="headerlink" href="#id51" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-odd"><td><p>orange</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-even"><td><p>cherry</p></td>
+<td><p>77</p></td>
+</tr>
+<tr class="row-odd"><td><p>banana</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>coconut</p></td>
+<td><p>17</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id52">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{A} \cap \text{B}\)</span></span><a class="headerlink" href="#id52" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>apple</p></td>
+<td><p>42</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id53">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{A} - \text{B}\)</span></span><a class="headerlink" href="#id53" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>orange</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p>cherry</p></td>
+<td><p>77</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id54">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{B} - \text{A}\)</span></span><a class="headerlink" href="#id54" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>banana</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>coconut</p></td>
+<td><p>17</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that union and intersection are commutative, but set difference is not.</p>
+<p>The important restriction on set operations in relational algebra is that the relations must be compatible in terms of their schemas.  The meaning of “compatible” varies, but for our purposes, assume we view the tuples in a relation as ordered lists, where each position in the list is associated with a particular attribute and type domain.  Then, if we have two relations, we require that, for a given position in the tuples in either relation, the attribute and type domain are the same.  For <strong>A</strong> and <strong>B</strong> shown above, we might assert that the first position corresponds to attribute <strong>x</strong> and contains character strings, while the second position (<strong>y</strong>) contains integers.</p>
+<p>A looser requirement allows attribute names (but not type domains) to differ between relations.  This requirement aligns less closely with the second definition of tuple given in the previous chapter, but it eliminates the occasional need for renaming operations prior to applying set operations. If the attribute names do not match in the two relations, we adopt the attribute names from the left-hand operand for the result relation.</p>
+<p>While intersection is a useful operation, it is not strictly needed for the algebra, as the same result can be obtained using set difference:</p>
+<div class="math notranslate nohighlight">
+\[\text{A} \cap \text{B} \equiv \text{A} - (\text{A} - \text{B})\]</div>
+</div>
+</div>
+</div><h2 id="index-7"><span id="id17"></span><span class="section-number">3.2.4. </span>除法<a class="headerlink" href="#index-7" title="Link to this heading">¶</a></h2>
+<p><strong>Division</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2">
+<input checked type="radio" id="__tabbed_12_1" name="__tabbed_12"><input type="radio" id="__tabbed_12_2" name="__tabbed_12"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_12_1">
+中文</label><label class="tabbed-label" for="__tabbed_12_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>上述操作对于大多数查询需求是足够的。然而，另一个二元操作——<em>除法</em>，通常被包含在基本关系代数中。要将关系 <strong>P</strong> 除以另一个关系 <strong>R</strong>，我们写作：</p>
+<div class="math notranslate nohighlight">
+\[\text{P} \div \text{R}\]</div>
+<p>除法是最难描述的操作；在一个非常宽松的意义上，它充当了交叉乘积的一种逆。也就是说，如果 <strong>P</strong>、 <strong>Q</strong> 和 <strong>R</strong> 是关系，并且</p>
+<div class="math notranslate nohighlight">
+\[\text{P} = \text{Q} \times \text{R}\]</div>
+<p>那么有</p>
+<div class="math notranslate nohighlight">
+\[\text{P} \div \text{R} = \text{Q}\]</div>
+<p>然而，反过来并不一定成立。设 <strong>P</strong> 为某个关系，具有属性 <strong>x</strong> 和 <strong>y</strong> <a class="footnote-reference brackets" href="#id31" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. 我们要求 <strong>R</strong> 具有属性 <strong>y</strong>。那么 <span class="math notranslate nohighlight">\(\text{P} \div \text{R}\)</span> 将包含与 <strong>R</strong> 中列出的 <em>每个</em> <strong>y</strong> 值配对的 <strong>P</strong> 中的 <strong>x</strong> 值。</p>
+<p>我们将从一个抽象示例开始。设 <strong>P</strong> 为下图所示的关系：</p>
+<table class="lined-table docutils data align-default" id="id55">
+<caption><span class="caption-text"><strong>P</strong></span><a class="headerlink" href="#id55" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>blue</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>green</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>yellow</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>blue</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>yellow</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>blue</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>green</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>yellow</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>red</p></td>
+</tr>
+</tbody>
+</table>
+<p>设 <strong>R</strong> 为</p>
+<table class="lined-table docutils data align-default" id="id56">
+<caption><span class="caption-text"><strong>R</strong></span><a class="headerlink" href="#id56" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>blue</p></td>
+</tr>
+<tr class="row-odd"><td><p>green</p></td>
+</tr>
+<tr class="row-even"><td><p>yellow</p></td>
+</tr>
+</tbody>
+</table>
+<p>那么 <span class="math notranslate nohighlight">\(\text{Q} = \text{P} \div \text{R}\)</span> 是</p>
+<table class="lined-table docutils data align-default" id="id57">
+<caption><span class="caption-text"><strong>Q</strong></span><a class="headerlink" href="#id57" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+<p>因为只有值 1 和 3 与 <strong>P</strong> 中的蓝色、绿色和黄色配对。值 2 与绿色不配对，因此它不会出现在商中。值 3 也与红色配对，但红色不在 <strong>R</strong> 中，因此不会影响结果。</p>
+<p>对于一个更具体的例子，考虑以下关系，命名为 <strong>authors_awards</strong>：</p>
+<table class="lined-table docutils data align-default" id="id58">
+<caption><span class="caption-text"><strong>authors_awards</strong></span><a class="headerlink" href="#id58" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>National Book Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Pulitzer Prize for Fiction</p></td>
+</tr>
+<tr class="row-even"><td><p>N. Scott Momaday</p></td>
+<td><p>Pulitzer Prize for Fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+<td><p>Nebula Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>C. J. Cherryh</p></td>
+<td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Kazuo Ishiguro</p></td>
+<td><p>Booker Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kazuo Ishiguro</p></td>
+<td><p>Nobel Prize in Literature</p></td>
+</tr>
+<tr class="row-even"><td><p>Michael Chabon</p></td>
+<td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>Michael Chabon</p></td>
+<td><p>Nebula Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Michael Chabon</p></td>
+<td><p>Pulitzer Prize for Fiction</p></td>
+</tr>
+</tbody>
+</table>
+<p>以及关系 <strong>science_fiction_awards</strong>：</p>
+<table class="lined-table docutils data align-default" id="id59">
+<caption><span class="caption-text"><strong>science_fiction_awards</strong></span><a class="headerlink" href="#id59" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nebula Award</p></td>
+</tr>
+</tbody>
+</table>
+<p>我们可能会问，“哪些作者获得了所有的科幻书籍奖？” 答案由</p>
+<table class="lined-table docutils data align-default" id="id60">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{authors_awards} \div \text{science_fiction_awards}\)</span></span><a class="headerlink" href="#id60" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Michael Chabon</p></td>
+</tr>
+</tbody>
+</table>
+<p>像连接和集合交集操作一样，除法可以通过其他关系代数操作实现；然而，这种构造相当复杂。如果我们有关系 <strong>P</strong> 具有属性 <strong>x</strong> 和 <strong>y</strong>，以及关系 <strong>R</strong> 具有属性 <strong>y</strong>，那么</p>
+<div class="math notranslate nohighlight">
+\[\text{P} \div \text{R} \equiv \pi_{\text{x}}(\text{P}) - \pi_{\text{x}}((\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P})\]</div>
+<p>通过仔细应用上述右侧表达式到我们的示例之一，您可以验证获得所需结果，但基本的直觉是我们必须首先找到在 <strong>P</strong> 中与 <strong>R</strong> 中列出的一个或多个 <strong>y</strong> 值 <em>不</em> 配对的 <strong>x</strong> 值，然后将该 <strong>x</strong> 值列表从 <strong>P</strong> 中所有 <strong>x</strong> 值的列表中减去：</p>
+<ol class="arabic simple">
+<li><p>创建一个关系，包含 <strong>P</strong> 中的每个 <strong>x</strong> 值与 <strong>R</strong> 中的每个 <strong>y</strong> 值的配对：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{x}}(\text{P}) \times \text{R}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>从上述交叉乘积结果中减去（使用集合差） <strong>P</strong>。这些是 <strong>P</strong> 中与 <strong>R</strong> 中 <strong>y</strong> 的可能配对，但在 <strong>P</strong> 中 <em>不存在</em>：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[(\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>将最后结果投影到属性 <strong>x</strong>。这些是没有与 <strong>R</strong> 中某个值配对的 <strong>x</strong> 值：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{x}}((\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P})\]</div>
+<ol class="arabic simple" start="4">
+<li><p>将最后结果从 <strong>P</strong> 中所有 <strong>x</strong> 值的集合中减去，以得到最终解决方案：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{x}}(\text{P}) - \pi_{\text{x}}((\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P})\]</div>
+</div>
+<div class="tabbed-block docutils">
+<p>The operations described above are sufficient for most query needs.  However, one other binary operation, <em>division</em>, is typically included in the basic relational algebra.  To divide a relation <strong>P</strong> by another relation <strong>R</strong>, we write:</p>
+<div class="math notranslate nohighlight">
+\[\text{P} \div \text{R}\]</div>
+<p>Division is the most difficult operation to describe; in a very loose sense it acts as a kind of inverse to a cross product.  That is, if <strong>P</strong>, <strong>Q</strong>, and <strong>R</strong> are relations and</p>
+<div class="math notranslate nohighlight">
+\[\text{P} = \text{Q} \times \text{R}\]</div>
+<p>then it is true that</p>
+<div class="math notranslate nohighlight">
+\[\text{P} \div \text{R} = \text{Q}\]</div>
+<p>However, the reverse is not necessarily true.  Rather, let <strong>P</strong> be some relation, with attributes <strong>x</strong> and <strong>y</strong> <a class="footnote-reference brackets" href="#id32" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.  We require that <strong>R</strong> has attribute <strong>y</strong>.  Then <span class="math notranslate nohighlight">\(\text{P} \div \text{R}\)</span> will contain the values of <strong>x</strong> which are paired (in <strong>P</strong>) with <em>every</em> value of <strong>y</strong> listed in <strong>R</strong>.</p>
+<p>We will start with an abstract example.  Let <strong>P</strong> be the relation pictured below:</p>
+<table class="lined-table docutils data align-default" id="id61">
+<caption><span class="caption-text"><strong>P</strong></span><a class="headerlink" href="#id61" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>blue</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>green</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>yellow</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>blue</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>yellow</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>blue</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>green</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>yellow</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>red</p></td>
+</tr>
+</tbody>
+</table>
+<p>Let <strong>R</strong> be</p>
+<table class="lined-table docutils data align-default" id="id62">
+<caption><span class="caption-text"><strong>R</strong></span><a class="headerlink" href="#id62" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>blue</p></td>
+</tr>
+<tr class="row-odd"><td><p>green</p></td>
+</tr>
+<tr class="row-even"><td><p>yellow</p></td>
+</tr>
+</tbody>
+</table>
+<p>Then <span class="math notranslate nohighlight">\(\text{Q} = \text{P} \div \text{R}\)</span> is</p>
+<table class="lined-table docutils data align-default" id="id63">
+<caption><span class="caption-text"><strong>Q</strong></span><a class="headerlink" href="#id63" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>x</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+<p>because only the values 1 and 3 are paired with blue, green, and yellow in <strong>P</strong>.  The value 2 is not paired with green, so it does not appear in the quotient.  The value 3 is also paired with red, but red is not in <strong>R</strong> and thus does not affect the result.</p>
+<p>For a more tangible example, consider the following relation, named <strong>authors_awards</strong>:</p>
+<table class="lined-table docutils data align-default" id="id64">
+<caption><span class="caption-text"><strong>authors_awards</strong></span><a class="headerlink" href="#id64" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>National Book Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Pulitzer Prize for Fiction</p></td>
+</tr>
+<tr class="row-even"><td><p>N. Scott Momaday</p></td>
+<td><p>Pulitzer Prize for Fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+<td><p>Nebula Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>C. J. Cherryh</p></td>
+<td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Kazuo Ishiguro</p></td>
+<td><p>Booker Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kazuo Ishiguro</p></td>
+<td><p>Nobel Prize in Literature</p></td>
+</tr>
+<tr class="row-even"><td><p>Michael Chabon</p></td>
+<td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>Michael Chabon</p></td>
+<td><p>Nebula Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Michael Chabon</p></td>
+<td><p>Pulitzer Prize for Fiction</p></td>
+</tr>
+</tbody>
+</table>
+<p>and the relation <strong>science_fiction_awards</strong>:</p>
+<table class="lined-table docutils data align-default" id="id65">
+<caption><span class="caption-text"><strong>science_fiction_awards</strong></span><a class="headerlink" href="#id65" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hugo Award</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nebula Award</p></td>
+</tr>
+</tbody>
+</table>
+<p>We might ask the question, “Which authors have received all of the science fiction book awards?”  The answer is given by</p>
+<table class="lined-table docutils data align-default" id="id66">
+<caption><span class="caption-text"><span class="math notranslate nohighlight">\(\text{authors_awards} \div \text{science_fiction_awards}\)</span></span><a class="headerlink" href="#id66" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Michael Chabon</p></td>
+</tr>
+</tbody>
+</table>
+<p>Like the join and set intersection operations, division can be accomplished using other relational algebra operations; however, the construction is fairly complex.  If we have relation <strong>P</strong> with attributes <strong>x</strong> and <strong>y</strong>, and relation <strong>R</strong> with attribute <strong>y</strong>, then</p>
+<div class="math notranslate nohighlight">
+\[\text{P} \div \text{R} \equiv \pi_{\text{x}}(\text{P}) - \pi_{\text{x}}((\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P})\]</div>
+<p>By carefully applying the right-hand side expression above to one of our examples, you can verify that the desired result is obtained, but the basic intuition is that we must first find the values of <strong>x</strong> in <strong>P</strong> which are <em>not</em> paired (in <strong>P</strong>) with one or more <strong>y</strong> values listed in <strong>R</strong>, and then subtract that list of <strong>x</strong> values from the list of all <strong>x</strong> values in <strong>P</strong>:</p>
+<ol class="arabic simple">
+<li><p>Create a relation containing every <strong>x</strong> value in <strong>P</strong> paired with every <strong>y</strong> value in <strong>R</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{x}}(\text{P}) \times \text{R}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Subtract (using set difference) <strong>P</strong> from the cross product result above.  These are the possible pairings of <strong>x</strong> (in <strong>P</strong>) and <strong>y</strong> (in <strong>R</strong>) that do <em>not</em> exist in <strong>P</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[(\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Project the last result onto attribute <strong>x</strong>. These are the <strong>x</strong> values that are not paired with some value from <strong>R</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{x}}((\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P})\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Subtract the last result from the set of all <strong>x</strong> values in <strong>P</strong> for the final solution:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{x}}(\text{P}) - \pi_{\text{x}}((\pi_{\text{x}}(\text{P}) \times \text{R}) - \text{P})\]</div>
+</div>
+</div>
+</div><h2 id="id20"><span class="section-number">3.2.5. </span>查询<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
+<p><strong>Queries</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2">
+<input checked type="radio" id="__tabbed_13_1" name="__tabbed_13"><input type="radio" id="__tabbed_13_2" name="__tabbed_13"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_13_1">
+中文</label><label class="tabbed-label" for="__tabbed_13_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>正如我们所见，关系代数的操作作用于关系并生成关系，因此我们可以按顺序应用关系操作以获得最终所需的结果。通过我们讨论的操作，我们可以表达出各种各样的 <a href="#id21"><span class="problematic" id="id22">*</span></a>查询*（需要通过数据回答的问题）。在本章中，我们看到了一些简单查询的例子，主要涉及一个或两个基本操作。</p>
+<p>然而，即使是简单的问题，也可能需要多次操作的应用。考虑这个问题：“J.R.R.托尔金有哪些书在1950年后出版？” 这与我们之前问过的一个问题相似，只是使用作者的ID值而不是作者的名字。只有作者的名字时，我们需要做更多的工作。</p>
+<p>有许多方法可以达到我们想要的结果。一个可能的方法可能从提出的条件开始：作者是J.R.R.托尔金，出版年份大于1950年。作者名字在 <strong>authors</strong> 关系中，而出版年份在 <strong>books</strong> 关系中。因此，我们可以猜测需要在每个关系上进行两个选择操作：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors})\]</div>
+<p>和</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year} &gt; 1950}(\text{books})\]</div>
+<p>这给我们提供了两个关系，它们通过在两者中都存在的 <strong>author_id</strong> 属性相关联。因此，自然连接可能是我们的下一步：</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books})\]</div>
+<p>最后，我们只对书名（或可能的书名和出版年份）感兴趣，因此我们以投影操作结束：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>这只是许多可能表达式中的一种，产生相同的结果。以下是一些等效表达式：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien AND year} &gt; 1950}(\text{authors} \Join \text{books}))\]</div>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\sigma_{\text{year} &gt; 1950}(\text{books}) \Join \text{authors}))\]</div>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors} \Join \text{books}) \cap \sigma_{\text{year} &gt; 1950}(\text{authors} \Join \text{books}))\]</div>
+</div>
+<div class="tabbed-block docutils">
+<p>As we have seen, the operations of the relational algebra act on relations and result in relations, and thus we can apply relational operations sequentially to obtain a final desired result.  With the operations we have discussed, we can express a very wide array of <em>queries</em> (questions to be answered by the data).  We have seen examples of simple queries throughout this chapter, mostly involving one or two basic operations.</p>
+<p>Even simple questions, however, can require the application of multiple operations.  Consider the question, “What books by J.R.R. Tolkien were published after 1950?”.  This is similar to a question we asked earlier, using the author ID value rather than the author’s name.  With only the author’s name, we have to do a bit more work.</p>
+<p>There are many ways to get to our desired result.  One possible approach might begin with the conditions presented: the author is J.R.R. Tolkien, and the publication year is greater than 1950.  Author names are in the <strong>authors</strong> relation, while publication years are in the <strong>books</strong> relation.  So we might guess we need two selection operations, one on each relation:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors})\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{year} &gt; 1950}(\text{books})\]</div>
+<p>This gives us two relations which are related by the <strong>author_id</strong> attribute present in both.  So a natural join might be our next step:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books})\]</div>
+<p>Finally, we are only interested in the book titles (or possibly titles and publication years), so we finish with a projection operation:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>This is only one of many possible expressions that yield identical results.  Here are some equivalent expressions:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien AND year} &gt; 1950}(\text{authors} \Join \text{books}))\]</div>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\sigma_{\text{year} &gt; 1950}(\text{books}) \Join \text{authors}))\]</div>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors} \Join \text{books}) \cap \sigma_{\text{year} &gt; 1950}(\text{authors} \Join \text{books}))\]</div>
+</div>
+</div>
+</div><h3 id="id23"><span class="section-number">3.2.5.1. </span>操作序列<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<p><strong>Operation sequences</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2">
+<input checked type="radio" id="__tabbed_14_1" name="__tabbed_14"><input type="radio" id="__tabbed_14_2" name="__tabbed_14"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_14_1">
+中文</label><label class="tabbed-label" for="__tabbed_14_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>随着查询变得更加复杂，像上述表达式那样的表达式可能变得相当冗长且难以理解。一种替代方法是使用中间变量来分解和标记表达式的部分。这样可以更顺序地查看操作。</p>
+<p>我们将通过上一节中的一个查询来演示这种方法：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>使用变量，我们可以将其写成一系列操作：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{A} &amp;=&amp; \sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \\
+\text{B} &amp;=&amp; \sigma_{\text{year} &gt; 1950}(\text{books}) \\
+\text{C} &amp;=&amp; \text{A} \Join \text{B} \\
+\text{R} &amp;=&amp; \pi_{\text{title}}(\text{C}) \\
+\end{eqnarray*}\end{split}\]</div>
+<p>其中 <strong>R</strong> 保存我们的最终结果。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>As queries become more complex, expressions like the ones shown above can become quite long and difficult to understand.  An alternative approach is to use intermediate variables to decompose and label the parts of our expression.  The result is a more sequential view of the operations.</p>
+<p>We will demonstrate this approach with one of the queries from the last section:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>Using variables, we can write this as a sequence of operations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{A} &amp;=&amp; \sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \\
+\text{B} &amp;=&amp; \sigma_{\text{year} &gt; 1950}(\text{books}) \\
+\text{C} &amp;=&amp; \text{A} \Join \text{B} \\
+\text{R} &amp;=&amp; \pi_{\text{title}}(C) \\
+\end{eqnarray*}\end{split}\]</div>
+<p>with <strong>R</strong> holding our final result.</p>
+</div>
+</div>
+</div><h3 id="index-8"><span id="id24"></span><span class="section-number">3.2.5.2. </span>表达式树<a class="headerlink" href="#index-8" title="Link to this heading">¶</a></h3>
+<p><strong>Expression trees</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2">
+<input checked type="radio" id="__tabbed_15_1" name="__tabbed_15"><input type="radio" id="__tabbed_15_2" name="__tabbed_15"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_15_1">
+中文</label><label class="tabbed-label" for="__tabbed_15_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系代数表达式的另一种表示形式是树的形式。表达式树是查询的有用视觉表示。</p>
+<blockquote>
+<div><p>我们将在第 XXX 章中再次使用它们，该章关注数据库软件如何考虑执行查询的不同行动计划。</p>
+</div></blockquote>
+<p>我们将再次使用以下查询进行演示：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>该查询的树形表示如下：</p>
+<img alt="../../_images/tree1.svg" src="../../_images/tree1.svg" />
+<p>操作从树的底部开始，涉及关系 <strong>authors</strong> 和 <strong>books</strong>，并向上进行。我们可以先应用任一选择操作，然后再应用另一操作；在执行连接之前，必须先应用这两个操作，最后进行投影。</p>
+<p>这里是另一个示例，对应于以下表达式：</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\sigma_{\text{year} &gt; 1950}(\text{books}) \Join \text{authors}))\]</div>
+<p>树形表示为：</p>
+<img alt="../../_images/tree2.svg" src="../../_images/tree2.svg" />
+</div>
+<div class="tabbed-block docutils">
+<p>Another representation of relational algebra expressions is in the form of a tree.  Expression trees are a useful visual representation of a query.</p>
+<blockquote>
+<div><p>We will make use of them again in Chapter XXX, which is concerned with how database software considers different action plans for executing a query.</p>
+</div></blockquote>
+<p>We will again demonstrate using the query:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\text{authors}) \Join \sigma_{\text{year} &gt; 1950}(\text{books}))\]</div>
+<p>The tree representation of this query looks like:</p>
+<img alt="../../_images/tree1.svg" src="../../_images/tree1.svg" />
+<p>Operations start at the bottom of the tree, with the relations <strong>authors</strong> and <strong>books</strong>, and proceed upwards.  We can apply either selection operation first, then the other; both must be applied before we can perform the join, and we finish with the projection.</p>
+<p>Here is another example, corresponding to the expression:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{\text{title}}(\sigma_{\text{name} = \text{J.R.R. Tolkien}}(\sigma_{\text{year} &gt; 1950}(\text{books}) \Join \text{authors}))\]</div>
+<p>The tree is:</p>
+<img alt="../../_images/tree2.svg" src="../../_images/tree2.svg" />
+</div>
+</div>
+</div><hr class="docutils" />
+<p><strong>Notes</strong></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id25" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">1</a><span class="fn-bracket">]</span></span>
+<p>这与一般数学中元组集合的笛卡尔积定义是一致的。</p>
+</aside>
+<aside class="footnote brackets" id="id26" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">2</a><span class="fn-bracket">]</span></span>
+<p>This is consistent with the definition of the Cartesian product of sets of tuples in general mathematics.</p>
+</aside>
+<aside class="footnote brackets" id="id27" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">3</a><span class="fn-bracket">]</span></span>
+<p>实际上，最初介绍关系模型的论文讨论的是连接而不是交叉乘积。然而，交叉乘积现在被认为是关系代数中的一种更基本操作。</p>
+</aside>
+<aside class="footnote brackets" id="id28" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">4</a><span class="fn-bracket">]</span></span>
+<p>In fact, the original paper introducing the relational model discusses joins and not cross products.  However, the cross product is now recognized as a more fundamental operation in relational algebra.</p>
+</aside>
+<aside class="footnote brackets" id="id29" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">5</a><span class="fn-bracket">]</span></span>
+<p>一些作者使用 * 来表示自然连接。</p>
+</aside>
+<aside class="footnote brackets" id="id30" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">6</a><span class="fn-bracket">]</span></span>
+<p>Some authors use * instead to indicate a natural join.</p>
+</aside>
+<aside class="footnote brackets" id="id31" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id18">7</a><span class="fn-bracket">]</span></span>
+<p>更一般地说，<strong>x</strong> 和 <strong>y</strong> 可以代表一组属性；也就是说，<strong>x</strong> 可能是某些属性 <strong>x1</strong>, <strong>x2</strong>, … 的列表，<strong>y</strong> 也是如此。我们只要求 <strong>x</strong> 和 <strong>y</strong> 一起代表 <strong>P</strong> 的所有属性，并且 <strong>x</strong> 和 <strong>y</strong> 之间不重叠。</p>
+</aside>
+<aside class="footnote brackets" id="id32" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id19">8</a><span class="fn-bracket">]</span></span>
+<p>More generally, <strong>x</strong> and <strong>y</strong> can stand in for a list of attributes; that is, <strong>x</strong> might be some list of attributes <strong>x1</strong>, <strong>x2</strong>, … and similarly for <strong>y</strong>.  We only require that <strong>x</strong> and <strong>y</strong> together represent all attributes of <strong>P</strong>, and that <strong>x</strong> and <strong>y</strong> do not overlap.</p>
+</aside>
+</aside>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../01-relational-model/relational-model.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.1. 数据库的关系模型" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              3.1. 数据库的关系模型
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../03-normalization/normalization.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3.3. 常规化" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              3.3. 常规化
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script id="MathJax-script" src="../../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

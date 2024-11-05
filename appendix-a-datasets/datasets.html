@@ -1,0 +1,1891 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>附录 A: 本书中使用的示例数据集 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              附录 A: 本书中使用的示例数据集
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="#" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    <span class="md-ellipsis">数据集说明</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据集说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">简单图书数据集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">扩展图书数据集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">书店数据集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">数据库中的其他表</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">数据收集说明</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">获取数据</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="获取数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">SQLite</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    <span class="md-ellipsis">Postgre<wbr>SQL</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    <span class="md-ellipsis">My<wbr>SQL</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oracle" class="md-nav__link">
+    <span class="md-ellipsis">Oracle</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-server" class="md-nav__link">
+    <span class="md-ellipsis">SQL Server</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11" class="md-nav__link">
+    <span class="md-ellipsis">原始数据文件</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    <span class="md-ellipsis">数据集说明</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据集说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">简单图书数据集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">扩展图书数据集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">书店数据集</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">数据库中的其他表</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">数据收集说明</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">获取数据</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="获取数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">SQLite</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    <span class="md-ellipsis">Postgre<wbr>SQL</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    <span class="md-ellipsis">My<wbr>SQL</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oracle" class="md-nav__link">
+    <span class="md-ellipsis">Oracle</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-server" class="md-nav__link">
+    <span class="md-ellipsis">SQL Server</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11" class="md-nav__link">
+    <span class="md-ellipsis">原始数据文件</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/appendix-a-datasets/datasets.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="a"><span id="appendix-a"></span>附录 A: 本书中使用的示例数据集<a class="headerlink" href="#a" title="Link to this heading">¶</a></h1>
+<p><strong>Appendix A: Example datasets used in this book</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本附录包含教科书数据库中表的描述，以及可以用于在其他数据库系统中重建该书数据库的 SQL 脚本和数据文件。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>This appendix contains descriptions of the tables in the textbook database as well as SQL scripts and data files that can be used to recreate the book’s database in other database systems.</p>
+</div>
+</div>
+</div><nav class="contents local" id="quick-links">
+<p class="topic-title">Quick links</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id12">数据集说明</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id13">简单图书数据集</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id14">扩展图书数据集</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id15">书店数据集</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id16">数据库中的其他表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id17">数据收集说明</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id18">获取数据</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id8" id="id19">SQLite</a></p></li>
+<li><p><a class="reference internal" href="#postgresql" id="id20">PostgreSQL</a></p></li>
+<li><p><a class="reference internal" href="#mysql" id="id21">MySQL</a></p></li>
+<li><p><a class="reference internal" href="#oracle" id="id22">Oracle</a></p></li>
+<li><p><a class="reference internal" href="#sql-server" id="id23">SQL Server</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id24">原始数据文件</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<h2 id="id1">数据集说明<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p><strong>Dataset descriptions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本节中，我们提供每个数据集或相关表组的描述。这些表以表格格式详细描述。对于某些数据集，还提供了使用乌鸦脚标记法的实体关系图（ERD）和逻辑模型（如 <a class="reference internal" href="../PART2_DATA_MODELING/index.html#data-modeling-part"><span class="std std-numref">Part 2</span></a> 中所述）。最后，每个数据集部分都包含一个交互式查询工具，旨在从数据集中所有表中检索数据（请注意，交互式查询工具将结果限制为 100 行，并且某些表的行数超过该数量）。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In this section we provide descriptions of each dataset or group of related tables.  The tables are described in detail in tabular format. Entity-relationship diagrams (ERDs) and logical models using crow’s foot notation (as described in <a class="reference internal" href="../PART2_DATA_MODELING/index.html#data-modeling-part"><span class="std std-numref">Part 2</span></a>) are also provided for some datasets.  Finally, each dataset section contains an interactive query tool set up to retrieve the data from all of the tables in the dataset (note that the interactive query tool limits results to 100 rows, and some tables have more than that number of rows).</p>
+</div>
+</div>
+</div><h3 id="id2">简单图书数据集<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><strong>The simple books dataset</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>简单书籍数据集由 <strong>simple_books</strong> 和 <strong>simple_authors</strong> 表组成。<strong>simple_books</strong> 表包含 12 本书的数据，每本书由不同的作者创作，而 <strong>simple_authors</strong> 表包含出现在 <strong>simple_books</strong> 中的 12 位作者的数据。</p>
+<p>该数据集用于文本 <a class="reference internal" href="../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a> 的早期章节中引入 SQL，并不作为良好数据库设计的示例。<strong>simple_books</strong> 中的行隐式通过唯一书名进行识别，而 <strong>simple_authors</strong> 中的行则隐式通过作者姓名进行识别，但这两个表都没有主键。同样，<strong>simple_books</strong> 中的行与 <strong>simple_authors</strong> 中的行是一对一对应的，但表之间没有通过外键约束建立显式关系。</p>
+<div class="data-dictionary docutils container">
+<p><strong>simple_books</strong> 表记录由单一作者创作的虚构、非虚构、诗歌等作品。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>author</p></td>
+<td><p>character string</p></td>
+<td><p>书的作者</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>书的标题</p></td>
+</tr>
+<tr class="row-even"><td><p>publication_year</p></td>
+<td><p>integer</p></td>
+<td><p>书首次出版的年份</p></td>
+</tr>
+<tr class="row-odd"><td><p>genre</p></td>
+<td><p>character string</p></td>
+<td><p>描述书籍的类型</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p><strong>simple_authors</strong> 表记录了曾撰写书籍的人。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>character string</p></td>
+<td><p>作者的全名</p></td>
+</tr>
+<tr class="row-odd"><td><p>birth</p></td>
+<td><p>date</p></td>
+<td><p>作者的出生日期（如果已知）</p></td>
+</tr>
+<tr class="row-even"><td><p>death</p></td>
+<td><p>date</p></td>
+<td><p>作者的死亡日期（如果已知）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>使用下面的查询工具查看数据。</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">appendix_a_simple_books_dataset</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>要查看某个表的 <strong>CREATE TABLE</strong> 代码，可以使用上面的查询工具查询 <strong>sqlite_master</strong> 表，例如：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">sql</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">sqlite_master</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;simple_books&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>The simple books dataset consists of the tables <strong>simple_books</strong> and <strong>simple_authors</strong>.  The <strong>simple_books</strong> table contains data about 12 books, each by a different author, while the <strong>simple_authors</strong> table contains data on each of the 12 authors appearing in <strong>simple_books</strong>.</p>
+<p>This dataset is used in the early chapters of <a class="reference internal" href="../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a> of the text to introduce SQL, and is not intended as an example of good database design.  The rows in <strong>simple_books</strong> are implicitly identified by unique book titles, and the rows in <strong>simple_authors</strong> are implicitly identified by author names, but neither table has a primary key.  Similarly, the rows in <strong>simple_books</strong> are in one-to-one correspondence with the rows in <strong>simple_authors</strong>, however, there is no explicit relationship between the tables via a foreign key constraint.</p>
+<div class="data-dictionary docutils container">
+<p>The <strong>simple_books</strong> table records works of fiction, non-fiction, poetry, etc. by a single author.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>author</p></td>
+<td><p>character string</p></td>
+<td><p>the book’s author</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>the book’s title</p></td>
+</tr>
+<tr class="row-even"><td><p>publication_year</p></td>
+<td><p>integer</p></td>
+<td><p>year the book was first published</p></td>
+</tr>
+<tr class="row-odd"><td><p>genre</p></td>
+<td><p>character string</p></td>
+<td><p>a genre describing the book</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p>The <strong>simple_authors</strong> table records persons who have authored books.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>character string</p></td>
+<td><p>full name of the author</p></td>
+</tr>
+<tr class="row-odd"><td><p>birth</p></td>
+<td><p>date</p></td>
+<td><p>birth date of the author, if known</p></td>
+</tr>
+<tr class="row-even"><td><p>death</p></td>
+<td><p>date</p></td>
+<td><p>death date of the author, if known</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Use the query tool below to view the data.</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">appendix_a_simple_books_dataset</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>To see the <strong>CREATE TABLE</strong> code for a table, you can use the query tool above to query the <strong>sqlite_master</strong> table, e.g.:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">sql</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">sqlite_master</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;simple_books&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h3 id="id3">扩展图书数据集<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><strong>The expanded books dataset</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>扩展书籍数据集包括 200 本书（在 <strong>books</strong> 表中）及其作者（总共 76 位作者在 <strong>authors</strong> 表中）。<strong>awards</strong> 表列出了一些授予作者的主要奖项，既包括他们的整体作品，也包括特定书籍的奖项。两个交叉引用表将作者与他们的奖项关联起来 (<strong>authors_awards</strong>) 和将特定书籍与它们的奖项关联起来 (<strong>books_awards</strong>)。最后，<strong>editions</strong> 表包含与 J.R.R. 托尔金的四本书相关的出版数据。（仅包含四本书是为了减小数据库文件的大小，文件必须下载并保存在网页浏览器的内存中。）出版数据特别“脏”，因为它包含许多不准确、遗漏和冗余的信息；请参见下面的标题为 <a href="#id25"><span class="problematic" id="id26">`Data collection notes`_</span></a> 的部分。</p>
+<p>该数据集在 <a class="reference internal" href="../PART1_SQL/04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a> 中介绍，并在 <a class="reference internal" href="../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a> 的其余部分中使用。虽然该数据集代表了书籍的高度简化模型（例如，假设书籍始终只有一个作者），但其模式尝试在展示基本 SQL 数据库概念的同时模拟数据库设计的最佳实践。设计中使用了主键约束（使用合成唯一标识符）、外键约束和实现多对多关系的交叉引用表。</p>
+<p>以下是数据集中每个表的详细描述，包含数据模型的实体关系图（ERD），以及使用乌鸦脚标记法表示表及其关系的逻辑模型。</p>
+<div class="data-dictionary docutils container">
+<p><strong>authors</strong> 表记录了曾撰写书籍的人。每位作者对应数据库中的至少一本书。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>author_id</p></td>
+<td><p>integer</p></td>
+<td><p>作者的唯一标识符</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>character string</p></td>
+<td><p>作者的全名</p></td>
+</tr>
+<tr class="row-even"><td><p>birth</p></td>
+<td><p>date</p></td>
+<td><p>作者的出生日期（如果已知）</p></td>
+</tr>
+<tr class="row-odd"><td><p>death</p></td>
+<td><p>date</p></td>
+<td><p>作者的死亡日期（如果已知）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p><strong>books</strong> 表记录由单一作者创作的虚构、非虚构、诗歌等作品。每本书对应 <strong>authors</strong> 表中的一位作者，并可能对应 <strong>editions</strong> 表中列出的多本书的版本。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>book_id</p></td>
+<td><p>integer</p></td>
+<td><p>书的唯一标识符</p></td>
+</tr>
+<tr class="row-odd"><td><p>author_id</p></td>
+<td><p>integer</p></td>
+<td><p>书的作者在 <strong>authors</strong> 表中的 author_id</p></td>
+</tr>
+<tr class="row-even"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>书的标题</p></td>
+</tr>
+<tr class="row-odd"><td><p>publication_year</p></td>
+<td><p>integer</p></td>
+<td><p>书首次出版的年份</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p><strong>editions</strong> 表记录一本书的特定出版版本。每个版本对应 <strong>books</strong> 表中的一本书。出于空间原因，<strong>editions</strong> 表仅包含 J.R.R. 托尔金的四本书的数据。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>edition_id</p></td>
+<td><p>integer</p></td>
+<td><p>版本的唯一标识符</p></td>
+</tr>
+<tr class="row-odd"><td><p>book_id</p></td>
+<td><p>integer</p></td>
+<td><p>作为此版本出版的书（来自 <strong>books</strong> 表）的 book_id</p></td>
+</tr>
+<tr class="row-even"><td><p>publication_year</p></td>
+<td><p>integer</p></td>
+<td><p>此版本出版的年份</p></td>
+</tr>
+<tr class="row-odd"><td><p>publisher</p></td>
+<td><p>character string</p></td>
+<td><p>出版社的名称</p></td>
+</tr>
+<tr class="row-even"><td><p>publisher_location</p></td>
+<td><p>character string</p></td>
+<td><p>出版社所在地的城市或其他位置</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>此版本出版时的标题</p></td>
+</tr>
+<tr class="row-even"><td><p>pages</p></td>
+<td><p>integer</p></td>
+<td><p>此版本的页数</p></td>
+</tr>
+<tr class="row-odd"><td><p>isbn10</p></td>
+<td><p>character string</p></td>
+<td><p>10 位国际标准书号</p></td>
+</tr>
+<tr class="row-even"><td><p>isbn13</p></td>
+<td><p>character string</p></td>
+<td><p>13 位国际标准书号</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p><strong>awards</strong> 表记录各种作者和/或书籍奖项。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>award_id</p></td>
+<td><p>integer</p></td>
+<td><p>奖项的唯一标识符</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>character string</p></td>
+<td><p>奖项的名称</p></td>
+</tr>
+<tr class="row-even"><td><p>sponsor</p></td>
+<td><p>character string</p></td>
+<td><p>授予奖项的组织名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>criteria</p></td>
+<td><p>character string</p></td>
+<td><p>奖项颁发的标准</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p><strong>authors_awards</strong> 表是一个 <em>交叉引用</em> 表（在 <a class="reference internal" href="../PART1_SQL/04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a> 中解释），用于关联 <strong>authors</strong> 和 <strong>awards</strong>；表中的每个条目记录某位作者在特定年份获得奖项（而不是针对任何特定书籍）。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>author_id</p></td>
+<td><p>integer</p></td>
+<td><p>获奖作者的 author_id</p></td>
+</tr>
+<tr class="row-odd"><td><p>award_id</p></td>
+<td><p>integer</p></td>
+<td><p>获得的奖项的 award_id</p></td>
+</tr>
+<tr class="row-even"><td><p>year</p></td>
+<td><p>integer</p></td>
+<td><p>奖项颁发的年份</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p><strong>books_awards</strong> 表是一个交叉引用表，用于关联 <strong>books</strong> 和 <strong>awards</strong>；表中的每个条目记录某位作者因特定书籍在特定年份获得奖项。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>book_id</p></td>
+<td><p>integer</p></td>
+<td><p>该书获得奖项的 book_id</p></td>
+</tr>
+<tr class="row-odd"><td><p>award_id</p></td>
+<td><p>integer</p></td>
+<td><p>获得的奖项的 award_id</p></td>
+</tr>
+<tr class="row-even"><td><p>year</p></td>
+<td><p>integer</p></td>
+<td><p>奖项颁发的年份</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这是扩展书籍数据集的数据模型，作为 ERD：</p>
+<img alt="书籍数据集的数据模型，给出实体关系图。" src="../_images/books_ERD.svg" />
+<p>扩展书籍数据集的逻辑模型如下所示。在这个乌鸦脚图中，主键用下划线和粗体显示，而外键用斜体显示。</p>
+<img alt="显示书籍数据集逻辑模型的乌鸦脚图。" src="../_images/books_logical.svg" />
+<p>使用下面的查询工具查看扩展书籍数据。请注意，查询工具将结果限制为 100 行，但 <strong>books</strong> 和 <strong>editions</strong> 表各自的行数都超过 100 行。</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">appendix_a_expanded_books_dataset</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">editions</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">awards</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors_awards</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books_awards</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>The expanded books dataset includes information on 200 books (in the <strong>books</strong> table) and their authors (76 authors in total in the <strong>authors</strong> table).  An <strong>awards</strong> table lists some major awards given to authors for their body of work or for specific books.  Two cross-reference tables associate authors with their awards (<strong>authors_awards</strong>) and specific books with their awards (<strong>books_awards</strong>).  Finally, the <strong>editions</strong> table contains publication data related to just four books by author J.R.R. Tolkien.  (Only four books were included to reduce the size of the database file, which must be downloaded and held in the web browser’s memory.)  The publication data is particularly “dirty” in the sense that it contains numerous inaccuracies, omissions, and redundancies; see the section title <a href="#id27"><span class="problematic" id="id28">`Data collection notes`_</span></a>, below.</p>
+<p>This dataset is introduced in <a class="reference internal" href="../PART1_SQL/04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a> and is used throughout much of the rest of <a class="reference internal" href="../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a> of the text.  While the dataset represents a highly simplified model of books (e.g., books are assumed to always have a single author), the schema attempts to emulate best practices in database design while illustrating fundamental SQL database concepts.  The design makes use of primary key constraints (using synthetic unique identifiers), foreign key constraints, and cross-reference tables implementing many-to-many relationships.</p>
+<p>We provide below detailed descriptions of each table in the dataset, an entity-relationship diagram (ERD) modeling the data, and a logical model in crow’s foot notation showing the tables and their relationships.</p>
+<div class="data-dictionary docutils container">
+<p>The <strong>authors</strong> table records persons who have authored books.  Every author corresponds to at least one book in the database.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>author_id</p></td>
+<td><p>integer</p></td>
+<td><p>unique identifier for the author</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>character string</p></td>
+<td><p>full name of the author</p></td>
+</tr>
+<tr class="row-even"><td><p>birth</p></td>
+<td><p>date</p></td>
+<td><p>birth date of the author, if known</p></td>
+</tr>
+<tr class="row-odd"><td><p>death</p></td>
+<td><p>date</p></td>
+<td><p>death date of the author, if known</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p>The <strong>books</strong> table records works of fiction, non-fiction, poetry, etc. by a single author.  Each book corresponds to a single author from the <strong>authors</strong> table, and may correspond to many editions of the book listed in the <strong>editions</strong> table.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>book_id</p></td>
+<td><p>integer</p></td>
+<td><p>unique identifier for the book</p></td>
+</tr>
+<tr class="row-odd"><td><p>author_id</p></td>
+<td><p>integer</p></td>
+<td><p>author_id of book’s author from <strong>authors</strong> table</p></td>
+</tr>
+<tr class="row-even"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>the book’s title</p></td>
+</tr>
+<tr class="row-odd"><td><p>publication_year</p></td>
+<td><p>integer</p></td>
+<td><p>year the book was first published</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p>The <strong>editions</strong> table records specific publications of a book.  Each edition corresponds to a single book from the <strong>books</strong> table.  For space reasons, the <strong>editions</strong> table only includes data on four books by J.R.R. Tolkien.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>edition_id</p></td>
+<td><p>integer</p></td>
+<td><p>unique identifier for the edition</p></td>
+</tr>
+<tr class="row-odd"><td><p>book_id</p></td>
+<td><p>integer</p></td>
+<td><p>book_id of the book (from <strong>books</strong> table) published as this edition</p></td>
+</tr>
+<tr class="row-even"><td><p>publication_year</p></td>
+<td><p>integer</p></td>
+<td><p>year this edition was published</p></td>
+</tr>
+<tr class="row-odd"><td><p>publisher</p></td>
+<td><p>character string</p></td>
+<td><p>name of the publisher</p></td>
+</tr>
+<tr class="row-even"><td><p>publisher_location</p></td>
+<td><p>character string</p></td>
+<td><p>city or other location(s) where the publisher is located</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>title this edition was published under</p></td>
+</tr>
+<tr class="row-even"><td><p>pages</p></td>
+<td><p>integer</p></td>
+<td><p>number of pages in this edition</p></td>
+</tr>
+<tr class="row-odd"><td><p>isbn10</p></td>
+<td><p>character string</p></td>
+<td><p>10-digit international standard book number</p></td>
+</tr>
+<tr class="row-even"><td><p>isbn13</p></td>
+<td><p>character string</p></td>
+<td><p>13-digit international standard book number</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p>The <strong>awards</strong> table records various author and/or book awards.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>award_id</p></td>
+<td><p>integer</p></td>
+<td><p>unique identifier for the award</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>character string</p></td>
+<td><p>name of the award</p></td>
+</tr>
+<tr class="row-even"><td><p>sponsor</p></td>
+<td><p>character string</p></td>
+<td><p>name of the organization giving the award</p></td>
+</tr>
+<tr class="row-odd"><td><p>criteria</p></td>
+<td><p>character string</p></td>
+<td><p>what the award is given for</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p>The <strong>authors_awards</strong> table is a <em>cross-reference</em> table (explained in <a class="reference internal" href="../PART1_SQL/04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a>) relating <strong>authors</strong> and <strong>awards</strong>; each entry in the table records the giving of an award to an author (not for any particular book) in a particular year.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>author_id</p></td>
+<td><p>integer</p></td>
+<td><p>author_id of the author receiving the award</p></td>
+</tr>
+<tr class="row-odd"><td><p>award_id</p></td>
+<td><p>integer</p></td>
+<td><p>award_id of the award received</p></td>
+</tr>
+<tr class="row-even"><td><p>year</p></td>
+<td><p>integer</p></td>
+<td><p>year the award was given</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p>The <strong>books_awards</strong> table is a cross-reference table relating <strong>books</strong> and <strong>awards</strong>; each entry in the table records the giving of an award to an author for a specific book in a particular year.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>book_id</p></td>
+<td><p>integer</p></td>
+<td><p>book_id of the book for which the award was given</p></td>
+</tr>
+<tr class="row-odd"><td><p>award_id</p></td>
+<td><p>integer</p></td>
+<td><p>award_id of the award given</p></td>
+</tr>
+<tr class="row-even"><td><p>year</p></td>
+<td><p>integer</p></td>
+<td><p>year the award was given</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Here is the data model for the expanded books dataset, as an ERD:</p>
+<img alt="A data model of the books dataset given as an entity-relationship diagram." src="../_images/books_ERD.svg" />
+<p>A logical model of the expanded books dataset is shown below.  In this crow’s foot diagram, primary keys are shown underlined and in boldface, while foreign keys are italicized.</p>
+<img alt="A crow's foot diagram showing the logical model of the books dataset." src="../_images/books_logical.svg" />
+<p>Use the query tool below to view the expanded books data.  Note that the query tool limits results to 100 rows, but the <strong>books</strong> and <strong>editions</strong> tables have more than 100 rows each.</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">appendix_a_expanded_books_dataset</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">editions</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">awards</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">authors_awards</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">books_awards</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h3 id="id4">书店数据集<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p><strong>The bookstore dataset</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>书店数据集由 <strong>bookstore_inventory</strong> 和 <strong>bookstore_sales</strong> 表组成。这些表模拟了二手书商可能使用的非常简单的数据库。 <strong>bookstore_inventory</strong> 表代表书商正在出售的书籍。该表实际上包括一些已经售出的书籍——当一本书被出售时，会在伴随的 <strong>bookstore_sales</strong> 表中添加一条记录。因此，书商必须查看这两个表，以确定哪些书籍实际上可供出售。书商可以选择定期从表中删除旧记录。</p>
+<p>虽然学生可以随意修改教科书数据库中的任何数据（放心，因为任何更改在他们重新加载浏览器页面时都会被还原），但书店数据集特别设计时考虑到了数据修改。为了避免在引入数据修改查询时出现复杂情况，这些表没有外键约束。然而，所提供的表具有一对一关系： <strong>bookstore_sales</strong> 中的每条记录正好与 <strong>bookstore_inventory</strong> 中的一条记录匹配，而 <strong>bookstore_inventory</strong> 中的每条记录最多与 <strong>bookstore_sales</strong> 中的一条记录匹配。</p>
+<p>该数据集在 <a class="reference internal" href="../PART1_SQL/04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a> 中简要用于说明一对一关系。在 <a class="reference internal" href="../PART1_SQL/05-data-modification/data-modification.html#data-modification-chapter"><span class="std std-numref">Chapter 1.5</span></a> 中，表用于演示数据修改查询。在 <a class="reference internal" href="../PART1_SQL/09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a> 中，表用于分组和聚合的示例。</p>
+<div class="data-dictionary docutils container">
+<p><strong>bookstore_inventory</strong> 表包含有关新书和二手书的信息。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>stock_number</p></td>
+<td><p>integer</p></td>
+<td><p>唯一键，用于标识某本书的特定副本</p></td>
+</tr>
+<tr class="row-odd"><td><p>author</p></td>
+<td><p>character string</p></td>
+<td><p>书的作者</p></td>
+</tr>
+<tr class="row-even"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>书的标题</p></td>
+</tr>
+<tr class="row-odd"><td><p>condition</p></td>
+<td><p>character string</p></td>
+<td><p>书的状态（新书、良好、一般等）</p></td>
+</tr>
+<tr class="row-even"><td><p>price</p></td>
+<td><p>fixed-point</p></td>
+<td><p>书的价格，以某种货币单位表示</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p><strong>bookstore_sales</strong> 表提供有关 <strong>bookstore_inventory</strong> 中书籍销售的信息。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>receipt_number</p></td>
+<td><p>integer</p></td>
+<td><p>唯一键，用于标识这笔销售</p></td>
+</tr>
+<tr class="row-odd"><td><p>stock_number</p></td>
+<td><p>integer</p></td>
+<td><p>售出的书副本的键（来自 <strong>bookstore_inventory</strong>）</p></td>
+</tr>
+<tr class="row-even"><td><p>date_sold</p></td>
+<td><p>date</p></td>
+<td><p>书籍售出的日期</p></td>
+</tr>
+<tr class="row-odd"><td><p>payment</p></td>
+<td><p>character string</p></td>
+<td><p>销售中使用的支付方式（现金、信用卡等）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>使用下面的查询工具查看数据。</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">appendix_a_bookstore_dataset</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>The bookstore dataset consists of the tables <strong>bookstore_inventory</strong> and <strong>bookstore_sales</strong>.  These tables simulate a very simple database that a seller of used books might use.  The <strong>bookstore_inventory</strong> table represents books that the bookseller is selling.  The table actually includes some books that have already been sold - when a book is sold, an entry is added to the companion table, <strong>bookstore_sales</strong>.  The bookseller thus has to look at both tables to determine which books are actually available to be sold.  The bookseller may choose to periodically remove old records from the tables.</p>
+<p>While students should feel free to modify any data within the textbook database (secure in the knowledge that any changes will be reverted when they reload the page in their browser), the bookstore dataset was specifically designed with data modification in mind.  To avoid complications in introducing data modification queries, there are no foreign key constraints on the tables.  However, the tables as provided have a one-to-one relationship: each record in <strong>bookstore_sales</strong> matches exactly record in <strong>bookstore_inventory</strong>, while each record in <strong>bookstore_inventory</strong> matches at most one record in <strong>bookstore_sales</strong>.</p>
+<p>This dataset is used briefly to illustrate one-to-one relationships in <a class="reference internal" href="../PART1_SQL/04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a>.  In <a class="reference internal" href="../PART1_SQL/05-data-modification/data-modification.html#data-modification-chapter"><span class="std std-numref">Chapter 1.5</span></a>, the tables are used to demonstrate data modification queries.  The tables are used in examples of grouping and aggregation in <a class="reference internal" href="../PART1_SQL/09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a>.</p>
+<div class="data-dictionary docutils container">
+<p>The <strong>bookstore_inventory</strong> table contains information on new and used books for sale.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>stock_number</p></td>
+<td><p>integer</p></td>
+<td><p>unique key identifying a particular copy of a book</p></td>
+</tr>
+<tr class="row-odd"><td><p>author</p></td>
+<td><p>character string</p></td>
+<td><p>the author of the book</p></td>
+</tr>
+<tr class="row-even"><td><p>title</p></td>
+<td><p>character string</p></td>
+<td><p>the title of the book</p></td>
+</tr>
+<tr class="row-odd"><td><p>condition</p></td>
+<td><p>character string</p></td>
+<td><p>the condition of the book (new, good, fair, etc.)</p></td>
+</tr>
+<tr class="row-even"><td><p>price</p></td>
+<td><p>fixed-point</p></td>
+<td><p>the price of the book, in some unit of currency</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="data-dictionary docutils container">
+<p>The <strong>bookstore_sales</strong> table gives information about the sales of books from <strong>bookstore_inventory</strong>.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>receipt_number</p></td>
+<td><p>integer</p></td>
+<td><p>unique key identifying this sale</p></td>
+</tr>
+<tr class="row-odd"><td><p>stock_number</p></td>
+<td><p>integer</p></td>
+<td><p>key of the book copy (from <strong>bookstore_inventory</strong>) that was sold</p></td>
+</tr>
+<tr class="row-even"><td><p>date_sold</p></td>
+<td><p>date</p></td>
+<td><p>the date on which the books was sold</p></td>
+</tr>
+<tr class="row-odd"><td><p>payment</p></td>
+<td><p>character string</p></td>
+<td><p>the method of payment used in the sale (case, credit card, etc.)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Use the query tool below to view the data.</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">appendix_a_bookstore_dataset</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h3 id="id5">数据库中的其他表<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p><strong>Other tables in the database</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>除了上述内容，数据库还包含一些非常小的表，用于在文本中说明各种要点：<strong>fruit_stand</strong>、<strong>s</strong>、<strong>s2</strong>、<strong>s3</strong>、<strong>t</strong>、<strong>t2</strong> 和 <strong>t3</strong>。由于这些表在文本中已有完整给出，因此我们在此不再详细解释。不过，您可以使用下面的交互式查询工具查看数据。</p>
+<p>下载 <a class="reference download internal" download="" href="../_downloads/be4f11e589d37bacb6431a843e1cac70/textbook.sqlite3"><code class="xref download docutils literal notranslate"><span class="pre">数据库文件</span></code></a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fruit_stand</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">s2</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">s3</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t3</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>In addition to the above, the database contains some very small tables which are used to illustrate various points in the text: <strong>fruit_stand</strong>, <strong>s</strong>, <strong>s2</strong>, <strong>s3</strong>, <strong>t</strong>, <strong>t2</strong>, and <strong>t3</strong>.  As these tables are give in full in the text, we do not further explain them here.  However, you can use the interactive query tool below to view the data.</p>
+<p>下载 <a class="reference download internal" download="" href="../_downloads/be4f11e589d37bacb6431a843e1cac70/textbook.sqlite3"><code class="xref download docutils literal notranslate"><span class="pre">数据库文件</span></code></a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fruit_stand</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">s2</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">s3</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t3</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h2 id="id6">数据收集说明<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p><strong>Data collection notes</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>简单和扩展书籍数据集中的书籍选择受到几个因素的驱动。首先，教科书的作者是科幻和奇幻的爱好者——因此，这些类型在数据集中可能过于突出。其次，试图包含多样化的作者，以期为全球学生提供一些共同的参考点。（然而，数据集确实存在对英语文学的强烈偏向，反映了教科书作者的背景。）最后，选择偏向于那些获得文学奖项的作者的书籍。为了保持管理的可行性，书籍数量限制在200本。</p>
+<p>作者是根据教科书作者的知识和对主要文学奖项的互联网搜索进行精心挑选的。 <a class="reference external" href="https://www.wikipedia.org/">Wikipedia</a> 在收集作者的出生和死亡日期等数据时极为有用。（请注意，数据集于2022年定稿；自数据录入以来，某些作者可能已去世。这种不准确性令人遗憾，但在这种情况下是不可避免的。）</p>
+<p>一些作者仅以一部作品（通常是获奖或至少广受好评的书籍）为代表，而在其他情况下则包括了该作者的多部书籍。对于每位作者包括多少书籍并没有使用一致的决策过程。许多选择是为了支持文本中的特定示例。关于个别书籍的大部分数据是从维基百科和其他免费来源手动收集的。一些出版年份的值则是从免费提供的 <a class="reference external" href="https://openlibrary.org/">Open Library</a> 数据集中提取的。</p>
+<p>关于作者和书籍奖项的数据是从维基百科和奖项代表网站手动收集的。关于作品的众多版本的数据完全来自 Open Library。</p>
+<p>据作者所知，简单和扩展书籍数据集中的所有数据均属于公共领域。</p>
+<p>书店数据集使用了扩展书籍数据集中的书籍，但其他方面完全是虚构的，水果摊和其他抽象示例表也是如此。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The selection of books in the simple and expanded books datasets was driven by several interests.  First, the textbook’s author is a fan of science fiction and fantasy - these genres are thus perhaps overrepresented in the dataset.  Second, an attempt was made to include a diverse set of authors, in hopes of providing some common points of reference for students everywhere.  (There is nevertheless a strong bias towards English-language literature, reflecting the context of the textbook’s author.) Lastly, the selection favored books by authors who have received literary awards.  To keep things manageable, the number of books was capped at 200.</p>
+<p>Authors were handpicked, based on the textbook author’s knowledge and on internet searches of major literary awards. <a class="reference external" href="https://www.wikipedia.org/">Wikipedia</a> was extremely helpful in collecting data such as authors’ birth and death dates.  (Note that the dataset was finalized in 2022; it is very possible that some authors in the dataset have died since the data was entered.  This inaccuracy is regrettable but unavoidable under the circumstances.)</p>
+<p>Some authors are represented by a single work (typically an award winning or at least widely acclaimed book), while in other cases many books by the author were included.  There was no consistent decision process used to decide how many books to include by each author.  Many choices were made in support of specific examples in the text.  Most of the data regarding individual books was hand collected from Wikipedia and other freely available sources on the internet.  Some publication year values were extracted from the freely available <a class="reference external" href="https://openlibrary.org/">Open Library</a> dataset.</p>
+<p>Data on author and book awards was hand collected from Wikipedia and the websites representing the awards.  Data on the many editions of works comes entirely from the Open Library.</p>
+<p>To the best of the author’s knowledge, all of the data in the simple and expanded books datasets is in the public domain.</p>
+<p>The bookstore dataset uses books from the expanded books dataset, but is otherwise entirely fabricated, as are the fruit stand and other abstract example tables.</p>
+</div>
+</div>
+</div><h2 id="id7">获取数据<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p><strong>Getting the data</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本书的 <a class="reference internal" href="../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a> 包含交互式元素，允许读者直接与关系数据库进行操作。此功能使学生能够立即在真实数据库系统上尝试示例代码。由于每个页面上可用的数据库实际上是一个固定数据库的副本（在内存中），因此对数据库的更改不会持久保存——刷新浏览器窗口将每次返回数据库到相同的初始状态。这一特性使学生可以安全地尝试破坏性 SQL 命令，因为他们知道没有任何更改是永久的。另一方面，这意味着学生无法将系统用于长期项目。</p>
+<p>本教科书使用的数据库系统是 <a class="reference external" href="https://www.sqlite.org/">SQLite</a> 。虽然 SQLite 是一个功能强大且流行的关系数据库系统，但它缺乏一些行业中常用的客户端-服务器数据库系统的特性。它在许多方面也与 SQL 标准存在显著差异（特别是在动态类型的使用上）。</p>
+<p>基于这些原因，本教科书的用户可能希望自行设置数据库系统。市面上有许多不同的数据库系统，每个系统都有自己的系统要求和安装程序。访问和查询各个数据库系统的方法也有很多。因此，设置和访问不同系统的说明超出了本教科书的范围。不过，为了提供从教科书数据库到用户选择的系统的过渡，我们在下面提供脚本和数据文件，这些文件可以用来在您选择的数据库系统上重建本书的数据库。</p>
+</div>
+<div class="tabbed-block docutils">
+<p><a class="reference internal" href="../PART1_SQL/index.html#sql-part"><span class="std std-numref">Part 1</span></a> of this book includes interactive elements allowing the reader to work directly with a relational database.  This functionality lets students immediately try example code on a real database system.  As the database available on each page is actually a copy (in memory) of a fixed database, changes to the database do not persist over time - refreshing the browser window will return the database to the same initial state each time.  This is useful in that students can safely experiment with destructive SQL commands, knowing that no changes are permanent.  On the other hand, it means that students cannot use the system for longer term projects.</p>
+<p>The database system used in this textbook is <a class="reference external" href="https://www.sqlite.org/">SQLite</a> .  While SQLite is a powerful and popular relational database system, it lacks some features of the client-server database systems commonly used in industry.  It also differs in significant ways from the SQL standard (notably with its use of dynamic typing).</p>
+<p>For these reasons, users of this textbook may wish to set up their own database system.  Many different database systems are available, each with their own system requirements and installation procedures.  There are likewise many ways to access and query each database system.  Instructions for setting up and accessing different systems are therefore out of the scope of this textbook.  However, in the interest of providing a transition from the textbook’s database to the users’ systems of choice, we provide scripts and data files below, which can be used to recreate the book’s database on the database system of your choice.</p>
+</div>
+</div>
+</div><h3 id="id8">SQLite<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p><strong>SQLite</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p><a class="reference external" href="https://www.sqlite.org/">SQLite</a> 数据库引擎在本教科书支持的系统中是独特的，因为它的数据库完全存储在单个文件中。SQLite 数据库可以通过简单地复制包含它们的文件来共享。我们在下面提供了本教科书使用的数据库文件。此外，我们还提供了一个 SQL 脚本（以 UTF-8 Unicode 格式的文本文件），其中包含重新从头创建数据库所需的 SQL 命令。如果您只想要一本教科书数据库的副本供自己使用，请使用前者；如果您想在现有的 SQLite 数据库中创建教科书的数据库表，请使用后者。该 SQL 脚本仅包含 <strong>CREATE TABLE</strong> 和 <strong>INSERT</strong> 语句，因此不应替换数据库中现有的表。</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/ce329fc66414fc686619752469110df7/textbook.sqlite3"><code class="xref download docutils literal notranslate"><span class="pre">textbook.sqlite3</span></code></a> , 教科书的 SQLite 数据库文件</p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/82b98d571ecccbd1a3e60cf84fbfc0f7/sqlite.sql"><code class="xref download docutils literal notranslate"><span class="pre">sqlite.sql</span></code></a> , SQL 脚本</p></li>
+</ul>
+<p>此 SQL 脚本在 Windows 10 上使用版本 3.39.2 的 <code class="docutils literal notranslate"><span class="pre">sqlite3.exe</span></code> 程序以及在 Linux 上运行的版本 3.31.1 的 <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> 程序（Linux Mint 20.3，内核版本 5.15.0-41）验证为正确工作。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The <a class="reference external" href="https://www.sqlite.org/">SQLite</a> database engine is unique (in the set of systems supported by this textbook) in that it works with databases stored entirely in a single file.  SQLite databases can be shared by simply copying the files containing them.  We provide below the database file used by this textbook.  Additionally, we provide a SQL script (a text file in UTF-8 Unicode format) with the SQL commands necessary to re-create the database from scratch.  Use the former if you simply want a copy of the textbook’s database for your own use; use the latter if you want to create the textbook’s database tables within an existing SQLite database.  The SQL script contains only <strong>CREATE TABLE</strong> and <strong>INSERT</strong> statements, and therefore should not replace existing tables within the database.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/ce329fc66414fc686619752469110df7/textbook.sqlite3"><code class="xref download docutils literal notranslate"><span class="pre">textbook.sqlite3</span></code></a>, the textbook’s SQLite database file</p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/82b98d571ecccbd1a3e60cf84fbfc0f7/sqlite.sql"><code class="xref download docutils literal notranslate"><span class="pre">sqlite.sql</span></code></a>, the SQL script</p></li>
+</ul>
+<p>This SQL script was verified to work correctly using version 3.39.2 of the <code class="docutils literal notranslate"><span class="pre">sqlite3.exe</span></code> program on Windows 10 and with version 3.31.1 of the <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> program running on linux (Linux Mint 20.3 with kernel version 5.15.0-41).</p>
+</div>
+</div>
+</div><h3 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Link to this heading">¶</a></h3>
+<p><strong>PostgreSQL</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>下面的 SQL 脚本可以用于在 <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> 数据库中创建与教科书表相当的表。该 SQL 脚本仅包含 <strong>CREATE TABLE</strong> 和 <strong>INSERT</strong> 语句，因此不应替换数据库中现有的表。</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/fc3d4c7a49bcdf6e8d8161ea05edaff4/postgresql.sql"><code class="xref download docutils literal notranslate"><span class="pre">postgresql.sql</span></code></a></p></li>
+</ul>
+<p>此 SQL 脚本在 Windows 10 上使用版本 12.5 的 <code class="docutils literal notranslate"><span class="pre">psql.exe</span></code> 程序以及在 Linux 上运行的版本 12.11 的 <code class="docutils literal notranslate"><span class="pre">psql</span></code> 程序（Linux Mint 20.3，内核版本 5.15.0-41）时经过验证，可以正确工作，加载到运行在 Linux 上的 PostgreSQL 版本 12.8 实例中（Linux Mint 20，内核版本 5.4.0-86）。注意: 在 Windows 10 上，您可能需要在加载或查询数据之前，首先在 <code class="docutils literal notranslate"><span class="pre">psql</span></code> 命令行中发出命令 <code class="docutils literal notranslate"><span class="pre">\encoding</span> <span class="pre">utf8</span></code>。此设置可能不足以确保查询返回的所有字符都能正确显示，但数据可以正确加载。</p>
+<p>与教科书的显著差异：</p>
+<ul class="simple">
+<li><p>正如文本中所述，SQLite 不使用标准 SQL 方法自动生成顺序 ID 值。SQLite 数据库中使用的 <strong>AUTOINCREMENT</strong> 选项（在 <strong>bookstore_sales</strong> 和 <strong>bookstore_inventory</strong> 中）在 PostgreSQL 中不可用，但标准 SQL 的 <strong>GENERATED BY DEFAULT AS IDENTITY</strong> 选项是可用的。因此，PostgreSQL 脚本使用标准方法。这两种选项的行为略有不同。</p></li>
+</ul>
+</div>
+<div class="tabbed-block docutils">
+<p>The SQL script below can be used to create the equivalent of the textbook’s tables in a <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> database.  The SQL script contains only <strong>CREATE TABLE</strong> and <strong>INSERT</strong> statements, and therefore should not replace existing tables within the database.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/fc3d4c7a49bcdf6e8d8161ea05edaff4/postgresql.sql"><code class="xref download docutils literal notranslate"><span class="pre">postgresql.sql</span></code></a></p></li>
+</ul>
+<p>This SQL script was verified to work correctly using version 12.5 of the <code class="docutils literal notranslate"><span class="pre">psql.exe</span></code> program on Windows 10 and with version 12.11 of the <code class="docutils literal notranslate"><span class="pre">psql</span></code> program running on linux (Linux Mint 20.3 with kernel version 5.15.0-41), loading into a PostgreSQL version 12.8 instance running on linux (Linux Mint 20 with kernel version 5.4.0-86).  Note: on Windows 10, you may need to first issue the command <code class="docutils literal notranslate"><span class="pre">\encoding</span> <span class="pre">utf8</span></code> (at the <code class="docutils literal notranslate"><span class="pre">psql</span></code> command line) before loading or querying the data.  This setting may not be sufficient to ensure all characters can be viewed correctly when returned by a query, but the data can be loaded correctly.</p>
+<p>Notable differences from the textbook:</p>
+<ul class="simple">
+<li><p>As described in the text, SQLite does not use a standard SQL approach to automatically generate sequential ID values.  The <strong>AUTOINCREMENT</strong> option used in the SQLite database (in <strong>bookstore_sales</strong> and <strong>bookstore_inventory</strong>) is not available in PostgreSQL, but the standard SQL <strong>GENERATED BY DEFAULT AS IDENTITY</strong> option is.  Accordingly, the PostgreSQL script uses the standard approach.  The two options behave slightly differently.</p></li>
+</ul>
+</div>
+</div>
+</div><h3 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Link to this heading">¶</a></h3>
+<p><strong>MySQL</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2">
+<input checked type="radio" id="__tabbed_11_1" name="__tabbed_11"><input type="radio" id="__tabbed_11_2" name="__tabbed_11"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_11_1">
+中文</label><label class="tabbed-label" for="__tabbed_11_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>下面的 SQL 脚本可以用于在 <a class="reference external" href="https://www.mysql.com/">MySQL</a> 数据库中创建与教科书表相当的表。该 SQL 脚本仅包含 <strong>CREATE TABLE</strong> 和 <strong>INSERT</strong> 语句，因此不应替换数据库中现有的表。</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/cd83b94dd066740fcc4c0179194aa16a/mysql.sql"><code class="xref download docutils literal notranslate"><span class="pre">mysql.sql</span></code></a></p></li>
+</ul>
+<p>此 SQL 脚本在 Windows 10 上使用版本 8.0.29 的 MySQL Shell (<code class="docutils literal notranslate"><span class="pre">mysqlsh.exe</span></code>) 程序以及在 Linux 上运行的版本 8.0.29 的 <code class="docutils literal notranslate"><span class="pre">mysql</span></code> 程序（Linux Mint 20.3，内核版本 5.15.0-41）时经过验证，可以正确工作，加载到运行在 Linux 上的 MySQL 版本 8.0.26 实例中（Linux Mint 20，内核版本 5.4.0-86）。</p>
+<p>与教科书的显著差异：</p>
+<ul class="simple">
+<li><p>教科书数据库中的 <strong>bookstore_sales</strong> 表具有 <strong>DEFAULT</strong> 子句，用于在未提供列的值时将 <strong>date_sold</strong> 列设置为当前日期。MySQL 不允许为 <strong>DATE</strong> 类型的列设置默认值，但允许为 <strong>TIMESTAMP</strong> 类型设置。因此，MySQL 脚本中的 <strong>date_sold</strong> 列为 <strong>TIMESTAMP</strong> 类型（因此包括时间和日期）。</p></li>
+<li><p>MySQL 的 <strong>AUTO_INCREMENT</strong> 选项与 SQLite 中的 <strong>AUTOINCREMENT</strong> 选项（在 <strong>bookstore_sales</strong> 和 <strong>bookstore_inventory</strong> 中使用）非常相似，但可能具有略微不同的行为。</p></li>
+<li><p><strong>bookstore_inventory</strong> 表包含一个名为 <strong>condition</strong> 的列。这是 MySQL 中的保留关键字，这意味着像 “SELECT DISTINCT condition FROM bookstore_inventory” 这样的查询将失败，除非您在 “condition” 这个词周围加上反引号。（反引号字符看起来像一个撇号，但倾斜方向相反。）</p></li>
+</ul>
+</div>
+<div class="tabbed-block docutils">
+<p>The SQL script below can be used to create the equivalent of the textbook’s tables in a <a class="reference external" href="https://www.mysql.com/">MySQL</a> database.  The SQL script contains only <strong>CREATE TABLE</strong> and <strong>INSERT</strong> statements, and therefore should not replace existing tables within the database.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/cd83b94dd066740fcc4c0179194aa16a/mysql.sql"><code class="xref download docutils literal notranslate"><span class="pre">mysql.sql</span></code></a></p></li>
+</ul>
+<p>This SQL script was verified to work correctly using version 8.0.29 of the MySQL Shell (<code class="docutils literal notranslate"><span class="pre">mysqlsh.exe</span></code>) program on Windows 10 and with version 8.0.29 of the <code class="docutils literal notranslate"><span class="pre">mysql</span></code> program running on linux (Linux Mint 20.3 with kernel version 5.15.0-41), loading into a MySQL version 8.0.26 instance running on linux (Linux Mint 20 with kernel version 5.4.0-86).</p>
+<p>Notable differences from the textbook:</p>
+<ul class="simple">
+<li><p>The <strong>bookstore_sales</strong> table in the textbook database has a <strong>DEFAULT</strong> clause to set the <strong>date_sold</strong> column to the current date when no value is provided for the column.  MySQL does not permit default setting for columns of type <strong>DATE</strong>, but does allow it for the <strong>TIMESTAMP</strong> type.  Accordingly, the <strong>date_sold</strong> column in the MySQL script is of type <strong>TIMESTAMP</strong> (and thus includes time as well as date).</p></li>
+<li><p>The MySQL <strong>AUTO_INCREMENT</strong> option is very similar to the <strong>AUTOINCREMENT</strong> option in SQLite (used in <strong>bookstore_sales</strong> and <strong>bookstore_inventory</strong>), but may have slightly different behavior.</p></li>
+<li><p>The <strong>bookstore_inventory</strong> table contains a column named <strong>condition</strong>.  This is a reserved keyword in MySQL, which means that queries such as “SELECT DISTINCT condition FROM bookstore_inventory” will fail unless you put backticks around the word “condition”.  (The backtick character looks like an apostrophe, but slanting in the opposite direction.)</p></li>
+</ul>
+</div>
+</div>
+</div><h3 id="oracle">Oracle<a class="headerlink" href="#oracle" title="Link to this heading">¶</a></h3>
+<p><strong>Oracle</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2">
+<input checked type="radio" id="__tabbed_12_1" name="__tabbed_12"><input type="radio" id="__tabbed_12_2" name="__tabbed_12"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_12_1">
+中文</label><label class="tabbed-label" for="__tabbed_12_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>下面的 SQL 脚本可以用于在 Oracle 数据库中创建与教科书表相当的表。该 SQL 脚本仅包含 <strong>CREATE TABLE</strong> 和 <strong>INSERT</strong> 语句以及设置临时会话变量的语句，因此不应替换数据库中现有的表。</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/9666b924634aad1a07f9449c66fe0c78/oracle.sql"><code class="xref download docutils literal notranslate"><span class="pre">oracle.sql</span></code></a></p></li>
+</ul>
+<p>此 SQL 脚本在 Linux 上使用 Oracle 的 SQLcl 工具（版本 22.2，运行在 Linux Mint 20.3，内核版本 5.15.0-41）与 OpenJDK 版本 11.0.15 时经过验证，可以正确工作，加载到运行在 Linux 上的 Oracle Database XE 18c 实例中（openSUSE Leap 15.2，内核版本 5.3.18）。在 Windows 10 上使用 SQLcl（版本 22.2）时，脚本运行没有报告错误，但某些字符值加载不正确。注意：如果您使用 SQLcl 或 SQL*Plus 运行此脚本，您 <em>必须</em> 取消注释脚本顶部的命令 <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">DEFINE</span> <span class="pre">OFF</span></code>。否则，程序将解释任何 &amp; 字符为变量替换序列，这将停止脚本并导致数据无法正确加载。</p>
+<p>与教科书的显著差异：</p>
+<ul class="simple">
+<li><p>如文本中所述，SQLite 不使用标准 SQL 方法自动生成顺序 ID 值。在 SQLite 数据库中使用的 <strong>AUTOINCREMENT</strong> 选项（在 <strong>bookstore_sales</strong> 和 <strong>bookstore_inventory</strong> 中）在 Oracle 中不可用，但标准 SQL 的 <strong>GENERATED BY DEFAULT AS IDENTITY</strong> 选项是可用的。因此，Oracle 脚本使用标准方法。这两个选项的行为略有不同。</p></li>
+</ul>
+</div>
+<div class="tabbed-block docutils">
+<p>The SQL script below can be used to create the equivalent of the textbook’s tables in an Oracle database.  The SQL script contains only <strong>CREATE TABLE</strong> and <strong>INSERT</strong> statements and statements setting temporary session variables, and therefore should not replace existing tables within the database.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/9666b924634aad1a07f9449c66fe0c78/oracle.sql"><code class="xref download docutils literal notranslate"><span class="pre">oracle.sql</span></code></a></p></li>
+</ul>
+<p>This SQL script was verified to work correctly using Oracle’s SQLcl utility (release 22.2) running on linux (Linux Mint 20.3 with kernel version 5.15.0-41) with OpenJDK version 11.0.15, loading into an Oracle Database XE 18c instance running on linux (openSUSE Leap 15.2 with kernel version 5.3.18).  On Windows 10 with SQLcl (release 22.2), the script ran without reporting errors, but some character values were loaded incorrectly.  Note: if you run this script with SQLcl or SQL*Plus, you <em>must</em> uncomment the command <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">DEFINE</span> <span class="pre">OFF</span></code> at the top of the script.  Otherwise, the program will interpret any &amp; characters to imply a variable substitution sequence, which will halt the script and prevent the data from loading correctly.</p>
+<p>Notable differences from the textbook:</p>
+<ul class="simple">
+<li><p>As described in the text, SQLite does not use a standard SQL approach to automatically generate sequential ID values.  The <strong>AUTOINCREMENT</strong> option used in the SQLite database (in <strong>bookstore_sales</strong> and <strong>bookstore_inventory</strong>) is not available in Oracle, but the standard SQL <strong>GENERATED BY DEFAULT AS IDENTITY</strong> option is.  Accordingly, the Oracle script uses the standard approach.  The two options behave slightly differently.</p></li>
+</ul>
+</div>
+</div>
+</div><h3 id="sql-server">SQL Server<a class="headerlink" href="#sql-server" title="Link to this heading">¶</a></h3>
+<p><strong>SQL Server</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2">
+<input checked type="radio" id="__tabbed_13_1" name="__tabbed_13"><input type="radio" id="__tabbed_13_2" name="__tabbed_13"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_13_1">
+中文</label><label class="tabbed-label" for="__tabbed_13_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>下面的 SQL 脚本可以用于在 Microsoft SQL Server 数据库中创建与教科书表相当的表。该 SQL 脚本主要包含 <strong>CREATE TABLE</strong> 和 <strong>INSERT</strong> 语句，不应替换数据库中现有的表。脚本顶部的 <strong>USE</strong> 语句假设数据将被加载到名为 “textbook” 的现有数据库中。该语句在与 <code class="docutils literal notranslate"><span class="pre">sqlcmd</span></code> 工具及其他软件一起使用时是必要的，可能需要根据需要编辑以指示正确的数据库。在其他客户端软件中，可能不需要该语句。</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/910babcff522c32aec06497e33d8c71c/sqlserver.sql"><code class="xref download docutils literal notranslate"><span class="pre">sqlserver.sql</span></code></a></p></li>
+</ul>
+<p>此 SQL 脚本在 Linux 上使用 <code class="docutils literal notranslate"><span class="pre">sqlcmd</span></code> 程序（版本 17.10.0001.1，运行在 Linux Mint 20.3，内核版本 5.15.0-41）时经过验证，可以正确工作，加载到运行在 Linux 上的 SQL Server 2019 实例中（Linux Mint 20，内核版本 5.4.0-86）。在 Windows 10 上使用版本 15.0.2000.5 的 <code class="docutils literal notranslate"><span class="pre">sqlcmd.exe</span></code> 时，脚本运行没有报告错误，但某些字符值加载不正确。注意，必须使用支持 UTF8 的排序规则（这可以通过 <strong>ALTER DATABASE</strong> 语句在数据库上设置）；测试系统使用了 “Latin1_General_100_CI_AS_SC_UTF8” 排序规则。</p>
+<p>与教科书的显著差异：</p>
+<ul class="simple">
+<li><p>SQL Server 为具有 <strong>IDENTITY</strong> 属性的列生成顺序整数值，其行为与标准 SQL 的 <strong>GENERATED BY…</strong> 和 SQLite 的 <strong>AUTO_INCREMENT</strong> 不同。</p></li>
+</ul>
+</div>
+<div class="tabbed-block docutils">
+<p>The SQL script below can be used to create the equivalent of the textbook’s tables in a Microsoft SQL Server database.  The SQL script primarily contains <strong>CREATE TABLE</strong> and <strong>INSERT</strong> statements, and should not replace existing tables within the database.  The <strong>USE</strong> statement at the top of the script assumes that data will be loaded into an existing database named “textbook”.  This statement is needed for use with the <code class="docutils literal notranslate"><span class="pre">sqlcmd</span></code> utility and possibly other software, and should be edited to indicate the correct database as needed.  The statement may not be needed in other client software programs.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/910babcff522c32aec06497e33d8c71c/sqlserver.sql"><code class="xref download docutils literal notranslate"><span class="pre">sqlserver.sql</span></code></a></p></li>
+</ul>
+<p>This SQL script was verified to work correctly using the <code class="docutils literal notranslate"><span class="pre">sqlcmd</span></code> program (version 17.10.0001.1) running on linux (Linux Mint 20.3 with kernel version 5.15.0-41), loading into a SQL Server 2019 instance running on linux (Linux Mint 20 with kernel version 5.4.0-86).  On Windows 10 with version 15.0.2000.5 of <code class="docutils literal notranslate"><span class="pre">sqlcmd.exe</span></code>, the script ran without reporting errors, but some character values were loaded incorrectly.  Note that a collation supporting UTF8 must be used (this can be set on the database using an <strong>ALTER DATABASE</strong> statement); the test system used the “Latin1_General_100_CI_AS_SC_UTF8” collation.</p>
+<p>Notable differences from the textbook:</p>
+<ul class="simple">
+<li><p>SQL Server generates sequential integer values for columns with the <strong>IDENTITY</strong> property, which differs in behavior compared to both the standard SQL <strong>GENERATED BY…</strong> and SQLite’s <strong>AUTO_INCREMENT</strong>.</p></li>
+</ul>
+</div>
+</div>
+</div><h3 id="id11">原始数据文件<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p><strong>Raw data files</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2">
+<input checked type="radio" id="__tabbed_14_1" name="__tabbed_14"><input type="radio" id="__tabbed_14_2" name="__tabbed_14"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_14_1">
+中文</label><label class="tabbed-label" for="__tabbed_14_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>如果您希望使用其他数据库，而不是上述列出的数据库，您可以通过文本编辑器的查找/替换功能和一些试错方法，轻松调整上述脚本以适用于您的数据库。或者，您也可以手动创建所需的表，并从下面链接的压缩档案中的数据文件加载数据——大多数数据库系统都提供从格式化文件加载数据的机制。数据文件采用逗号分隔值（CSV）格式，并以 UTF-8 编码。每个文件包含一行标题，标签与教科书数据库中的列名相匹配。如果您的数据库系统不支持此文件格式，您可以尝试用电子表格程序打开文件，然后导出为您的系统支持的格式。</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/51beb61daff7d0f1806905eb20088771/practical_db_data_files.zip"><code class="xref download docutils literal notranslate"><span class="pre">practical_db_data_files.zip</span></code></a></p></li>
+</ul>
+</div>
+<div class="tabbed-block docutils">
+<p>If you wish to use a database other than one of those listed above, you can likely adapt one of the above scripts for use with your database, using the find/replace function of a text editor and some trial and error.  Alternatively, you may create the desired tables manually, and load the data from the data files in the zip archive linked below - most database systems provide mechanisms to load data from formatted files.  The data files are in comma-separated value (CSV) format, and are encoded in UTF-8.  Each file includes a header row with labels matching the column names from the textbook database.  If your database system does not support this file format, you may be able to open the files with a spreadsheet program and then export a format that is supported by your system.</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../_downloads/51beb61daff7d0f1806905eb20088771/practical_db_data_files.zip"><code class="xref download docutils literal notranslate"><span class="pre">practical_db_data_files.zip</span></code></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../references/references.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 引用" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              引用
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../appendix-b-reference/reference.html" class="md-footer__link md-footer__link--next" aria-label="Next: 附录 B: SQL 参考" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              附录 B: SQL 参考
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

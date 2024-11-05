@@ -1,0 +1,1449 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>1.5. 修改数据 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.5. 修改数据
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">SQL</span></a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">SQL</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-sql-basics/sql-basics.html" class="md-nav__link">
+        <span class="md-ellipsis">基础</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-data-retrieval/data-retrieval.html" class="md-nav__link">
+        <span class="md-ellipsis">数据检索</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-expressions/expressions.html" class="md-nav__link">
+        <span class="md-ellipsis">表达式</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-multiple-tables/multiple-tables.html" class="md-nav__link">
+        <span class="md-ellipsis">多个表上的查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">修改数据</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">修改数据</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">修改数据</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    <span class="md-ellipsis">使用 INSERT 添加数据</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 INSERT 添加数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">指定列</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">插入多行</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">插入查询结果</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">使用 DELETE 删除数据</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">使用 UPDATE 修改数据</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">其他数据修改语句</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-table-creation/table-creation.html" class="md-nav__link">
+        <span class="md-ellipsis">数据类型和创建表</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-constraints/constraints.html" class="md-nav__link">
+        <span class="md-ellipsis">键和约束</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-subqueries/subqueries.html" class="md-nav__link">
+        <span class="md-ellipsis">子查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-grouping-and-aggregation/grouping-and-aggregation.html" class="md-nav__link">
+        <span class="md-ellipsis">分组和聚合</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-set-operations/set-operations.html" class="md-nav__link">
+        <span class="md-ellipsis">集合运算</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-advanced-topics/advanced-topics.html" class="md-nav__link">
+        <span class="md-ellipsis">高级主题</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">修改数据</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    <span class="md-ellipsis">使用 INSERT 添加数据</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 INSERT 添加数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">指定列</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">插入多行</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">插入查询结果</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">使用 DELETE 删除数据</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">使用 UPDATE 修改数据</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">其他数据修改语句</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART1_SQL/05-data-modification/data-modification.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="data-modification-chapter"><span id="id1"></span><span class="section-number">1.5. </span>修改数据<a class="headerlink" href="#data-modification-chapter" title="Link to this heading">¶</a></h1>
+<p><strong>Modifying data</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本章将解释向表中添加数据、从表中删除数据以及修改数据的基本机制。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>This chapter will explain the basic mechanisms for adding data to tables, removing data from tables, and modifying data.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">1.5.1. </span>本章中使用的表<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Tables used in this chapter</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>对于本章,我们将使用 <strong>bookstore_inventory</strong> 和 <strong>bookstore_sales</strong> 表,这些表模拟了一家二手书商可能使用的简单数据库。 <strong>bookstore_inventory</strong> 表列出了书店库存中或最近出售的印刷书籍,以及书籍的状态和标价。 列 <strong>stock_number</strong> 是每本书的唯一标识符。</p>
+<p>当书店出售一本书时,会在 <strong>bookstore_sales</strong> 表中添加一条记录。 该表列出了所售书籍的 <strong>stock_number</strong>、出售日期和支付方式。 列 <strong>receipt_number</strong> 是销售的唯一标识符。 (这可能不是一个很好的数据库设计;它假设我们一次只出售一本书！)</p>
+<p>有关这些表的完整描述,请参见 <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>For this chapter, we will work with the tables <strong>bookstore_inventory</strong> and <strong>bookstore_sales</strong>, which simulate a simple database that a seller of used books might use.  The <strong>bookstore_inventory</strong> table lists printed books that the bookstore either has in stock or has sold recently, along with the condition of the book and the asking price.  The column <strong>stock_number</strong> is a unique identifier for each book.</p>
+<p>When the bookstore sells a book, a record is added to the <strong>bookstore_sales</strong> table.  This table lists the <strong>stock_number</strong> of the book sold, the date sold, and the type of payment.  The column <strong>receipt_number</strong> is a unique identifier for the sale.  (This may not be a very good database design; it assumes we only sell one book at a time!)</p>
+<p>A full description of these tables can be found in <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>.</p>
+</div>
+</div>
+</div><h2 id="insert"><span id="index-0"></span><span class="section-number">1.5.2. </span>使用 INSERT 添加数据<a class="headerlink" href="#insert" title="Link to this heading">¶</a></h2>
+<p><strong>Adding data using INSERT</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>要向数据库中的表添加行,我们使用以关键字 <strong>INSERT</strong> 开头的语句。 在其最简单的形式中, <strong>INSERT</strong> 允许您通过为表中定义的每一列提供一个值来向表中添加一行。 例如,假设我们书店的客户购买了加夫列尔·加西亚·马尔克斯的《百年孤独》。 这本书在我们的库存中列出的库存编号为 1455。 客户于 2021 年 8 月 14 日购买了这本书并以现金支付。 最后,我们向客户提供了收据,收据编号为 970。</p>
+<p>在数据库中,**bookstore_sales** 表定义了以下列： <strong>receipt_number</strong>、<strong>stock_number</strong>、<strong>date_sold</strong> 和 <strong>payment</strong>。</p>
+<p>我们可以使用以下语句记录这笔销售：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">data_modification_example_insert</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">970</span><span class="p">,</span><span class="w"> </span><span class="mi">1455</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-08-14&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>在交互式工具中尝试上述语句,然后使用 <strong>SELECT</strong> 查询验证新数据是否已添加。 请注意,值列出的顺序与 <strong>bookstore_sales</strong> 表中列的定义顺序相匹配。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>To add rows to a table in the database, we use a statement starting with the keyword <strong>INSERT</strong>.  In its simplest form, <strong>INSERT</strong> lets you add a single row to a table by providing a value for each column in the table as defined.  As an example, suppose a customer at our bookstore purchases our copy of <em>One Hundred Years of Solitude</em> by Gabriel García Márquez.  This book is listed in our inventory with a stock number of 1455.  The customer purchases the book on August 14, 2021 and pays cash.  Finally, we provide a receipt to the customer with receipt number 970.</p>
+<p>In the database, the table <strong>bookstore_sales</strong> is defined with these columns:  <strong>receipt_number</strong>, <strong>stock_number</strong>, <strong>date_sold</strong>, and <strong>payment</strong>.</p>
+<p>We could record the sale using this statement:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">data_modification_example_insert</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">970</span><span class="p">,</span><span class="w"> </span><span class="mi">1455</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-08-14&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>Try the above statement in the interactive tool, then use a <strong>SELECT</strong> query to verify that the new data has been added.  Note that the order in which the values are listed matches the order in which columns are defined for the <strong>bookstore_sales</strong> table.</p>
+</div>
+</div>
+</div><h3 id="id3"><span class="section-number">1.5.2.1. </span>指定列<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><strong>Specifying columns</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>执行如上所述的插入操作在我们确切知道数据库中表的定义时工作良好。 然而,实际中表会随着时间的推移而变化,这可能导致列的顺序不同,或表中添加更多列。 如果发生这种情况,旧的 SQL 代码如果假设了表的结构将会失效。 因此,提供不仅是数据,还有我们希望放入数据的列名是一种更好的实践。 为此,我们只需在表名后用括号列出列名：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="p">(</span><span class="n">receipt_number</span><span class="p">,</span><span class="w"> </span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">date_sold</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">971</span><span class="p">,</span><span class="w"> </span><span class="mi">1429</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-08-15&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;trade in&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>如 <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a> 中所述,我们的一些列可以由数据库自动生成。 例如,如果我们向库存中添加一本新书,我们希望生成一个新的、唯一的库存编号。 <strong>bookstore_inventory</strong> 表已设置为执行此操作。 当数据库为我们生成这样的值时,我们不应为生成的列提供值。 指定列名使我们能够仅插入非生成列的数据。</p>
+<p><strong>bookstore_sales</strong> 表同样设置为生成唯一的 <strong>receipt_number</strong> 值;上面我们为收据编号提供了值,这只有在我们提供的值尚未被使用时才有效。 <strong>bookstore_sales</strong> 表的 <strong>date_sold</strong> 列还有一个默认设置——如果您不提供该列的值,它将为您输入今天的日期。 下面是 <strong>bookstore_sales</strong> 表在实际中可能如何使用的示例：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="p">(</span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1460</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>Performing the insert as we did above works fine when we know for certain how a table has been defined in a database.  However, tables change over time in practice, which may result in columns appearing in a different order, or in more columns being added to the table.  If this happens, old SQL code that makes assumptions about the table structure will break.  So it is a better practice to provide not only the data, but the names of the columns in which we want to put the data.  To do this, we simply list the column names in parentheses after the table name:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="p">(</span><span class="n">receipt_number</span><span class="p">,</span><span class="w"> </span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">date_sold</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">971</span><span class="p">,</span><span class="w"> </span><span class="mi">1429</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2021-08-15&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;trade in&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>As described in <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a>, it is possible to have some of our columns be automatically generated by the database.  For example, if we add a new book to our inventory, we want to generate a new, unique stock number.  The <strong>bookstore_inventory</strong> table is set up to do this.  When the database generates values like this for us, we should not provide a value for the generated column.  Specifying column names lets us insert data for only the non-generated columns.</p>
+<p>The <strong>bookstore_sales</strong> table is likewise set up to generate unique <strong>receipt_number</strong> values; above we provided values for the receipt number, which only works as long as the values we provide are not already used.  The <strong>bookstore_sales</strong> table also has a default setting for the <strong>date_sold</strong> column - it will put in today’s date for you if you do not provide a value for the column.  Here is how the <strong>bookstore_sales</strong> table might be used in practice:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="p">(</span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1460</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h3 id="id4"><span class="section-number">1.5.2.2. </span>插入多行<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p><strong>Inserting multiple rows</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>虽然使用多个 <strong>INSERT</strong> 语句添加多行数据是完全有效的,但 SQL 也允许您在单个 <strong>INSERT</strong> 语句中提供多行。 也许我们希望在一个语句中输入一天的所有销售记录。 我们可以输入以下查询：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="p">(</span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1444</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;credit card&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1435</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1453</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;credit card&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(对于 Oracle 用户的说明：Oracle 不允许在 <strong>INSERT</strong> 中使用多行。)</p>
+</div>
+<div class="tabbed-block docutils">
+<p>While it is perfectly valid to do multiple <strong>INSERT</strong> statements to add multiple rows of data, SQL also lets you provide multiple rows in a single <strong>INSERT</strong> statement.  Perhaps we wish to enter all of a day’s sales in one statement.  We can enter this query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="p">(</span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">payment</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1444</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;credit card&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1435</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1453</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;credit card&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(Note for Oracle users: Oracle does not permit multiple rows in an <strong>INSERT</strong>.)</p>
+</div>
+</div>
+</div><h3 id="index-1"><span id="id5"></span><span class="section-number">1.5.2.3. </span>插入查询结果<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h3>
+<p><strong>Inserting query results</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 还提供通过 <strong>SELECT</strong> 查询提供值的功能。 作为一个稍显牵强的例子,假设我们创建另一个名为 <strong>bookstore_recent_sales</strong> 的表,列名为 <strong>author</strong> 和 <strong>title</strong>。 我们将在此表中存储有关我们最近售出的书籍的数据(也许是为了查看哪些书籍和作者受欢迎,以指导我们的采购)。 我们可能想用过去一个月内售出的独特书籍填充此表。</p>
+<p>语法与常规的 <strong>INSERT</strong> 相同,但 <strong>VALUES</strong> 子句被 <strong>SELECT</strong> 查询替代(该查询必须返回与我们要插入的列相同类型且顺序相同的列)。 尝试下面的语句,看看它是如何工作的。</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">bookstore_recent_sales</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_recent_sales</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">title</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">date_sold</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2021-08-31&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>SQL also provides the capability of providing values via a <strong>SELECT</strong> query.  As a somewhat contrived example, suppose we create another table named <strong>bookstore_recent_sales</strong> with columns named <strong>author</strong> and <strong>title</strong>. We will store data in this table about books we sold recently (perhaps to see what books and authors are popular, to inform our purchasing).  We might want to fill this table with the unique books that have been sold in the past month.</p>
+<p>The syntax is the same as a regular <strong>INSERT</strong>, but with the <strong>VALUES</strong> clause replaced by a <strong>SELECT</strong> query (which must return columns of the same type and in the same order as the columns we are inserting into).  Try the statements below to see this in action.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">bookstore_recent_sales</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_recent_sales</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">title</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">date_sold</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2021-08-31&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h2 id="delete"><span id="index-2"></span><span class="section-number">1.5.3. </span>使用 DELETE 删除数据<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
+<p><strong>Removing data with DELETE</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>从表中删除行是通过 <strong>DELETE</strong> 语句实现的。 <strong>DELETE</strong> 语句通常非常简单,仅需要一个 <strong>FROM</strong> 子句,并可选地包含一个 <strong>WHERE</strong> 子句。 您一次只能从一个表中删除数据。 例如,如果我们想删除 <strong>bookstore_sales</strong> 中 2021 年 8 月 1 日之前的所有销售记录,可以写成：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">data_modification_example_delete</span>
+
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>除非我们先从 <strong>bookstore_inventory</strong> 中删除要删除的书籍的数据,否则这可能是个坏主意——否则我们可能会认为这些已售书籍仍然在库存中。 由于我们无法在一个查询中从多个表中删除数据(例如,使用连接),因此确定如何从 <strong>bookstore_inventory</strong> 中删除适当的行可能会有些棘手。 我们想要删除的行的信息实际上在 <strong>bookstore_sales</strong> 中(在 <strong>date_sold</strong> 列)。 我们需要的技术将在 <a class="reference internal" href="../08-subqueries/subqueries.html#subqueries-chapter"><span class="std std-numref">Chapter 1.8</span></a> 中讨论——使用子查询。 这里是必要的查询,目前不作解释：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在 <a class="reference internal" href="../07-constraints/constraints.html#constraints-chapter"><span class="std std-numref">Chapter 1.7</span></a> 中,我们将讨论保持多个表之间一致性的其他技术。</p>
+<p>如果在 <strong>DELETE</strong> 查询中省略 <strong>WHERE</strong> 子句,则将从表中删除所有数据。</p>
+<p>与任何数据修改语句一样,**DELETE** 语句的效果是立即且永久的。 在某种程度上,如果您知道插入了哪些行,可以用 <strong>DELETE</strong> 来撤销 <strong>INSERT</strong> 的结果;然而,除非您有数据的备份,否则无法恢复已删除的行。 因此,确保您只删除所需内容非常重要。 在执行删除之前,测试这一点的简单方法是将语句中的 <strong>DELETE</strong> 替换为 <strong>SELECT *</strong>——这将准确显示您的语句将删除哪些行。</p>
+<p>请记住,在我们的交互式示例中,您对本书数据库所做的任何更改仅在当前浏览会话中有效,因此如果您希望恢复已删除的数据,可以通过刷新浏览器页面来实现。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Removing rows from a table is accomplished using <strong>DELETE</strong> statements.  <strong>DELETE</strong> statements are generally very simple, requiring only a <strong>FROM</strong> clause and optionally a <strong>WHERE</strong> clause.  You can delete data from only one table at a time.  As an example, if we want to remove all sales from <strong>bookstore_sales</strong> prior to August 1, 2021, we could write:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">data_modification_example_delete</span>
+
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>This is probably a bad idea unless we first delete the data from <strong>bookstore_inventory</strong> for the books we are deleting - otherwise we might think that we still have those sold books.  Since we cannot delete data from multiple tables in one query (e.g., using a join) it may be tricky to see how to get rid of the appropriate rows from <strong>bookstore_inventory</strong>. The information about what rows we want to delete is actually in <strong>bookstore_sales</strong> (in the <strong>date_sold</strong> column).  The technique we need will be covered in <a class="reference internal" href="../08-subqueries/subqueries.html#subqueries-chapter"><span class="std std-numref">Chapter 1.8</span></a> - using a subquery.  Here is the necessary query, given without explanation for now:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span><span class="p">)</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+<p>In <a class="reference internal" href="../07-constraints/constraints.html#constraints-chapter"><span class="std std-numref">Chapter 1.7</span></a> we will discuss other techniques for keeping multiple tables consistent with each other.</p>
+<p>If the <strong>WHERE</strong> clause is omitted in a <strong>DELETE</strong> query, then all data from the table is removed.</p>
+<p>As with any data modification statement, the effects of a <strong>DELETE</strong> statement are immediate and permanent.  To some extent, you can undo the result of an <strong>INSERT</strong> with a <strong>DELETE</strong> if you know which rows you inserted; however, it is impossible to restore deleted rows unless you have a backup of the data.  Thus, it is very important to be sure you are deleting only what you want to delete.  A simple way to test this before you perform a delete is to replace <strong>DELETE</strong> with <strong>SELECT *</strong> in your statement - this will show you exactly the rows that your statement would delete.</p>
+<p>Remember that with our interactive examples, any changes you make to this book’s database only last for the current viewing session, so if you wish to restore the deleted data, you may do so by refreshing the page in your browser.</p>
+</div>
+</div>
+</div><h2 id="update"><span id="index-3"></span><span class="section-number">1.5.4. </span>使用 UPDATE 修改数据<a class="headerlink" href="#update" title="Link to this heading">¶</a></h2>
+<p><strong>Modifying data with UPDATE</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 提供的最强大功能之一是使用 <strong>UPDATE</strong> 语句进行数据修改。 <strong>UPDATE</strong> 的形式为：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tablename</span>
+<span class="k">SET</span>
+<span class="n">column1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expression1</span><span class="p">,</span>
+<span class="n">column2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expression2</span><span class="p">,</span>
+<span class="p">...</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">expressions</span><span class="p">]</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+<p>通常,我们可能想要更新数据库中的单行。 例如,假设我们检查书店库存中的一本书,决定它的状态比我们最初认为的要好。 我们的《慢河》由尼古拉·格里菲斯著作(库存编号 1460)被列为状况良好,价格为 2(某种货币单位)。 我们希望将状况升级为“良好”,并同时将价格提高到 2.50：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">data_modification_example_update</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span>
+<span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;good&#39;</span><span class="p">,</span>
+<span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1460</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>我们也可以一次更新多行。 也许我们错误地将 2021 年 8 月 1 日的所有销售记录输入为 7 月 31 日。 我们可以在一个查询中修复这些错误：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2021-07-31&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>当然,这只有在标记为 7 月 31 日的销售都不正确的情况下才有效;如果不是,我们可能需要在 <strong>WHERE</strong> 子句中更加聪明。</p>
+<p>然而,**UPDATE** 的真正强大之处在于 <strong>SET</strong> 子句中赋值的右侧可以是表达式,而这些表达式是基于正在更新的行。 因此,我们可以做如下操作：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">25</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>这将使每本书的价格增加 0.25。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>One of the most powerful capabilities SQL provides is data modification using <strong>UPDATE</strong> statements.  The form of an <strong>UPDATE</strong> is:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tablename</span>
+<span class="k">SET</span>
+<span class="n">column1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expression1</span><span class="p">,</span>
+<span class="n">column2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expression2</span><span class="p">,</span>
+<span class="p">...</span>
+<span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">expressions</span><span class="p">]</span>
+<span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Often, we may want to update a single row in our database.  For example, perhaps we examine one of the books in our bookstore inventory and decide that its condition is better than we initially thought.  Our copy of <em>Slow River</em> by Nicola Griffith (stock number 1460) is listed as in fair condition, with a price of 2 (in some unit of currency).  We want to upgrade the condition to “good” and raise the price to 2.50 at the same time:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">data_modification_example_update</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span>
+<span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;good&#39;</span><span class="p">,</span>
+<span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">50</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1460</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>We can also update multiple rows at a time.  Perhaps we mistakenly put in all sales for August 1, 2021 as July 31 instead.  We can fix these in one query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2021-08-01&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">date_sold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2021-07-31&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Of course, this only works if none of the sales marked as July 31 were correct; we might have to be more clever with our <strong>WHERE</strong> clause if not.</p>
+<p>The real power of <strong>UPDATE</strong>, though, is that the right hand side of the assignments in the <strong>SET</strong> clause can be expressions, and these expressions are based on the row being updated.  Hence, we can do something like the following:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">25</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>This would raise the price of every book by 0.25.</p>
+</div>
+</div>
+</div><h2 id="index-4"><span id="id6"></span><span class="section-number">1.5.5. </span>其他数据修改语句<a class="headerlink" href="#index-4" title="Link to this heading">¶</a></h2>
+<p><strong>Other data modification statements</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 提供了一些其他数据修改语句类型,这些类型可能在您的数据库中支持,也可能不支持。 <strong>TRUNCATE TABLE</strong> 从表中删除所有行,通常比 <strong>DELETE</strong> 快(但只能用于删除 <em>所有</em> 行)。 <strong>MERGE</strong> 是一种较为复杂的操作,它结合了插入、更新和删除,允许将一个表与另一个表或表的连接进行同步。 这两种操作在严格意义上并不是必需的,因为可以通过 <strong>INSERT</strong>、 <strong>UPDATE</strong> 和 <strong>DELETE</strong> 实现相同的结果。 我们在本书中将不再进一步讨论它们。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>SQL provides some other data modification statement types, which may or may not be supported in your database.  <strong>TRUNCATE TABLE</strong> removes all rows from a table, and is typically faster than <strong>DELETE</strong> (but can only be used to remove <em>all</em> rows).  <strong>MERGE</strong> is a somewhat complex operation that combines inserts, updates, and deletes, allowing synchronization of a table with another table or join of tables.  Neither of these operations is strictly necessary, given that the same results can be accomplished with <strong>INSERT</strong>, <strong>UPDATE</strong>, and <strong>DELETE</strong>.  We will not cover them further in this book.</p>
+</div>
+</div>
+</div><h2 id="id7"><span class="section-number">1.5.6. </span>自检练习<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p><strong>Self-check exercises</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节包含有关 <strong>INSERT</strong>、<strong>UPDATE</strong> 和 <strong>DELETE</strong> 的练习,使用 <strong>bookstore_inventory</strong> 和 <strong>bookstore_sales</strong> 表。 请记住,我们在这些练习中使用的数据库与上面的交互式示例共享,因此您在上面的交互式工具中应用的任何更改都反映在您下面使用的数据库中。 如果您获得的结果与预期不符,您可能需要在浏览器中重新加载此页面以获取数据库的新副本。</p>
+<p>如果您卡住了,可以点击练习下方的“显示答案”按钮查看正确答案。</p>
+<ul class="simple">
+<li><p>编写语句将 N. Scott Momaday 的书 <em>House Made of Dawn</em> 添加到 <strong>bookstore_inventory</strong> 表中。 使用 1471 作为库存编号,’like new’ 作为状态,4.75 作为价格。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="p">(</span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1471</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N. Scott Momaday&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;House Made of Dawn&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;like new&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="mi">75</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写语句将 John Steinbeck 的所有书籍(来自我们的 <strong>books</strong> 表)以 ‘new’ 状态和 4.00 的价格添加到 <strong>bookstore_inventory</strong> 中。 请注意,没有好的方法为这些书籍提供唯一的库存编号,但如果您完全省略 <strong>stock_number</strong> 列,**bookstore_inventory** 表已设置为自动提供唯一值。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;new&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="mi">00</span>
+<span class="k">FROM</span>
+<span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;John Steinbeck&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写语句删除 <strong>bookstore_inventory</strong> 中所有状态为 ‘fair’ 的书籍。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fair&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写语句将收据编号为 963 的销售的支付方式更改为 ‘cash’。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">receipt_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">963</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写语句将 Clifford Simak 的所有书籍在书店库存中的价格设置为特别销售价格 1.0。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Clifford Simak&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写语句将所有状态为 ‘new’ 的书籍的价格翻倍。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;new&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>This section contains exercises on <strong>INSERT</strong>, <strong>UPDATE</strong>, and <strong>DELETE</strong>, using the <strong>bookstore_inventory</strong> and <strong>bookstore_sales</strong> tables. Keep in mind that the database we are using for these exercises is shared with the interactive examples above, so any changes you have applied in an interactive tool above are reflected in the database you use below.  If the results you get are not what you are expecting, you may need to reload this page in your browser to get a fresh copy of the database.</p>
+<p>If you get stuck, click on the “Show answer” button below the exercise to see a correct answer.</p>
+<ul class="simple">
+<li><p>Write a statement to add the book <em>House Made of Dawn</em> by N. Scott Momaday to the <strong>bookstore_inventory</strong> table.  Use 1471 for the stock number, ‘like new’ for the condition, and 4.75 for the price.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="p">(</span><span class="n">stock_number</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1471</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N. Scott Momaday&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;House Made of Dawn&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;like new&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="mi">75</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a statement to add all books by John Steinbeck (from our <strong>books</strong> table) into <strong>bookstore_inventory</strong> with a condition of ‘new’ and a price of 4.00.  Note that there is no good way to provide unique stock numbers for each of these books, but if you omit the <strong>stock_number</strong> column entirely, the <strong>bookstore_inventory</strong> table is set up to provide unique values automatically.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;new&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="mi">00</span>
+<span class="k">FROM</span>
+<span class="n">authors</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;John Steinbeck&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a statement to remove all books from <strong>bookstore_inventory</strong> that are in ‘fair’ condition.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fair&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a statement to change the payment type to ‘cash’ for the sale with receipt number 963.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">receipt_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">963</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a statement to set the price (in our bookstore inventory) for all books by Clifford Simak to a special sale price of 1.0.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Clifford Simak&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a statement to double the price of all books in ‘new’ condition.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;new&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../04-multiple-tables/multiple-tables.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1.4. 多个表上的查询" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              1.4. 多个表上的查询
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../06-table-creation/table-creation.html" class="md-footer__link md-footer__link--next" aria-label="Next: 1.6. 数据类型和创建表" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              1.6. 数据类型和创建表
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

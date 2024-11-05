@@ -1,0 +1,3126 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>3.3. 常规化 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.3. 常规化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">关系数据库理论</span></a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关系数据库理论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">关系数据库理论</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-relational-model/relational-model.html" class="md-nav__link">
+        <span class="md-ellipsis">数据库的关系模型</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-relational-algebra/relational-algebra.html" class="md-nav__link">
+        <span class="md-ellipsis">关系代数</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">常规化</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">常规化</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">常规化</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">简介</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">修改异常</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="修改异常">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">插入异常</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">删除异常</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">更新异常</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">示例解决方案</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">范式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">键和超键</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-8" class="md-nav__link">
+    <span class="md-ellipsis">函数依赖关系</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数依赖关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id17" class="md-nav__link">
+    <span class="md-ellipsis">函数依赖关系的类型</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-9" class="md-nav__link">
+    <span class="md-ellipsis">推理规则</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-10" class="md-nav__link">
+    <span class="md-ellipsis">闭包</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boyce-codd" class="md-nav__link">
+    <span class="md-ellipsis">第二范式、第三范式和 Boyce-<wbr>Codd 范式</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二范式、第三范式和 Boyce-Codd 范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id20" class="md-nav__link">
+    <span class="md-ellipsis">第二范式</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id21" class="md-nav__link">
+    <span class="md-ellipsis">第三范式</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id22" class="md-nav__link">
+    <span class="md-ellipsis">Boyce-<wbr>Codd 范式</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-12" class="md-nav__link">
+    <span class="md-ellipsis">分解</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id26" class="md-nav__link">
+    <span class="md-ellipsis">分解算法</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id27" class="md-nav__link">
+    <span class="md-ellipsis">示例</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id30" class="md-nav__link">
+    <span class="md-ellipsis">分解属性</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分解属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id31" class="md-nav__link">
+    <span class="md-ellipsis">精确恢复</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id32" class="md-nav__link">
+    <span class="md-ellipsis">依赖关系保存</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-13" class="md-nav__link">
+    <span class="md-ellipsis">多值依赖关系和第四范式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id36" class="md-nav__link">
+    <span class="md-ellipsis">权衡</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id37" class="md-nav__link">
+    <span class="md-ellipsis">数据库设计中的规范化</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-sql-vs-theory/sql-vs-theory.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL 与关系模型之间的差异</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">常规化</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">简介</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">修改异常</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="修改异常">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">插入异常</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">删除异常</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">更新异常</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">示例解决方案</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">范式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">键和超键</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-8" class="md-nav__link">
+    <span class="md-ellipsis">函数依赖关系</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数依赖关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id17" class="md-nav__link">
+    <span class="md-ellipsis">函数依赖关系的类型</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-9" class="md-nav__link">
+    <span class="md-ellipsis">推理规则</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-10" class="md-nav__link">
+    <span class="md-ellipsis">闭包</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boyce-codd" class="md-nav__link">
+    <span class="md-ellipsis">第二范式、第三范式和 Boyce-<wbr>Codd 范式</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二范式、第三范式和 Boyce-Codd 范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id20" class="md-nav__link">
+    <span class="md-ellipsis">第二范式</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id21" class="md-nav__link">
+    <span class="md-ellipsis">第三范式</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id22" class="md-nav__link">
+    <span class="md-ellipsis">Boyce-<wbr>Codd 范式</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-12" class="md-nav__link">
+    <span class="md-ellipsis">分解</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id26" class="md-nav__link">
+    <span class="md-ellipsis">分解算法</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id27" class="md-nav__link">
+    <span class="md-ellipsis">示例</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id30" class="md-nav__link">
+    <span class="md-ellipsis">分解属性</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分解属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id31" class="md-nav__link">
+    <span class="md-ellipsis">精确恢复</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id32" class="md-nav__link">
+    <span class="md-ellipsis">依赖关系保存</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-13" class="md-nav__link">
+    <span class="md-ellipsis">多值依赖关系和第四范式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id36" class="md-nav__link">
+    <span class="md-ellipsis">权衡</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id37" class="md-nav__link">
+    <span class="md-ellipsis">数据库设计中的规范化</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART3_RELATIONAL_DATABASE_THEORY/03-normalization/normalization.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="normalization-chapter"><span id="id1"></span><span class="section-number">3.3. </span>常规化<a class="headerlink" href="#normalization-chapter" title="Link to this heading">¶</a></h1>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2" id="index-0">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本章中，我们将讨论数据库结构的一些方面——我们应该使用什么关系模式来存储数据？虽然本章的内容深深植根于关系数据库理论，但基本概念无需理论基础即可理解，并且对所有数据库从业者都很重要。如果您在阅读本章时没有阅读过有关数据库关系模型的前面章节，请注意我们在讨论数据库中的对象时使用了术语关系、属性和元组；这些术语与关系数据库系统中的术语表、列和行非常相似。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In this chapter we discuss some aspects of how a database is structured - what relation schemas should we use to store our data?  While the material in this chapter is deeply rooted in relational database theory, the basic concepts can be understood without the theoretical foundation, and are important for all database practitioners.  If you are reading this chapter without having read earlier chapters on the relational model of the database, note we use the terms relation, attribute, and tuple in discussing the objects in our database; these terms closely correspond to the terms table, column, and row in relational database systems.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">3.3.1. </span>简介<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><em>Introduction</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2" id="index-1">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>规范化是修改数据库结构以满足某些要求的过程。这些要求由一系列 <em>范式</em> 定义，我们将很快对其进行定义。</p>
+<p>规范化的主要目标是使维护正确的数据集合变得更容易。正确的数据是完整且自洽的。数据库不应包含与我们所理解的事实相矛盾的数据。</p>
+<p>有一些线索可以表明数据库容易受到常见数据损坏的影响。一个非常重要的线索是数据库表现出冗余，即相同的事实被记录多次。另一个线索是数据库在许多地方包含 NULL。当关系中存在这些问题时，通常也是关系做了太多事情的情况。当关系包含与单个事物或概念相关的数据时，效果最好。但有时很难检测到关系做了太多事情，这就是为什么冗余和过多的 NULL 是如此有用的线索。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Normalization is the process of modifying a database structure to meet certain requirements. These requirements are defined by a series of <em>normal forms</em>, which we will define shortly.</p>
+<p>A primary goal of normalization is to make it easier to maintain a correct collection of data.  Correct data is complete and self-consistent.  The database should not contain data contradicting what we understand to be true.</p>
+<p>There are a few clues that can indicate a database is susceptible to common kinds of data corruption.  A very big clue is when a database exhibits redundancy, that is, when the same facts are recorded multiple times.  Another clue is when the database contains NULL in many places.  When these issues are present in a relation, it is usually also the case that the relation is doing too many things.  Relations work best when they contain data regarding a single thing or concept.  It can sometimes be difficult to detect that a relation is doing too much, though, which is why redundancy and excessive NULLs are such useful clues.</p>
+</div>
+</div>
+</div><h3 id="index-2"><span id="id3"></span><span class="section-number">3.3.1.1. </span>修改异常<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h3>
+<p><em>Modification anomalies</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>有三种常见的错误类型，我们可以考虑这些错误以更好地理解规范化的必要性。每一种 <em>修改异常</em> 都源于我们可用的数据修改操作：插入、更新和删除。我们可以用下面所示的关系来说明每一种，这个关系列出了一个虚构学校中一些课程和教师的信息。该关系提供了课程名称、开始时间、教室号码、讲师姓名、讲师办公室号码和讲师部门。我们应该立即关注的是，该关系中包含有关 <em>课程</em> 和 <em>讲师</em> 的信息。</p>
+<table class="lined-table docutils data align-default" id="id50">
+<caption><span class="caption-text"><strong>课程</strong></span><a class="headerlink" href="#id50" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>课程名称</p></th>
+<th class="head"><p>时间</p></th>
+<th class="head"><p>教室</p></th>
+<th class="head"><p>讲师</p></th>
+<th class="head"><p>办公室</p></th>
+<th class="head"><p>部门</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>代数 I</p></td>
+<td><p>8:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+<td><p>B24</p></td>
+<td><p>数学</p></td>
+</tr>
+<tr class="row-odd"><td><p>几何</p></td>
+<td><p>10:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+<td><p>B24</p></td>
+<td><p>数学</p></td>
+</tr>
+<tr class="row-even"><td><p>世界历史</p></td>
+<td><p>9:00</p></td>
+<td><p>C15</p></td>
+<td><p>Ms. Tan</p></td>
+<td><p>A11</p></td>
+<td><p>人文学科</p></td>
+</tr>
+<tr class="row-odd"><td><p>英语文学</p></td>
+<td><p>10:00</p></td>
+<td><p>C09</p></td>
+<td><p>Ms. Larsen</p></td>
+<td><p>A05</p></td>
+<td><p>人文学科</p></td>
+</tr>
+<tr class="row-even"><td><p>物理</p></td>
+<td><p>11:00</p></td>
+<td><p>C06</p></td>
+<td><p>Ms. Musa</p></td>
+<td><p>B22</p></td>
+<td><p>科学</p></td>
+</tr>
+<tr class="row-odd"><td><p>化学</p></td>
+<td><p>13:00</p></td>
+<td><p>C17</p></td>
+<td><p>Ms. Musa</p></td>
+<td><p>B22</p></td>
+<td><p>科学</p></td>
+</tr>
+<tr class="row-even"><td><p>音乐</p></td>
+<td><p>9:00</p></td>
+<td><p>C25</p></td>
+<td><p>Mr. Pal</p></td>
+<td><p>A03</p></td>
+<td><p>人文学科</p></td>
+</tr>
+</tbody>
+</table>
+<p>该关系还表现出冗余。例如，我们多次得知Reyes先生在数学系且他的办公室在124号房间。请注意，Reyes先生多次出现本身并不是冗余，因为每次出现都是一个新事实: Reyes先生教授代数 I，Reyes先生教授几何。这个例子中没有NULL，但我们将很快看到在添加或删除数据时它们可能出现。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>There are three common types of errors that we can consider to better understand the need for normalization.  Each of these <em>modification anomalies</em> arise from one of the data modification operations available to us: insert, update, and delete.  We can illustrate each of these with the relation pictured below, which lists information about some classes and teachers at a fictional school.  The relation gives the class name, starting time, room number, instructor name, instructor office number, and instructor department.  Right away, we should be concerned that there is information in the relation about both <em>classes</em> and <em>instructors</em>.</p>
+<table class="lined-table docutils data align-default" id="id51">
+<caption><span class="caption-text"><strong>classes</strong></span><a class="headerlink" href="#id51" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>class_name</p></th>
+<th class="head"><p>time</p></th>
+<th class="head"><p>classroom</p></th>
+<th class="head"><p>instructor</p></th>
+<th class="head"><p>office</p></th>
+<th class="head"><p>department</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Algebra I</p></td>
+<td><p>8:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+<td><p>B24</p></td>
+<td><p>Math</p></td>
+</tr>
+<tr class="row-odd"><td><p>Geometry</p></td>
+<td><p>10:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+<td><p>B24</p></td>
+<td><p>Math</p></td>
+</tr>
+<tr class="row-even"><td><p>World History</p></td>
+<td><p>9:00</p></td>
+<td><p>C15</p></td>
+<td><p>Ms. Tan</p></td>
+<td><p>A11</p></td>
+<td><p>Humanities</p></td>
+</tr>
+<tr class="row-odd"><td><p>English Literature</p></td>
+<td><p>10:00</p></td>
+<td><p>C09</p></td>
+<td><p>Ms. Larsen</p></td>
+<td><p>A05</p></td>
+<td><p>Humanities</p></td>
+</tr>
+<tr class="row-even"><td><p>Physics</p></td>
+<td><p>11:00</p></td>
+<td><p>C06</p></td>
+<td><p>Ms. Musa</p></td>
+<td><p>B22</p></td>
+<td><p>Science</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chemistry</p></td>
+<td><p>13:00</p></td>
+<td><p>C17</p></td>
+<td><p>Ms. Musa</p></td>
+<td><p>B22</p></td>
+<td><p>Science</p></td>
+</tr>
+<tr class="row-even"><td><p>Music</p></td>
+<td><p>9:00</p></td>
+<td><p>C25</p></td>
+<td><p>Mr. Pal</p></td>
+<td><p>A03</p></td>
+<td><p>Humanities</p></td>
+</tr>
+</tbody>
+</table>
+<p>This relation also exhibits redundancy.  We are given the facts that Mr. Reyes is in the Math department and his office is in room 124 multiple times, for example.  Note that Mr. Reyes appearing multiple times is not itself redundancy, as each appearance is a new fact: Mr. Reyes teaches Algebra I, and Mr. Reyes teaches Geometry.  We do not have any NULLs in this example, but we will see shortly how they might appear when we add or remove data.</p>
+</div>
+</div>
+</div><h4 id="index-3"><span id="id4"></span><span class="section-number">3.3.1.1.1. </span>插入异常<a class="headerlink" href="#index-3" title="Link to this heading">¶</a></h4>
+<p><em>Insert anomaly</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>考虑一下当一位新讲师加入学校教职员工时会发生什么。Hassan先生是数学系的新教职员工，但他尚未被分配任何课程进行教学。我们应该如何将Hassan先生添加到数据库中？有几个选项，但没有一个是好的——无论我们怎么做，我们必须在新元组中为 <strong>课程名称</strong> 、 <strong>教室</strong> 和 <strong>时间</strong> 提供值。我们可能会认为对于这些属性NULL是最佳选择，因为否则我们必须创建虚假的课程信息。不管怎样，我们都在为自己将来的工作制造麻烦——我们的数据库现在包含一个必须以特殊方式处理的元组，这与关系中的其他元组不同。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Consider what happens when a new instructor joins the faculty at the school.  Mr. Hassan is a new faculty member in the department of Math, but he has not yet been assigned any classes to teach.  How should we add Mr. Hassan to the database?  There are a few options, but none of them are good - whatever we do, we must provide values for <strong>class_name</strong>, <strong>classroom</strong>, and <strong>time</strong> in our new tuple.  We might think that NULL is the best choice for each of these attributes, as otherwise we must create fake class information.  Either way, we are making trouble for ourselves later on - our database now contains a tuple that must be handled in a special fashion, different from the other tuples in the relation.</p>
+</div>
+</div>
+</div><h4 id="index-4"><span id="id5"></span><span class="section-number">3.3.1.1.2. </span>删除异常<a class="headerlink" href="#index-4" title="Link to this heading">¶</a></h4>
+<p><em>Delete anomaly</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>现在，考虑一下当Tan女士在另一所学校找到工作时会发生什么。如果我们不谨慎，就会删除Tan女士的元组——从我们的课程列表中完全移除世界历史。同样，我们不能在不删除所有关于Larsen女士信息的情况下，从课程列表中移除英语文学。避免当前数据库设计中这些问题的唯一方法是用NULL替换现有值。与插入异常示例一样，这使我们面临需要特殊处理的元组。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Now, consider what happens when Ms. Tan takes a job at another school.  If we are incautious, we will delete the tuple for Ms. Tan - removing World History from our list of classes altogether.  Similarly, we cannot remove English Literature from the list of classes without removing all information about Ms. Larsen.  The only way to avoid these issues with our current database design is to replace the existing values with NULLs.  As with the insert anomaly example, this leaves us with tuples that require special handling.</p>
+</div>
+</div>
+</div><h4 id="index-5"><span id="id6"></span><span class="section-number">3.3.1.1.3. </span>更新异常<a class="headerlink" href="#index-5" title="Link to this heading">¶</a></h4>
+<p><em>Update anomaly</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>更新异常是我们数据库冗余的直接结果。考虑一下当Reyes先生更换办公室时会发生什么。如果我们不谨慎，就会更新列出Reyes先生教授代数 I 的元组，但忘记更新几何的元组，从而导致我们的数据内部不一致。Reyes先生将被列为拥有两个不同的办公室，而没有任何指示哪个是正确的。为了避免麻烦，我们必须始终记得更新 <em>所有</em> Reyes先生作为讲师的课程。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Update anomalies are a direct consequence of the redundancy in our database.  Consider what happens when Mr. Reyes changes offices.  If we are incautious, we will update the tuple listing Mr. Reyes as the teacher of Algebra I, but forget to update the tuple for Geometry, leaving our data internally consistent.  Mr. Reyes will be listed as having two different offices, without any indication which is correct.  To avoid trouble, we must remember to always update <em>all</em> classes for which Mr. Reyes is the instructor.</p>
+</div>
+</div>
+</div><h3 id="id7"><span class="section-number">3.3.1.2. </span>示例解决方案<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p><em>Example solution</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>对 <strong>课程</strong> 关系进行规范化将防止上述每种情况的发生。实际上，规范化要求我们构造关系，使数据以非常简单和一致的形式表达。我们通常通过将关系 <em>分解</em> 为多个较小的关系来实现规范化。</p>
+<p>非正式地说，在一个规范化的关系中，某个事物或概念通过由一个或多个属性组成的主键唯一标识，而每个其他属性仅代表该事物或概念的 <em>单值</em> 事实。对于我们的例子， <strong>课程</strong> 关系描述了课程；它以 <strong>课程名称</strong> 作为主键， <strong>教室</strong> 、 <strong>时间</strong> 和 <strong>讲师</strong> 作为单值属性。（一个不是单值属性的例子是课程中的学生名单。我们称这样的属性为 <em>多值</em> 属性。）然而， <strong>办公室</strong> 和 <strong>部门</strong> 实际上并不是关于课程的事实；相反，它们是关于讲师的事实。这些扩展的事实需要通过对 <strong>课程</strong> 关系的 <em>分解</em> 移除到另一个关系中：</p>
+<table class="lined-table docutils data align-default" id="id52">
+<caption><span class="caption-text"><strong>课程</strong></span><a class="headerlink" href="#id52" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>课程名称</p></th>
+<th class="head"><p>时间</p></th>
+<th class="head"><p>教室</p></th>
+<th class="head"><p>讲师</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>代数 I</p></td>
+<td><p>8:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+</tr>
+<tr class="row-odd"><td><p>几何</p></td>
+<td><p>10:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+</tr>
+<tr class="row-even"><td><p>世界历史</p></td>
+<td><p>9:00</p></td>
+<td><p>C15</p></td>
+<td><p>Ms. Tan</p></td>
+</tr>
+<tr class="row-odd"><td><p>英语文学</p></td>
+<td><p>10:00</p></td>
+<td><p>C09</p></td>
+<td><p>Ms. Larsen</p></td>
+</tr>
+<tr class="row-even"><td><p>物理</p></td>
+<td><p>11:00</p></td>
+<td><p>C06</p></td>
+<td><p>Ms. Musa</p></td>
+</tr>
+<tr class="row-odd"><td><p>化学</p></td>
+<td><p>13:00</p></td>
+<td><p>C17</p></td>
+<td><p>Ms. Musa</p></td>
+</tr>
+<tr class="row-even"><td><p>音乐</p></td>
+<td><p>9:00</p></td>
+<td><p>C25</p></td>
+<td><p>Mr. Pal</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id53">
+<caption><span class="caption-text"><strong>讲师</strong></span><a class="headerlink" href="#id53" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>姓名</p></th>
+<th class="head"><p>办公室</p></th>
+<th class="head"><p>部门</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reyes 先生</p></td>
+<td><p>B24</p></td>
+<td><p>数学</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tan 女士</p></td>
+<td><p>A11</p></td>
+<td><p>人文学科</p></td>
+</tr>
+<tr class="row-even"><td><p>Larsen 女士</p></td>
+<td><p>A05</p></td>
+<td><p>人文学科</p></td>
+</tr>
+<tr class="row-odd"><td><p>Musa 女士</p></td>
+<td><p>B22</p></td>
+<td><p>科学</p></td>
+</tr>
+<tr class="row-even"><td><p>Pal 先生</p></td>
+<td><p>A03</p></td>
+<td><p>人文学科</p></td>
+</tr>
+</tbody>
+</table>
+<p>请注意，我们通过这种分解消除了冗余。如果我们需要更新某个讲师的办公室信息，只需更新一个元组。我们也不再需要担心修改异常。添加或删除讲师与添加或删除课程完全独立；这也消除了在 <strong>课程</strong> 关系中需要过多NULL的必要性 <a class="footnote-reference brackets" href="#id38" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> .</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Normalizing the <strong>classes</strong> relation will prevent each of the situations above.  In effect, normalization requires us to structure relations such that the data is expressed in a very simple and consistent form.  We typically achieve normalization by <em>decomposing</em> a relation into multiple smaller relations.</p>
+<p>Informally, in a normalized relation, some thing or concept is uniquely identified by a primary key composed of one or more attributes and every other attribute represents a <em>single-valued</em> fact about the thing or concept only. For our example, the <strong>classes</strong> relation describes classes; it has <strong>class_name</strong> as a primary key, and <strong>classroom</strong>, <strong>time</strong>, and <strong>instructor</strong> as single-valued attributes.  (An example of an attribute that is not single-valued would be a list of students in the class.  We call such an attribute <em>multi-valued</em>.)  However, <strong>office</strong> and <strong>department</strong> are not really facts about a class; instead, they are facts about instructors.  These extended facts need to be removed to another relation through <em>decomposition</em> of the <strong>classes</strong> relation:</p>
+<table class="lined-table docutils data align-default" id="id54">
+<caption><span class="caption-text"><strong>classes</strong></span><a class="headerlink" href="#id54" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>class_name</p></th>
+<th class="head"><p>time</p></th>
+<th class="head"><p>classroom</p></th>
+<th class="head"><p>instructor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Algebra I</p></td>
+<td><p>8:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Geometry</p></td>
+<td><p>10:00</p></td>
+<td><p>C01</p></td>
+<td><p>Mr. Reyes</p></td>
+</tr>
+<tr class="row-even"><td><p>World History</p></td>
+<td><p>9:00</p></td>
+<td><p>C15</p></td>
+<td><p>Ms. Tan</p></td>
+</tr>
+<tr class="row-odd"><td><p>English Literature</p></td>
+<td><p>10:00</p></td>
+<td><p>C09</p></td>
+<td><p>Ms. Larsen</p></td>
+</tr>
+<tr class="row-even"><td><p>Physics</p></td>
+<td><p>11:00</p></td>
+<td><p>C06</p></td>
+<td><p>Ms. Musa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chemistry</p></td>
+<td><p>13:00</p></td>
+<td><p>C17</p></td>
+<td><p>Ms. Musa</p></td>
+</tr>
+<tr class="row-even"><td><p>Music</p></td>
+<td><p>9:00</p></td>
+<td><p>C25</p></td>
+<td><p>Mr. Pal</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id55">
+<caption><span class="caption-text"><strong>instructors</strong></span><a class="headerlink" href="#id55" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>office</p></th>
+<th class="head"><p>department</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mr. Reyes</p></td>
+<td><p>B24</p></td>
+<td><p>Math</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ms. Tan</p></td>
+<td><p>A11</p></td>
+<td><p>Humanities</p></td>
+</tr>
+<tr class="row-even"><td><p>Ms. Larsen</p></td>
+<td><p>A05</p></td>
+<td><p>Humanities</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ms. Musa</p></td>
+<td><p>B22</p></td>
+<td><p>Science</p></td>
+</tr>
+<tr class="row-even"><td><p>Mr. Pal</p></td>
+<td><p>A03</p></td>
+<td><p>Humanities</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note how we have eliminated redundancy through this decomposition.  If we need to update office information for an instructor, there is exactly one tuple to update.  We also no longer need to worry about modification anomalies.  Adding or removing an instructor is completely independent of adding or removing classes; this also removes any need for excessive NULLs in the <strong>classes</strong> relation <a class="footnote-reference brackets" href="#id39" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+</div>
+</div>
+</div><h2 id="index-6"><span id="id10"></span><span class="section-number">3.3.2. </span>范式<a class="headerlink" href="#index-6" title="Link to this heading">¶</a></h2>
+<p><em>Normal forms</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>规范化的概念源于关系模型本身。随着时间的推移，增加了一些额外的细化，形成了一系列的范式，这些范式大多基于早期的范式。我们不会研究所有已提出的范式，而是专注于那些在大多数应用中最有用且最有价值的形式。我们考虑的第一种形式适当地被称为 <em>第一范式</em> ，简称为1NF。接下来我们将讨论第二、第三和第四范式（2NF、3NF、4NF），以及介于3NF和4NF之间的Boyce-Codd范式（BCNF）。</p>
+<p>当一个数据库满足某个范式的要求时，我们称该数据库 <em>处于</em> 该范式中。按照通常的定义，大多数范式都包括一个要求，即必须满足早期的范式。因此，任何处于4NF的数据库必然也处于1NF、2NF、3NF和BCNF；处于BCNF的数据库也必然在3NF及以下；依此类推。然而，高级范式也确实解决了不太常见的情况，因此，例如，经过重构以满足3NF的数据库很可能也满足BCNF甚至4NF。3NF通常被认为是数据库被视为“规范化”的最低要求。</p>
+<p>为了说明大多数范式，我们首先需要提供一些额外的基础知识，这将在接下来的几个部分中涵盖。然而，我们可以立即解释1NF。1NF要求关系的某个属性的域仅包含 <em>原子</em> 值。这里的原子简单地意味着我们无法有效地将值分解为更小的部分。非原子元素包括复合值、值数组和关系。例如，包含作者姓名的字符字符串可能是原子的 <a class="footnote-reference brackets" href="#id40" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> ; 但用作者和书名识别一本书的字符串可能是复合的；而作者列表则是一个数组；包含一本书出版历史（包括每次出版的出版社、年份、ISBN等）的值表则是一个关系。为了满足1NF的要求，复合值应该拆分为单独的属性，而数组和关系则应该拆分为它们自己的关系（并用外键引用原始关系）。</p>
+<p>1NF通常被描述为关系数据库定义的一部分，早期的关系数据库系统确实没有提供允许违反1NF的功能。一些现代数据库系统现在提供对复合值的支持，以用户定义类型和数组值的形式。虽然从技术上讲，1NF仍然是所有高级范式的要求，但在某些应用中，这些1NF的违反可能非常有用。一些作者也主张允许关系值属性。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The concept of normalization originates with the relational model itself.  Additional refinements have been added over time, leading to a series of normal forms, which mostly build on earlier normal forms.  We will not study every normal form that has been proposed, but focus on the forms which are most useful and most likely to be of value in most applications.  The first form we consider is appropriately named the <em>first normal form</em>, abbreviated 1NF.  We proceed with the second, third, and fourth normal forms (2NF, 3NF, 4NF) as well as Boyce-Codd normal form (BCNF), which fits in between 3NF and 4NF.</p>
+<p>When a database meets the requirement for a normal form, we say that the database is <em>in</em> the form.  As commonly defined, most normal forms include a requirement that earlier normal forms are also met.  Therefore, any database that is in 4NF is necessarily also in 1NF, 2NF, 3NF, and BCNF; a database in BCNF is also in 3NF and below; and so forth.  However, it is also true that higher forms address less frequently occurring situations, so, for example, a database that has been restructured to be in 3NF is very likely to also be in BCNF or even 4NF.  3NF is generally considered the minimum requirement a database must meet to be considered “normalized”.</p>
+<p>To explain most of the normal forms, we first need to provide some additional foundation, covered in the next few sections.  However, we can explain 1NF immediately.  1NF requires that the domain of an attribute of a relation contains <em>atomic</em> values only.  Atomic here simply means that we cannot usefully break the value down into smaller parts.  Non-atomic elements include compound values, arrays of values, and relations.  For example, a character string containing an author’s name may be atomic <a class="footnote-reference brackets" href="#id41" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, but a string identifying a book by author and title is probably compound; a list of authors would be an array; and a table of values giving a book’s publication history (including publisher, year, ISBN, etc. for each publication) would be a relation.  To meet the 1NF requirements, compound values should be broken into separate attributes, while arrays and relations should be broken out into their own relations (with a foreign key referencing the original relation).</p>
+<p>1NF is often described as simply part of the definition of a relational database, and early relational database systems indeed provided no capabilities that would permit violations of 1NF.  Some modern database systems now provide support for compound values, in the form of user-defined types, and array values.  While 1NF technically remains a requirement for all higher normal forms, for certain applications these violations of 1NF may be highly useful.  Some authors have argued for permitting relation-valued attributes as well.</p>
+</div>
+</div>
+</div><h2 id="index-7"><span id="id13"></span><span class="section-number">3.3.3. </span>键和超键<a class="headerlink" href="#index-7" title="Link to this heading">¶</a></h2>
+<p><em>Keys and superkeys</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节重申了 <a class="reference internal" href="../01-relational-model/relational-model.html#relational-model-chapter"><span class="std std-numref">Chapter 3.1</span></a> 中的某些内容，我们在其中定义了 <em>键(key)</em> 一词，但进行了更详细的阐述。我们首先定义一个更一般的术语， <em>超键(superkey)</em> 。</p>
+<p>一个关系的超键是该关系属性的某个子集，它唯一标识关系中的任何元组。考虑下面的 <strong>图书馆</strong> 关系（我们将广泛使用此示例）：</p>
+<table class="lined-table docutils data align-default" id="id56">
+<caption><span class="caption-text"><strong>图书馆</strong></span><a class="headerlink" href="#id56" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>作者</p></th>
+<th class="head"><p>书名</p></th>
+<th class="head"><p>年份</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>作者出生</p></th>
+<th class="head"><p>作者去世</p></th>
+<th class="head"><p>部门</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>Invisible Man</p></td>
+<td><p>1952</p></td>
+<td><p>小说</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+<td><p>文学</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Unaccustomed Earth</p></td>
+<td><p>2008</p></td>
+<td><p>小说</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+<td><p>文学</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Hobbit</p></td>
+<td><p>1937</p></td>
+<td><p>奇幻</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+<td><p>推测小说</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>The House of the Spirits</p></td>
+<td><p>1982</p></td>
+<td><p>魔幻现实主义</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+<td><p>文学</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Fellowship of the Ring</p></td>
+<td><p>1954</p></td>
+<td><p>奇幻</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+<td><p>推测小说</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>1974</p></td>
+<td><p>科幻</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+<td><p>推测小说</p></td>
+</tr>
+</tbody>
+</table>
+<p>（此表中 <strong>作者去世</strong> 的空项表示NULL。在撰写本文时，这些作者仍在世。）</p>
+<p>我们断言属性集{<strong>作者</strong>、 <strong>书名</strong> 和 <strong>年份</strong> }是 <strong>图书馆</strong> 关系的超键。</p>
+<p>超键的定义不仅适用于当前关系中的数据，还适用于 <em>我们可能在关系中存储的任何数据</em> 。也就是说，超键不是数据的临时属性，而是我们对数据施加的约束。例如，尽管上面 <strong>年份</strong> 列中列出的每个出版年份在其书籍中是唯一的，但这不能保证未来我们可能添加到关系中的书籍。因此，集合{<strong>年份</strong>}不是 <strong>图书馆</strong> 的超键。</p>
+<p>超键的第二个等价定义是关系属性的子集，保证对关系中的任何元组包含唯一的值设置。对于我们的例子，这意味着 <strong>图书馆</strong> 关系中永远不可能有两本书具有相同的作者、书名和年份。根据这个第二个定义和关系的定义，我们注意到 <em>每个</em> 关系至少有一个超键：关系中所有属性的集合。集合{<strong>作者</strong> 、 <strong>书名</strong> 、 <strong>年份</strong>、 <strong>类型</strong> 、 <strong>作者出生</strong> 、 <strong>作者去世</strong> 、 <strong>部门</strong>}是 <strong>图书馆</strong> 关系的超键，因为关系中的每个元组必须是唯一的。</p>
+<p>我们还可以进一步指出，关系的任何属性子集，如果是某个超键的超集，也同样是该关系的超键。对于我们的例子，{<strong>作者</strong> 、 <strong>书名</strong> 、 <strong>年份</strong> 、 <strong>作者出生</strong>}必须是超键，因为它是已知超键的超集。</p>
+<p>一个关系的 <em>键</em> 是一个超键，从中我们无法去掉任何属性而仍得到超键。对于 <strong>图书馆</strong> 关系，我们断言{<strong>作者</strong> 、 <strong>书名</strong>}是该关系的超键；此外， <strong>作者</strong> 和 <strong>书名</strong> 都是必要的。也就是说，既不是{ <strong>作者</strong> }也不是{ <strong>书名</strong> }是 <strong>图书馆</strong> 的超键。因此，{<strong>作者</strong> 、 <strong>书名</strong>}是 <strong>图书馆</strong> 的键；集合{<strong>作者</strong> 、 <strong>书名</strong> 、 <strong>年份</strong>}是超键，但不是键，因为我们可以去掉 <strong>年份</strong> ，仍然有一个超键 <a class="footnote-reference brackets" href="#id42" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> 。</p>
+<p>识别关系的键是分析一个关系是否已在2NF或更高范式下规范化的关键步骤。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>This section reiterates some material from <a class="reference internal" href="../01-relational-model/relational-model.html#relational-model-chapter"><span class="std std-numref">Chapter 3.1</span></a> in which we defined the term <em>key</em>, but in a bit more detail.  We start by defining a more general term, <em>superkey</em>.</p>
+<p>A superkey of a relation is some subset of attributes of the relation which uniquely identifies any tuple in the relation.  Consider the <strong>library</strong> relation below (we will be using this example extensively):</p>
+<table class="lined-table docutils data align-default" id="id57">
+<caption><span class="caption-text"><strong>library</strong></span><a class="headerlink" href="#id57" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>genre</p></th>
+<th class="head"><p>author_birth</p></th>
+<th class="head"><p>author_death</p></th>
+<th class="head"><p>section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>Invisible Man</p></td>
+<td><p>1952</p></td>
+<td><p>fiction</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Unaccustomed Earth</p></td>
+<td><p>2008</p></td>
+<td><p>fiction</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Hobbit</p></td>
+<td><p>1937</p></td>
+<td><p>fantasy</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>The House of the Spirits</p></td>
+<td><p>1982</p></td>
+<td><p>magical realism</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Fellowship of the Ring</p></td>
+<td><p>1954</p></td>
+<td><p>fantasy</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>1974</p></td>
+<td><p>science fiction</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+</tbody>
+</table>
+<p>(The blank entries for <strong>author_death</strong> in this table represent NULLs.  The authors are still living at the time of this writing.)</p>
+<p>We assert that the set of attributes {<strong>author</strong>, <strong>title</strong>, and <strong>year</strong>} is a superkey for the <strong>library</strong> relation.</p>
+<p>The definition of superkey applies not just to the current data in the relation, but to <em>any data we might possibly store in the relation</em>.  That is, a superkey is not a transitory property of the data, but a constraint we impose on the data.  For example, although each publication year listed in the <strong>year</strong> column above is unique to its book, that cannot be guaranteed for future books we might add to the relation.  Therefore the set {<strong>year</strong>} is not a superkey for <strong>library</strong>.</p>
+<p>A second, and equivalent definition of superkey is as a subset of attributes of the relation that are guaranteed to contain a unique setting of values for any tuple in the relation.  For our example, this means there can never be two books in the <strong>library</strong> relation which share the same author, title, and year.  From this second definition and the definition of a relation, we note that <em>every</em> relation has at least one superkey: the set of all attributes of the relation.  The set {<strong>author</strong>, <strong>title</strong>, <strong>year</strong>, <strong>genre</strong>, <strong>author_birth</strong>, <strong>author_death</strong>, <strong>section</strong>} is a superkey for the <strong>library</strong> relation simply because every tuple in the relation must be unique.</p>
+<p>We can further state that any subset of attributes of the relation which is a superset of some superkey of the relation is also a superkey of the relation.  For our example, {<strong>author</strong>, <strong>title</strong>, <strong>year</strong>, <strong>author_birth</strong>} must be a superkey because it is a superset of a known superkey.</p>
+<p>A <em>key</em> of a relation is a superkey of the relation from which we cannot subtract any attributes and get a superkey.  For the <strong>library</strong> relation, we assert that {<strong>author</strong>, <strong>title</strong>} is a superkey of the relation; furthermore, both <strong>author</strong> and <strong>title</strong> are needed.  That is, neither {<strong>author</strong>} nor {<strong>title</strong>} is a superkey of <strong>library</strong>.  Therefore, {<strong>author</strong>, <strong>title</strong>} is a key of <strong>library</strong>; the set {<strong>author</strong>, <strong>title</strong>, <strong>year</strong>} is a superkey but not a key because we can remove <strong>year</strong> and still have a superkey <a class="footnote-reference brackets" href="#id43" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
+<p>Identifying the keys of a relation is a key step in analyzing whether or not a relation is already normalized with respect to 2NF or higher.</p>
+</div>
+</div>
+</div><h2 id="index-8"><span id="id16"></span><span class="section-number">3.3.4. </span>函数依赖关系<a class="headerlink" href="#index-8" title="Link to this heading">¶</a></h2>
+<p><em>Functional dependencies</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>现在我们转向函数依赖的主题，这与超键密切相关。</p>
+<p><em>函数依赖</em> （functional dependency FD）是关于关系的两个属性集的陈述。考虑两个属性集，我们将其标记为 <em>X</em> 和 <em>Y</em> 。我们说 <em>X</em> <em>函数性决定</em> <em>Y</em> ，或 <em>Y</em> 对 <em>X</em> 是 <em>函数依赖的</em>，如果在关系中，任何两个元组在 <em>X</em> 中的值相同，那么它们在 <em>Y</em> 中的值也必须相同。其表示法为：</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>与键类似，FD是我们对数据施加的约束。另一个理解函数依赖的方式是，如果你有一个关系，该关系仅包含在 <em>X</em> 或 <em>Y</em> 中的属性，那么 <em>X</em> 将是该关系的超键。也就是说， <em>X</em> 唯一决定 <em>X</em> 和 <em>Y</em> 的并集中的所有内容。（我们现在可以提供另一个超键的定义，即一个关系的属性子集，它函数性决定该关系的所有属性集。）</p>
+<p>另一种理解FD的方式是，如果 <em>X</em> 函数性决定 <em>Y</em> ，那么如果我们知道 <em>X</em> 中的值，我们就知道或可以确定 <em>Y</em> 中的值，因为 <em>Y</em> 仅包含关于 <em>X</em> 的单值事实。在我们的 <strong>图书馆</strong> 关系中，集合{<strong>作者</strong> 、 <strong>书名</strong>}函数性决定集合{ <strong>年份</strong> }，因为如果我们知道书的作者和书名，那么我们应该能够找出出版年份；而我们查找年份的任何来源都应该给出相同的答案。这个依赖在这个意义上是“函数性的”；在（作者、书名）对的域与出版年份的域之间存在某种 <em>函数</em> ，对于每个有效输入都能得出正确答案。这个函数在这里仅仅是域之间的映射，而不是我们可以分析推导的东西。</p>
+<p>以下是 <strong>图书馆</strong> 关系的一些更多FD：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{\{作者, 书名\}} &amp; \rightarrow &amp; \text{\{类型\}} \\
+\text{\{作者\}} &amp; \rightarrow &amp; \text{\{作者出生, 作者去世\}} \\
+\text{\{类型\}} &amp; \rightarrow &amp; \text{\{部门\}} \\
+\text{\{作者, 书名\}} &amp; \rightarrow &amp; \text{\{书名, 年份\}} \\
+\text{\{书名, 类型\}} &amp; \rightarrow &amp; \text{\{书名\}} \\
+\end{eqnarray*}\end{split}\]</div>
+<p>第一个FD告诉我们，每本书在我们的数据库中被归类为恰好一个类型。第二个FD告诉我们，作者的出生和去世日期在作者每次出现在数据库中时应该是相同的。第三个FD告诉我们，书籍在图书馆中的位置取决于书籍的类型。最后两个FD与之前的不同；在这些情况下，左侧的集合与右侧的集合之间存在重叠。我们稍后将对此给出特殊名称。目前，第四个FD告诉我们，如果我们知道一本书的作者和书名，那么我们就知道书名和出版年份。最后一个FD简单地告诉我们，任何两个具有相同书名和类型的元组，其书名都是相同的！</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Now we turn to the topic of functional dependencies, which are closely related to superkeys.</p>
+<p>A <em>functional dependency</em> (FD) is a statement about two sets of attributes of a relation.  Consider two sets of attributes, which we will label <em>X</em> and <em>Y</em>.  We say that <em>X</em> <em>functionally determines</em> <em>Y</em>, or <em>Y</em> is <em>functionally dependent on</em> <em>X</em>, if, whenever two tuples in the relation agree on the values in <em>X</em>, they must also agree on the values in <em>Y</em>.  The notation for this is:</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>As with keys, FDs are constraints that we impose on the data.  Another way of thinking about a functional dependency is, if you had a relation such that the relation contains only the attributes that are in <em>X</em> or <em>Y</em>, then <em>X</em> would be a superkey for that relation.  That is, <em>X</em> uniquely determines everything in the union of <em>X</em> and <em>Y</em>.  (We can now provide another defintiion of superkey as a subset of attributes of a relation that functionally determines the set of all attributes of the relation.)</p>
+<p>Another way of thinking about FDs is, if <em>X</em> functionally determines <em>Y</em>, then if we know the values in <em>X</em>, we know or can determine the values in <em>Y</em>, because <em>Y</em> just contains single-valued facts about <em>X</em>.  In our <strong>library</strong> relation, the set {<strong>author</strong>, <strong>title</strong>} functionally determines the set {<strong>year</strong>}, because if we know the author and title of the book, then we should be able to find out what the publication year is; and whatever sources we consult to find the year should all give us the same answer.  The dependency is “functional” in this sense; there exists some <em>function</em> between the domain of (author, title) pairs and the domain of publication years that yields the correct answer for every valid input.  The function in this case is simply a mapping between domains, not something we can analytically derive.</p>
+<p>Here are some more FDs for the <strong>library</strong> relation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{genre\}} \\
+\text{\{author\}} &amp; \rightarrow &amp; \text{\{author_birth, author_death\}} \\
+\text{\{genre\}} &amp; \rightarrow &amp; \text{\{section\}} \\
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{title, year\}} \\
+\text{\{title, genre\}} &amp; \rightarrow &amp; \text{\{title\}} \\
+\end{eqnarray*}\end{split}\]</div>
+<p>The first FD tells us that each book is categorized into exactly one genre in our database.  The second tells us that an author’s dates of birth and death should be the same every time the author appears in the database.  The third tells us that the location in the library in which a book is shelved depends on the genre of the book.  The last two FDs are different from the previous ones; in these, there is an overlap between the set on the left-hand side and the set on the right-hand side.  We will give special names to these in a moment.  For now, the fourth FD tells us that, if we know the author and title of a book, then we know the title and the publication year.  The final FD simply tells us that any two tuples having the same title and genre, have the same title!</p>
+</div>
+</div>
+</div><h3 id="id17"><span class="section-number">3.3.4.1. </span>函数依赖关系的类型<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p><em>Types of functional dependency</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2">
+<input checked type="radio" id="__tabbed_11_1" name="__tabbed_11"><input type="radio" id="__tabbed_11_2" name="__tabbed_11"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_11_1">
+中文</label><label class="tabbed-label" for="__tabbed_11_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>FD被分为三种类型: <em>平凡</em> 、 <em>非平凡</em> 和 <em>完全非平凡</em> 。</p>
+<p>平凡FD是指FD的右侧是左侧的一个子集。在我们上述示例中的最后一个FD就是一个平凡FD。平凡FD并不传达有用的信息——它告诉我们“我们知道我们知道什么”——但在我们的规范化过程中，它们仍然有一定的用处。对于一个关系，只要FD的左侧是该关系属性的一个子集，我们所写的每一个平凡FD都是正确的。</p>
+<p>非平凡FD是指FD的右侧的某部分不在左侧。左侧和右侧的交集不为空，但右侧不是左侧的子集。上述的第四个FD就是一个非平凡FD。这些FD传达了一些新信息。在我们的关系中识别非平凡FD是规范化的关键步骤。</p>
+<p>正如你可能现在猜到的，完全非平凡FD是指左侧和右侧之间没有重叠——两个集合的交集是空集。上述的前三个FD就是完全非平凡的。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>FDs are categorized into three types: <em>trivial</em>, <em>non-trivial</em>, and <em>completely non-trivial</em>.</p>
+<p>A trivial FD is one in which the right-hand side of the FD is a subset of the left-hand side.  The last FD in our example above is a trivial FD.  A trivial FD conveys no useful information - it tells us “we know what we know” - but they still have some use to us in our normalization procedures.  Every trivial FD we can write down for a relation is true, as long as the left-hand side of the FD is a subset of the attributes of the relation.</p>
+<p>A non-trivial FD is one in which some part of the right-hand side of the FD is not in the left-hand side.  The intersection of the left-hand side and the right-hand side is not empty, but the right-hand side is not a subset of the left-hand side.  The fourth FD above is a non-trival FD.  These FDs convey some new information.  Identifying non-trivial FDs in our relations is a crucial step in normalization.</p>
+<p>As you might guess by now, a completely non-trivial FD is one for which there is no overlap between the left-hand side and the right-hand side - the intersection of the two sets is the empty set.  The first three FDs above are completely non-trivial.</p>
+</div>
+</div>
+</div><h3 id="index-9"><span id="id18"></span><span class="section-number">3.3.4.2. </span>推理规则<a class="headerlink" href="#index-9" title="Link to this heading">¶</a></h3>
+<p><em>Inference rules</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2">
+<input checked type="radio" id="__tabbed_12_1" name="__tabbed_12"><input type="radio" id="__tabbed_12_2" name="__tabbed_12"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_12_1">
+中文</label><label class="tabbed-label" for="__tabbed_12_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>许多FD可以从其他FD推导或推断出来。我们特别关注那些在右侧具有最大集合的非平凡FD，即，无法再添加其他内容而使FD不成立的集合。存在一个直接的算法可以从一组FD推导出这样的FD，我们将在下一节中讨论。我们需要以下五个推理规则来进行算法。前三个推理规则被称为 <em>阿姆斯特朗公理</em> ，可用于证明其余规则。</p>
+<p>我们将这些规则呈现但不提供证明，其直觉应该是明确的。设 <em>X</em> 、 <em>Y</em> 和 <em>Z</em> 是同一关系属性的子集。将 <em>Y</em> 和 <em>Z</em> 的并集记为 <em>YZ</em> 。则我们有：</p>
+<dl>
+<dt><strong>反身规则</strong></dt><dd><p>如果Y是X的子集，则</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>这只是一个声明，表明所有平凡FD都是真实的。</p>
+</dd>
+<dt><strong>扩展规则</strong></dt><dd><p>如果</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight">
+\[XZ \rightarrow YZ\]</div>
+<p>也成立。</p>
+<p>该规则表示我们可以向FD的左侧和右侧同时添加相同的属性。显然，如果我们将 <em>Z</em> 添加到已知的（左侧），那么我们应该能够在之前能够确定的基础上确定 <em>Z</em> （右侧）。</p>
+<p>在我们的 <strong>图书馆</strong> 示例中，我们有</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>因此，也可以说</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, genre\}} \rightarrow \text{\{author_birth, author_death, genre\}}\]</div>
+<p>这个规则的一个特殊情况是，我们可以将左侧添加到两侧；这不会改变左侧，因为任何集合与自身的并集仍然是该集合：</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>意味着</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow XY\]</div>
+</dd>
+<dt><strong>传递规则</strong></dt><dd><p>如果我们有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X \rightarrow Y \\
+Y \rightarrow Z\end{split}\]</div>
+<p>那么</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Z\]</div>
+<p>也成立。也就是说，如果知道 <em>X</em> 可以告诉我们 <em>Y</em> ，而从 <em>Y</em> 我们可以知道 <em>Z</em> ，那么知道 <em>X</em> 也可以告诉我们 <em>Z</em> 。</p>
+<p>在我们的 <strong>图书馆</strong> 关系中，我们有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{\{author, title\}} \rightarrow \text{\{genre\}} \\
+\text{\{genre\}} \rightarrow \text{\{section\}} \\\end{split}\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, title\}} \rightarrow \text{\{section\}}\]</div>
+</dd>
+<dt><strong>分割规则（或分解、或投影规则）</strong></dt><dd><p>如果</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow YZ\]</div>
+<p>成立，则</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X \rightarrow Y \\
+X \rightarrow Z\end{split}\]</div>
+<p>也成立。简单地说，如果知道 <em>X</em> 的值可以告诉我们 <em>Y</em> <strong>和</strong> <em>Z</em> 的值，那么知道 <em>X</em> 的值也可以告诉我们 <em>Y</em> 的值，对 <em>Z</em> 也是一样。在我们的 <strong>图书馆</strong> 示例中，我们有</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>因此，也可以说</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{\{author\}} \rightarrow \text{\{author_birth\}} \\
+\text{\{author\}} \rightarrow \text{\{author_death\}}\end{split}\]</div>
+<p>请注意，我们只能“拆分”右侧。例如，给定：<span class="math notranslate nohighlight">\(\text{\{author, title\}} \rightarrow \text{\{year\}}\)</span>, 则并 <strong>不</strong> 成立 <span class="math notranslate nohighlight">\(\text{\{author\}} \rightarrow \text{\{year\}}\)</span>.</p>
+</dd>
+<dt><strong>结合规则（或并集、或加法规则）</strong></dt><dd><p>这是分割规则的反向。如果我们有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X \rightarrow Y \\
+X \rightarrow Z\end{split}\]</div>
+<p>那么</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow YZ\]</div>
+<p>也成立。在我们的 <strong>图书馆</strong> 示例中，我们有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{\{author, title\}} \rightarrow \text{\{year\}} \\
+\text{\{author, title\}} \rightarrow \text{\{genre\}}\end{split}\]</div>
+<p>因此</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, title\}} \rightarrow \text{\{year, genre\}}\]</div>
+</dd>
+</dl>
+<p>虽然可以通过上述规则从给定关系的FD集合中推导出所有可以推导的FD，但不幸的是，没有办法判断某个FD集合是否 <em>完整(complete)</em> ——即该FD集合是否让我们能够推导出关系上每一个可能真实的FD。FD源自数据库设计者和参与分析与设计的其他人的思维，这一过程需要一些“反复试验”，即迭代改进。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Many FDs can be inferred or derived from other FDs.  We are particularly interested in non-trivial FDs which have a maximal set on the right-hand side, that is, a set which cannot be added to without making the FD false.  There is a straightforward algorithm to infer such FDs from a set of FDs, which we discuss in the next section.  We need the five inference rules below for the algorithm.  The first three inference rules are known as <em>Armstrong’s axioms</em>, and can be used to prove the remaining rules.</p>
+<p>We present these without proof, but the intuition behind these should be clear.  Let <em>X</em>, <em>Y</em>, and <em>Z</em> be subsets of the attributes of the same relation.  Let the union of <em>Y</em> and <em>Z</em> be denoted <em>YZ</em>.  Then we have:</p>
+<dl>
+<dt><em>Reflexive rule</em></dt><dd><p>If Y is a subset of X, then</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>This is simply a statement that all trivial FDs are true.</p>
+</dd>
+<dt><em>Augmentation rule</em></dt><dd><p>If</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[XZ \rightarrow YZ\]</div>
+<p>also holds.</p>
+<p>This rule says we can add the same attributes to both the left-hand and right-hand sides of an FD.  Trivially, if we add <em>Z</em> to what we know (left-hand side), then we should be able to determine <em>Z</em> in addition to what we could determine previously (right-hand side).</p>
+<p>In our <strong>library</strong> example, we are given</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>therefore, it is also true that</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, genre\}} \rightarrow \text{\{author_birth, author_death, genre\}}\]</div>
+<p>A special case of this is that we can add the left-hand side to both sides; this leaves the left-hand side unchanged, since the union of any set with itself is just the set:</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Y\]</div>
+<p>implies</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow XY\]</div>
+</dd>
+<dt><em>Transitive rule</em></dt><dd><p>If we have both of</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X \rightarrow Y \\
+Y \rightarrow Z\end{split}\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow Z\]</div>
+<p>also holds.  That is, if knowing <em>X</em> tells us <em>Y</em>, and from <em>Y</em> we can know <em>Z</em>, then knowing <em>X</em> also tells us <em>Z</em>.</p>
+<p>In our <strong>library</strong> relation we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{\{author, title\}} \rightarrow \text{\{genre\}}
+\text{\{genre\}} \rightarrow \text{\{section\}} \\\end{split}\]</div>
+<p>thus</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, title\}} \rightarrow \text{\{section\}}\]</div>
+</dd>
+<dt><em>Splitting rule (or decomposition, or projective, rule)</em></dt><dd><p>If</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow YZ\]</div>
+<p>holds, then so do</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X \rightarrow Y \\
+X \rightarrow Z\end{split}\]</div>
+<p>Plainly stated, if knowing the values for <em>X</em> tells us the values for <em>Y</em> <strong>and</strong> <em>Z</em>, then knowing the values for <em>X</em> tells us the values for <em>Y</em>, and likewise for <em>Z</em>.  In our <strong>library</strong> example, we have</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>therefore, it is also true that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{\{author\}} \rightarrow \text{\{author_birth\}} \\
+\text{\{author\}} \rightarrow \text{\{author_death\}}\end{split}\]</div>
+<p>Note that we can “split” the right-hand side only.  For example, given <span class="math notranslate nohighlight">\(\text{\{author, title\}} \rightarrow \text{\{year\}}\)</span>, it is <strong>not</strong> true that <span class="math notranslate nohighlight">\(\text{\{author\}} \rightarrow \text{\{year\}}\)</span>.</p>
+</dd>
+<dt><em>Combining rule (or union, or additive, rule)</em></dt><dd><p>This is the splitting rule in reverse.  If we have both of</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X \rightarrow Y \\
+X \rightarrow Z\end{split}\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[X \rightarrow YZ\]</div>
+<p>also holds. In our <strong>library</strong> example, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{\{author, title\}} \rightarrow \text{\{year\}} \\
+\text{\{author, title\}} \rightarrow \text{\{genre\}}\end{split}\]</div>
+<p>thus</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, title\}} \rightarrow \text{\{year, genre\}}\]</div>
+</dd>
+</dl>
+<p>While any FDs that can be inferred from a given collection of FDs on a relation can be inferred using the above rules, there is unfortunately no way of deciding that some collection of FDs is, in fact, <em>complete</em> - that is, that the collection of FDs lets us infer every possible true FD on the relation.  FDs come from the minds of the database designer and others involved in analysis and design, a process which requires some “trial and error”, i.e., iterative improvement.</p>
+</div>
+</div>
+</div><h3 id="index-10"><span id="id19"></span><span class="section-number">3.3.4.3. </span>闭包<a class="headerlink" href="#index-10" title="Link to this heading">¶</a></h3>
+<p><em>Closure</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2">
+<input checked type="radio" id="__tabbed_13_1" name="__tabbed_13"><input type="radio" id="__tabbed_13_2" name="__tabbed_13"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_13_1">
+中文</label><label class="tabbed-label" for="__tabbed_13_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>如前所述，我们特别关注那些在右侧具有最大集合的非平凡FD。给定某些FD集合，关系 <em>R</em> 的子集 <em>X</em> 的 <em>闭包</em> 是所有集合{ <em>a</em> }的并集，其中 <em>a</em> 是 <em>R</em> 的属性，并且我们可以推导出：<span class="math notranslate nohighlight">\(X \rightarrow {a}\)</span>。非正式地说， <em>X</em> 的闭包是由 <em>X</em> 函数确定的属性集合。 <em>X</em> 的闭包记作 <em>X</em><sup>+</sup>。</p>
+<p>我们对闭包感兴趣有几个原因。首先，从这个定义可以注意到，关系的超键的闭包是关系的所有属性的集合。我们可以利用这个事实来测试某个属性集合是否是超键；进一步地，理论上我们可以通过检查每个属性子集的闭包来找到关系的所有超键（实际上，随着属性数量的增加，这可能会变得非常繁琐）。其次，闭包将在我们规范化算法的分解步骤中发挥重要作用。</p>
+<p>可以使用以下算法来确定属性集合的闭包。</p>
+<dl>
+<dt><strong>闭包算法</strong></dt><dd><p>给定FD集合 <em>F</em> 和属性集合 <em>X</em> ：</p>
+<ol class="arabic simple">
+<li><p>设 <em>C</em> = <em>X</em> 。显然，<span class="math notranslate nohighlight">\(X \rightarrow C\)</span>。</p></li>
+<li><p>当存在某个函数依赖关系 <span class="math notranslate nohighlight">\(Y \rightarrow Z\)</span> 在 <em>F</em> 中，使得 <em>Y</em> 是 <em>C</em> 的子集并且 <em>Z</em> 包含一些不在 <em>C</em> 中的属性时，将 <em>Z</em> 中的属性添加到 <em>C</em> 以创建 <em>C’</em> 。然后，</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+&amp; &amp; C \rightarrow Y    ~~\text{(反身规则)} \\
+&amp; &amp; C \rightarrow Z    ~~\text{(传递规则)} \\
+&amp; &amp; X \rightarrow Z    ~~\text{(传递规则)} \\
+&amp; &amp; X \rightarrow C'   ~~\text{(结合规则)} \\
+\end{eqnarray*}\end{split}\]</div>
+<p>设 <em>C</em> = <em>C’</em> 。</p>
+<ol class="arabic simple" start="3">
+<li><p>当没有更多的FD满足上述条件时， <em>C</em> = <em>X</em><sup>+</sup>。</p></li>
+</ol>
+</dd>
+</dl>
+<p>我们之前断言，集合{author, title}是我们示例 <strong>图书馆</strong> 关系的超键，因此闭包 {author, title}<sup>+</sup> 应该是 <strong>图书馆</strong> 的所有属性集合。我们现在展示这一点是如何从我们的推理规则和之前给出的FD中得出的：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{year\}} \\
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{genre\}} \\
+\text{\{author\}} &amp; \rightarrow &amp; \text{\{author_birth, author_death\}} \\
+\text{\{genre\}} &amp; \rightarrow &amp; \text{\{section\}} \\
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{title, year\}} \\
+\text{\{title, genre\}} &amp; \rightarrow &amp; \text{\{title\}} \\
+\end{eqnarray*}\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>设 <em>C</em> = {author, title}。</p></li>
+<li><p>我们有 <span class="math notranslate nohighlight">\(\text{\{author, title\}} \rightarrow \text{\{year\}}\)</span> ，且{author, title}是 <em>C</em> 的子集，因此将 <strong>year</strong> 添加到 <em>C</em> 中： <em>C</em> = {author, title, year} 。</p></li>
+<li><p>类似地， <span class="math notranslate nohighlight">\(\text{\{author, title\}} \rightarrow \text{\{genre\}}\)</span> ，所以设 <em>C</em> = {author, title, year, genre} 。</p></li>
+<li><p>我们有 <span class="math notranslate nohighlight">\(\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\)</span> ，且 {author} 是 <em>C</em> 的子集。设 <em>C</em> = {author, title, year, genre, author_birth, author_death} 。</p></li>
+<li><p>我们有 <span class="math notranslate nohighlight">\(\text{\{genre\}} \rightarrow \text{\{section\}}\)</span> ，且 {genre} 是 <em>C</em> 的子集。设 <em>C</em> = {author, title, year, genre, author_birth, author_death, section} 。</p></li>
+<li><p>此时算法完成，因为所有未使用的FD的右侧都已经是 <em>C</em> 的子集；无论如何， <em>C</em> 已经包含 <strong>图书馆</strong> 的所有属性。</p></li>
+</ol>
+<p>因此， {author, title}<sup>+</sup> = {author, title, year, genre, author_birth, author_death, section} 。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>As mentioned, we are going to be particularly interested in non-trivial FDs which have a maximal set on the right-hand side.  The <em>closure</em> of a subset <em>X</em> of relation <em>R</em> given some collection of FDs is the union of all sets {<em>a</em>} such that <em>a</em> is an attribute of <em>R</em> and we can infer <span class="math notranslate nohighlight">\(X \rightarrow {a}\)</span>.  Informally, the closure of <em>X</em> is the set of attributes which are functionally determined by <em>X</em>.  The closure of <em>X</em> is denoted <em>X</em><sup>+</sup>.</p>
+<p>We are interested in closure for a couple of reasons.  First, note from this definition that the closure of a superkey of a relation is the set of all attributes of the relation.  We can use this fact to test whether or not some set of attributes is a superkey; further, we could in theory find all superkeys of a relation by examining the closure of every subset of attributes (in practice this can become too much work fairly quickly as the number of attributes increases).  Second, closure will be useful in the decomposition step of our normalization algorithms.</p>
+<p>The closure of a set of attributes can be determined using the following algorithm.</p>
+<dl>
+<dt><em>Closure algorithm</em></dt><dd><p>Given a collection <em>F</em> of FDs and a set of attributes <em>X</em>:</p>
+<ol class="arabic simple">
+<li><p>Let <em>C</em> = <em>X</em>.  Trivially, <span class="math notranslate nohighlight">\(X \rightarrow C\)</span>.</p></li>
+<li><p>While there exists some functional dependency <span class="math notranslate nohighlight">\(Y \rightarrow Z\)</span> in <em>F</em> such that <em>Y</em> is a subset of <em>C</em> and <em>Z</em> contains some attributes not in <em>C</em>, add the attributes in <em>Z</em> to <em>C</em> to create <em>C'</em>.  Then,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+&amp; &amp; C \rightarrow Y    ~~\text{(reflexive rule)} \\
+&amp; &amp; C \rightarrow Z    ~~\text{(transitive rule)} \\
+&amp; &amp; X \rightarrow Z    ~~\text{(transitive rule)} \\
+&amp; &amp; X \rightarrow C'   ~~\text{(combining rule)} \\
+\end{eqnarray*}\end{split}\]</div>
+<p>Let <em>C</em> = <em>C'</em>.</p>
+<ol class="arabic simple" start="3">
+<li><p>When no more FDs meet the criteria above, <em>C</em> = <em>X</em><sup>+</sup>.</p></li>
+</ol>
+</dd>
+</dl>
+<p>We previously asserted that the set {author, title} is a superkey for our example <strong>library</strong> relation, so the closure {author, title}<sup>+</sup> should be the set of all attributes of <strong>library</strong>.  We now show that this follows from our inference rules, and from the FDs given previously:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{year\}} \\
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{genre\}} \\
+\text{\{author\}} &amp; \rightarrow &amp; \text{\{author_birth, author_death\}} \\
+\text{\{genre\}} &amp; \rightarrow &amp; \text{\{section\}} \\
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{title, year\}} \\
+\text{\{title, genre\}} &amp; \rightarrow &amp; \text{\{title\}} \\
+\end{eqnarray*}\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Let <em>C</em> = {author, title}.</p></li>
+<li><p>We have <span class="math notranslate nohighlight">\(\text{\{author, title\}} \rightarrow \text{\{year\}}\)</span>, and {author, title} is a subset of <em>C</em>, so add <strong>year</strong> to <em>C</em>: <em>C</em> = {author, title, year}.</p></li>
+<li><p>Similarly, <span class="math notranslate nohighlight">\(\text{\{author, title\}} \rightarrow \text{\{genre\}}\)</span>, so let <em>C</em> = {author, title, year, genre}.</p></li>
+<li><p>We have <span class="math notranslate nohighlight">\(\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\)</span>, and {author} is a subset of <em>C</em>.  Let <em>C</em> = {author, title, year, genre, author_birth, author_death}.</p></li>
+<li><p>We have <span class="math notranslate nohighlight">\(\text{\{genre\}} \rightarrow \text{\{section\}}\)</span>, and {genre} is a subset if <em>C</em>.  Let <em>C</em> = {author, title, year, genre, author_birth, author_death, section}.</p></li>
+<li><p>The algorithm completes at this point because the right-hand sides of all of the unused FDs are already subsets of <em>C</em>; and in any case, <em>C</em> already has all attributes of <strong>library</strong>.</p></li>
+</ol>
+<p>Thus, {author, title}<sup>+</sup> = {author, title, year, genre, author_birth, author_death, section}.</p>
+</div>
+</div>
+</div><h2 id="boyce-codd"><span id="index-11"></span><span class="section-number">3.3.5. </span>第二范式、第三范式和 Boyce-Codd 范式<a class="headerlink" href="#boyce-codd" title="Link to this heading">¶</a></h2>
+<p><em>Second, third, and Boyce-Codd normal forms</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2">
+<input checked type="radio" id="__tabbed_14_1" name="__tabbed_14"><input type="radio" id="__tabbed_14_2" name="__tabbed_14"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_14_1">
+中文</label><label class="tabbed-label" for="__tabbed_14_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>现在我们准备讨论 Boyce-Codd 范式 (BCNF) 之前的范式。在本节中，我们将提供范式的定义以及示例。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We are now ready to discuss the normal forms up to Boyce-Codd normal form (BCNF).  In this section we will provide definitions of the normal forms, with examples.</p>
+</div>
+</div>
+</div><h3 id="id20"><span class="section-number">3.3.5.1. </span>第二范式<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p><em>Second normal form</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2">
+<input checked type="radio" id="__tabbed_15_1" name="__tabbed_15"><input type="radio" id="__tabbed_15_2" name="__tabbed_15"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_15_1">
+中文</label><label class="tabbed-label" for="__tabbed_15_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>一个关系处于第二范式（2NF）当且仅当它处于第一范式（1NF）并且没有 <em>非键属性</em> 在键的真子集上是函数依赖的。非键属性是指不属于任何键的属性。</p>
+<p>从这个定义中，我们可以看出 <strong>图书馆</strong> 不 满足2NF。 <strong>图书馆</strong> 的键是 {author, title} 。然而，我们有以下函数依赖：</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>在这个依赖中，左侧仅包含 <strong>author</strong> 。我们称上述函数依赖 <em>违反</em> 第二范式。</p>
+<p>请注意，任何键只有一个属性的关系（处于1NF）自动满足2NF。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A relation is in second normal form (2NF) if it is in 1NF and there are no <em>non-key attributes</em> which are functionally dependent on a proper subset of the key.  A non-key attribute is an attribute which is not part of any key.</p>
+<p>From this definition, we can see that <strong>library</strong> is not in 2NF.  The key of <strong>library</strong> is {author, title}.  However, we have the FD</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>in which the left-hand side only contains <strong>author</strong>.  We say that the above FD <em>violates</em> second normal form.</p>
+<p>Note that any relations (in 1NF) for which the key has a single attribute is automatically in 2NF.</p>
+</div>
+</div>
+</div><h3 id="id21"><span class="section-number">3.3.5.2. </span>第三范式<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<p><em>Third normal form</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2">
+<input checked type="radio" id="__tabbed_16_1" name="__tabbed_16"><input type="radio" id="__tabbed_16_2" name="__tabbed_16"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_16_1">
+中文</label><label class="tabbed-label" for="__tabbed_16_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>一个关系处于第三范式（3NF）当且仅当它处于第二范式（2NF）并且没有非键属性在其他非键属性上是函数依赖的。</p>
+<p>再次考虑 <strong>图书馆</strong> 关系，依赖关系</p>
+<div class="math notranslate nohighlight">
+\[\text{\{genre\}} \rightarrow \text{\{section\}}\]</div>
+<p>违反了3NF，因为 <strong>genre</strong> 和 <strong>section</strong> 都不属于任何键。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A relation is in third normal form (3NF) if it is in 2NF and there are no non-key attributes which are functionally dependent on other non-key attributes.</p>
+<p>Considering the <strong>library</strong> relation again, the dependency</p>
+<div class="math notranslate nohighlight">
+\[\text{\{genre\}} \rightarrow \text{\{section\}}\]</div>
+<p>violates 3NF because neither <strong>genre</strong> nor <strong>section</strong> are part of any key.</p>
+</div>
+</div>
+</div><h3 id="id22"><span class="section-number">3.3.5.3. </span>Boyce-Codd 范式<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<p><em>Boyce-Codd normal form</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2">
+<input checked type="radio" id="__tabbed_17_1" name="__tabbed_17"><input type="radio" id="__tabbed_17_2" name="__tabbed_17"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_17_1">
+中文</label><label class="tabbed-label" for="__tabbed_17_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>博伊斯-科德 <a class="footnote-reference brackets" href="#id44" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> 范式是第三范式的一个稍微更强的版本；任何处于BCNF的关系也必定处于3NF。然而，大多数处于3NF的关系也处于BCNF。BCNF有一个简单而通用的定义，涵盖了2NF和3NF的定义:</p>
+<dl class="simple">
+<dt><strong>BCNF的定义</strong></dt><dd><p>一个关系处于BCNF当且仅当它处于1NF，并且对于关系中的每一个非平凡函数依赖形式为 <span class="math notranslate nohighlight">\(X \rightarrow Y\)</span>， <em>X</em> 是该关系的超键。</p>
+</dd>
+</dl>
+<p>从这个定义中可能并不明显关系在BCNF中也是在2NF和3NF。我们将证明对于2NF这是成立的；类似的论证也适用于3NF。回想一下，2NF要求我们没有非键属性在键的适当子集上是函数依赖的。根据键的定义，键的适当子集不能是键或超键；因此，2NF所禁止的FD的左侧必须不是超键。另一方面，非键属性根本不能是键的一部分。2NF所禁止的FD的右侧与左侧没有交集，因此该FD是完全非平凡的。因此，任何违反2NF的FD也满足违反BCNF的标准。</p>
+<p>3NF和BCNF之间的区别在于，3NF允许右侧是键的子集的FD。这种情况相对不常见，这就是为什么大多数处于3NF的关系也处于BCNF的原因。我们将在后面的部分进一步探讨这个区别。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Boyce-Codd <a class="footnote-reference brackets" href="#id45" id="id24" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> normal form is a slightly stronger version of third normal form; any relation in BCNF is also in 3NF.  However, most relations in 3NF are also in BCNF.  BCNF has a simple and general definition which encompasses the definitions of 2NF and 3NF:</p>
+<dl class="simple">
+<dt><em>Definition of BCNF</em></dt><dd><p>A relation is in BCNF if it is in 1NF and if, for every non-trivial functional dependency of the form <span class="math notranslate nohighlight">\(X \rightarrow Y\)</span> on the relation, <em>X</em> is a superkey of the relation.</p>
+</dd>
+</dl>
+<p>It may not be obvious from this definition that relations in BCNF are also in 2NF and 3NF.  We will demonstrate that this is true for 2NF; a similar argument holds for 3NF.  Recall that 2NF requires we have no non-key attributes functionally dependent on a proper subset of the key.  By the definition of key, a proper subset of the key cannot be a key or superkey; therefore, an FD forbidden by 2NF must have a left-hand side that is not a superkey.  On the other hand, non-key attributes cannot be part of the key at all.  The right-hand side of an FD forbidden by 2NF can have no intersection with the left-hand side, so the FD is completely non-trivial.  Thus any FDs that would violate 2NF also meet the criteria for violating BCNF.</p>
+<p>The difference between 3NF and BCNF is simply that 3NF permits FDs for which the right-hand side is a subset of a key.  This situation is fairly uncommon, which is why most relations in 3NF are also in BCNF.  We will explore this difference further in a later section.</p>
+</div>
+</div>
+</div><h2 id="index-12"><span id="id25"></span><span class="section-number">3.3.6. </span>分解<a class="headerlink" href="#index-12" title="Link to this heading">¶</a></h2>
+<p><em>Decomposition</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2">
+<input checked type="radio" id="__tabbed_18_1" name="__tabbed_18"><input type="radio" id="__tabbed_18_2" name="__tabbed_18"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_18_1">
+中文</label><label class="tabbed-label" for="__tabbed_18_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>我们说一个数据库在某个范式下是规范化的，如果数据库中的所有关系都处于该范式中。为了规范化一个数据库，我们必须 <em>分解</em> 那些有违反FD的关系。关系的分解涉及创建两个新关系，每个关系都有原始关系的一个属性子集。然后可以丢弃原始关系。</p>
+<p>在本节中，我们讨论BCNF分解算法，并提供一个规范化的示例演示。最后，我们探讨为什么某些有问题的关系可能更适合保留在3NF中。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We say that a database is normalized with respect to some normal form if all relations in the database are in the normal form.  To normalize a database, we must <em>decompose</em> relations which have some violating FD.  Decomposition of a relation involves creating two new relations, each of which has a subset of the attributes of the original relation.  The original relation can then be discarded.</p>
+<p>In this section we discuss the BCNF decomposition algorithm and provide an example walkthrough of normalization.  We close the section by exploring why some problematic relations may be better left in 3NF.</p>
+</div>
+</div>
+</div><h3 id="id26"><span class="section-number">3.3.6.1. </span>分解算法<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<p><em>Decomposition algorithm</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2">
+<input checked type="radio" id="__tabbed_19_1" name="__tabbed_19"><input type="radio" id="__tabbed_19_2" name="__tabbed_19"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_19_1">
+中文</label><label class="tabbed-label" for="__tabbed_19_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>有一种简单的分解方法，可以消除范式的违反，并且在所有情况下允许精确恢复原始关系。下面的算法是以BCNF为基础表达的，但对于2NF和3NF同样适用：</p>
+<dl>
+<dt><em>分解算法</em></dt><dd><p>给定某个关系 <em>R</em> 和一个违反BCNF的函数依赖 <span class="math notranslate nohighlight">\(X \rightarrow Y\)</span> ：</p>
+<ol class="arabic simple">
+<li><p>（可选，但强烈推荐）将由 <em>X</em> 函数决定的任何属性添加到 <em>Y</em> 中，且这些属性不在 <em>Y</em> 中；即，让 <em>Y</em> = <em>X</em><sup>+</sup> 。（很容易证明：给定原始违反， <span class="math notranslate nohighlight">\(X \rightarrow X^{+}\)</span> 违反了BCNF，所以我们只是用一个违反的FD替换另一个。）</p></li>
+<li><p>让 <em>Z</em> 为 <em>R</em> 中不在 <em>X</em> 或 <em>Y</em> 中的属性集合。（这个集合必须非空，因为根据定义，<em>X</em> 不是一个超键。）</p></li>
+<li><p>创建关系 <em>R1</em> 和 <em>R2</em>，使得 <em>R1</em> 拥有 <em>X</em> 和 <em>Y</em> 的并集中的属性，而 <em>R2</em> 拥有 <em>X</em> 和 <em>Z</em> 的并集中的属性。在关系代数中，我们使用投影来创建新关系：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}R1 = \pi_{XY}(R) \\
+R2 = \pi_{XZ}(R)\end{split}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>丢弃 <em>R</em> 。</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="tabbed-block docutils">
+<p>There is a simple approach to decomposition that both eliminates a violation of a normal form, and that allows for exact recovery of the original relation in all cases.  The algorithm below is expressed in terms of BCNF, but works equally well for 2NF and 3NF:</p>
+<dl>
+<dt><em>Decomposition algorithm</em></dt><dd><p>Given some relation <em>R</em>, and a functional dependency <span class="math notranslate nohighlight">\(X \rightarrow Y\)</span> on <em>R</em> that violates BCNF:</p>
+<ol class="arabic simple">
+<li><p>(Optional, but strongly recommended) Add to <em>Y</em> any attributes that are functionally determined by <em>X</em> and that are not already in <em>Y</em>; i.e., let <em>Y</em> = <em>X</em><sup>+</sup>.  (It is easy to show that <span class="math notranslate nohighlight">\(X \rightarrow X^{+}\)</span> violates BCNF given the original violation, so we are merely substituting one violating FD for another.)</p></li>
+<li><p>Let <em>Z</em> be the set of attributes of <em>R</em> that are not in <em>X</em> or <em>Y</em>.  (This set must be non-empty because, by definition, <em>X</em> is not a superkey.)</p></li>
+<li><p>Create relations <em>R1</em> and <em>R2</em> such that <em>R1</em> has the attributes in the union of <em>X</em> and <em>Y</em>, and <em>R2</em> has the attributes in the union of <em>X</em> and <em>Z</em>.  In relational algebra terms, we use projection to create the new relations:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}R1 = \pi_{XY}(R) \\
+R2 = \pi_{XZ}(R)\end{split}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Discard <em>R</em>.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+</div><h3 id="id27"><span class="section-number">3.3.6.2. </span>示例<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<p><em>Worked example</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2">
+<input checked type="radio" id="__tabbed_20_1" name="__tabbed_20"><input type="radio" id="__tabbed_20_2" name="__tabbed_20"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_20_1">
+中文</label><label class="tabbed-label" for="__tabbed_20_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>现在我们将这个算法应用于最初仅由 <strong>library</strong> 关系组成的数据库。首先，我们之前提到的函数依赖</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>违反了2NF，因此也违反了BCNF。为了对这个违反应用分解算法：</p>
+<ol class="arabic simple">
+<li><p>让 <em>Y</em> 为 {author} 的闭包，即 {author, author_birth, author_death}。</p></li>
+<li><p>让 <em>Z</em> 为 {title, year, genre, section}。</p></li>
+<li><p><em>X</em> 和 <em>Y</em> 的并集就是 <em>Y</em> ，因为我们在步骤1中进行了可选的闭包。<em>X</em> 和 <em>Z</em> 的并集是 {author, title, year, genre, section}。对这些属性集进行投影得到以下关系，我们将其重命名为 <strong>authors</strong> 和 <strong>library2</strong>：</p></li>
+</ol>
+<table class="lined-table docutils data align-default" id="id58">
+<caption><span class="caption-text"><strong>authors</strong></span><a class="headerlink" href="#id58" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>author_birth</p></th>
+<th class="head"><p>author_death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id59">
+<caption><span class="caption-text"><strong>library2</strong></span><a class="headerlink" href="#id59" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>genre</p></th>
+<th class="head"><p>section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>Invisible Man</p></td>
+<td><p>1952</p></td>
+<td><p>fiction</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Unaccustomed Earth</p></td>
+<td><p>2008</p></td>
+<td><p>fiction</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Hobbit</p></td>
+<td><p>1937</p></td>
+<td><p>fantasy</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>The House of the Spirits</p></td>
+<td><p>1982</p></td>
+<td><p>magical realism</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Fellowship of the Ring</p></td>
+<td><p>1954</p></td>
+<td><p>fantasy</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>1974</p></td>
+<td><p>science fiction</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p>丢弃 <strong>library</strong>。</p></li>
+</ol>
+<p>注意，我们可以通过对 <strong>authors</strong> 和 <strong>library2</strong> 应用自然连接操作来恢复原始关系。</p>
+<p>现在我们必须查看我们的新关系，并确定它们是否已规范化。第一步是确定新关系的键和函数依赖。根据旧关系上的函数依赖，有一种正式过程可以计算新关系的超键和函数依赖 <a class="footnote-reference brackets" href="#id46" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> . 然而，在实践中，数据库设计者通常可以根据他们对数据的了解来识别新关系的函数依赖和键，而不必进行上述所有计算。</p>
+<p>对于我们的例子，在 <strong>authors</strong> 中，我们可以快速确定唯一有用的非平凡函数依赖是</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>由此我们还可以看到 {author} 的闭包包括 <strong>authors</strong> 中的所有属性，因此 {author} 是一个键。在这个关系中没有剩余的违反函数依赖，所以它在BCNF下是规范化的。</p>
+<p>现在考虑关系 <strong>library2</strong>。注意，上述函数依赖不适用，因为 <strong>author_birth</strong> 和 <strong>author_death</strong> 不是 <strong>library2</strong> 中的属性。根据我们对 <strong>library</strong> 关系中函数依赖的了解，我们可以确定以下函数依赖在 <strong>library2</strong> 中成立：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{year, genre, section\}} \\
+\text{\{genre\}} &amp; \rightarrow &amp; \text{\{section\}} \\
+\end{eqnarray*}\end{split}\]</div>
+<p>并且键是 {author, title}。</p>
+<p>上述第二个函数依赖违反了BCNF（和3NF）。对这个函数依赖进行分解，我们有 <em>X</em> = {genre}，<em>Y</em> = {section}，<em>Z</em> = {title, author, year, genre}。分解结果为以下关系，我们将其重命名为 <strong>books</strong> 和 <strong>genres</strong>：</p>
+<table class="lined-table docutils data align-default" id="id60">
+<caption><span class="caption-text"><strong>books</strong></span><a class="headerlink" href="#id60" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>genre</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>Invisible Man</p></td>
+<td><p>1952</p></td>
+<td><p>fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Unaccustomed Earth</p></td>
+<td><p>2008</p></td>
+<td><p>fiction</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Hobbit</p></td>
+<td><p>1937</p></td>
+<td><p>fantasy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>The House of the Spirits</p></td>
+<td><p>1982</p></td>
+<td><p>magical realism</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Fellowship of the Ring</p></td>
+<td><p>1954</p></td>
+<td><p>fantasy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>1974</p></td>
+<td><p>science fiction</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id61">
+<caption><span class="caption-text"><strong>genres</strong></span><a class="headerlink" href="#id61" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>genre</p></th>
+<th class="head"><p>section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>fiction</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-odd"><td><p>fantasy</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-even"><td><p>magical realism</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-odd"><td><p>science fiction</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+</tbody>
+</table>
+<p>我们丢弃 <strong>library2</strong>，最终只剩下三个关系：<strong>authors</strong>、<strong>books</strong> 和 <strong>genres</strong>。这三个关系现在都在BCNF中，因此不再可能进行进一步的规范化（相对于BCNF或更低）。我们可以通过对 <strong>books</strong> 和 <strong>genres</strong> 进行自然连接来恢复 <strong>library2</strong> 关系；或者我们可以通过对所有三个关系进行自然连接来恢复原始的 <strong>library</strong> 关系。</p>
+<p>注意，规范化后的数据库在不同关系中有明确的关注点分离；一个关系仅涉及作者，另一个关系涉及书籍，还有一个关系提供关于图书馆布局的专门信息。冗余得到了减少，修改异常的可能性也大大降低。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We now apply this algorithm to a database initially composed of just the <strong>library</strong> relation.  To start, we previously noted that the FD</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>violates 2NF and thus BCNF.  To apply the decomposition algorithm to this violation:</p>
+<ol class="arabic simple">
+<li><p>Let <em>Y</em> be the closure of {author}, which is {author, author_birth, author_death}.</p></li>
+<li><p>Let <em>Z</em> then be {title, year, genre, section}.</p></li>
+<li><p>The union of <em>X</em> and <em>Y</em> is just <em>Y</em> because we did the optional closure in step 1.  The union of <em>X</em> and <em>Z</em> is {author, title, year, genre, section}.  Projecting on to these attribute sets yields the following relations, which we rename to <strong>authors</strong> and <strong>library2</strong>:</p></li>
+</ol>
+<table class="lined-table docutils data align-default" id="id62">
+<caption><span class="caption-text"><strong>authors</strong></span><a class="headerlink" href="#id62" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>author_birth</p></th>
+<th class="head"><p>author_death</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>1914-03-01</p></td>
+<td><p>1994-04-16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>1967-07-11</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>1892-01-03</p></td>
+<td><p>1973-09-02</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>1942-08-02</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+<td><p>1929-10-21</p></td>
+<td><p>2018-01-22</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id63">
+<caption><span class="caption-text"><strong>library2</strong></span><a class="headerlink" href="#id63" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>genre</p></th>
+<th class="head"><p>section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>Invisible Man</p></td>
+<td><p>1952</p></td>
+<td><p>fiction</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Unaccustomed Earth</p></td>
+<td><p>2008</p></td>
+<td><p>fiction</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Hobbit</p></td>
+<td><p>1937</p></td>
+<td><p>fantasy</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>The House of the Spirits</p></td>
+<td><p>1982</p></td>
+<td><p>magical realism</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Fellowship of the Ring</p></td>
+<td><p>1954</p></td>
+<td><p>fantasy</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>1974</p></td>
+<td><p>science fiction</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p>Discard <strong>library</strong>.</p></li>
+</ol>
+<p>Note that we can recover the original relation by applying a natural join operation to <strong>authors</strong> and <strong>library2</strong>.</p>
+<p>We must now look at our new relations, and determine if they are now normalized.  A first step is determining keys and FDs for the new relations.  There is a formal process to compute the superkeys and FDs of the new relation from the FDs on the old relation <a class="footnote-reference brackets" href="#id47" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a>.  However, in practice it is usually possible for a database designer to identify the FDs and keys of the new relations given their knowledge of the data, without all of the computations implied above.</p>
+<p>For our example, in <strong>authors</strong> we can quickly determine that the only useful non-trivial FD is</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \rightarrow \text{\{author_birth, author_death\}}\]</div>
+<p>From this we can also see that the closure of {author} includes all attributes in authors, and thus {author} is a key.  There are no violating FDs remaining in this relation, so it is normalized with respect to BCNF.</p>
+<p>Now consider the relation <strong>library2</strong>.  Note that the FD above does not apply, because <strong>author_birth</strong> and <strong>author_death</strong> are not attributes in <strong>library2</strong>.  From our knowledge of the FDs in the <strong>library</strong> relation, we can determine that these FDs hold in <strong>library2</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+\text{\{author, title\}} &amp; \rightarrow &amp; \text{\{year, genre, section\}} \\
+\text{\{genre\}} &amp; \rightarrow &amp; \text{\{section\}} \\
+\end{eqnarray*}\end{split}\]</div>
+<p>and that the key is {author, title}.</p>
+<p>The second FD above violates BCNF (and 3NF).  Decomposing on this FD, we have <em>X</em> = {genre}, <em>Y</em> = {section}, and <em>Z</em> = {title, author, year, genre}.  Decomposition results in the following relations, which we rename to <strong>books</strong> and <strong>genres</strong>:</p>
+<table class="lined-table docutils data align-default" id="id64">
+<caption><span class="caption-text"><strong>books</strong></span><a class="headerlink" href="#id64" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>genre</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ralph Ellison</p></td>
+<td><p>Invisible Man</p></td>
+<td><p>1952</p></td>
+<td><p>fiction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jhumpa Lahiri</p></td>
+<td><p>Unaccustomed Earth</p></td>
+<td><p>2008</p></td>
+<td><p>fiction</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Hobbit</p></td>
+<td><p>1937</p></td>
+<td><p>fantasy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isabel Allende</p></td>
+<td><p>The House of the Spirits</p></td>
+<td><p>1982</p></td>
+<td><p>magical realism</p></td>
+</tr>
+<tr class="row-even"><td><p>J.R.R. Tolkien</p></td>
+<td><p>The Fellowship of the Ring</p></td>
+<td><p>1954</p></td>
+<td><p>fantasy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>1974</p></td>
+<td><p>science fiction</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id65">
+<caption><span class="caption-text"><strong>genres</strong></span><a class="headerlink" href="#id65" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>genre</p></th>
+<th class="head"><p>section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>fiction</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-odd"><td><p>fantasy</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+<tr class="row-even"><td><p>magical realism</p></td>
+<td><p>literature</p></td>
+</tr>
+<tr class="row-odd"><td><p>science fiction</p></td>
+<td><p>speculative fiction</p></td>
+</tr>
+</tbody>
+</table>
+<p>We discard <strong>library2</strong>, leaving us with just three relations: <strong>authors</strong>, <strong>books</strong>, and <strong>genres</strong>. All three relations are now in BCNF, so no further normalization (with respect to BCNF or lower) is possible.  We can recover the <strong>library2</strong> relation by a natural join of <strong>books</strong> and <strong>genres</strong>; or we can recover the original <strong>library</strong> relation by a natural join of all three relations.</p>
+<p>Note that the normalized database has a clear separation of concerns in the different relations; one relation is just about authors, another about books, and a third with specialized information about the layout of a library.  Redundancy has been reduced, and modification anomalies are much less likely.</p>
+</div>
+</div>
+</div><h3 id="id30"><span class="section-number">3.3.6.3. </span>分解属性<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<p><em>Decomposition properties</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2">
+<input checked type="radio" id="__tabbed_21_1" name="__tabbed_21"><input type="radio" id="__tabbed_21_2" name="__tabbed_21"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_21_1">
+中文</label><label class="tabbed-label" for="__tabbed_21_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>规范化分解有两个理想的特性，我们将在本节中讨论。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>There are two desirable properties for a normalization decomposition, which we discuss in this section.</p>
+</div>
+</div>
+</div><h4 id="id31"><span class="section-number">3.3.6.3.1. </span>精确恢复<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<p><em>Exact recovery</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2">
+<input checked type="radio" id="__tabbed_22_1" name="__tabbed_22"><input type="radio" id="__tabbed_22_2" name="__tabbed_22"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_22_1">
+中文</label><label class="tabbed-label" for="__tabbed_22_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>我们提到的第一个性质是，原始关系必须能够通过连接分解结果来恢复。这意味着连接后的关系必须包含原始关系的所有元组，而没有额外的元组。这个性质是不可妥协的；关系的连接必须给出真实的答案。事实上，所呈现的BCNF分解算法满足这一条件；而任意分解则不一定满足。</p>
+<p>我们省略了分解算法正确性的完整证明。直观理解可以从考虑函数依赖的意义开始。某个函数依赖 <span class="math notranslate nohighlight">\(X \rightarrow Y\)</span> 的存在告诉我们 <em>Y</em> 属性必须与 <em>X</em> 属性保持一致。 <em>X</em> 的任何不同值都可以与正好一个 <em>Y</em> 值的设置相关联；因此 <em>X</em> 唯一标识 <em>Y</em>。因此，如果我们有一个关系可以让我们查找每个不同 <em>X</em> 值对应的 <em>Y</em> 值，我们可以仅使用原始关系中的 <em>X</em> 属性作为 <em>X</em> 和 <em>Y</em> 的代表。分解算法正是创建了这种情况；对参与函数依赖的属性进行投影创建了“查找”关系（在我们第一个分解示例中为 <strong>authors</strong> ）； <em>X</em> 属性（<strong>author</strong>）作为外键保留，而 <em>Y</em> 属性（ <strong>author_birth</strong> 、 <strong>author_death</strong> ）可以被移除。基于共享外键的关系连接恢复了 <em>Y</em> 值到正确的元组中。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>This first property we have mentioned, which is that the original relation must be recoverable by joining the decomposition products.  This means that the joined relation must have all of the tuples of the original, and no extra tuples.  This property is non-negotiable; a join of the relations must give true answers.  In fact, the BCNF decomposition algorithm as presented fulfills this condition; an arbitrary decomposition would not necessarily do so.</p>
+<p>We omit a full proof of the correctness of the decomposition algorithm.  An intuitive understanding begins with a consideration of the meaning of functional dependency.  The existence of some functional dependency <span class="math notranslate nohighlight">\(X \rightarrow Y\)</span> tells us that the <em>Y</em> attributes must remain in lockstep with the <em>X</em> attributes.  Any distinct value of <em>X</em> can be associated with exactly one setting of <em>Y</em> values; so <em>X</em> uniquely identifies <em>Y</em>.  Therefore, if we have a relation that lets us look up the values for <em>Y</em> for each distinct value of <em>X</em>, we can use <em>just the</em> X <em>attributes</em> in the original relation as representative of both <em>X</em> and <em>Y</em>.  The decomposition algorithm creates exactly this situation; projection onto the attributes involved in the functional dependency creates the “lookup” relation (<strong>authors</strong> in our first decomposition example); the <em>X</em> attributes (<strong>author</strong>) remain as a foreign key and the <em>Y</em> attributes (<strong>author_birth</strong>, <strong>author_death</strong>) can be removed.  A join of the relations on the shared foreign key restores the <em>Y</em> values to the correct tuples.</p>
+</div>
+</div>
+</div><h4 id="id32"><span class="section-number">3.3.6.3.2. </span>依赖关系保存<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<p><em>Dependency preservation</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:2">
+<input checked type="radio" id="__tabbed_23_1" name="__tabbed_23"><input type="radio" id="__tabbed_23_2" name="__tabbed_23"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_23_1">
+中文</label><label class="tabbed-label" for="__tabbed_23_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>第二个期望的分解属性 <em>并不</em> 总是通过BCNF分解来满足。这个第二个属性要求所有由原始函数依赖暗示的约束在分解后保留在数据库中。事实证明，我们可以通过将其规范化到3NF来保证这一属性，但不一定是BCNF。这一点通过一个例子来说明。</p>
+<p>考虑下面的关系，涉及到科幻类文学作品的雨果奖和星云奖。这两个奖项每年在多个类别中颁发，例如“最佳小说”、“最佳短篇小说”等。通常在某一年中，某一特定格式的作品只能赢得一个奖项（我们假设这个规则始终被执行，以便于示例）。因此，如果我们知道奖项、年份和格式，就可以明确地确定获奖作品。下面的关系给出了一些代表性的数据：</p>
+<table class="lined-table docutils data align-default" id="id66">
+<caption><span class="caption-text"><strong>scifi_awards</strong></span><a class="headerlink" href="#id66" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>award</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>format</p></th>
+<th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>novel</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>short story</p></td>
+<td><p>Larry Niven</p></td>
+<td><p>The Hole Man</p></td>
+</tr>
+<tr class="row-even"><td><p>Hugo</p></td>
+<td><p>1974</p></td>
+<td><p>novel</p></td>
+<td><p>Arthur C. Clarke</p></td>
+<td><p>Rendezvous With Rama</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nebula</p></td>
+<td><p>1975</p></td>
+<td><p>novel</p></td>
+<td><p>Joe Haldeman</p></td>
+<td><p>The Forever War</p></td>
+</tr>
+<tr class="row-even"><td><p>Nebula</p></td>
+<td><p>1974</p></td>
+<td><p>novel</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+</tr>
+</tbody>
+</table>
+<p>有两个重要的函数依赖。第一个反映了每种格式中每年只能有一部作品获奖的规则：</p>
+<div class="math notranslate nohighlight">
+\[\text{\{award, year, format\}} \rightarrow \text{\{author, title\}}\]</div>
+<p>第一个约束不违反3NF或BCNF，因为左侧是关系的一个键。</p>
+<p>第二个FD承认每部作品属于特定格式；作品可以是小说或短篇小说，但不能同时是两者：</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, title\}} \rightarrow \text{\{format\}}\]</div>
+<p>这个关系属于在3NF但不在BCNF的狭窄类别。正如本例所示，这种情况发生在关系包含属性集 <em>A</em>、<em>B</em> 和 <em>C</em>，并且有 <span class="math notranslate nohighlight">\(AB \rightarrow C\)</span> 和 <span class="math notranslate nohighlight">\(C \rightarrow B\)</span>。第二个FD违反BCNF，因为 {author, title} 不是该关系的一个键（如上面的示例数据所示）。然而，这个FD并不违反3NF，因为右侧（{format}）是关系键的一部分。</p>
+<p>如果我们按BCNF的违反进行常规分解，直接的分解结果必须连接在一起以返回原始关系，从而拥有正确的数据，因此这并不是问题。然而，经过分解后，我们有了属性为 {author, title, format} 和 {award, year, author, title} 的关系。上述第一个FD，即限制每年每种格式只能有一部作品获奖的约束，现在不再适用于任何一个关系。这些新关系无法防止我们存储如下数据：</p>
+<table class="lined-table docutils data align-default" id="id67">
+<caption><span class="caption-text"><strong>scifi_awards_1</strong></span><a class="headerlink" href="#id67" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>novel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Roger Zelazny</p></td>
+<td><p>Doorways in the Sand</p></td>
+<td><p>novel</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id68">
+<caption><span class="caption-text"><strong>scifi_awards_2</strong></span><a class="headerlink" href="#id68" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>award</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>Roger Zelazny</p></td>
+<td><p>Doorways in the Sand</p></td>
+</tr>
+</tbody>
+</table>
+<p>由于雨果奖在某一年颁给多部作品（只是因为作品的不同类别），第二个关系中的数据 <em>可能</em> 是有效的——但前提是这两部作品确实属于不同的类别。然而，正如第一个关系所示，它们实际上属于同一类别（实际上，第二个关系包含了错误数据）。只有在连接这两个关系后，我们才能看到约束被违反。</p>
+<p>在这个特定的案例中，保留原始关系在3NF，并用由 {award, year, format} 组成的主键来保持约束，将是更可取的。考虑到作品在关系中最多只能出现两次（因为我们只有两个奖项），涉及的冗余是小的。然而，如果你遇到这种情况，你必须确定适合你特定案例的最佳解决方案。如果你将关系保留在3NF，那么你必须管理BCNF违反所暗示的修改异常（在应用软件中或通过其他机制）。如果你将关系移到BCNF，那么你必须以其他方式强制执行丢失的约束。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A second desirable property for a decomposition is <em>not</em> always met with BCNF decomposition.  This second property requires that all constraints implied by the original functional dependencies are preserved in the database after decomposition.  It turns out that we can guarantee this property by normalizing to 3NF, but not BCNF.  This is best illustrated with an example.</p>
+<p>Consider the relation below, regarding the Hugo and Nebula awards for literary and other works in the science fiction genre.  These two awards are given each year in multiple categories, such as “Best Novel”, “Best Short Story” and so forth.  Typically only one work in a given format in a given year wins a given award (we will assume that rule is always enforced for example purposes).  Therefore, if we are given the award, year, and format, we can unambiguously determine the award winning work.  The relation below gives some representative data:</p>
+<table class="lined-table docutils data align-default" id="id69">
+<caption><span class="caption-text"><strong>scifi_awards</strong></span><a class="headerlink" href="#id69" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>award</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>format</p></th>
+<th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>novel</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>short story</p></td>
+<td><p>Larry Niven</p></td>
+<td><p>The Hole Man</p></td>
+</tr>
+<tr class="row-even"><td><p>Hugo</p></td>
+<td><p>1974</p></td>
+<td><p>novel</p></td>
+<td><p>Arthur C. Clarke</p></td>
+<td><p>Rendezvous With Rama</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nebula</p></td>
+<td><p>1975</p></td>
+<td><p>novel</p></td>
+<td><p>Joe Haldeman</p></td>
+<td><p>The Forever War</p></td>
+</tr>
+<tr class="row-even"><td><p>Nebula</p></td>
+<td><p>1974</p></td>
+<td><p>novel</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+</tr>
+</tbody>
+</table>
+<p>There are two important functional dependencies.  The first, reflecting the rule that only one work in each format can win a particular award in a given year, is</p>
+<div class="math notranslate nohighlight">
+\[\text{\{award, year, format\}} \rightarrow \text{\{author, title\}}\]</div>
+<p>The first constraint does not violate 3NF or BCNF, because the left-hand side is a key for the relation.</p>
+<p>The second FD acknowledges that each work is in a particular format; a work may be a novel or a short story, but not both:</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author, title\}} \rightarrow \text{\{format\}}\]</div>
+<p>This relation falls into the narrow category of relations that are in 3NF but not in BCNF.  As in this example, this occurs when the relation contains sets of attributes <em>A</em>, <em>B</em>, and <em>C</em>, with <span class="math notranslate nohighlight">\(AB \rightarrow C\)</span> and <span class="math notranslate nohighlight">\(C \rightarrow B\)</span>.  The second FD violates BCNF, because {author, title} is not a key for this relation (as demonstrated in the example data above).  However, the FD does not violate 3NF, because the right-hand side ({format}) is part of a key for the relation.</p>
+<p>If we decompose as usual on the BCNF violation, the immediate decomposition products must join together to return the original relation, which has correct data, so that is not a problem.  However, after decomposition, we have relations with attributes {author, title, format} and {award, year, author, title}.  The first FD above, which enforced the constraint of an award going to only one work in each format each year, no longer applies to either relation.  The new relations cannot prevent us storing data such as the following:</p>
+<table class="lined-table docutils data align-default" id="id70">
+<caption><span class="caption-text"><strong>scifi_awards_1</strong></span><a class="headerlink" href="#id70" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+<td><p>novel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Roger Zelazny</p></td>
+<td><p>Doorways in the Sand</p></td>
+<td><p>novel</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id71">
+<caption><span class="caption-text"><strong>scifi_awards_2</strong></span><a class="headerlink" href="#id71" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>award</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>author</p></th>
+<th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>Ursula K. Le Guin</p></td>
+<td><p>The Dispossessed</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hugo</p></td>
+<td><p>1975</p></td>
+<td><p>Roger Zelazny</p></td>
+<td><p>Doorways in the Sand</p></td>
+</tr>
+</tbody>
+</table>
+<p>Since the Hugo award is given to multiple works in a given year (just for different categories of work), the data in the second relation <em>could be</em> valid - but only if the two works listed happen to be in different categories.  However, as the first relation shows, they are in the same category (the second relation, as it happens, contains false data).  Only if we join these two relations can we see that we have violated our constraint.</p>
+<p>In this particular case, it would be preferable to leave the original relation in 3NF and preserve the constraint with a primary key composed of {award, year, format}.  The redundancy involved is small, given that works can appear at most twice in the relation (since we only have the two awards).  If you encounter such a situation, however, you must determine the best way forward for your particular case.  If you leave the relation in 3NF, then you must manage the modification anomalies implied implied by the BCNF violation (in the application software, or some other mechanism).  If you move the relation to BCNF, then you must enforce the lost constraint in some other fashion.</p>
+</div>
+</div>
+</div><h2 id="index-13"><span id="id33"></span><span class="section-number">3.3.7. </span>多值依赖关系和第四范式<a class="headerlink" href="#index-13" title="Link to this heading">¶</a></h2>
+<p><em>Multivalued dependencies and fourth normal form</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2">
+<input checked type="radio" id="__tabbed_24_1" name="__tabbed_24"><input type="radio" id="__tabbed_24_2" name="__tabbed_24"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_24_1">
+中文</label><label class="tabbed-label" for="__tabbed_24_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>违反BCNF的关系在正常的数据收集活动中经常出现。例如，一个记录活动日志的网络服务器可能会记录用户信息以及用户在网站上访问的页面的信息。在多个日志条目中出现相同的用户信息时，冗余就显而易见。</p>
+<p>相比之下，第四范式（4NF）违反不太可能在数据收集过程中发生。4NF解决的问题是当试图将包含多个独立一对多关系的数据存储在单个关系中时所出现的问题。在这种情况下的冗余更加微妙，且更难以识别。</p>
+<p>作为一个例子，我们将考虑一些授予文学成就的许多奖项。有些奖项授予作者（如诺贝尔文学奖、纽斯塔特国际文学奖），而不涉及特定作品。另一些奖项（如普利策奖、星云奖）则是对特定作品的认可。一个作者可以获得任一类型的多个奖项。如果我们在设计时不谨慎，可能会得出如下的关系：</p>
+<table class="lined-table docutils data align-default" id="id72">
+<caption><span class="caption-text"><strong>authors_and_awards</strong></span><a class="headerlink" href="#id72" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>author_award</p></th>
+<th class="head"><p>book_award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Louise Glück</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Louise Glück</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>National Book Award</p></td>
+</tr>
+<tr class="row-even"><td><p>John Steinbeck</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>Giller Prize</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>International Booker Prize</p></td>
+<td><p>Giller Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>National Book Critics Circle Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>International Booker Prize</p></td>
+<td><p>National Book Critics Circle Award</p></td>
+</tr>
+</tbody>
+</table>
+<p>这只是一个示例；我们可能希望在关系中包含其他属性，例如每个奖项获奖的年份，或者某个书籍奖项获奖的书名，但这些额外的属性会转移我们试图解决的中心问题。</p>
+<p>乍一看，这个关系中似乎存在许多冗余。例如，我们有两个元组显示Louise Glück获得诺贝尔奖，Alice Munro也是如此。我们在两个不同的元组中显示Alice Munro获得Giller奖 <a class="footnote-reference brackets" href="#id48" id="id34" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a> 。然而，对于这个关系，没有任何非平凡的函数依赖。该关系的唯一键是集合 {author, author_award, book_award}，因此每个元组都是唯一的。因此，该关系处于BCNF中。</p>
+<p>这里的模式指示了一种称为 <em>多值依赖</em> （MVD）的情况。MVD的正式定义相当晦涩，我们在此不进行阐述。非正式地说，我们有属性子集 <em>A</em>、<em>B</em> 和 <em>C</em>，对于给定的 <em>A</em>，每个 <em>B</em> 的不同值必须与与 <em>A</em> 相关联的每个 <em>C</em> 的不同值配对。当这成立时，我们称 <em>A</em> <em>多决定</em> <em>B</em>，并写作：</p>
+<div class="math notranslate nohighlight">
+\[A \twoheadrightarrow B\]</div>
+<p>这个情况也是对称的；当 <em>A</em> 多决定 <em>B</em> 时，它也多决定 <em>C</em>。因此我们可以写作：</p>
+<div class="math notranslate nohighlight">
+\[A \twoheadrightarrow B|C\]</div>
+<p>在我们的例子中，考虑Alice Munro和她的诺贝尔奖，她获得了哪些书籍奖项？答案必须包括Giller奖和全国图书评论圈奖。考虑她的国际布克奖时，答案也是如此。我们可以考虑Alice Munro和她的Giller奖，问她获得了哪些作者奖项；这次答案包括她的诺贝尔奖和国际布克奖。因此，对于该关系，MVD</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \twoheadrightarrow \text{\{author_award\}} | \text{\{book_award\}}\]</div>
+<p>成立。</p>
+<p>第四范式的定义看起来与BCNF的定义非常相似，只是将MVD替代为FD：</p>
+<dl class="simple">
+<dt><strong>第四范式的定义</strong></dt><dd><p>如果对于关系中的每个非平凡多值依赖形式 <span class="math notranslate nohighlight">\(X \twoheadrightarrow Y\)</span>，<em>X</em> 是该关系的超键，则该关系处于4NF。</p>
+</dd>
+</dl>
+<p>显然在我们的示例关系中，集合 {author} 不是超键，因此该关系不在4NF。4NF违反的解决方案恰好与BCNF违反的解决方案相同。给定一个违反4NF的MVD <span class="math notranslate nohighlight">\(X \twoheadrightarrow Y\)</span>，我们将其分解为两个关系，一个包含属性 <em>XY</em>，另一个包含属性 <em>XZ</em>，其中 <em>Z</em> 是不在 <em>X</em> 或 <em>Y</em> 中的所有内容（<em>Z</em> 也如上所述由 <em>X</em> 多决定）。分解消除了独立概念的配对。在我们的例子中，分解产生：</p>
+<table class="lined-table docutils data align-default" id="id73">
+<caption><span class="caption-text"><strong>author_awards</strong></span><a class="headerlink" href="#id73" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>author_award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Louise Glück</p></td>
+<td><p>Nobel Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>John Steinbeck</p></td>
+<td><p>Nobel Prize</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>Nobel Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>International Booker Prize</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id74">
+<caption><span class="caption-text"><strong>author_book_awards</strong></span><a class="headerlink" href="#id74" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>book_award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Louise Glück</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Louise Glück</p></td>
+<td><p>National Book Award</p></td>
+</tr>
+<tr class="row-even"><td><p>John Steinbeck</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>Giller Prize</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>National Book Critics Circle Award</p></td>
+</tr>
+</tbody>
+</table>
+<p>MVD的正式定义是足够一般的，以至于每个FD都符合MVD的条件。因此，处于4NF的关系也在BCNF中。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Relations that violate BCNF frequently occur in normal data collection activities.  For example, a web server keeping activity logs might record user information along with information about the pages the user visits on the website.  Redundancy is apparent in the user information appearing identically in multiple log entries.</p>
+<p>In contrast, fourth normal form (4NF) violations are unlikely to occur in data gathering.  Instead, 4NF addresses problems that occur when an attempt is made to store data that includes multiple independent one-to-many relationships in a single relation.  Redundancy in this setting is more subtle and harder to identify.</p>
+<p>For an example, we will consider some of the many awards given for literary merit.  Some awards are given to authors (Nobel Prize in Literature, Neustadt International Prize for Literature) without reference to a specific work.  Others (Pulitzer Prize, Nebula Award) are given in recognition of specific works.  An author can win multiple awards of either type.  If we are incautious in our design, we might come up with a relation like the following:</p>
+<table class="lined-table docutils data align-default" id="id75">
+<caption><span class="caption-text"><strong>authors_and_awards</strong></span><a class="headerlink" href="#id75" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>author_award</p></th>
+<th class="head"><p>book_award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Louise Glück</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Louise Glück</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>National Book Award</p></td>
+</tr>
+<tr class="row-even"><td><p>John Steinbeck</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>Giller Prize</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>International Booker Prize</p></td>
+<td><p>Giller Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>Nobel Prize</p></td>
+<td><p>National Book Critics Circle Award</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>International Booker Prize</p></td>
+<td><p>National Book Critics Circle Award</p></td>
+</tr>
+</tbody>
+</table>
+<p>This is just an illustration; we would probably want to include other attributes to our relation such as the year each award was won, or the book for which a book award was won, but these extra attributes distract from the central concern we are trying to address.</p>
+<p>At a casual glance it appears that there are many redundancies in this relation.  For example, we have two tuples showing that Louise Glück won a Nobel Prize, and the same for Alice Munro.  We show Alice Munro winning the Giller Prize in two different tuples <a class="footnote-reference brackets" href="#id49" id="id35" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a>.  For this relation, however, there are no non-trivial functional dependencies whatsoever.  The only key for the relation is the set {author, author_award, book_award}, so each tuple is unique.  Therefore the relation is in BCNF.</p>
+<p>The pattern here is indicative of something called a <em>multivalued dependency</em> (MVD).  The formal definition of an MVD is rather opaque, and we will not state it here.  Informally, we have subsets of attributes <em>A</em>, <em>B</em>, and <em>C</em>, such that, for a given <em>A</em>, every distinct value of <em>B</em> must be paired with every distinct value of <em>C</em> associated with the value of <em>A</em>.  When this is true we state that <em>A</em> <em>multidetermines</em> <em>B</em>, and write</p>
+<div class="math notranslate nohighlight">
+\[A \twoheadrightarrow B\]</div>
+<p>The situation is also symmetric; when <em>A</em> multidetermines <em>B</em> it also multidetermines <em>C</em>.  Thus we may write</p>
+<div class="math notranslate nohighlight">
+\[A \twoheadrightarrow B|C\]</div>
+<p>In our example, considering Alice Munro and her Nobel Prize, what book awards did she win?  The answer must include both the Giller Prize and the National Book Critics Circle Award.  The same answer applies when we consider her International Booker Prize.  We might instead consider Alice Munro and her Giller prize and ask what author awards she won; this time the answer would include her Nobel Prize and her International Booker Prize.  Thus, for this relation the MVD</p>
+<div class="math notranslate nohighlight">
+\[\text{\{author\}} \twoheadrightarrow \text{\author_award\}} | \text{\{book_award\}}\]</div>
+<p>holds.</p>
+<p>The definition of fourth normal form looks much like the definition of BCNF, substitution MVD for FD:</p>
+<dl class="simple">
+<dt><strong>Definition of 4NF</strong></dt><dd><p>A relation is in 4NF if, for every non-trivial multivalued dependency of the form <span class="math notranslate nohighlight">\(X \twoheadrightarrow Y\)</span> on the relation, <em>X</em> is a superkey of the relation.</p>
+</dd>
+</dl>
+<p>Clearly in our example relation, the set {author} is not a superkey, so the relation is not in 4NF.  The solution to a 4NF violation happens to be identical to the solution for a BCNF violation.  Given an MVD <span class="math notranslate nohighlight">\(X \twoheadrightarrow Y\)</span> that violates 4NF, we decompose into two relations, one with the attributes in <em>XY</em>, and the other with the attributes in <em>XZ</em>, where <em>Z</em> is everything not in <em>X</em> or <em>Y</em> (<em>Z</em> is also multidetermined by <em>X</em> as discussed above).  The decomposition eliminates the pairing of independent concepts.  For our example, the decomposition yields:</p>
+<table class="lined-table docutils data align-default" id="id76">
+<caption><span class="caption-text"><strong>author_awards</strong></span><a class="headerlink" href="#id76" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>author_award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Louise Glück</p></td>
+<td><p>Nobel Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>John Steinbeck</p></td>
+<td><p>Nobel Prize</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>Nobel Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>International Booker Prize</p></td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id77">
+<caption><span class="caption-text"><strong>author_book_awards</strong></span><a class="headerlink" href="#id77" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>author</p></th>
+<th class="head"><p>book_award</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Louise Glück</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Louise Glück</p></td>
+<td><p>National Book Award</p></td>
+</tr>
+<tr class="row-even"><td><p>John Steinbeck</p></td>
+<td><p>Pulitzer Prize</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alice Munro</p></td>
+<td><p>Giller Prize</p></td>
+</tr>
+<tr class="row-even"><td><p>Alice Munro</p></td>
+<td><p>National Book Critics Circle Award</p></td>
+</tr>
+</tbody>
+</table>
+<p>The formal definition of MVD is sufficiently general that every FD qualifies as an MVD.  Therefore, a relation in 4NF is also in BCNF.</p>
+</div>
+</div>
+</div><h2 id="id36"><span class="section-number">3.3.8. </span>权衡<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h2>
+<p><em>Trade-offs</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:2">
+<input checked type="radio" id="__tabbed_25_1" name="__tabbed_25"><input type="radio" id="__tabbed_25_2" name="__tabbed_25"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_25_1">
+中文</label><label class="tabbed-label" for="__tabbed_25_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>正如我们所见，规范化的过程会导致关系的数量增加（通常较小）。尽管关系数量激增，规范化实际上简化了应用软件，因为它消除了修改异常和相关问题。较小的关系也可能带来适度的空间节省，并且对关系进行单独查询的速度更快。然而，当一个查询需要从许多不同的关系中收集数据时，性能可能会受到影响。尤其是在涉及大量数据时，连接操作对于关系数据库系统来说变得非常昂贵。</p>
+<p>因此，有时创建一个 <em>反规范化</em> 数据库是可取的，其中数据被存储在一个或多个大型关系中，表示将多个关系合并的结果。这样的决定不应轻率做出，而应考虑到修改异常的影响。一种流行的方法是创建两个包含相同数据的数据库，而不是一个。在这种方法中，一个数据库是完全规范化的，用于处理数据更新。另一个反规范化数据库仅用于只读查询，可能仅定期更新（可能是每日或每小时）。反规范化数据库的用户会获得稍微过时的答案，但速度更快。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>As we have seen, the process of normalization leads to increased numbers of (generally smaller) relations.  Despite this proliferation of relations, normalization actually simplifies application software due to eliminating modification anomalies and related issues.  Smaller relations may also provide modest space savings, and performing queries on the relations in isolation will be faster.  However, when a query requires data collected into many different relations, performance can suffer.  Particularly when large volumes of data are involved, join operations become expensive for relational database systems.</p>
+<p>As a result, there are occasions when it is desirable to create a <em>de-normalized</em> database, in which data is held in one or more large relations representing the result of joining together numerous relations.  Such a decision should not be made lightly and without consideration for the impact of modification anomalies.  One popular approach creates not one, but two databases containing the same data.  In this approach, one database is fully normalized and is used to process data updates.  The other, de-normalized database is used solely for read-only queries, and may be updated (or re-created) only periodically (perhaps daily or hourly).  Users of the de-normalized database receive slightly out-of-date answers, but faster.</p>
+</div>
+</div>
+</div><h2 id="id37"><span class="section-number">3.3.9. </span>数据库设计中的规范化<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h2>
+<p><em>Normalization in database design</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="26:2">
+<input checked type="radio" id="__tabbed_26_1" name="__tabbed_26"><input type="radio" id="__tabbed_26_2" name="__tabbed_26"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_26_1">
+中文</label><label class="tabbed-label" for="__tabbed_26_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>数据库可以通过多种方法创建。所采取的方法在很大程度上取决于导致需要数据库的具体情况。</p>
+<p>在某些情况下，数据可能之前已经以某种方式收集并存储，但并没有组织成我们认为的数据库。许多科学、工业和商业流程会产生大量数据，例如传感器读数、应用日志、报告和表单响应。这些数据可能存在于电子形式或纸质形式。数据可能几乎没有结构；它可能以 <em>扁平(flat)</em> 形式存在，其中只有一种类型的记录存储与某个事件相关的所有信息。创建一个数据库以更有效地处理这些数据，最好采用自上而下的方法，通过系统性地分解关系来实现。数据建模（<a class="reference internal" href="../../PART2_DATA_MODELING/index.html#data-modeling-part"><span class="std std-numref">Part 2</span></a>）可以作为这个过程的一部分，用于记录、沟通和推理不断发展的数据库。</p>
+<p>相反，在创建新的软件应用程序时，可能更倾向于自下而上的方法。应用程序开发人员和其他相关方努力识别需要收集和存储的数据属性。多个关系自然出现，分别对应应用程序的不同部分。数据建模通常应该在这个过程的早期进行。</p>
+<p>数据建模在生成准确表示独立概念及其之间关系的关系方面非常有效。然而，有些关系可能仍然需要规范化。规范化提供了对数据库设计的不同视角。与数据建模一样，我们对现实世界和数据的理解会影响我们的选择。然而，数据建模专注于将现实世界中的概念映射到关系，而规范化则旨在产生对数据错误更具抵抗力的数据库结构。数据建模确保我们的数据库准确捕获所需的数据，而规范化则确保我们的数据库可以有效使用。因此，这两项活动是互补的。无论是否正式应用规范化，理解规范化及其权衡对任何数据库设计师来说都是重要的。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Databases can be created using a number of approaches.  The approach taken depends greatly on the circumstances which have led to the need for a database.</p>
+<p>In some cases, data have been previously collected and stored in some fashion, but not organized into something we would consider a database.  Many scientific, industrial, and business processes produce large amounts of data in the form of sensor readings, application logs, reports, and form responses.  This data may exist in electronic form or on paper.  There may be little structure to the data; it may exist in a <em>flat</em> form in which there is only one type of record which stores every piece of information relevant to some event.  Creating a database to more efficiently work with such data may be best accomplished using a top-down approach, in which relations are systematically decomposed.  Data modeling (<a class="reference internal" href="../../PART2_DATA_MODELING/index.html#data-modeling-part"><span class="std std-numref">Part 2</span></a>) may be used as part of this process, to document, communicate, and reason about the evolving database.</p>
+<p>In contrast, when creating a new software application, a bottom-up approach may be preferred.  The application developers and other interested parties work to identify the data attributes that need to be collected and stored.  Multiple relations emerge naturally, corresponding to different parts of the application.  Data modeling should almost always occur early in this process.</p>
+<p>Data modeling is very effective at producing relations that accurately represent independent concepts and the relationships between them.  However, some relations may still require normalization.  Normalization provides a different perspective on database design.  As with data modeling, our understanding of the real world and our data informs our choices.  However, while data modeling focuses on mapping concepts in the real world to relations, normalization works to produce a database structure that is more resistant to data errors.  Data modeling ensures our database accurately captures the data we need, while normalization ensures our database can be used effectively.  The two activities are thus complementary.  Whether or not normalization is applied formally, an understanding of normalization and its trade-offs is important for any database designer.</p>
+</div>
+</div>
+</div><hr class="docutils" />
+<p><strong>Notes</strong></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id38" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">1</a><span class="fn-bracket">]</span></span>
+<p>当信息确实未知或缺失时，我们可能需要使用 NULL；例如，对于当前没有分配讲师的课程，我们会将 <strong>instructor</strong> 属性设置为 NULL。类似地，对于尚未拥有办公室的新讲师，我们可能会将 <strong>office</strong> 属性设置为 NULL。这两种情况都不需要在我们的软件中进行特殊处理，因此我们认为这些 NULL 是可以接受的。虽然有可能设计一个甚至避免这些 NULL 的数据库，但这样会使数据库复杂化（增加更多关系），而收益很小。</p>
+</aside>
+<aside class="footnote brackets" id="id39" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">2</a><span class="fn-bracket">]</span></span>
+<p>We may need to use NULLs when information is truly unknown or absent; for example, we would set the <strong>instructor</strong> attribute NULL for classes which have no instructor assigned at the current time.  Similarly, we might set the <strong>office</strong> attribute NULL for new instructors who do not yet have an office.  Neither of these cases requires special handling in our software, so we consider these NULLs acceptable.  While it is possible to design a database that avoids even these NULLs, it would complicate the database (with more relations) for little gain.</p>
+</aside>
+<aside class="footnote brackets" id="id40" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">3</a><span class="fn-bracket">]</span></span>
+<p>在一些以英语为主要语言的国家，将姓名分为名（或给定名）、中间名和姓（或姓氏）是常见做法。然而，这种命名方案并不是普遍适用的，即使对英语使用者而言也是如此。除非有强烈的需求将姓名拆分为组件，否则我们建议使用单一的姓名属性。有关此主题的更多信息，请参见 <a class="reference external" href="https://www.w3.org/International/questions/qa-personal-names">https://www.w3.org/International/questions/qa-personal-names</a>。</p>
+</aside>
+<aside class="footnote brackets" id="id41" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">4</a><span class="fn-bracket">]</span></span>
+<p>It is common practice in some countries where English is the primary language to break a name into first (or given), middle, and last name (or surname).  However, this naming scheme is by no means universal, even for English speakers.  Unless there is a compelling need to break a name into components for your application, we recommend a single name attribute.  For more on this topic, see <a class="reference external" href="https://www.w3.org/International/questions/qa-personal-names">https://www.w3.org/International/questions/qa-personal-names</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id42" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">5</a><span class="fn-bracket">]</span></span>
+<p>我们重申，超键是我们对数据施加的约束。在设计数据库时，我们当然希望创建一个能够容纳现实世界真实事实的结构，但 a) 由于对世界信息的不足，我们有时会失败，b) 我们有时会妥协，选择一个能够容纳 <em>大多数</em> 事实的更简单设计。对于我们的 <strong>simple_books</strong> 关系，我们不知道是否有同一作者在同一年出版的同名书籍，因此我们可以自信地断言 {<strong>author</strong>, <strong>title</strong>, <strong>year</strong>} 是一个有效的超键（但我们可能是错的）。另一方面，这种设计故意未能捕捉现实世界中书籍的许多复杂性。举个例子，作者偶尔会在原始出版多年后，以相同的书名重新出版稍作修改的书籍。这是同一本“书”（在这种情况下，<strong>year</strong> 实际上代表“首次出版年份”），还是不同的书（在这种情况下，{<strong>author</strong>, <strong>title</strong>} 不是超键）？另一个例子是，我们完全忽略了一些书籍有多个作者，或一些书籍没有已知作者的事实。关于书籍的数据库可以非常复杂！</p>
+</aside>
+<aside class="footnote brackets" id="id43" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">6</a><span class="fn-bracket">]</span></span>
+<p>We reiterate that a superkey is a constraint <em>we impose</em> on the data.  When designing a database, we of course hope to create a structure that accommodates true facts from the world, but a) we sometimes fail due to incomplete information about the world, and b) we sometimes compromise on a simpler design that accommodates <em>most</em> facts from the world.  For our <strong>simple_books</strong> relation, we are unaware of any books by the same author with the same title in the same year, so we are comfortable asserting that {<strong>author</strong>, <strong>title</strong>, <strong>year</strong>} is a valid superkey (but we could be wrong).  On the other hand, this design intentionally fails to capture any number of the complexities of books in the real world.  For one example, authors occasionally re-publish a book with small changes, under the same title, years after the original publication.  Is this the same “book” (in which case <strong>year</strong> really stands for “year of first publication”), or a different book (in which case {<strong>author</strong>, <strong>title</strong>} is <em>not</em> a superkey)?  For another example, we are completely ignoring the fact that some books have multiple authors, and some have no known authors.  Databases about books can be very complex!</p>
+</aside>
+<aside class="footnote brackets" id="id44" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id23">7</a><span class="fn-bracket">]</span></span>
+<p>以 Raymond F. Boyce 和 Edgar F. Codd 的名字命名，他们在 1974 年发布了一篇 <a class="reference internal" href="../../references/references.html#relational-theory-references"><span class="std std-ref">论文</span></a> 定义了这一范式。然而，Ian Heath 在 1971 年的一篇论文中早先给出了描述。</p>
+</aside>
+<aside class="footnote brackets" id="id45" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id24">8</a><span class="fn-bracket">]</span></span>
+<p>Named after Raymond F. Boyce and Edgar F. Codd, who published a <a class="reference internal" href="../../references/references.html#relational-theory-references"><span class="std std-ref">paper</span></a> in 1974 defining this normal form.  However, a 1971 paper by Ian Heath gave a prior description.</p>
+</aside>
+<aside class="footnote brackets" id="id46" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id28">9</a><span class="fn-bracket">]</span></span>
+<p>给定 <em>R</em> 和 <em>R1</em> 以及在 <em>R1</em> 上的一组 FD，对于 <em>R1</em> 属性的每个子集 <em>X</em>，计算在 <em>R</em> 中的闭包 <em>X</em><sup>+</sup>。对于 <em>R1</em> 的每个属性 <em>a</em>，如果它在 <em>X</em> 的闭包中，根据拆分规则，<span class="math notranslate nohighlight">\(X \rightarrow \{a\}\)</span> 是 <em>R1</em> 的一个 FD。如果 <em>X</em><sup>+</sup> 包含 <em>R1</em> 的每个属性，则 <em>X</em> 是 <em>R1</em> 的一个超键。</p>
+</aside>
+<aside class="footnote brackets" id="id47" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id29">10</a><span class="fn-bracket">]</span></span>
+<p>Given <em>R</em> and <em>R1</em> and a collection of FDs on R1, for every subset <em>X</em> of the attributes of <em>R1</em>, compute the closure, <em>X</em><sup>+</sup> in <em>R</em>. For every attribute <em>a</em> of <em>R1</em> that is in the closure of <em>X</em>, by the splitting rule, <span class="math notranslate nohighlight">\(X \rightarrow \{a\}\)</span> is an FD for <em>R1</em>. If <em>X</em><sup>+</sup> contains every attribute of <em>R1</em>, then <em>X</em> is a superkey of <em>R1</em>.</p>
+</aside>
+<aside class="footnote brackets" id="id48" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id34">11</a><span class="fn-bracket">]</span></span>
+<p>实际上，Alice Munro 在不同年份赢得了两次 Giller Prize；如果我们包含一个年份属性，我们就必须将 Alice Munro 的条目数量翻倍！</p>
+</aside>
+<aside class="footnote brackets" id="id49" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id35">12</a><span class="fn-bracket">]</span></span>
+<p>As it happens, Alice Munro won two Giller Prizes, in different years; if we included an attribute for year, we would have to double the number of entries for Alice Munro!</p>
+</aside>
+</aside>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../02-relational-algebra/relational-algebra.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.2. 关系代数" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              3.2. 关系代数
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../04-sql-vs-theory/sql-vs-theory.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3.4. SQL 与关系模型之间的差异" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              3.4. SQL 与关系模型之间的差异
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script id="MathJax-script" src="../../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,2558 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>附录 B: SQL 参考 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-types" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              附录 B: SQL 参考
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="#" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span title="data types (reference label)" class="md-ellipsis">数据类型</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-number-types" class="md-nav__link">
+    <span title="appendix-b-number-types (reference label)" class="md-ellipsis">数字类型</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">整数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">精确十进制数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">浮点数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">数据库对数字类型的支持</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-string-types" class="md-nav__link">
+    <span title="appendix-b-string-types (reference label)" class="md-ellipsis">字符串类型</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-datetime-types" class="md-nav__link">
+    <span title="appendix-b-datetime-types (reference label)" class="md-ellipsis">日期和时间类型</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id9" class="md-nav__link">
+    <span class="md-ellipsis">运算和函数</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运算和函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-comparison-operators" class="md-nav__link">
+    <span title="appendix-b-comparison-operators (reference label)" class="md-ellipsis">比较运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-math-operators" class="md-nav__link">
+    <span title="appendix-b-math-operators (reference label)" class="md-ellipsis">数学运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-string-operators" class="md-nav__link">
+    <span title="appendix-b-string-operators (reference label)" class="md-ellipsis">字符串运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-operators" class="md-nav__link">
+    <span title="boolean operators (reference label)" class="md-ellipsis">布尔运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-datetime-operators" class="md-nav__link">
+    <span title="appendix-b-datetime-operators (reference label)" class="md-ellipsis">日期和时间运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id20" class="md-nav__link">
+    <span class="md-ellipsis">其他运算符和函数</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-aggregate-functions" class="md-nav__link">
+    <span title="appendix-b-aggregate-functions (reference label)" class="md-ellipsis">聚合函数</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span title="data types (reference label)" class="md-ellipsis">数据类型</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-number-types" class="md-nav__link">
+    <span title="appendix-b-number-types (reference label)" class="md-ellipsis">数字类型</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">整数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">精确十进制数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">浮点数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">数据库对数字类型的支持</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-string-types" class="md-nav__link">
+    <span title="appendix-b-string-types (reference label)" class="md-ellipsis">字符串类型</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-datetime-types" class="md-nav__link">
+    <span title="appendix-b-datetime-types (reference label)" class="md-ellipsis">日期和时间类型</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id9" class="md-nav__link">
+    <span class="md-ellipsis">运算和函数</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运算和函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-comparison-operators" class="md-nav__link">
+    <span title="appendix-b-comparison-operators (reference label)" class="md-ellipsis">比较运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-math-operators" class="md-nav__link">
+    <span title="appendix-b-math-operators (reference label)" class="md-ellipsis">数学运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-string-operators" class="md-nav__link">
+    <span title="appendix-b-string-operators (reference label)" class="md-ellipsis">字符串运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-operators" class="md-nav__link">
+    <span title="boolean operators (reference label)" class="md-ellipsis">布尔运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix-b-datetime-operators" class="md-nav__link">
+    <span title="appendix-b-datetime-operators (reference label)" class="md-ellipsis">日期和时间运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id20" class="md-nav__link">
+    <span class="md-ellipsis">其他运算符和函数</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-aggregate-functions" class="md-nav__link">
+    <span title="appendix-b-aggregate-functions (reference label)" class="md-ellipsis">聚合函数</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/appendix-b-reference/reference.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="b-sql"><span id="appendix-b"></span>附录 B: SQL 参考<a class="headerlink" href="#b-sql" title="Link to this heading">¶</a></h1>
+<p><strong>Appendix B: SQL Reference</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本附录包含有关 SQL 标准（2016年）各个方面的文档。这并不是标准的详尽指南。在可能的情况下，文档中会展示各种数据库实现（SQLite、PostgreSQL、MySQL、Oracle、Microsoft SQL Server）与标准的差异。请注意，这类文档是动态变化的，因此您阅读时以下信息可能已经过时。请查阅您的数据库供应商的文档以获取最新信息。</p>
+<p>在下面的文档中，选项可能用方括号表示。例如， <strong>SUBSTRING</strong> 函数的用法文档如下所示：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SUBSTRING</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">*</span><span class="k">start</span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="k">FOR</span><span class="w"> </span><span class="o">*</span><span class="k">length</span><span class="o">*</span><span class="p">])</span>
+</code></pre></div>
+</div>
+<p>这意味着以下两个表达式都是有效的：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SUBSTRING</span><span class="p">(</span><span class="s1">&#39;hello, world&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="k">SUBSTRING</span><span class="p">(</span><span class="s1">&#39;hello, world&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>（第一个表达式的结果为 <code class="docutils literal notranslate"><span class="pre">'hello'</span></code>，第二个表达式的结果为 <code class="docutils literal notranslate"><span class="pre">'world'</span></code>。）</p>
+</div>
+<div class="tabbed-block docutils">
+<p>This appendix contains documentation on various aspects of the SQL standard (2016).  This is not an exhaustive guide to the standard.  Where possible, variations from the standard by various database implementations (SQLite, PostgreSQL, MySQL, Oracle, Microsoft SQL Server) are shown.  Note that documentation of this sort is a moving target, so the information below may be out-of-date when you read it.  Consult your database vendor’s documentation for current information.</p>
+<p>In the documentation below, options may be indicated using square brackets.  For example, usage of the <strong>SUBSTRING</strong> function is documented as</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SUBSTRING</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">*</span><span class="k">start</span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="k">FOR</span><span class="w"> </span><span class="o">*</span><span class="k">length</span><span class="o">*</span><span class="p">])</span>
+</code></pre></div>
+</div>
+<p>meaning both of the following expressions are valid:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SUBSTRING</span><span class="p">(</span><span class="s1">&#39;hello, world&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="k">SUBSTRING</span><span class="p">(</span><span class="s1">&#39;hello, world&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>(The first expression evaluates to <code class="docutils literal notranslate"><span class="pre">'hello'</span></code>, and the second to <code class="docutils literal notranslate"><span class="pre">'world'</span></code>.)</p>
+</div>
+</div>
+</div><h2 id="data-types"><span id="appendix-b-data-types"></span><span id="id1"></span>数据类型<a class="headerlink" href="#data-types" title="Link to this heading">¶</a></h2>
+<p><strong>Data types</strong></p>
+<h3 id="appendix-b-number-types"><span id="id2"></span>数字类型<a class="headerlink" href="#appendix-b-number-types" title="Link to this heading">¶</a></h3>
+<p><strong>Number types</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 标准同时支持精确（整数和定点十进制）和不精确（浮点）数字。这些类型的详细信息（例如，数字表示中使用的位数）由各个实现决定，因此请查阅您的数据库文档以充分了解其功能。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The SQL standard provides for both exact (integers and fixed-precision decimal) and inexact (floating point) numbers.  Details of these types (e.g., the number of bits used in the number representation) are left up to individual implementations, so consult your database’s documentation to fully understand its capabilities.</p>
+</div>
+</div>
+</div><h4 id="id3">整数<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<p><strong>Integers</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 定义了三种整数类型： <strong>INTEGER</strong> 、 <strong>SMALLINT</strong> 和 <strong>BIGINT</strong>。这些类型的实现有所不同，但通常情况下， <strong>INTEGER**（通常缩写为 **INT</strong>）存储 32 位整数， <strong>SMALLINT</strong> 存储 16 位整数， <strong>BIGINT</strong> 存储 64 位整数。并非所有数据库都识别所有这些类型，但本书考虑的所有数据库都识别 <strong>INTEGER</strong>。您的数据库系统可能还提供其他整数类型。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>SQL defines three integer types: <strong>INTEGER</strong>, <strong>SMALLINT</strong>, and <strong>BIGINT</strong>.  Implementations of these types vary, but it is not uncommon for <strong>INTEGER</strong> (often abbreviated as <strong>INT</strong>) to store 32-bit integers, <strong>SMALLINT</strong> 16-bit integers, and <strong>BIGINT</strong> 64-bit integers.  Not all databases recognize all of these types, but <strong>INTEGER</strong> is recognized by all of the databases considered for this book.  Additional integer types may be available for your database system.</p>
+</div>
+</div>
+</div><h4 id="id4">精确十进制数<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<p><strong>Exact decimal numbers</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>十进制数字类型允许精确存储在小数点右侧有数字的数字，例如 1234.56789。这些数字是精确的（与下面的浮点类型相比），并允许在可能的情况下进行精确的数学运算（加法、减法和乘法）。 SQL 中定义的两种类型是 <strong>NUMERIC</strong> 和 <strong>DECIMAL</strong>，它们是彼此的同义词。这些类型可以定义参数来表示 <em>精度(precision)</em> 和 <em>小数位数(scale)</em>，其中精度是可以存储的有效数字的数量，小数位数是小数点后面的数字数量。如果给定了精度，但没有给出小数位数，则小数位数默认为零。</p>
+<p>例如，在大多数实现中：</p>
+<ul class="simple">
+<li><p><strong>NUMERIC(3, 2)</strong> 定义了一种可以存储值范围在 -999.99 到 999.99 之间的类型，最大小数位数为 2。</p></li>
+<li><p><strong>NUMERIC(4)</strong> 定义了一种可以存储范围在 -9999 到 9999 之间的整数类型。</p></li>
+<li><p><strong>NUMERIC</strong> 定义了一种可以精确存储具有实现定义的精度和小数位数的十进制值的类型。</p></li>
+</ul>
+<p>不同的实现对尝试存储超过指定精度和小数位数所允许的数字时的行为不同。这可能会导致错误，或者（在小数点后数字过多的情况下）可能会导致值的四舍五入或截断。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Decimal number types allow for exact storage of numbers that have digits to the right of the decimal point, e.g., 1234.56789.  These numbers are exact (compare to the floating point types below), and permit exact mathematical operations where possible (addition, subtraction, and multiplication).  The two defined types for SQL are <strong>NUMERIC</strong> and <strong>DECIMAL</strong>, which are synonyms of each other.  These types may be defined with parameters representing <em>precision</em> and <em>scale</em>, where precision is the number of significant digits that can be stored, and scale is the number of digits following the decimal point.  If the precision is given, but not the scale, the scale defaults to zero.</p>
+<p>For example, in most implementations:</p>
+<ul class="simple">
+<li><p><strong>NUMERIC(3, 2)</strong> defines a type that can store the values between -999.99 and 999.99, with a maximum of 2 digits past the decimal point.</p></li>
+<li><p><strong>NUMERIC(4)</strong> defines a type that can store integers between -9999 and 9999.</p></li>
+<li><p><strong>NUMERIC</strong> defines a type that can exactly store decimal values with implementation-defined precision and scale.</p></li>
+</ul>
+<p>Different implementations behave differently when an attempt is made to store values with more digits than are allowed by the specified precision and scale.  This may result in an error, or (in the case of too many digits to the right of the decimal point), it may result in rounding or truncation of the value.</p>
+</div>
+</div>
+</div><h4 id="id5">浮点数<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p><strong>Floating point numbers</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>浮点数字类型允许（可能是不精确的）实数存储，类似（或有时与） <a class="reference external" href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> 规范相同。 SQL 标准定义了 <strong>FLOAT</strong> 、 <strong>REAL</strong> 和 <strong>DOUBLE PRECISION**（通常缩写为 **DOUBLE</strong>）这几种类型，但这些类型的实现各不相同。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Floating point number types allow for (possibly inexact) storage of real numbers, similar (or sometimes identical to) the <a class="reference external" href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> specification.  The SQL standard defines the types <strong>FLOAT</strong>, <strong>REAL</strong>, and <strong>DOUBLE PRECISION</strong> (often abbreviated <strong>DOUBLE</strong>), but implementation of these types vary.</p>
+</div>
+</div>
+</div><h4 id="id6">数据库对数字类型的支持<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p><strong>Database support for number types</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>数据库对数字类型支持的摘要如下（适用于本教材尝试涵盖的五个数据库）：</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>类型</p></th>
+<th class="head"><p>SQLite</p></th>
+<th class="head"><p>PostgreSQL</p></th>
+<th class="head"><p>MySQL</p></th>
+<th class="head"><p>Oracle</p></th>
+<th class="head"><p>SQL Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>INTEGER</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>使用 NUMBER</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMALLINT</p></td>
+<td><p>相当于 INTEGER</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>使用 NUMBER</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p>BIGINT</p></td>
+<td><p>相当于 INTEGER</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>使用 NUMBER</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>NUMERIC/DECIMAL</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>使用 NUMBER</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p>FLOAT</p></td>
+<td><p>相当于 REAL</p></td>
+<td><p>相当于 DOUBLE PRECISION</p></td>
+<td><p>是</p></td>
+<td><p>是；但推荐使用 BINARY_DOUBLE</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>REAL</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是；但推荐使用 BINARY_DOUBLE</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p>DOUBLE PRECISION</p></td>
+<td><p>相当于 REAL</p></td>
+<td><p>是</p></td>
+<td><p>是</p></td>
+<td><p>是； 但推荐使用 BINARY_DOUBLE</p></td>
+<td><p>使用 FLOAT</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>A summary of database support for number types is shown below (for the five databases this textbook attempts to cover):</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>SQLite</p></th>
+<th class="head"><p>PostgreSQL</p></th>
+<th class="head"><p>MySQL</p></th>
+<th class="head"><p>Oracle</p></th>
+<th class="head"><p>SQL Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use NUMBER</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMALLINT</p></td>
+<td><p>equivalent to INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use NUMBER</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>BIGINT</p></td>
+<td><p>equivalent to INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use NUMBER</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>NUMERIC/DECIMAL</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use NUMBER</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>FLOAT</p></td>
+<td><p>equivalent to REAL</p></td>
+<td><p>equivalent to DOUBLE PRECISION</p></td>
+<td><p>yes</p></td>
+<td><p>yes; but BINARY_DOUBLE recommended</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>REAL</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes; but BINARY_DOUBLE recommended</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>DOUBLE PRECISION</p></td>
+<td><p>equivalent to REAL</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes; but BINARY_DOUBLE recommended</p></td>
+<td><p>use FLOAT</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h3 id="appendix-b-string-types"><span id="id7"></span>字符串类型<a class="headerlink" href="#appendix-b-string-types" title="Link to this heading">¶</a></h3>
+<p><strong>Character string types</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在 SQL 中存储字符数据有三种主要数据类型。官方名称为 <strong>CHARACTER</strong>、 <strong>CHARACTER VARYING</strong> 和 <strong>CHARACTER LARGE OBJECT</strong> 。此外，修饰符 <strong>NATIONAL</strong> 可用于指示包含来自区域相关字符集的数据的字符串。这些名称相对较长且不够简洁，因此数据库通常使用缩写或甚至完全不同的名称来表示相同的概念。</p>
+<p>类型 <strong>CHARACTER</strong>，通常缩写为 <strong>CHAR</strong>，用于固定长度的字符串。类型 <strong>CHAR</strong> 后面跟着括号，括号内包含字符串的长度。例如，类型为 <strong>CHAR(4)</strong> 的列中所有值必须恰好包含 4 个字符。实际上，许多数据库放宽了定义中“恰好”的部分，允许存储较短的字符串，尽管它们可能会用尾随的空格字符对值进行“填充”。尝试存储超过 <em>n</em> 长度的字符串通常会导致错误。</p>
+<p><strong>CHARACTER VARYING</strong> 通常缩写为 <strong>VARCHAR</strong>，用于可变长度的字符串，长度上限必须指定，与 <strong>CHAR</strong> 类型一样。尝试存储超过最大长度的字符串通常会导致错误。</p>
+<p><strong>CHARACTER LARGE OBJECT</strong> 有许多名称，用于存储任意长度的字符串，长度上限由实现定义（例如，Oracle 的 <strong>CLOB</strong> 类型在某些情况下允许最大字符串长度为 128TB）。在许多实现中，此类型在可以使用的操作或函数上受到限制，并且可能不允许索引。</p>
+<p>数据库对字符字符串支持的摘要如下：</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>SQLite</p></th>
+<th class="head"><p>PostgreSQL</p></th>
+<th class="head"><p>MySQL</p></th>
+<th class="head"><p>Oracle</p></th>
+<th class="head"><p>SQL Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CHARACTER(n)</p></td>
+<td><p>equivalent to TEXT</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHARACTER VARYING(n)</p></td>
+<td><p>equivalent to TEXT</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use VARCHAR2(n)</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>CHARACTER LARGE OBJECT</p></td>
+<td><p>equivalent to TEXT</p></td>
+<td><p>use TEXT</p></td>
+<td><p>use TEXT</p></td>
+<td><p>use CLOB</p></td>
+<td><p>use VARCHAR(MAX)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>There are three main data types for storing character data in SQL.  Officially, these are named <strong>CHARACTER</strong>, <strong>CHARACTER VARYING</strong>, and <strong>CHARACTER LARGE OBJECT</strong>.  In addition, the modifier <strong>NATIONAL</strong> may be used to indicate strings containing data from locale-dependent character sets.  These names are fairly long and clunky, so databases typically use abbreviations or even completely different names for the same concepts.</p>
+<p>The type <strong>CHARACTER</strong>, usually abbreviated as <strong>CHAR</strong>, is used for fixed-length strings.  The type <strong>CHAR</strong> is followed by parentheses enclosing the length of the string.  All values in a column of type <strong>CHAR(4)</strong>, for example, must contain exactly 4 characters.  In practice, many databases relax the “exactly” part of the definition and allow for shorter strings to be stored, although they may “pad” the value with trailing space characters.  Attempting to store strings longer than <em>n</em> usually results in an error.</p>
+<p><strong>CHARACTER VARYING</strong> is usually abbreviated as <strong>VARCHAR</strong>, and is used for strings of varying length up to some maximum, which must be specified just as with the <strong>CHAR</strong> type.  It is usually an error to attempt to store strings longer than the maximum.</p>
+<p><strong>CHARACTER LARGE OBJECT</strong> goes by many names, and is used to store strings of arbitrary length, up to some implementation-defined maximum (for example, Oracle’s <strong>CLOB</strong> type allows strings of up to 128TB in some cases).  In many implementations, this type is limited in the operations or functions that may be used, and may not allow indexing.</p>
+<p>A summary of database support for character strings is shown below:</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>SQLite</p></th>
+<th class="head"><p>PostgreSQL</p></th>
+<th class="head"><p>MySQL</p></th>
+<th class="head"><p>Oracle</p></th>
+<th class="head"><p>SQL Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CHARACTER(n)</p></td>
+<td><p>equivalent to TEXT</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHARACTER VARYING(n)</p></td>
+<td><p>equivalent to TEXT</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use VARCHAR2(n)</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>CHARACTER LARGE OBJECT</p></td>
+<td><p>equivalent to TEXT</p></td>
+<td><p>use TEXT</p></td>
+<td><p>use TEXT</p></td>
+<td><p>use CLOB</p></td>
+<td><p>use VARCHAR(MAX)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h3 id="appendix-b-datetime-types"><span id="id8"></span>日期和时间类型<a class="headerlink" href="#appendix-b-datetime-types" title="Link to this heading">¶</a></h3>
+<p><strong>Date and time types</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 标准定义了三种或五种主要类型，这取决于如何计数。这些类型是 <strong>DATE</strong>、<strong>TIME**（有时区或无时区）和 **TIMESTAMP**（有时区或无时区）。如果您仅指定 **TIME</strong> 或 <strong>TIMESTAMP</strong>，则会获得不带时区的版本；附加 <strong>WITH TIME ZONE</strong> 以存储时区信息。</p>
+<ul class="simple">
+<li><p><strong>DATE</strong> 值以一种方式存储日期，使得历史上任何特定的日期都可以被准确记录。通常支持公历，但某些实现会转换为儒略历或其他日历。</p></li>
+<li><p><strong>TIME</strong> 表示一天中的某个时间，而不参考日期。<strong>TIME WITH TIME ZONE</strong> 包括指定相对于哪个时区评估时间的信息。</p></li>
+<li><p><strong>TIMESTAMP</strong> 表示一个精确的时间点，包含日期和一天中的时间（有时区或无时区）。</p></li>
+</ul>
+<p>数据库对日期和时间类型支持的摘要如下：</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>SQLite</p></th>
+<th class="head"><p>PostgreSQL</p></th>
+<th class="head"><p>MySQL</p></th>
+<th class="head"><p>Oracle</p></th>
+<th class="head"><p>SQL Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DATE</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>TIME</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no, use TIMESTAMP</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>TIME WITH TIME ZONE</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>no, use TIMESTAMP WITH TIME ZONE</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>TIMESTAMP</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use DATETIME2</p></td>
+</tr>
+<tr class="row-even"><td><p>TIMESTAMP WITH TIME ZONE</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+<p>除了日期和时间类型，SQL 还定义了一组称为 <em>interval</em> 的类型，其中间隔表示两个日期或时间值之间的天数或时间跨度。本书不涵盖间隔类型。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The SQL standard defines three or five principal types, depending on how you count.  The types are <strong>DATE</strong>, <strong>TIME</strong> (with or without time zone), and <strong>TIMESTAMP</strong> (with or without time zone).  If you specify simply <strong>TIME</strong> or <strong>TIMESTAMP</strong>, you get the version without time zones; append <strong>WITH TIME ZONE</strong> to additionally store time zone information.</p>
+<ul class="simple">
+<li><p><strong>DATE</strong> values store dates in such a way that any particular day in history can be accurately recorded.  Typically the Gregorian calendar is supported, but some implementations will convert to and from Julian dates or other calendars.</p></li>
+<li><p><strong>TIME</strong> represents a time of day, without reference to the date.  <strong>TIME WITH TIME ZONE</strong> includes information specifying the time zone relative to which the time should be evaluated.</p></li>
+<li><p><strong>TIMESTAMP</strong> represents a precise moment in time, incorporating both the date and the time of day (with or without time zone).</p></li>
+</ul>
+<p>A summary of database support for date and time types is shown below:</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>SQLite</p></th>
+<th class="head"><p>PostgreSQL</p></th>
+<th class="head"><p>MySQL</p></th>
+<th class="head"><p>Oracle</p></th>
+<th class="head"><p>SQL Server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DATE</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>TIME</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>no, use TIMESTAMP</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>TIME WITH TIME ZONE</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>no, use TIMESTAMP WITH TIME ZONE</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>TIMESTAMP</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>use DATETIME2</p></td>
+</tr>
+<tr class="row-even"><td><p>TIMESTAMP WITH TIME ZONE</p></td>
+<td><p>use TEXT, REAL, or INTEGER</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the date and time types, SQL defines a set of types known as <em>interval</em> types, where an interval represents a span of days or time between two date or time values.  Intervals are not covered in this book.</p>
+</div>
+</div>
+</div><h2 id="id9">运算和函数<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p><strong>Operators and functions</strong></p>
+<h3 id="appendix-b-comparison-operators"><span id="id10"></span>比较运算符<a class="headerlink" href="#appendix-b-comparison-operators" title="Link to this heading">¶</a></h3>
+<p><strong>Comparison operators</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>一般来说，同类型的两个非 NULL 值可以进行比较，结果为布尔值。在某些情况下，可以比较不同类型的值，例如当两个值都是数字时。数字值根据它们的代数值进行比较。日期、时间和时间戳值按时间顺序比较。布尔值 <code class="docutils literal notranslate"><span class="pre">True</span></code> 大于 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>字符字符串比较相对复杂，因为比较结果依赖于对值有效的 <em>排序规则</em>；排序可能依赖于许多因素，包括：DBMS 实现、DBMS 配置参数（如 <em>区域设置</em>）、操作系统参数，以及给定数据库表的任何显式排序设置。排序可以用于在特定语言环境中实现正确的排序。例如，通常如果字符串 <em>s</em> 在排序（升序）中排在字符串 <em>t</em> 之前，则 <em>s</em> &lt; <em>t</em>。</p>
+<p>将任何值与 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 进行比较时，使用下表中的任何运算符都会导致结果为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <a class="footnote-reference brackets" href="#id22" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>=</p></td>
+<td><p>equal to</p></td>
+<td><p><em>x</em> = <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;&gt;</p></td>
+<td><p>not equal to</p></td>
+<td><p><em>x</em> &lt;&gt; <em>y</em></p></td>
+<td><p>can also use != in most DBMSes (nonstandard)</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;</p></td>
+<td><p>less than</p></td>
+<td><p><em>x</em> &lt; <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;</p></td>
+<td><p>greater than</p></td>
+<td><p><em>x</em> &gt; <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>&lt;=</p></td>
+<td><p>less than or equal to</p></td>
+<td><p><em>x</em> &lt;= <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;=</p></td>
+<td><p>greater than or equal to</p></td>
+<td><p><em>x</em> &gt;= <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>BETWEEN</p></td>
+<td><p>range comparison</p></td>
+<td><p><em>x</em> BETWEEN <em>y</em> AND <em>z</em></p></td>
+<td><p>equivalent to <em>x</em> &gt;= <em>y</em> AND <em>x</em> &lt;= <em>z</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>NOT BETWEEN</p></td>
+<td><p>exterior range comparison</p></td>
+<td><p><em>x</em> NOT BETWEEN <em>y</em> AND <em>z</em></p></td>
+<td><p>equivalent to NOT(<em>x</em> BETWEEN <em>y</em> AND <em>z</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>比较 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值需要特殊处理；表达式 <code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">=</span> <span class="pre">NULL</span></code> 的结果为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>，而不是 <code class="docutils literal notranslate"><span class="pre">True</span></code>，因此在测试 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 时并不有用。为此提供了 <strong>IS NULL</strong> 运算符。<strong>IS NULL**（以及其反向，**IS NOT NULL</strong>）表达式始终返回 <code class="docutils literal notranslate"><span class="pre">True</span></code> 或 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>另一个在存在 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值时有用的标准 SQL 运算符是二元运算符 <strong>IS DISTINCT FROM</strong> 和 <strong>IS NOT DISTINCT FROM</strong>。这些运算符比较两个值，将 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 视为一个特殊的、不同的值，并始终返回 <code class="docutils literal notranslate"><span class="pre">True</span></code> 或 <code class="docutils literal notranslate"><span class="pre">False</span></code>。因此，表达式 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">DISTINCT</span> <span class="pre">FROM</span> <span class="pre">y</span></code> 在 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span></code> 为真，或当 <em>x</em> 和 <em>y</em> 都为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 时返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>。在本书考虑的数据库中，只有 PostgreSQL 实现了 <strong>IS DISTINCT FROM</strong> 和 <strong>IS NOT DISTINCT FROM</strong>。</p>
+<p>下表总结了这些运算符。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>result</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IS NULL</p></td>
+<td><p><em>x</em> IS NULL</p></td>
+<td><p>True if and only if <em>x</em> evaluates to NULL</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>IS NOT NULL</p></td>
+<td><p><em>x</em> IS NOT NULL</p></td>
+<td><p>equivalent to NOT (<em>x</em> IS NULL)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>IS DISTINCT FROM</p></td>
+<td><p><em>x</em> IS DISTINCT FROM <em>y</em></p></td>
+<td><p>equivalent to NOT (<em>x</em> IS NOT DISTINCT FROM <em>y</em>)</p></td>
+<td><p>PostgreSQL only</p></td>
+</tr>
+<tr class="row-odd"><td><p>IS NOT DISTINCT FROM</p></td>
+<td><p><em>x</em> IS NOT DISTINCT FROM <em>y</em></p></td>
+<td><p>True if <em>x</em> = <em>y</em> is true, or if <em>x</em> and <em>y</em> are both NULL</p></td>
+<td><p>PostgreSQL only</p></td>
+</tr>
+</tbody>
+</table>
+<p>另见下面的 <a class="reference internal" href="#id16">布尔运算符</a> 部分，了解仅适用于布尔值的比较运算符。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Generally speaking, two non-NULL values of the same type can be compared, resulting in a Boolean value.  In certain cases, comparisons can made between different types, e.g., when both are numbers.  Numeric values are compared according to their algebraic values.  Date, time, and timestamp values are compared chronologically.  The Boolean value <code class="docutils literal notranslate"><span class="pre">True</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Character string comparison is somewhat complex, as the comparison done depends on the <em>collation</em> rules in effect for the values; collation may depend on many factors including: the DBMS implementation, DBMS configuration parameters (such as the <em>locale</em>), operating system parameters, and any explicit collation settings for a given database table.  Collations may be used to implement proper sorting, for example, in a particular language context.  In general, if string <em>s</em> would appear in sorted (ascending) order prior to string <em>t</em>, then <em>s</em> &lt; <em>t</em>.</p>
+<p>A comparison of any value with <code class="docutils literal notranslate"><span class="pre">NULL</span></code> results in <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <a class="footnote-reference brackets" href="#id23" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> when using any of the operators in the table below.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>=</p></td>
+<td><p>equal to</p></td>
+<td><p><em>x</em> = <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;&gt;</p></td>
+<td><p>not equal to</p></td>
+<td><p><em>x</em> &lt;&gt; <em>y</em></p></td>
+<td><p>can also use != in most DBMSes (nonstandard)</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;</p></td>
+<td><p>less than</p></td>
+<td><p><em>x</em> &lt; <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;</p></td>
+<td><p>greater than</p></td>
+<td><p><em>x</em> &gt; <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>&lt;=</p></td>
+<td><p>less than or equal to</p></td>
+<td><p><em>x</em> &lt;= <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;=</p></td>
+<td><p>greater than or equal to</p></td>
+<td><p><em>x</em> &gt;= <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>BETWEEN</p></td>
+<td><p>range comparison</p></td>
+<td><p><em>x</em> BETWEEN <em>y</em> AND <em>z</em></p></td>
+<td><p>equivalent to <em>x</em> &gt;= <em>y</em> AND <em>x</em> &lt;= <em>z</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>NOT BETWEEN</p></td>
+<td><p>exterior range comparison</p></td>
+<td><p><em>x</em> NOT BETWEEN <em>y</em> AND <em>z</em></p></td>
+<td><p>equivalent to NOT(<em>x</em> BETWEEN <em>y</em> AND <em>z</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Comparison of <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values requires special treatment; the expression <code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">=</span> <span class="pre">NULL</span></code> results in <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, not <code class="docutils literal notranslate"><span class="pre">True</span></code>, and thus is not useful in testing for <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  The <strong>IS NULL</strong> operator is provided for this purpose.  <strong>IS NULL</strong> (and the inverse, <strong>IS NOT NULL</strong>) expressions always result in <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Another standard SQL operator that has utility in the presence of <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values are the binary operators <strong>IS DISTINCT FROM</strong> and <strong>IS NOT DISTINCT FROM</strong>.  These operators compare two values, treating <code class="docutils literal notranslate"><span class="pre">NULL</span></code> as if it were a special, distinct value, and always return <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.  Thus, the expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">DISTINCT</span> <span class="pre">FROM</span> <span class="pre">y</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> or if <em>x</em> and <em>y</em> are both <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  Of the databases considered for this book, only PostgreSQL implements <strong>IS DISTINCT FROM</strong> and <strong>IS NOT DISTINCT FROM</strong>.</p>
+<p>The table below summarizes these operators.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>result</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IS NULL</p></td>
+<td><p><em>x</em> IS NULL</p></td>
+<td><p>True if and only if <em>x</em> evaluates to NULL</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>IS NOT NULL</p></td>
+<td><p><em>x</em> IS NOT NULL</p></td>
+<td><p>equivalent to NOT (<em>x</em> IS NULL)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>IS DISTINCT FROM</p></td>
+<td><p><em>x</em> IS DISTINCT FROM <em>y</em></p></td>
+<td><p>equivalent to NOT (<em>x</em> IS NOT DISTINCT FROM <em>y</em>)</p></td>
+<td><p>PostgreSQL only</p></td>
+</tr>
+<tr class="row-odd"><td><p>IS NOT DISTINCT FROM</p></td>
+<td><p><em>x</em> IS NOT DISTINCT FROM <em>y</em></p></td>
+<td><p>True if <em>x</em> = <em>y</em> is true, or if <em>x</em> and <em>y</em> are both NULL</p></td>
+<td><p>PostgreSQL only</p></td>
+</tr>
+</tbody>
+</table>
+<p>Also see the <a class="reference internal" href="#boolean-operators">Boolean operators</a> section below for comparison operators that only apply to Boolean values.</p>
+</div>
+</div>
+</div><h3 id="appendix-b-math-operators"><span id="id13"></span>数学运算符和函数<a class="headerlink" href="#appendix-b-math-operators" title="Link to this heading">¶</a></h3>
+<p><strong>Mathematical operators and functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>除非另有说明，下面的操作数或参数可以是任何数字类型。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>运算符  / 函数</p></th>
+<th class="head"><p>含义</p></th>
+<th class="head"><p>用法</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>加法</p></td>
+<td><p><em>x</em> + <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>减法</p></td>
+<td><p><em>x</em> - <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>*</p></td>
+<td><p>乘法</p></td>
+<td><p><em>x</em> * <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>/</p></td>
+<td><p>除法sion</p></td>
+<td><p><em>x</em> / <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ABS</p></td>
+<td><p>绝对值</p></td>
+<td><p>ABS(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>MOD</p></td>
+<td><p>取模（余数）</p></td>
+<td><p>MOD(<em>x</em>, <em>divisor</em>)</p></td>
+<td><p>标准 SQL 中仅限整数</p></td>
+</tr>
+<tr class="row-even"><td><p>LOG</p></td>
+<td><p>对数(logarithm)</p></td>
+<td><p>LOG(<em>base</em>, <em>x</em>)</p></td>
+<td><p>在 SQL Server 中, 使用 LOG(<em>x</em>, <em>base</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LN</p></td>
+<td><p>自然对数</p></td>
+<td><p>LN(<em>x</em>)</p></td>
+<td><p>在 SQL Server 中, 使用 LOG(<em>x</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>LOG10</p></td>
+<td><p>基于 10 的对数</p></td>
+<td><p>LOG10(<em>x</em>)</p></td>
+<td><p>在 SQL Server 中, 使用 LOG(10, <em>x</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXP</p></td>
+<td><p>指数函数</p></td>
+<td><p>EXP(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>POWER</p></td>
+<td><p>幂运算</p></td>
+<td><p>POWER(<em>base</em>, <em>exponent</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SQRT</p></td>
+<td><p>平方根</p></td>
+<td><p>SQRT(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>FLOOR</p></td>
+<td><p>向下取整</p></td>
+<td><p>FLOOR(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CEILING</p></td>
+<td><p>向上取整</p></td>
+<td><p>CEILING(<em>x</em>) or CEIL(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SIN</p></td>
+<td><p>正弦函数</p></td>
+<td><p>SIN(<em>x</em>)</p></td>
+<td><p>参数为弧 (radians)</p></td>
+</tr>
+<tr class="row-odd"><td><p>COS</p></td>
+<td><p>余弦函数</p></td>
+<td><p>COS(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TAN</p></td>
+<td><p>正切函数</p></td>
+<td><p>TAN(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ASIN</p></td>
+<td><p>反正弦</p></td>
+<td><p>ASIN(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ACOS</p></td>
+<td><p>反余弦</p></td>
+<td><p>ACOS(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ATAN</p></td>
+<td><p>反正切</p></td>
+<td><p>ATAN(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SINH</p></td>
+<td><p>双曲正弦</p></td>
+<td><p>SINH(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>COSH</p></td>
+<td><p>双曲余弦</p></td>
+<td><p>COSH(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TANH</p></td>
+<td><p>双曲正切</p></td>
+<td><p>TANH(<em>x</em>)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>大多数数据库实现提供额外的非标准函数和运算符；例如，大多数包括生成随机数的某种机制。</p>
+<p>数学表达式中，如果一个或多个操作数或输入为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>，则评估结果为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Unless otherwise noted, the operands or parameters below can be any numeric type.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator/ function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>addition</p></td>
+<td><p><em>x</em> + <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>subtraction</p></td>
+<td><p><em>x</em> - <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>*</p></td>
+<td><p>multiplication</p></td>
+<td><p><em>x</em> * <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>/</p></td>
+<td><p>division</p></td>
+<td><p><em>x</em> / <em>y</em></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ABS</p></td>
+<td><p>absolute value</p></td>
+<td><p>ABS(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>MOD</p></td>
+<td><p>modulus (remainder)</p></td>
+<td><p>MOD(<em>x</em>, <em>divisor</em>)</p></td>
+<td><p>integers only in standard SQL</p></td>
+</tr>
+<tr class="row-even"><td><p>LOG</p></td>
+<td><p>logarithm</p></td>
+<td><p>LOG(<em>base</em>, <em>x</em>)</p></td>
+<td><p>in SQL Server, use LOG(<em>x</em>, <em>base</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LN</p></td>
+<td><p>natural logarithm</p></td>
+<td><p>LN(<em>x</em>)</p></td>
+<td><p>in SQL Server, use LOG(<em>x</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>LOG10</p></td>
+<td><p>base-10 logarithm</p></td>
+<td><p>LOG10(<em>x</em>)</p></td>
+<td><p>in Oracle, use LOG(10, <em>x</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXP</p></td>
+<td><p>exponential function</p></td>
+<td><p>EXP(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>POWER</p></td>
+<td><p>raise to power</p></td>
+<td><p>POWER(<em>base</em>, <em>exponent</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SQRT</p></td>
+<td><p>square root</p></td>
+<td><p>SQRT(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>FLOOR</p></td>
+<td><p>floor function</p></td>
+<td><p>FLOOR(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CEILING</p></td>
+<td><p>ceiling function</p></td>
+<td><p>CEILING(<em>x</em>) or CEIL(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SIN</p></td>
+<td><p>sine function</p></td>
+<td><p>SIN(<em>x</em>)</p></td>
+<td><p>argument in radians</p></td>
+</tr>
+<tr class="row-odd"><td><p>COS</p></td>
+<td><p>cosine function</p></td>
+<td><p>COS(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TAN</p></td>
+<td><p>tangent function</p></td>
+<td><p>TAN(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ASIN</p></td>
+<td><p>inverse sine</p></td>
+<td><p>ASIN(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ACOS</p></td>
+<td><p>inverse cosine</p></td>
+<td><p>ACOS(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ATAN</p></td>
+<td><p>inverse tangent</p></td>
+<td><p>ATAN(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SINH</p></td>
+<td><p>hyperbolic sine</p></td>
+<td><p>SINH(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>COSH</p></td>
+<td><p>hyperbolic cosine</p></td>
+<td><p>COSH(<em>x</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TANH</p></td>
+<td><p>hyperbolic tangent</p></td>
+<td><p>TANH(<em>x</em>)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Most database implementations provide additional non-standard functions and operators; for example, most include some mechanism for generating random numbers.</p>
+<p>Mathematical expressions where one or more operands or inputs are <code class="docutils literal notranslate"><span class="pre">NULL</span></code> evaluate to <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+</div>
+</div><h3 id="appendix-b-string-operators"><span id="id14"></span>字符串运算符和函数<a class="headerlink" href="#appendix-b-string-operators" title="Link to this heading">¶</a></h3>
+<p><strong>Character string operators and functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2">
+<input checked type="radio" id="__tabbed_11_1" name="__tabbed_11"><input type="radio" id="__tabbed_11_2" name="__tabbed_11"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_11_1">
+中文</label><label class="tabbed-label" for="__tabbed_11_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>下面是对字符字符串操作的运算符和函数的部分列表，省略了一些不常实现的函数和不常用的可选参数。</p>
+<p>SQL 标准定义了几种运算符和函数，利用三种不同的模式匹配语言：一个用于运算符 <strong>LIKE</strong> （在 <a class="reference external" href="../PART1_SQL/03-expressions/expressions.html">第 3 章</a> 中讨论），以及两种不同的正则表达式（regex）语言；然而，本书考虑的数据库在这些运算符和函数方面大多不符合标准。许多实现提供类似效果的函数，但名称不同且使用不同的 regex 语言。因此，这些函数被省略，但建议您查阅您的数据库文档，以了解可用的选项。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator/function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>||</p></td>
+<td><p>concatenation</p></td>
+<td><p><em>s</em> || <em>t</em></p></td>
+<td><p>in MySQL, use CONCAT(<em>s</em>, <em>t</em>); in SQL Server, use <em>s</em> + <em>t</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>LIKE</p></td>
+<td><p>pattern comparison</p></td>
+<td><p><em>s</em> LIKE <em>pattern</em></p></td>
+<td><p>see <a class="reference internal" href="../PART1_SQL/03-expressions/expressions.html#expressions-chapter"><span class="std std-numref">Chapter 1.3</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>NOT LIKE</p></td>
+<td><p>inverse of LIKE</p></td>
+<td><p><em>s</em> NOT LIKE <em>pattern</em></p></td>
+<td><p>equivalent to NOT (<em>s</em> LIKE <em>pattern</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAR_LENGTH</p></td>
+<td><p>length of string</p></td>
+<td><p>CHARACTER_LENGTH(<em>s</em>) or CHAR_LENGTH(<em>s</em>)</p></td>
+<td><p>in SQLite and Oracle, use LENGTH(<em>s</em>); in SQL Server, use LEN(<em>s</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>POSITION</p></td>
+<td><p>index of substring</p></td>
+<td><p>POSITION(<em>t</em> IN <em>s</em>)</p></td>
+<td><p>in SQLite and Oracle, use INSTR(<em>s</em>, <em>t</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SUBSTRING</p></td>
+<td><p>substring extraction</p></td>
+<td><p>SUBSTRING(<em>s</em> FROM <em>start</em> [FOR <em>length</em>])</p></td>
+<td><p>in SQLite and Oracle, use SUBSTR(<em>s</em>, <em>start</em>, <em>length</em>); in SQL Server, use SUBSTRING(<em>s</em>, <em>start</em>, <em>length</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>UPPER</p></td>
+<td><p>convert to uppercase</p></td>
+<td><p>UPPER(<em>s</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>LOWER</p></td>
+<td><p>convert to lowercase</p></td>
+<td><p>LOWER(<em>s</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TRIM</p></td>
+<td><p>remove leading/trailing characters</p></td>
+<td><p>TRIM([[LEADING|TRAILING|BOTH] [<em>t</em>] FROM] <em>s</em>)</p></td>
+<td><p>If <em>t</em> is omitted, whitespace is trimmed; BOTH is the default if LEADING etc. are omitted; in SQLite, Oracle, and SQL Server use LTRIM, RTRIM and TRIM (varying usage)</p></td>
+</tr>
+<tr class="row-odd"><td><p>OVERLAY</p></td>
+<td><p>substring replacement</p></td>
+<td><p>OVERLAY(<em>s</em> PLACING <em>t</em> FROM <em>start</em> FOR <em>length</em>)</p></td>
+<td><p>not in SQLite, Oracle, or SQL Server, but see REPLACE</p></td>
+</tr>
+</tbody>
+</table>
+<p>大多数数据库实现提供额外的非标准函数和运算符。</p>
+<p>当运算符或函数的操作数或输入为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 时，字符串运算符或函数表达式的结果为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Below is a partial listing of operators and functions acting on character strings, omitting some less frequently implemented functions and some less frequently used optional parameters.</p>
+<p>The SQL standard defines several operators and functions making use of three different pattern-matching languages: the one used by the operator <strong>LIKE</strong> (discussed in <a class="reference external" href="../PART1_SQL/03-expressions/expressions.html">Chapter 3</a>), and two different regular expression (regex) languages; however the databases considered for this book mostly do not conform to the standard with respect to these operators and functions.  Many implementations provide functions with similar effect, but under different names and using different regex languages.  These functions are therefore omitted, but you are encouraged to read the documentation for your database to see what options are available to you.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator/function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>||</p></td>
+<td><p>concatenation</p></td>
+<td><p><em>s</em> || <em>t</em></p></td>
+<td><p>in MySQL, use CONCAT(<em>s</em>, <em>t</em>); in SQL Server, use <em>s</em> + <em>t</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>LIKE</p></td>
+<td><p>pattern comparison</p></td>
+<td><p><em>s</em> LIKE <em>pattern</em></p></td>
+<td><p>see <a class="reference internal" href="../PART1_SQL/03-expressions/expressions.html#expressions-chapter"><span class="std std-numref">Chapter 1.3</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>NOT LIKE</p></td>
+<td><p>inverse of LIKE</p></td>
+<td><p><em>s</em> NOT LIKE <em>pattern</em></p></td>
+<td><p>equivalent to NOT (<em>s</em> LIKE <em>pattern</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAR_LENGTH</p></td>
+<td><p>length of string</p></td>
+<td><p>CHARACTER_LENGTH(<em>s</em>) or CHAR_LENGTH(<em>s</em>)</p></td>
+<td><p>in SQLite and Oracle, use LENGTH(<em>s</em>); in SQL Server, use LEN(<em>s</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>POSITION</p></td>
+<td><p>index of substring</p></td>
+<td><p>POSITION(<em>t</em> IN <em>s</em>)</p></td>
+<td><p>in SQLite and Oracle, use INSTR(<em>s</em>, <em>t</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SUBSTRING</p></td>
+<td><p>substring extraction</p></td>
+<td><p>SUBSTRING(<em>s</em> FROM <em>start</em> [FOR <em>length</em>])</p></td>
+<td><p>in SQLite and Oracle, use SUBSTR(<em>s</em>, <em>start</em>, <em>length</em>); in SQL Server, use SUBSTRING(<em>s</em>, <em>start</em>, <em>length</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>UPPER</p></td>
+<td><p>convert to uppercase</p></td>
+<td><p>UPPER(<em>s</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>LOWER</p></td>
+<td><p>convert to lowercase</p></td>
+<td><p>LOWER(<em>s</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TRIM</p></td>
+<td><p>remove leading/trailing characters</p></td>
+<td><p>TRIM([[LEADING|TRAILING|BOTH] [<em>t</em>] FROM] <em>s</em>)</p></td>
+<td><p>If <em>t</em> is omitted, whitespace is trimmed; BOTH is the default if LEADING etc. are omitted; in SQLite, Oracle, and SQL Server use LTRIM, RTRIM and TRIM (varying usage)</p></td>
+</tr>
+<tr class="row-odd"><td><p>OVERLAY</p></td>
+<td><p>substring replacement</p></td>
+<td><p>OVERLAY(<em>s</em> PLACING <em>t</em> FROM <em>start</em> FOR <em>length</em>)</p></td>
+<td><p>not in SQLite, Oracle, or SQL Server, but see REPLACE</p></td>
+</tr>
+</tbody>
+</table>
+<p>Most database implementations provide additional non-standard functions and operators.</p>
+<p>String operator or function expressions where the operands or inputs are <code class="docutils literal notranslate"><span class="pre">NULL</span></code> result in <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+</div>
+</div><h3 id="boolean-operators"><span id="appendix-b-boolean-operators"></span><span id="id16"></span>布尔运算符<a class="headerlink" href="#boolean-operators" title="Link to this heading">¶</a></h3>
+<p><strong>Boolean operators</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2">
+<input checked type="radio" id="__tabbed_12_1" name="__tabbed_12"><input type="radio" id="__tabbed_12_2" name="__tabbed_12"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_12_1">
+中文</label><label class="tabbed-label" for="__tabbed_12_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 中主要的布尔运算符是 <strong>AND</strong>、<strong>OR</strong> 和 <strong>NOT</strong>。在操作数严格为真值，即不为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 的情况下，这些运算符的结果与其名称所表示的逻辑操作相符。即，<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">AND</span> <span class="pre">b</span></code> 当且仅当 <code class="docutils literal notranslate"><span class="pre">a</span></code> 和 <code class="docutils literal notranslate"><span class="pre">b</span></code> 均为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，结果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>；<code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">OR</span> <span class="pre">d</span></code> 当 <code class="docutils literal notranslate"><span class="pre">c</span></code> 或 <code class="docutils literal notranslate"><span class="pre">d</span></code> 任一为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，结果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>；而 <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">e</span></code> 则反转值 <code class="docutils literal notranslate"><span class="pre">e</span></code>。</p>
+<p>然而，由于结果为布尔值的表达式也可能导致 NULL（例如，<code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">&gt;</span> <span class="pre">NULL</span></code>），因此 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 也是布尔运算符的有效操作数，我们可以认为 SQL 具有 3 值（而非真正的布尔）逻辑 <a class="footnote-reference brackets" href="#id24" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>。以下是 <strong>AND</strong>、<strong>OR</strong> 和 <strong>NOT</strong> 的真值表。将 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 视为布尔表达式中的“未知”，我们可以一般性地推断涉及 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 的布尔表达式的结果。例如，<code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">AND</span> <span class="pre">NULL</span></code> 必须计算为 <code class="docutils literal notranslate"><span class="pre">NULL``（表示未知），因为第二个操作数的真值未知。另一方面，``True</span> <span class="pre">OR</span> <span class="pre">NULL</span></code> 必须计算为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，因为无论第二个操作数代表真值还是假值都无关紧要。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p><em>b</em></p></th>
+<th class="head"><p><em>a</em> AND <em>b</em></p></th>
+<th class="head"><p><em>a</em> OR <em>b</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>NULL</p></td>
+<td><p>NULL</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>NULL</p></td>
+<td><p>False</p></td>
+<td><p>NULL</p></td>
+</tr>
+<tr class="row-even"><td><p>NULL</p></td>
+<td><p>True</p></td>
+<td><p>NULL</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>NULL</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>NULL</p></td>
+</tr>
+<tr class="row-even"><td><p>NULL</p></td>
+<td><p>NULL</p></td>
+<td><p>NULL</p></td>
+<td><p>NULL</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p>NOT <em>a</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>NULL</p></td>
+<td><p>NULL</p></td>
+</tr>
+</tbody>
+</table>
+<p>SQL 标准定义了一些较少使用的布尔值一元运算符：<strong>IS [NOT] TRUE</strong>、<strong>IS [NOT] FALSE</strong> 和 <strong>IS [NOT] UNKNOWN</strong>，其中 <strong>IS UNKNOWN</strong> 等同于 <strong>IS NULL</strong>，但仅适用于布尔表达式的结果。因此，例如，SQL 允许我们写 <code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">&lt;</span> <span class="pre">7</span> <span class="pre">IS</span> <span class="pre">FALSE</span></code>，该表达式的结果为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>SQL Server 和 Oracle 不实现 <strong>IS [NOT] TRUE</strong>、<strong>IS [NOT] FALSE</strong> 和 <strong>IS [NOT] UNKNOWN</strong>。SQLite 不实现 <strong>IS [NOT] UNKNOWN</strong>。</p>
+<p>一些数据库实现提供额外的非标准运算符，例如 <strong>XOR</strong>、<strong>&amp;</strong> 作为 <strong>AND</strong> 的替代等。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The principal Boolean operators in SQL are <strong>AND</strong>, <strong>OR</strong>, and <strong>NOT</strong>.  Given operands that are strictly truth valued, i.e., not <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, these operators result in the logic operations they are named for.  That is, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">AND</span> <span class="pre">b</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> if and only if <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are both <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">OR</span> <span class="pre">d</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> if either <code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">d</span></code> are <code class="docutils literal notranslate"><span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">e</span></code> inverts the value <code class="docutils literal notranslate"><span class="pre">e</span></code>.</p>
+<p>However, since expressions resulting in Boolean values may also result in NULL (e.g., <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">&gt;</span> <span class="pre">NULL</span></code>), <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is also a valid operand for the Boolean operators, and we can think of SQL as therefore having a 3-valued (rather than truly Boolean) logic <a class="footnote-reference brackets" href="#id25" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.  The truth tables for <strong>AND</strong>, <strong>OR</strong>, and <strong>NOT</strong> are given below.  Treating <code class="docutils literal notranslate"><span class="pre">NULL</span></code> as meaning “unknown” in Boolean expressions, we can generally infer the result of a Boolean expression involving <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  For example, <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">AND</span> <span class="pre">NULL</span></code> must evaluate to <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (meaning unknown), because the truth of the second operand is unknown.  On the other hand, <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">OR</span> <span class="pre">NULL</span></code> must evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>, as it doesn’t matter whether the second operand represents a true or a false value.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p><em>b</em></p></th>
+<th class="head"><p><em>a</em> AND <em>b</em></p></th>
+<th class="head"><p><em>a</em> OR <em>b</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>NULL</p></td>
+<td><p>NULL</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>NULL</p></td>
+<td><p>False</p></td>
+<td><p>NULL</p></td>
+</tr>
+<tr class="row-even"><td><p>NULL</p></td>
+<td><p>True</p></td>
+<td><p>NULL</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>NULL</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>NULL</p></td>
+</tr>
+<tr class="row-even"><td><p>NULL</p></td>
+<td><p>NULL</p></td>
+<td><p>NULL</p></td>
+<td><p>NULL</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p>NOT <em>a</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>NULL</p></td>
+<td><p>NULL</p></td>
+</tr>
+</tbody>
+</table>
+<p>The SQL standard defines some less frequently used unary operators on Boolean values:  <strong>IS [NOT] TRUE</strong>, <strong>IS [NOT] FALSE</strong>, and <strong>IS [NOT] UNKNOWN</strong>, with <strong>IS UNKNOWN</strong> equivalent to <strong>IS NULL</strong> except that it only applies to the result of a Boolean expression.  So for example, SQL allows us to write <code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">&lt;</span> <span class="pre">7</span> <span class="pre">IS</span> <span class="pre">FALSE</span></code>, which would evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>SQL Server and Oracle do not implement <strong>IS [NOT] TRUE</strong>, <strong>IS [NOT] FALSE</strong>, and <strong>IS [NOT] UNKNOWN</strong>.  SQLite does not implement <strong>IS [NOT] UNKNOWN</strong>.</p>
+<p>Some database implementations provide additional non-standard operators, such as <strong>XOR</strong>, <strong>&amp;</strong> as an alternative to <strong>AND</strong>, etc.</p>
+</div>
+</div>
+</div><h3 id="appendix-b-datetime-operators"><span id="id19"></span>日期和时间运算符和函数<a class="headerlink" href="#appendix-b-datetime-operators" title="Link to this heading">¶</a></h3>
+<p><strong>Date and time operators and functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2">
+<input checked type="radio" id="__tabbed_13_1" name="__tabbed_13"><input type="radio" id="__tabbed_13_2" name="__tabbed_13"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_13_1">
+中文</label><label class="tabbed-label" for="__tabbed_13_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 标准定义了与 <strong>DATE</strong>、<strong>TIME**（带和不带时区）、**TIMESTAMP**（带和不带时区）以及 **INTERVAL</strong> 数据类型相关的几种基本操作。（有关这些数据类型的描述，请参考上面的 <a class="reference internal" href="#id1">数据类型</a> 部分。）</p>
+<p>同类类型的比较使用之前记录的 <a href="#id26"><span class="problematic" id="id27">`Comparison operators`_</span></a> 完成。例如，<strong>DATE</strong> 值可以与其他 <strong>DATE</strong> 值进行比较，但不能与 <strong>TIME</strong>、<strong>TIMESTAMP</strong> 或 <strong>INTERVAL</strong> 值进行比较。（不同数据库实现之间的行为差异很大——有些允许在 SQL 标准不允许的类型之间进行比较。然而，通常不建议比较不同类型，除非你确切知道比较是如何进行的。）</p>
+<p>此外，可以使用以下数学运算符 <em>+</em>、<em>-</em>、<em>* 和 */</em>：</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>left operand</p></th>
+<th class="head"><p>right operand</p></th>
+<th class="head"><p>result type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+<tr class="row-odd"><td><p>+ or -</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+</tr>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+</tr>
+<tr class="row-odd"><td><p>+ or -</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+<tr class="row-even"><td><p>* or /</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>number (INTEGER, etc.)</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+<tr class="row-odd"><td><p>*</p></td>
+<td><p>number (INTEGER, etc.)</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+</tbody>
+</table>
+<p>例如，从一个 <strong>TIMESTAMP</strong> 中减去另一个 <strong>TIMESTAMP</strong> 会得到一个表示天、小时、分钟和秒差的 <strong>INTERVAL</strong>。</p>
+<p>涉及日期和时间的其他运算符和函数：</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator or function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CURRENT_DATE</p></td>
+<td><p>evaluates to the current date</p></td>
+<td><p>CURRENT_DATE</p></td>
+</tr>
+<tr class="row-odd"><td><p>CURRENT_TIME</p></td>
+<td><p>evaluates to the current time</p></td>
+<td><p>CURRENT_TIME</p></td>
+</tr>
+<tr class="row-even"><td><p>CURRENT_TIMESTAMP</p></td>
+<td><p>evaluates to the current date and time</p></td>
+<td><p>CURRENT_TIMESTAMP</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXTRACT</p></td>
+<td><p>get a date or time field from a date or time</p></td>
+<td><p>EXTRACT(<em>field</em> FROM <em>date/time/interval</em>), where <em>field</em> is e.g., ‘YEAR’, ‘HOUR’, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>OVERLAPS</p></td>
+<td><p>test if one span of time overlaps another</p></td>
+<td><p><em>period1</em> OVERLAPS <em>period2</em>, where each <em>period</em> can be (<em>start date/time</em>, <em>end date/time</em>) or (<em>start date/time</em>, <em>interval</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+<p><code class="docutils literal notranslate"><span class="pre">EXTRACT('HOUR'</span> <span class="pre">FROM</span> <span class="pre">TIME</span> <span class="pre">'10:03:21')</span></code> 结果为整数 <code class="docutils literal notranslate"><span class="pre">10</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">(DATE</span> <span class="pre">'2002-07-19',</span> <span class="pre">DATE</span> <span class="pre">'2003-01-31')</span> <span class="pre">OVERLAPS</span> <span class="pre">(DATE</span> <span class="pre">'2002-12-31',</span> <span class="pre">DATE</span> <span class="pre">'2005-05-05')</span></code> 结果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<p>在实际操作中，考虑到本书的数据库在实现 SQL 标准方面的差异很大，关于日期和时间类型及其操作的实现变异如此之多，以至于我们没有尝试在上述表中列出与标准的偏差。在大多数实现中，类似类型可以比较，日期和时间类型可以相减以产生间隔，间隔可以与日期和时间类型相加或相减以得到修改后的日期或时间。大多数数据库实现 <strong>CURRENT_DATE</strong>、<strong>CURRENT_TIME</strong> 和 <strong>CURRENT_TIMESTAMP</strong> 或类似功能。大多数实现提供一些函数，复制 <strong>EXTRACT</strong> 的某些功能。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The SQL standard defines several basic operations relating <strong>DATE</strong>, <strong>TIME</strong> (with and without timezone), <strong>TIMESTAMP</strong> (with and without timezone), and <strong>INTERVAL</strong> data types.  (For a description of these data types, consult the section on <a class="reference internal" href="#data-types">Data types</a> above.)</p>
+<p>Comparison of like types is accomplished using the <a href="#id28"><span class="problematic" id="id29">`Comparison operators`_</span></a> previously documented.  For example, <strong>DATE</strong> values can be compared with other <strong>DATE</strong> values, but not with <strong>TIME</strong>, <strong>TIMESTAMP</strong>, or <strong>INTERVAL</strong> values. (Behavior varies widely among the different database implementations - some do allow comparisons between types not allowed in the SQL standard.  However, it is generally inadvisable to compare different types, unless you know exactly how the comparison is being made.)</p>
+<p>In addition, the mathematical operators <em>+</em>, <em>-</em>, <em>*</em>, and <em>/</em> may be used as follows:</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>left operand</p></th>
+<th class="head"><p>right operand</p></th>
+<th class="head"><p>result type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+<tr class="row-odd"><td><p>+ or -</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+</tr>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+<td><p>DATE, TIME, or TIMESTAMP</p></td>
+</tr>
+<tr class="row-odd"><td><p>+ or -</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+<tr class="row-even"><td><p>* or /</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>number (INTEGER, etc.)</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+<tr class="row-odd"><td><p>*</p></td>
+<td><p>number (INTEGER, etc.)</p></td>
+<td><p>INTERVAL</p></td>
+<td><p>INTERVAL</p></td>
+</tr>
+</tbody>
+</table>
+<p>So, for example, a subtraction of one <strong>TIMESTAMP</strong> from another yields an <strong>INTERVAL</strong> representing the difference in days, hours, minutes, and seconds.</p>
+<p>Other operators and functions involving dates and times:</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator or function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CURRENT_DATE</p></td>
+<td><p>evaluates to the current date</p></td>
+<td><p>CURRENT_DATE</p></td>
+</tr>
+<tr class="row-odd"><td><p>CURRENT_TIME</p></td>
+<td><p>evaluates to the current time</p></td>
+<td><p>CURRENT_TIME</p></td>
+</tr>
+<tr class="row-even"><td><p>CURRENT_TIMESTAMP</p></td>
+<td><p>evaluates to the current date and time</p></td>
+<td><p>CURRENT_TIMESTAMP</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXTRACT</p></td>
+<td><p>get a date or time field from a date or time</p></td>
+<td><p>EXTRACT(<em>field</em> FROM <em>date/time/interval</em>), where <em>field</em> is e.g., ‘YEAR’, ‘HOUR’, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>OVERLAPS</p></td>
+<td><p>test if one span of time overlaps another</p></td>
+<td><p><em>period1</em> OVERLAPS <em>period2</em>, where each <em>period</em> can be (<em>start date/time</em>, <em>end date/time</em>) or (<em>start date/time</em>, <em>interval</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<p><code class="docutils literal notranslate"><span class="pre">EXTRACT('HOUR'</span> <span class="pre">FROM</span> <span class="pre">TIME</span> <span class="pre">'10:03:21')</span></code> results in the integer <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">(DATE</span> <span class="pre">'2002-07-19',</span> <span class="pre">DATE</span> <span class="pre">'2003-01-31')</span> <span class="pre">OVERLAPS</span> <span class="pre">(DATE</span> <span class="pre">'2002-12-31',</span> <span class="pre">DATE</span> <span class="pre">'2005-05-05')</span></code> results in a <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>In actual practice, the databases considered for this book vary widely in their implementation of the SQL standard in regards to date and time types and operations on those types.  The variations are so great, we have not attempted to list departures from the standard in the above tables.  In most implementations, similar types can be compared, date and time types can be subtracted to yield intervals, and intervals can be added or subtracted to date and time types to yield a modified date or time.  Most databases implement <strong>CURRENT_DATE</strong>, <strong>CURRENT_TIME</strong>, and <strong>CURRENT_TIMESTAMP</strong>, or something similar.  Most implementations provide some function or functions replicating some of the functionality of <strong>EXTRACT</strong>.</p>
+</div>
+</div>
+</div><h3 id="id20">其他运算符和函数<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p><strong>Miscellaneous operators and functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2">
+<input checked type="radio" id="__tabbed_14_1" name="__tabbed_14"><input type="radio" id="__tabbed_14_2" name="__tabbed_14"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_14_1">
+中文</label><label class="tabbed-label" for="__tabbed_14_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节收集了一些不易归入上述类别的杂项 SQL 函数。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NULLIF</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> if <em>a</em> = <em>b</em>, else <em>a</em></p></td>
+<td><p>NULLIF(<em>a</em>, <em>b</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>COALESCE</p></td>
+<td><p>yield first non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code> argument</p></td>
+<td><p>COALESCE(<em>a</em>, <em>b</em>, …)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CASE</p></td>
+<td><p>general purpose conditional expression</p></td>
+<td><p>see <a class="reference internal" href="../PART1_SQL/03-expressions/expressions.html#expressions-chapter"><span class="std std-numref">Chapter 1.3</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CAST</p></td>
+<td><p>explicit type conversion</p></td>
+<td><p>CAST (<em>a</em> AS <em>type</em>)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>This section collects some miscellaneous SQL functions that do not fit neatly into the above categories.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NULLIF</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> if <em>a</em> = <em>b</em>, else <em>a</em></p></td>
+<td><p>NULLIF(<em>a</em>, <em>b</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>COALESCE</p></td>
+<td><p>yield first non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code> argument</p></td>
+<td><p>COALESCE(<em>a</em>, <em>b</em>, …)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CASE</p></td>
+<td><p>general purpose conditional expression</p></td>
+<td><p>see <a class="reference internal" href="../PART1_SQL/03-expressions/expressions.html#expressions-chapter"><span class="std std-numref">Chapter 1.3</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CAST</p></td>
+<td><p>explicit type conversion</p></td>
+<td><p>CAST (<em>a</em> AS <em>type</em>)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h2 id="appendix-b-aggregate-functions"><span id="id21"></span>聚合函数<a class="headerlink" href="#appendix-b-aggregate-functions" title="Link to this heading">¶</a></h2>
+<p><strong>Aggregate functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2">
+<input checked type="radio" id="__tabbed_15_1" name="__tabbed_15"><input type="radio" id="__tabbed_15_2" name="__tabbed_15"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_15_1">
+中文</label><label class="tabbed-label" for="__tabbed_15_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>以下是一些 SQL 标准定义的更常用的聚合函数的参考。有关其使用的基本指南，请参见 <a class="reference internal" href="../PART1_SQL/09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a>。SQL 标准还定义了一些用于两个变量的统计函数；这些函数仅在 PostgreSQL 和 Oracle 中实现。大多数数据库实现提供了额外的非标准聚合函数。</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>COUNT</p></td>
+<td><p>count of rows or non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code> values</p></td>
+<td><p>COUNT(*) or COUNT([DISTINCT] <em>a</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AVG</p></td>
+<td><p>average or mean</p></td>
+<td><p>AVG([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric</p></td>
+</tr>
+<tr class="row-even"><td><p>MAX</p></td>
+<td><p>maximum</p></td>
+<td><p>MAX([DISTINCT] <em>a</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>MIN</p></td>
+<td><p>minimum</p></td>
+<td><p>MIN([DISTINCT] <em>a</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SUM</p></td>
+<td><p>sum</p></td>
+<td><p>SUM([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric</p></td>
+</tr>
+<tr class="row-odd"><td><p>VAR_POP</p></td>
+<td><p>population variance</p></td>
+<td><p>VAR_POP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use VARP(<em>a</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>VAR_SAMP</p></td>
+<td><p>sample variance</p></td>
+<td><p>VAR_SAMP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use VAR(<em>a</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDDEV_POP</p></td>
+<td><p>population standard deviation</p></td>
+<td><p>STDDEV_POP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use STDEVP(<em>a</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>STDDEV_SAMP</p></td>
+<td><p>sample standard deviation</p></td>
+<td><p>STDDEV_SAMP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use STDEV(<em>a</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LISTAGG</p></td>
+<td><p>concatenate values into a string</p></td>
+<td><p>LISTAGG(<em>a</em> [, <em>delim</em>])</p></td>
+<td><p>In SQLite and MySQL, use GROUP_CONCAT(<em>a</em>, <em>delim</em>); in PostgreSQL and SQL Server, use STRING_AGG(<em>a</em>, <em>delim</em>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>Below is a reference to some of the more commonly implemented aggregate functions defined by the SQL standard.  See <a class="reference internal" href="../PART1_SQL/09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a> for a basic guide to their use.  The SQL standard also defines a number of statistical functions on two variables; these are implemented in PostgreSQL and Oracle only.  Most database implementations provide additional non-standard aggregate functions.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>usage</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>COUNT</p></td>
+<td><p>count of rows or non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code> values</p></td>
+<td><p>COUNT(*) or COUNT([DISTINCT] <em>a</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AVG</p></td>
+<td><p>average or mean</p></td>
+<td><p>AVG([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric</p></td>
+</tr>
+<tr class="row-even"><td><p>MAX</p></td>
+<td><p>maximum</p></td>
+<td><p>MAX([DISTINCT] <em>a</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>MIN</p></td>
+<td><p>minimum</p></td>
+<td><p>MIN([DISTINCT] <em>a</em>)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SUM</p></td>
+<td><p>sum</p></td>
+<td><p>SUM([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric</p></td>
+</tr>
+<tr class="row-odd"><td><p>VAR_POP</p></td>
+<td><p>population variance</p></td>
+<td><p>VAR_POP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use VARP(<em>a</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>VAR_SAMP</p></td>
+<td><p>sample variance</p></td>
+<td><p>VAR_SAMP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use VAR(<em>a</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDDEV_POP</p></td>
+<td><p>population standard deviation</p></td>
+<td><p>STDDEV_POP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use STDEVP(<em>a</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>STDDEV_SAMP</p></td>
+<td><p>sample standard deviation</p></td>
+<td><p>STDDEV_SAMP([DISTINCT] <em>a</em>)</p></td>
+<td><p><em>a</em> must be numeric; not in SQLite; in SQL Server, use STDEV(<em>a</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LISTAGG</p></td>
+<td><p>concatenate values into a string</p></td>
+<td><p>LISTAGG(<em>a</em> [, <em>delim</em>])</p></td>
+<td><p>In SQLite and MySQL, use GROUP_CONCAT(<em>a</em>, <em>delim</em>); in PostgreSQL and SQL Server, use STRING_AGG(<em>a</em>, <em>delim</em>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><hr class="docutils" />
+<p><strong>Notes</strong></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id22" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">1</a><span class="fn-bracket">]</span></span>
+<p>从技术上讲，与 NULL 的比较结果是“未知”值。然而，在我们所知的所有数据库中，NULL 与“未知”不可区分，除非使用操作符 <strong>IS [NOT] UNKNOWN</strong>。</p>
+</aside>
+<aside class="footnote brackets" id="id23" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">2</a><span class="fn-bracket">]</span></span>
+<p>Technically, a comparison with NULL results in the value “unknown”.  However, in all databases that we are aware of, NULL is indistinguishable from “unknown” except when using the operator <strong>IS [NOT] UNKNOWN</strong>.</p>
+</aside>
+<aside class="footnote brackets" id="id24" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">3</a><span class="fn-bracket">]</span></span>
+<p>参见上面的注释。真值表在技术上应该在所有出现“NULL”的地方使用“未知”。</p>
+</aside>
+<aside class="footnote brackets" id="id25" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id18">4</a><span class="fn-bracket">]</span></span>
+<p>See above note.  The truth table technically should use “unknown” everywhere “NULL” appears.</p>
+</aside>
+</aside>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../appendix-a-datasets/datasets.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 附录 A: 本书中使用的示例数据集" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              附录 A: 本书中使用的示例数据集
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../front-matter/acknowledgments.html" class="md-footer__link md-footer__link--next" aria-label="Next: 致谢" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              致谢
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

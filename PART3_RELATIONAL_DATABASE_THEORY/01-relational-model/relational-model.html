@@ -1,0 +1,2257 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>3.1. 数据库的关系模型 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.1. 数据库的关系模型
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">关系数据库理论</span></a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关系数据库理论" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">关系数据库理论</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">数据库的关系模型</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">数据库的关系模型</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">数据库的关系模型</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">模型基础</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">集合</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">关系</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">元组</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">属性</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">模式</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">唯一性和排列</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id9" class="md-nav__link">
+    <span class="md-ellipsis">约束</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="约束">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">键和主键</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">外键</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">一致性</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id13" class="md-nav__link">
+    <span class="md-ellipsis">修改操作</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">NULL</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NULL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-9" class="md-nav__link">
+    <span class="md-ellipsis">三值逻辑</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id17" class="md-nav__link">
+    <span class="md-ellipsis">约束和 NULL</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id18" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-relational-algebra/relational-algebra.html" class="md-nav__link">
+        <span class="md-ellipsis">关系代数</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-normalization/normalization.html" class="md-nav__link">
+        <span class="md-ellipsis">常规化</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-sql-vs-theory/sql-vs-theory.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL 与关系模型之间的差异</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">数据库的关系模型</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">模型基础</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">集合</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">关系</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">元组</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">属性</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">模式</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">唯一性和排列</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id9" class="md-nav__link">
+    <span class="md-ellipsis">约束</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="约束">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">键和主键</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">外键</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">一致性</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id13" class="md-nav__link">
+    <span class="md-ellipsis">修改操作</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">NULL</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NULL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-9" class="md-nav__link">
+    <span class="md-ellipsis">三值逻辑</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id17" class="md-nav__link">
+    <span class="md-ellipsis">约束和 NULL</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id18" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART3_RELATIONAL_DATABASE_THEORY/01-relational-model/relational-model.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="relational-model-chapter"><span id="id1"></span><span class="section-number">3.1. </span>数据库的关系模型<a class="headerlink" href="#relational-model-chapter" title="Link to this heading">¶</a></h1>
+<p><strong>The relational model of the database</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2" id="index-0">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本章中，我们介绍了关系数据库所基于的数学模型。数据库的 <em>关系模型(relational model)</em> 提供了一个描述和推理数据库的数学基础。尽管大多数关系数据库系统在实践中与数学模型存在一些小的差异（见 <a class="reference internal" href="../04-sql-vs-theory/sql-vs-theory.html#sql-vs-theory-chapter"><span class="std std-numref">Chapter 3.4</span></a>），理解这个模型有助于深入理解这些系统。</p>
+<p>鉴于其数学基础，关系模型最方便的表达方式是使用至少一些数学符号和术语。然而，为了使本书能够尽可能广泛地接触到读者，我们将用最少的符号来介绍模型的基本概念，并在使用时解释相关术语。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In this chapter we introduce the mathematical model that relational databases are based on.  The <em>relational model</em> of the database provides a mathematical foundation for describing and reasoning about databases.  While most relational database systems in practice vary in small ways from the mathematical model (see <a class="reference internal" href="../04-sql-vs-theory/sql-vs-theory.html#sql-vs-theory-chapter"><span class="std std-numref">Chapter 3.4</span></a>), understanding the model facilitates a deeper understanding of these systems.</p>
+<p>Given its mathematical foundations, the relational model is most conveniently expressed using at least some mathematical notation and terminology.  In the interests of keeping this book accessible to as wide an audience as possible, however, we will give the basics of the model using a minimum of notation and explain terms as we use them.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">3.1.1. </span>模型基础<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Model basics</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>我们首先给出 <em>集合(set)</em> 的工作定义，这是一种数学对象，我们将在定义其他术语时使用。然后，我们定义 <em>关系(relations)</em>，这是关系模型的基本对象，以及与之相关的术语。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We start with a working definition of <em>set</em>, a mathematical object that we will use in defining other terms.  We then define <em>relations</em>, the fundamental objects of the relational model, and their associated terms.</p>
+</div>
+</div>
+</div><h3 id="id3"><span class="section-number">3.1.1.1. </span>集合<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><strong>Sets</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>集合是一个数学对象，表示一组不同值的集合。集合可以通过值的共同属性来定义，或者仅仅通过列出集合中的所有值来定义。对于某个任意值和某个集合，我们可以问该值是否是集合的 <em>成员(member)</em>，即它是否是集合中的某个值。例如，2 是所有数字的集合（一个无限集合）的成员，同时也是集合 {1, 2, 3, 4}（一个包含四个值的有限集合）的成员。另一方面，2 不是奇数集合或描述颜色的词的集合的成员（即 {blue, yellow, …}）。</p>
+<p>集合的 <em>子集(subset)</em> 是一个包含零个或多个来自该集合的元素的集合，并且仅包含该集合中的元素。对于集合 {1, 2, 3, 4}，子集包括 {2, 4}、{1, 2, 3, 4} 和 {} （ <em>空集合(empty set)</em> ）。注意，任何集合都是其自身的子集；一个不等于整个集合的子集称为该集合的 <em>真子集(proper subset)</em>。</p>
+<p>集合的 <em>超集(superset)</em> 是一个包含该集合中所有元素的集合，并且可能包含不在该集合中的元素。对于集合 {1, 2, 3, 4}，超集包括 {1, 2, 3, 4}、{1, 2, 3, 4, 5} 和 {0, 1, 2, 3, 4, 5, 7}。注意，任何集合都是其自身的超集；一个包含不在该集合中的元素的超集称为该集合的 <em>真超集(proper superset)</em>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A set is a mathematical object that represents a collection of distinct values.  Sets can be defined by some property that values have in common, or simply by listing all of the values in the set.  For some arbitrary value and some set, we can ask whether the value is a <em>member</em> of the set, that is, whether it is one of the values in the set.  For example, 2 is a member of the set of all numbers (an infinite set) and also a member of the set {1, 2, 3, 4} (a finite set containing four values).  On the other hand, 2 is not a member of the set of odd integers or the set of words describing colors (i.e., {blue, yellow, …}).</p>
+<p>A <em>subset</em> of a set is a set containing zero or more elements from the set and only from the set.  For the set {1, 2, 3, 4}, subsets include {2, 4}, {1, 2, 3, 4}, and {} (the <em>empty set</em>).  Note that any set is a subset of itself; a subset which is not equal to the whole set is termed a <em>proper subset</em> of the set.</p>
+<p>A <em>superset</em> of a set is a set containing all elements from the set, and may contain elements not from the set.  For the set {1, 2, 3, 4}, supersets include {1, 2, 3, 4}, {1, 2, 3, 4, 5}, and {0, 1, 2, 3, 4, 5, 7}.  Note that any set is a superset of itself; a superset which contains elements not in the set is termed a <em>proper superset</em> of the set.</p>
+</div>
+</div>
+</div><h3 id="index-1"><span id="id4"></span><span class="section-number">3.1.1.2. </span>关系<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h3>
+<p><strong>Relations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在关系模型中，数据存在于关系中。关系通常被描绘为一种表格数据结构：</p>
+<img alt="名为 simple_books 的关系的表格示例，显示带有属性名称的标题和几行数据（或元组）。" src="../../_images/books.svg" />
+<p>这个插图只是描绘关系 <strong>simple_books</strong> 的一种可能方式，而表格（或二维数组）只是用于存储关系的一种数据结构。从关系模型的角度来看，关系是数学对象，而不是数据结构。</p>
+<p>正式地说，关系是一组共享相同 <em>域</em> 的 <em>元组</em>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In the relational model, data exist in relations.  A relation is often depicted as a tabular data structure:</p>
+<img alt="A tabular illustration of a relation named simple_books, showing a header with attribute names and several rows of data, or tuples." src="../../_images/books.svg" />
+<p>This illustration is just one possible way of depicting the relation <strong>simple_books</strong>, and tables (or two-dimensional arrays) are just one data structure that can be used for storing relations.  From the perspective of the relational model, relations are mathematical objects, not data structures.</p>
+<p>Formally, a relation is a set of <em>tuples</em> that share the same <em>domain</em>.</p>
+</div>
+</div>
+</div><h3 id="index-2"><span id="id5"></span><span class="section-number">3.1.1.3. </span>元组<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h3>
+<p><strong>Tuples</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在关系模型中，元组有两种不同的定义；具体使用哪种取决于在特定上下文中哪种更为方便。我们将从元组的常规数学定义开始，将其视为一个有序值列表。元组中的单个值也称为元组的 <em>元素</em> 。我们用括号中的逗号分隔列表来表示元组。元组对应于上表中的行。例如， <strong>simple_books</strong> 关系中的一个元组可以写成：</p>
+<blockquote>
+<div><p>(<em>The House of the Spirits</em>, Isabel Allende, 1982, magical realism)</p>
+</div></blockquote>
+<p>元组的每个元素都属于某个集合，我们称之为元素的 <em>域(domain)</em> 。在我们示例的元组中，第一个元素属于书名的域。</p>
+<p>元组本身也属于一个域，该域是根据元组中每个值的域来定义的。 <strong>simple_books</strong> 关系中的元组属于具有四个元素的元组的域，其中第一个元素属于书名的域，第二个元素来自作者的域，第三个元素属于日历年份的域，第四个元素在文学流派的域中。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A tuple in the relational model is defined in two different ways; which is used depends on which is more convenient in a particular context.  We will start with the normal mathematical definition of a tuple as an ordered list of values.  A single value in the tuple is also called an <em>element</em> of the tuple.  We denote tuples as a comma-separated list within parentheses.  Tuples correspond to rows in the table above.  For example, one tuple from the <strong>simple_books</strong> relation could be written as:</p>
+<blockquote>
+<div><p>(<em>The House of the Spirits</em>, Isabel Allende, 1982, magical realism)</p>
+</div></blockquote>
+<p>Each element of a tuple belongs to some set, which we call the <em>domain</em> of the element.  In our example tuple, the first element belongs to the domain of book titles.</p>
+<p>The tuple itself also belongs to a domain, which is defined in terms of the domains of each value in the tuple.  Tuples of the <strong>simple_books</strong> relation belong to the domain of tuples with four elements for which the first element belongs to the domain of book titles, the second element is from the domain of authors, the third element belongs to the domain of calendar years, and the fourth element is in the domain of literary genres.</p>
+</div>
+</div>
+</div><h3 id="index-3"><span id="id6"></span><span class="section-number">3.1.1.4. </span>属性<a class="headerlink" href="#index-3" title="Link to this heading">¶</a></h3>
+<p><strong>Attributes</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在元组的另一种定义中，我们可以谈论元组的 <em>属性</em>。我们可以将属性视为由元组表示的值的命名属性。例如，如果 <strong>simple_books</strong> 关系中的一个元组代表一本书，那么该元组的一个属性就是书的 <strong>标题</strong>。在我们的示例元组中， <strong>标题</strong> 属性是 <em>The House of the Spirits</em> 。我们关系中的其他书籍属性包括 <strong>作者</strong>、 <strong>年份</strong> 和 <strong>流派</strong>。属性名称在上图表的表头行中显示。</p>
+<p>在这种元组的定义中，元组不一定是有序列表；元组中的每个值不是与位置关联，而是与属性关联。每个属性都与一个域相关联。例如， <strong>simple_books</strong> 中任何元组的 <strong>标题</strong> 属性必须是书名域的一个成员。将名称与元组中的值关联起来比在查询数据库时引用第 <em>n</em> 个元素要方便得多。</p>
+<p>这两种元组的定义并不排斥。在第一种元组定义中，顺序集合中的每个位置也对应于一个特定的属性——在我们的例子中，第一个元素是 <strong>标题</strong> 属性。虽然我们可以认为元组具有无特定顺序的命名属性，但在实际应用中，我们通常会给关系中的属性分配一个顺序——因此这两种元组的定义是同时使用的。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In an alternate definition of tuple, we can speak of the <em>attributes</em> of the tuple.  We can think of attributes as the named properties of the value represented by the tuple.  For example, if a tuple in the <strong>simple_books</strong> relation represents one book, then one attribute of the tuple is the book’s <strong>title</strong>.  In our example tuple, the <strong>title</strong> attribute is <em>The House of the Spirits</em>.  The other attributes of books in our relation are <strong>author</strong>,  <strong>year</strong>, and <strong>genre</strong>.  Attribute names are shown in the header row of the table in the illustration above.</p>
+<p>In this definition of tuple, tuples are not necessarily ordered lists; each value in the tuple is associated not with a position but with an attribute.  Each attribute is associated with a domain. For example, the <strong>title</strong> attribute for any tuple in <strong>simple_books</strong> must be a member of the domain of book titles.  Having names associated with values in a tuple is much more convenient than having to refer to the <em>n</em>-th element when we want to query our database.</p>
+<p>The two definitions of tuple are not exclusive.  In the first definition of tuple, each position in the ordered collection also corresponds to a specific attribute - in our example, the first element is the <strong>title</strong> attribute.  While we can think of tuples as having named attributes in no particular order, in practice we typically assign an ordering to the attributes in a relation - so both definitions of tuple are used simultaneously.</p>
+</div>
+</div>
+</div><h3 id="index-4"><span id="id7"></span><span class="section-number">3.1.1.5. </span>模式<a class="headerlink" href="#index-4" title="Link to this heading">¶</a></h3>
+<p><strong>Schemas</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系的属性和域由其 <em>模式(schema)</em> 定义。如果一个关系（一个元组的集合）符合模式给出的定义，那么它被认为是该关系模式的 <em>实例(instance)</em> ；也就是说，如果关系中的所有元组都具有模式定义的命名属性，并且属性值属于正确的域。在某些定义中，关系模式还包括关系必须遵循的约束，例如下面讨论的 <em>键(key)</em> 约束。</p>
+<p>在典型的数据库中，每个关系模式都与恰好一个关系配对，该关系是该模式的当前关系。当对当前关系中的数据进行修改时，会产生一个新的当前关系。除了某些特定类型的数据库外，关系模式通常没有与过去关系相关的历史。因此，使用相同的名称来表示关系及其模式是常见的做法。</p>
+<p><em>数据库(database)</em> 可以定义为一组关系模式及其相关的当前关系。关系模式的集合称为数据库模式。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A relation’s attributes and domains are defined by its <em>schema</em>.  A relation (a set of tuples) is considered to be an <em>instance</em> of the relation schema if it conforms to the definition given by the schema; that is, if all of the tuples in the relation have the named attributes defined by the schema, and the attribute values are members of the correct domains.  In some definitions, relation schemas also include constraints which relations must conform to, such as <em>key</em> constraints, discussed below.</p>
+<p>In a typical database, each relation schema is paired with exactly one relation, which is the current relation for the schema.  When a modification is made to the data in the current relation, it produces a new current relation.  Except in some specialized types of databases, there is no history of past relations associated with a relation schema.  Thus, it is frequent practice to use the same name for the relation and its schema.</p>
+<p>A <em>database</em> may be defined as a collection of relation schemas and their associated current relations.  The collection of relation schemas is called the database schema.</p>
+</div>
+</div>
+</div><h2 id="id8"><span class="section-number">3.1.2. </span>唯一性和排列<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p><strong>Uniqueness and permutations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系作为元组的集合，分享了一些集合的重要属性。首先，集合中的项必须是不同的。在关系模型中，元组也必须是不同的，也就是说，没有两个元组可以在每个属性上具有相同的值。对于我们的 <strong>simple_books</strong> 关系，完全可以假设我们会添加一些与其他元组具有相同作者的书籍，或者在同一年出版的书籍。然而，我们禁止添加与现有元组重复的元组。</p>
+<p>集合的另一个属性（或许说是缺乏某种属性）是集合中的元素没有定义的顺序。集合中的元素没有在集合内的等级或位置。关系同样没有元组的内在排序。</p>
+<p>当我们提供 <strong>simple_books</strong> 关系的表格示例时，我们指出这只是关系的一种可能表示。例如，我们可以在不改变关系的情况下，改变表格的行顺序。如果我们应用上面提到的第二个元组定义，其中值同样没有顺序，而是与特定属性相关联，那么改变列的顺序也是有效的。因此，我们可以说，下面的 <strong>simple_books</strong> 的示例与之前的示例是等价的：</p>
+<img alt="简单书籍的表格图示，其中行和列排列顺序。" src="../../_images/books_permuted.svg" />
+</div>
+<div class="tabbed-block docutils">
+<p>Relations, as sets of tuples, share certain important properties of sets.  First, items in a set must be distinct.  In the relational model, tuples must likewise be distinct, that is, no two tuples can have the same values for every attribute.  For our <strong>simple_books</strong> relation, it is entirely reasonable to suppose that we will add books that have the same author as some other tuple, or books published in the same year as another book.  However, we are forbidden to add a tuple that duplicates an existing tuple.</p>
+<p>Another property (or perhaps lack of property) of sets is that there is no defined order of elements in a set.  An element of a set has no rank or position within the set.  Relations likewise have no intrinsic ordering of tuples.</p>
+<p>When we provided a tabular illustration of the <strong>simple_books</strong> relation above, we noted that it was just one possible depiction of the relation.  We can, for example, permute the rows of the table, without changing the relation.  If we apply the second definition of tuple above, in which values are likewise not ordered but rather associated with specific attributes, it is valid to permute columns as well.  We would say, then, that the illustration of <strong>simple_books</strong> below is equivalent to our previous illustration:</p>
+<img alt="A tabular illustration of simple_books, with rows and columns permuted." src="../../_images/books_permuted.svg" />
+</div>
+</div>
+</div><h2 id="id9"><span class="section-number">3.1.3. </span>约束<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p><strong>Constraints</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p><em>约束(Constraints)</em> 是关于关系的陈述，要求在任何时候都必须为真。一些约束在上述定义中是隐含的；例如，元组中的属性值被限制为所属域的成员。关系模型还包含两种类型的显式约束：键和外键。</p>
+</div>
+<div class="tabbed-block docutils">
+<p><em>Constraints</em> are statements about relations which are required to be true at all times.  Some constraints are implicit in the definitions above; for example, the attribute values in a tuple are constrained to be members of the associated domain.  The relational model also incorporates two types of explicit constraint: keys and foreign keys.</p>
+</div>
+</div>
+</div><h3 id="index-5"><span id="id10"></span><span class="section-number">3.1.3.1. </span>键和主键<a class="headerlink" href="#index-5" title="Link to this heading">¶</a></h3>
+<p><strong>Keys and primary keys</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在许多情况下，关系可能包含能够唯一标识元组的属性子集。例如，对于我们的 <strong>simple_books</strong> 关系，我们将断言属性对 <strong>author</strong> 和 <strong>title</strong> 能够唯一标识我们关系中的任何书籍，或者任何我们将来可能选择添加到关系中的书籍。另一方面，单独的 <strong>author</strong> 或 <strong>title</strong> 都不足以唯一标识一本书——可能有两个不同的作者创作同名的书籍，当然，许多书籍可能有相同的作者。我们声明集合 {<strong>author</strong>, <strong>title</strong>} 是 <strong>simple_books</strong> 关系的 <em>键(key)</em> 。</p>
+<p>键在关系理论中扮演重要角色，正如我们将看到的。我们将在后面的章节进一步探讨的一个含义是，我们的 <strong>simple_books</strong> 关系中的任何两个元组（现在或将来）都不能共享完全相同的 <strong>author</strong> 和 <strong>title</strong> 值。事实上，声明没有两个元组可以共享相同的 <strong>author</strong> 和 <strong>title</strong>，反过来又意味着 <strong>author</strong> 和 <strong>title</strong> 共同唯一标识任何一本书。这些断言是等价的。</p>
+<p>重要的是要强调，键属性是我们对现实世界所做的陈述，而不是关系中数据的短暂属性。例如，我们当前的 <strong>simple_books</strong> 示例中 <strong>year</strong> 没有重复值。然而，要使 <strong>year</strong> 成为键，需要 <strong>year</strong> 对于我们可能存储在 <strong>simple_books</strong> 关系中的任何书籍集合而言，永远不包含重复值。由于每年会出版许多书籍，我们应该预期，如果我们将书籍添加到关系中，会累积重复的 <strong>year</strong> 值。</p>
+<p>关系可能有多个键。一个常见的例子是公司的员工表。在许多国家，工人必须拥有政府签发的身份证号码。这些号码可以用于唯一标识一名员工。然而，这些号码通常被视为敏感的员工数据，仅应与公司内某些值得信赖的个人共享。在这些情况下，公司会生成一个内部员工 ID 号码，这与政府签发的 ID 完全独立。公司的数据库将包含这两种唯一标识符。</p>
+<p>关系的键也被称为 <em>候选键(candidate keys)</em> 。从中选择一个候选键作为关系的 <em>主键(primary key)</em> 。其余的键有时称为 <em>唯一键(unique keys)</em> 。</p>
+<p>在关系模型中，所有键都被限制为唯一。如果根据某个关系模式（例如，<strong>simple_books</strong> 模式中的相同 <strong>author</strong> 和 <strong>title</strong>）一个元组集合包含某个键的重复值，我们不认为这是该模式的有效关系。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In many cases, relations may contain subsets of attributes which uniquely identify tuples.  For example, for our <strong>simple_books</strong> relation, we will assert that the pair of attributes <strong>author</strong> and <strong>title</strong> uniquely identify any book in our relation, or any book we might choose to add to our relation in the future.  On the other hand, neither <strong>author</strong> nor <strong>title</strong> are sufficient on their own to uniquely identify a book - it is possible for two different authors to create books with the same name, and of course, many books may have the same author.  We state that the set {<strong>author</strong>, <strong>title</strong>} is a <em>key</em> for the <strong>simple_books</strong> relation.</p>
+<p>Keys play an important part in relational theory, as we will see.  One implication that we will explore further in a later chapter is that no two tuples in our <strong>simple_books</strong> relation (now or ever) can share the exact same <strong>author</strong> and <strong>title</strong> values.  In fact, the assertion that no two tuples can share the same <strong>author</strong> and <strong>title</strong> in return implies that <strong>author</strong> and <strong>title</strong> together uniquely identify any book.  The assertions are equivalent.</p>
+<p>It is important to emphasize that the key property is a fact we are stating about the world, not a transitory property of the data in a relation.  For example, our current <strong>simple_books</strong> illustration shows no duplicate values for <strong>year</strong>.  For <strong>year</strong> to be a key, though, requires that <strong>year</strong> never contain duplicates <em>for any collection of books</em> we might store in the <strong>simple_books</strong> relation.  Since many books are published every year, we should expect to accumulate duplicate <strong>year</strong> values if we add books to the relation.</p>
+<p>Relations may have more than one key.  A common example is that of a table of employees for a company.  In many countries, workers must have a government issued identification (ID) number.  These numbers can be used to uniquely identify an employee.  However, these numbers are often considered sensitive employee data, which should only be shared with certain trusted individuals in the company.  In these cases, companies will generate an internal employee ID number, which is completely independent of the government issued ID.  The company’s database will contain both of these unique identifiers.</p>
+<p>The keys of a relation are also known as <em>candidate keys</em>.  One candidate key is chosen as the <em>primary key</em> for the relation.  The remaining keys are sometimes called <em>unique keys</em>.</p>
+<p>In the relational model, all keys are constrained to be unique.  If a set of tuples contains duplicate values for some key according to some relation schema (e.g., the same <strong>author</strong> and <strong>title</strong> per the <strong>simple_books</strong> schema), we do not consider that a valid relation of the schema.</p>
+</div>
+</div>
+</div><h3 id="index-6"><span id="id11"></span><span class="section-number">3.1.3.2. </span>外键<a class="headerlink" href="#index-6" title="Link to this heading">¶</a></h3>
+<p><strong>Foreign keys</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2">
+<input checked type="radio" id="__tabbed_11_1" name="__tabbed_11"><input type="radio" id="__tabbed_11_2" name="__tabbed_11"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_11_1">
+中文</label><label class="tabbed-label" for="__tabbed_11_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系数据库不会显式存储相关记录之间的连接。相反，我们必须在一个关系中存储可以用来“查找”另一个关系中相关值的值。在设计良好的关系数据库中，我们几乎总是会存储相关关系的主键的值。存储来自其他关系的键的属性或属性组称为 <em>外键(foreign key)</em> 。</p>
+<p>考虑下面表示的关系 <strong>simple_authors</strong>：</p>
+<img alt="关系 simple_authors 的表格说明，其具有姓名、出生日期和死亡日期等属性。" src="../../_images/authors.svg" />
+<p>这个关系的主键是 <strong>name</strong> 属性。名字通常不是一个很好的键选择，因为人们经常与其他人共享相同的名字，但这只是一个简单的示例，并不是良好数据库设计的范例。</p>
+<p>由于 <strong>simple_books</strong> 中的每个 <strong>author</strong> 值都与 <strong>simple_authors</strong> 中某个 <strong>name</strong> 值匹配，我们可以将每本书与其作者的信息联系起来。为了断言在 <strong>simple_books</strong> 中的任何元组都应始终与 <strong>simple_authors</strong> 中的一个元组匹配，我们声明 <strong>simple_books</strong> 的 <strong>author</strong> 属性为一个外键，<em>引用</em> <strong>simple_authors</strong> 的 <strong>name</strong> 属性。这个外键约束不仅适用于当前的关系，也适用于 <strong>simple_books</strong> 和 <strong>simple_authors</strong> 的任何未来状态。外键也称为 <em>引用完整性(referential integrity)</em> 约束。</p>
+<p>请注意，外键是对两个关系的约束；在任一关系中的某些更改可能导致约束违规。然而，这个约束不是对称的；我们可以在 <strong>simple_authors</strong> 中列出一些作者，而 <strong>simple_books</strong> 中没有列出任何书籍。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Relational databases do not explicitly store connections between related records.  Instead, we must store values in one relation which we can use to “look up” related values in another relation.  In a properly designed relational database, we will nearly always store values from the primary key of the related relation.  The attribute or group of attributes storing the key from the other relation is called a <em>foreign key</em>.</p>
+<p>Consider the relation <strong>simple_authors</strong> represented below:</p>
+<img alt="A tabular illustration of the relation simple_authors, which has attributes for name, birth date, and death date." src="../../_images/authors.svg" />
+<p>Our primary key for this relation is the <strong>name</strong> attribute.  Names are generally not a very good choice for keys, as people often share a name with other people, but this is just a simple illustration and not intended to be an example of good database design.</p>
+<p>Because every <strong>author</strong> value in <strong>simple_books</strong> matches some <strong>name</strong> value in <strong>simple_authors</strong>, we can connect each book to information about its author.  To assert that it should always be true that any tuple in <strong>simple_books</strong> matches a tuple in <strong>simple_authors</strong>, we declare the <strong>author</strong> attribute of <strong>simple_books</strong> to be a foreign key <em>referencing</em> the <strong>name</strong> attribute of <strong>simple_authors</strong>.  This foreign key constraint applies not only to the current relations, but to any future states of <strong>simple_books</strong> and <strong>simple_authors</strong>.  Foreign keys are also known as <em>referential integrity</em> constraints.</p>
+<p>Note that the foreign key is a constraint on both relations; certain changes in either relation could result in a constraint violation.  The constraint is not symmetric, however; we can have authors listed in <strong>simple_authors</strong> for whom no books are listed in <strong>simple_books</strong>.</p>
+</div>
+</div>
+</div><h3 id="index-7"><span id="id12"></span><span class="section-number">3.1.3.3. </span>一致性<a class="headerlink" href="#index-7" title="Link to this heading">¶</a></h3>
+<p><strong>Consistency</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2">
+<input checked type="radio" id="__tabbed_12_1" name="__tabbed_12"><input type="radio" id="__tabbed_12_2" name="__tabbed_12"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_12_1">
+中文</label><label class="tabbed-label" for="__tabbed_12_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>一个约束被违反的数据库被认为是 <em>不一致(inconsistent)</em> 的。关系数据库系统应当强制执行一致性，并防止任何会违反约束的数据修改操作。一致性有助于确保我们从查询中获得良好的答案，或者至少帮助我们避免某些常见问题。例如，保证员工关系中的唯一 ID 值可以防止混淆两个员工的潜在问题，例如向同一个人发放两张工资支票（而另一人则没有发放任何支票）。外键约束可以防止当一个关系中的数据引用另一个关系中不存在的数据时产生无意义的结果。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>A database in which constraints are violated is considered <em>inconsistent</em>.  A relational database system is expected to enforce consistency and prevent any data modification operations which would violate constraints.  Consistency helps ensure that we get good answers from our queries, or at least helps us avoid certain common problems.  For example, guaranteeing unique ID values in an employee relation prevents potential issues from confusing two employees, such as issuing two paychecks to the same person (and none to another person).  Foreign key constraints can prevent meaningless results when data in one relation refers to non-existent data in another relation.</p>
+</div>
+</div>
+</div><h2 id="id13"><span class="section-number">3.1.4. </span>修改操作<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<p><strong>Modification operations</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2">
+<input checked type="radio" id="__tabbed_13_1" name="__tabbed_13"><input type="radio" id="__tabbed_13_2" name="__tabbed_13"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_13_1">
+中文</label><label class="tabbed-label" for="__tabbed_13_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系模型假设关系可以通过三种操作进行修改：元组可以被添加（插入）到关系中，元组内的值可以在不添加或删除元组的情况下被修改（更新），或者元组可以从关系中被删除（删除）。在修改后，数据库的状态必须与所有约束保持一致，否则操作必须被数据库系统拒绝。在某些情况下（例如存在循环外键关系），可能需要将多个修改组合在一起使用 <em>事务(transaction)</em> ；在事务的上下文中，约束可能会暂时被违反，但在所有操作完成后必须解决，否则任何操作都不能生效。</p>
+<p>插入操作可能会违反关系上的主键和唯一键约束，如果被插入的元组包含的值与关系中已存在的另一个元组重复。此外，如果为外键属性提供了一个在引用表中不存在的值，则插入操作也可能违反关系上的外键约束。例如，以下每个元组如果添加到 <strong>simple_books</strong> 关系中（假设以上讨论的主键和外键），都会违反约束：</p>
+<blockquote>
+<div><p>(<em>The House of the Spirits</em>, Isabel Allende, 1999, history)</p>
+<p>(<em>A Wizard of Earthsea</em>, Ursula K. Le Guin, 1968, fantasy)</p>
+</div></blockquote>
+<p>在第一个案例中，该作者和书名已经存在于 <strong>simple_books</strong> 关系中。在第二个案例中，作者在 <strong>simple_authors</strong> 关系中不存在。</p>
+<p>另一方面，删除操作永远不会违反主键或唯一键约束。然而，删除一个关系中的元组可能会违反外键约束，如果另一个关系中的外键值引用了被删除的主键。例如，我们不能从 <strong>simple_authors</strong> 中删除以下元组：</p>
+<blockquote>
+<div><p>(Ralph Ellison, 1914-03-01, 1994-04-16)</p>
+</div></blockquote>
+<p>该作者在 <strong>simple_books</strong> 表中有一本书。</p>
+<p>更新可以引发上述任何约束违反。例如，改变主键值的更新不能更改为与另一个元组的主键重复的值。同样，如果另一个关系中的外键值依赖于被更新的主键值，则该更新不能进行。最后，更新也不能将外键值更改为引用表中不存在的值。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The relational model assumes that a relation may be modified with one of three operations: tuples may be added (inserted) into the relation, values within tuples may be modified (updated) without adding or removing the tuple, or tuples may be removed (deleted) from the relation.  The state of the database must be consistent with all constraints after modification, or the operation must be rejected by the database system.  In certain cases (such as the existence of a circular foreign key relationship), it may be necessary to group multiple modifications together with a <em>transaction</em>; constraints may be temporarily violated within the context of the transaction, but must be resolved when all operations have been completed, or none of the operations may take effect.</p>
+<p>Insertion operations can violate primary and unique key constraints on a relation if the tuple being inserted contains values that duplicate another tuple already in the relation.  Insertion operations can also violate foreign key constraints on a relation if a value is provided for a foreign key attribute that does not exist in the referenced table.  For example, each of the tuples below would violate constraints if added to the <strong>simple_books</strong> relation (assuming the primary and foreign keys discussed in the text above):</p>
+<blockquote>
+<div><p>(<em>The House of the Spirits</em>, Isabel Allende, 1999, history)</p>
+<p>(<em>A Wizard of Earthsea</em>, Ursula K. Le Guin, 1968, fantasy)</p>
+</div></blockquote>
+<p>In the first case, this author and title already exists in the <strong>simple_books</strong> relation.  In the second case, the author is not present in the <strong>simple_authors</strong> relation.</p>
+<p>Deletions, on the other hand, can never violate primary or unique key constraints.  A deletion in one relation can violate a foreign key constraint, however, if a foreign key value in another relation references the deleted key being deleted.  For example, we may not delete from <strong>simple_authors</strong> the tuple:</p>
+<blockquote>
+<div><p>(Ralph Ellison, 1914-03-01, 1994-04-16)</p>
+</div></blockquote>
+<p>This author has a book in the <strong>simple_books</strong> table.</p>
+<p>Updates can create any of the constraint violations described above.  For example, an update which changes the value of a primary key must not change the value such that it would duplicate another tuple’s primary key.  Similarly, if a foreign key value in another relation depends on the primary key value being updated, then the update cannot proceed.  Finally, an update may not change a foreign key value to something which is not in the referenced table.</p>
+</div>
+</div>
+</div><h2 id="null"><span id="index-8"></span><span class="section-number">3.1.5. </span>NULL<a class="headerlink" href="#null" title="Link to this heading">¶</a></h2>
+<p><strong>NULL</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2">
+<input checked type="radio" id="__tabbed_14_1" name="__tabbed_14"><input type="radio" id="__tabbed_14_2" name="__tabbed_14"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_14_1">
+中文</label><label class="tabbed-label" for="__tabbed_14_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在之前显示的 <strong>simple_authors</strong> 关系中，有两个条目没有 <strong>death</strong> 属性的值，因为这两位作者仍然在世。如果我们认为 <strong>death</strong> 属性的域是日历日期的域，那么实际上没有任何值能够准确表示这种情况。相反，我们使用一个特殊的占位符来表示 <em>信息的缺失</em>。在关系模型中，这个占位符称为 <em>NULL</em> 。</p>
+<p>NULL 的本质，实际上，它在关系模型中的存在，是有争议的。一些数据库学者将 NULL 视为包含在每个域中的特殊值。因此，我们可以说我们在表中为每位在世作者的死亡属性放置了一个 NULL 值。然而，NULL 具有一些特殊属性，使其作为值时存在问题，例如它无法与其他值进行比较，包括其他 NULL 值——稍后将详细讨论。出于这个原因，其他学者更倾向于将 NULL 视为属性的一种特殊 <em>状态</em>；我们可以说当作者仍在世时， <strong>death</strong> 属性处于空状态。最后，一些学者完全拒绝 NULL，认为其与关系理论根本不兼容。</p>
+<p>NULL 被创造出来解决的问题是缺失信息的问题。信息可能由于多种原因而未知：可能是没有人知道真实值，或者在将数据输入数据库时被忽略，或者其他多种原因。数据可能是不相关或不适用的，例如在在世作者的 <strong>death</strong> 日期的例子中。研究人员已经确定了许多可以赋予 NULL 的不同含义，这导致一些学者提议使用多个占位符，而不仅仅是一个（尽管其中一些提议是为了强调 NULL 的问题，而不是改善模型）。问题在于，元组的定义要求每个在关系模式中定义的属性都必须关联 <em>某个东西(something)</em> ；即使没有任何来自域的适当值，元组也不能简单地是不完整的。</p>
+<p>虽然有替代 NULL 的选项，但这些替代方案本身也存在问题。大多数基于关系模型的数据库系统都支持 NULL。因此，NULL 是我们讨论关系模型时的重要组成部分。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In the <strong>simple_authors</strong> relation shown earlier, two of the entries show no value for the attribute <strong>death</strong>, which is because those two authors are still living.  If we consider the domain of the <strong>death</strong> attribute to be the domain of calendar dates, then there is truly no value we can choose that accurately represents the situation.  Instead, we are using a special placeholder to represent the <em>absence of information</em>.  In the relational model, that placeholder is called <em>NULL</em>.</p>
+<p>The nature of NULL, and in fact, its very presence in the relational model, is controversial.  Some database scholars treat NULL as a special value that is included with every domain.  So we can say that we have put a NULL value in our table for the death attribute for each living author.  However, NULL exhibits special properties that make it problematic as a value, such as the fact that it cannot be compared with other values, including other NULLs - more on this in a bit.  For this reason, other scholars prefer to treat NULL as a special <em>state</em> of the attribute; we can say that the <strong>death</strong> attribute for an author is in a null state when the author is living.  Finally, some scholars reject NULL entirely as fundamentally incompatible with relational theory.</p>
+<p>The problem NULL was created to solve is the problem of missing information.  Information may be unknown for many reasons: it may be that nobody knows the true value, or it may have been simply overlooked when entering data into the database, or any number of other causes.  Data may be irrelevant or inapplicable, as in the example of the <strong>death</strong> date for living authors.  Researchers have identified many different meanings that can be ascribed to NULL, which has led some scholars to propose additional placeholders instead of just one (although some of those proposals were intended to highlight the problems with NULL, rather than improve the model).  The problem is, the definition of a tuple requires there to be <em>something</em> associated with every attribute defined in the relation schema; even if nothing from the domain is appropriate, the tuple cannot simply be incomplete.</p>
+<p>While there are alternatives to the use of NULL, the alternatives are problematic in their own ways.  Most database systems based on the relational model include support for NULL.  For these reasons, NULL is an important part of our discussion of the relational model.</p>
+</div>
+</div>
+</div><h3 id="index-9"><span id="id14"></span><span class="section-number">3.1.5.1. </span>三值逻辑<a class="headerlink" href="#index-9" title="Link to this heading">¶</a></h3>
+<p><strong>Three-valued logic</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2">
+<input checked type="radio" id="__tabbed_15_1" name="__tabbed_15"><input type="radio" id="__tabbed_15_2" name="__tabbed_15"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_15_1">
+中文</label><label class="tabbed-label" for="__tabbed_15_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>对关系的许多操作都利用布尔逻辑和逻辑表达式的常规运算。在布尔逻辑中只有两个值： <em>真(true)</em> 和 <em>假(false)</em> 。基本的布尔运算符易于理解和应用。NOT 操作简单地反转布尔值: “NOT true” 等于 false ，而 “NOT false” 等于 true <a class="footnote-reference brackets" href="#id21" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> . 给定两个布尔值 <em>a</em> 和 <em>b</em>，表达式 “a AND b” 仅当 <em>a</em> 和 <em>b</em> 都为真时才为真。另一方面，表达式 “a OR b” 仅当 <em>a</em> 或 <em>b</em> 为真时为真，只有当 <em>a</em> 和 <em>b</em> 都为假时才为假。</p>
+<p>然而，当 NULL 在大多数表达式中使用时，答案是否为真或假是未知的。例如，表达式 “2 = x”，其中 <em>x</em> 被赋值为 NULL（或者说处于空状态，如果你愿意）无法确定为真或假。问题在于，NULL 不是一个独特的值，而是代表信息的完全缺失。因此，我们 <em>不知道</em> <em>x</em> 是否等于 2 或其他什么。即使是表达式 “x = y”，其中 <em>x</em> 和 <em>y</em> 都是 NULL，也无法确定为真或假！</p>
+<p>解决方案是通过引入第三个值 <em>未知</em> 来增强布尔逻辑，从而形成 <em>三值逻辑</em>。由于组合众多，最简单的方法是通过以下表格总结 AND、OR 和 NOT 操作的结果：</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p><em>b</em></p></th>
+<th class="head"><p><em>a</em> AND <em>b</em></p></th>
+<th class="head"><p><em>a</em> OR <em>b</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>unknown</p></td>
+<td><p>unknown</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-odd"><td><p>false</p></td>
+<td><p>unknown</p></td>
+<td><p>false</p></td>
+<td><p>unknown</p></td>
+</tr>
+<tr class="row-even"><td><p>unknown</p></td>
+<td><p>true</p></td>
+<td><p>unknown</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>unknown</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>unknown</p></td>
+</tr>
+<tr class="row-even"><td><p>unknown</p></td>
+<td><p>unknown</p></td>
+<td><p>unknown</p></td>
+<td><p>unknown</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p>NOT <em>a</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-odd"><td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>unknown</p></td>
+<td><p>unknown</p></td>
+</tr>
+</tbody>
+</table>
+<p>如果应用一些常识，就没有必要记住这些表格。考虑表达式 “a OR b”，让 <em>b</em> 为未知。要确定 “a OR b” 的结果，我们只需考虑在不知道 <em>b</em> 的值的情况下是否有足够的信息。事实上，如果 <em>a</em> 为真，那么 <em>b</em> 是真还是假并不重要——结果 “a OR b” 为真。因此 “true OR unknown” 等于 true。另一方面，如果 <em>a</em> 为假，那么 <em>b</em> 的真假就确实很重要；由于我们不知道，结果 “a OR b” 是未知的。对其他运算可以应用类似的思考过程。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Many operations on relations make use of Boolean logic and the usual operations on logical expressions.  There are only two values in Boolean logic: <em>true</em> and <em>false</em> .  The basic Boolean operators are easy to understand and apply.  The NOT operation simply inverts the Boolean value: “NOT true” equals false, and “NOT false” equals true <a href="#id22"><span class="problematic" id="id23"><span id="id16"></span>[#]_</span></a>.  Given two Boolean values, <em>a</em> and <em>b</em>, the expression “a AND b” yields true if and only if <em>a</em> is true and <em>b</em> is true.  On the other hand, the expression “a OR b” is true if <em>a</em> is true or <em>b</em> is true, and is false only if both <em>a</em> and <em>b</em> are false.</p>
+<p>However, when NULL is used in most expressions, it is unknown whether the answer is true or false.  For example, the expression “2 = x”, where <em>x</em> is assigned NULL (or is in the null state, if you prefer) cannot be determined to be true or false.  The problem is that NULL is not a distinct value of its own, but represents the absence of information altogether.  Thus, we <em>do not know</em> if <em>x</em> equals 2 or something else.  Even the expression “x = y”, where both <em>x</em> and <em>y</em> are NULL cannot be determined to be true or false!</p>
+<p>The solution is to enhance Boolean logic with a third value, <em>unknown</em>, giving a <em>three-valued logic</em>.  With so many combinations, it is easiest to summarize the results of AND, OR, and NOT operations with the following tables:</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p><em>b</em></p></th>
+<th class="head"><p><em>a</em> AND <em>b</em></p></th>
+<th class="head"><p><em>a</em> OR <em>b</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>unknown</p></td>
+<td><p>unknown</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-odd"><td><p>false</p></td>
+<td><p>unknown</p></td>
+<td><p>false</p></td>
+<td><p>unknown</p></td>
+</tr>
+<tr class="row-even"><td><p>unknown</p></td>
+<td><p>true</p></td>
+<td><p>unknown</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>unknown</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>unknown</p></td>
+</tr>
+<tr class="row-even"><td><p>unknown</p></td>
+<td><p>unknown</p></td>
+<td><p>unknown</p></td>
+<td><p>unknown</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>a</em></p></th>
+<th class="head"><p>NOT <em>a</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-odd"><td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>unknown</p></td>
+<td><p>unknown</p></td>
+</tr>
+</tbody>
+</table>
+<p>It is not necessary to memorize these tables, if some common sense is applied.  Consider the expression “a OR b”, and let <em>b</em> be unknown.  To determine the result of “a OR b”, we simply need to consider whether or not we have enough information without knowing the value of <em>b</em>.  In fact, if <em>a</em> is true, it does not matter if <em>b</em> is true or false - the result “a OR b” is true.  Thus “true OR unknown” equals true.  On the other hand, if <em>a</em> is false, then it really does matter whether <em>b</em> is true or false; since we don’t know, the result “a OR b” is unknown.  A similar thought process can be applied to the other operations.</p>
+</div>
+</div>
+</div><h3 id="id17"><span class="section-number">3.1.5.2. </span>约束和 NULL<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p><strong>Constraints and NULL</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2">
+<input checked type="radio" id="__tabbed_16_1" name="__tabbed_16"><input type="radio" id="__tabbed_16_2" name="__tabbed_16"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_16_1">
+中文</label><label class="tabbed-label" for="__tabbed_16_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在我们的模型中引入 NULL 后，我们必须对关于约束的规则进行一些小调整。首先，我们必须进一步限制所有主键属性，确保其永远不为 NULL。请记住，主键应该是关系中元组的标识符，每个元组都必须有一个唯一的主键值。然而，如果某个元组的任何主键属性中存在 NULL，就无法搜索和找到该元组——任何尝试将主键与查找值进行比较的操作都会返回未知结果。我们同样无法正确执行唯一性约束，因为无法将包含主键为 NULL 的元组与其他元组进行比较，以确定它们是否不同。</p>
+<p>其次，我们修改外键的规则。新规则是外键可以为 NULL，其他情况下必须匹配引用表中的某个值。允许外键为 NULL 可能看起来令人惊讶，但考虑到我们的示例关系，我们如何处理作者未知（匿名）的书籍呢？如果不允许作者为 NULL，那么在 <strong>simple_authors</strong> 表中没有相应记录的情况下，我们无法将书籍添加到 <strong>simple_books</strong> 中。然而，对于未知作者， <strong>simple_authors</strong> 表中的记录又意味着什么呢？（请注意，由于主键的原因，我们不能在 <strong>simple_authors</strong> 中为作者的名称设置 NULL。）虽然有多种方法可以解决这个问题，但允许作者为 NULL 是一种可能的解决方案。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>With NULL in our model, we must make some small adjustments to our rules regarding constraints.  First, we must further constrain all primary key attributes to never be NULL.  Remember that a primary key should be an identifier for tuples in a relation, and every tuple must have a unique primary key value.  However, if NULL is present in any primary key attribute for some tuple, it is impossible to search for and find the tuple - any attempt to compare the primary key with a lookup value gives an unknown result.  We likewise cannot properly enforce uniqueness, because we cannot compare a tuple with NULL in the primary key with other tuples to determine if they are distinct from one another.</p>
+<p>Second, we modify the rule for a foreign key.  The new rule is that a foreign key may be NULL, otherwise it must match a value in the referenced table.  Allowing NULL in a foreign key may seem surprising, but considering our example relations, how might we handle a book for whom the author is unknown (anonymous)?  If NULL is not allowed for the author, then we cannot add the book to <strong>simple_books</strong> without some matching record in the <strong>simple_authors</strong> table.  However, what is the meaning of a record in the <strong>simple_authors</strong> table for an unknown author?  (Note also we cannot have a NULL name for the author in <strong>simple_authors</strong> due to the primary key.)  While there are multiple ways to approach this problem, allowing NULL for the author is one possible solution.</p>
+</div>
+</div>
+</div><h2 id="id18"><span class="section-number">3.1.6. </span>自检练习<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<p><strong>Self-check exercises</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2">
+<input checked type="radio" id="__tabbed_17_1" name="__tabbed_17"><input type="radio" id="__tabbed_17_2" name="__tabbed_17"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_17_1">
+中文</label><label class="tabbed-label" for="__tabbed_17_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节包含一些问题，您可以用来检查对关系数据库模型的理解。</p>
+<ul>
+<li><p>将术语拖动到其匹配的定义。</p>
+<ul class="simple">
+<li><p>集合</p></li>
+<li><p>关系</p></li>
+<li><p>属性</p></li>
+<li><p>域</p></li>
+<li><p>关系模式</p></li>
+</ul>
+<ul class="simple">
+<li><p>元组的命名属性</p></li>
+<li><p>一组不同的值</p></li>
+<li><p>属性值所属的值的集合</p></li>
+<li><p>关系的属性和域的定义</p></li>
+<li><p>来自同一域的一组元组</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><p>集合 &lt;-&gt; 一组不同的值</p></li>
+<li><p>关系 &lt;-&gt; 来自同一域的一组元组</p></li>
+<li><p>属性 &lt;-&gt; 元组的命名属性</p></li>
+<li><p>域 &lt;-&gt; 属性值所属的值的集合</p></li>
+<li><p>关系模式 &lt;-&gt; 关系的属性和域的定义</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>在关系模型中，<a href="#id19"><span class="problematic" id="id20">*</span></a>元组*的定义是什么？</p>
+<ul>
+<li><p>一组有序的值；元组中的每个位置都与一个域相关联。</p></li>
+<li><p>与命名属性相关联的一组值；每个属性都与一个域相关联。</p></li>
+<li><p>上述定义中的任一个或两者都可以使用，具体取决于上下文。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p>一组有序的值；元组中的每个位置都与一个域相关联。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>这是一个定义。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>与命名属性相关联的一组值；每个属性都与一个域相关联。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>这是一个定义。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>上述定义中的任一个或两者都可以使用，具体取决于上下文。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>哪一个最能描述关系？</p>
+<ul>
+<li><p>按主键值排序的一组元组。每个元组必须唯一，并具有相同数量和类型的属性。</p></li>
+<li><p>没有特定顺序的一组元组。每个元组必须唯一，并具有相同数量和类型的属性。</p></li>
+<li><p>没有特定顺序的一组元组，可能有重复。每个元组必须具有相同数量和类型的属性。</p></li>
+<li><p>没有特定顺序的一组元组。每个元组必须唯一。每个元组都有自己的属性，可能在元组之间有所不同。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p>按主键值排序的一组元组。每个元组必须唯一，并具有相同数量和类型的属性。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>关系没有内在排序。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>没有特定顺序的一组元组。每个元组必须唯一，并具有相同数量和类型的属性。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>没有特定顺序的一组元组，可能有重复。每个元组必须具有相同数量和类型的属性。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>关系中的元组必须是不同的，即不能有重复的元组。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>没有特定顺序的一组元组。每个元组必须唯一。每个元组都有自己的属性，可能在元组之间有所不同。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>关系中的元组必须来自同一元组域；即每个元组在属性和相关域的定义上是相同的。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<p>接下来的四个问题与下面的两个关系有关，这些关系将 ISO（国际标准化组织）国家代码映射到国家名称和 ISO 货币代码，以及货币代码映射到货币名称。<strong>countries</strong> 的主键是 <strong>country_code</strong>，<strong>currencies</strong> 的主键是 <strong>currency_code</strong>。<strong>countries</strong> 中的 <strong>principal_currency_code</strong> 列是一个外键，引用 <strong>currencies</strong> 中的 <strong>currency_code</strong>。显然，由于空间原因，这代表了可用数据的一个子集。</p>
+<img alt="显示国家关系的元组的表格。列出的国家有澳大利亚（AU）、索马里（SO）、泰国（TH）、墨西哥（MX）、基里巴斯（KI）和丹麦（DK）。" src="../../_images/countries.svg" />
+<img alt="显示货币关系的元组的表格。列出的货币有墨西哥比索（MXN）、澳大利亚元（AUD，澳大利亚和基里巴斯使用）、丹麦克朗（DKK）、泰铢（THB）和索马里先令（SOS）。" src="../../_images/currencies.svg" />
+<ul class="simple">
+<li><p>如果我们将元组 (DK, Danmark, DKK) 插入 <strong>countries</strong> 关系，将会违反什么约束？</p>
+<ul>
+<li><p><strong>countries</strong> 关系上的主键。</p></li>
+<li><p><strong>countries</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p>不会违反任何约束。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p><strong>countries</strong> 关系上的主键。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>countries</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>DKK 是 <strong>currencies</strong> 关系中的货币代码。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>DKK 是 <strong>currencies</strong> 关系中的货币代码。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>不会违反任何约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>错误。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>如果我们从 <strong>countries</strong> 关系中删除元组 (AU, Australia, AUD)，将违反什么约束？</p>
+<ul>
+<li><p><strong>countries</strong> 关系上的主键。</p></li>
+<li><p><strong>countries</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p>不会违反任何约束。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p><strong>countries</strong> 关系上的主键。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，<strong>country_code</strong> 列仍将包含唯一的、非空的条目。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>countries</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，<strong>country_code</strong> 列仍将包含唯一的、非空的条目，并且所有 <strong>principal_currency_code</strong> 值仍与 <strong>currencies</strong> 关系中的值匹配。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，所有 <strong>principal_currency_code</strong> 值仍与 <strong>currencies</strong> 关系中的值匹配。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>不会违反任何约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>如果我们从 <strong>currencies</strong> 关系中删除元组 (THB, Baht)，将违反什么约束？</p>
+<ul>
+<li><p><strong>currencies</strong> 关系上的主键。</p></li>
+<li><p><strong>currencies</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p>不会违反任何约束。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p><strong>currencies</strong> 关系上的主键。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，<strong>currency_code</strong> 列仍将包含唯一的、非空的条目。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>currencies</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，<strong>currency_code</strong> 列仍将包含唯一的、非空的条目。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。<strong>countries</strong> 中泰国的条目将有一个 <strong>principal_currency_code</strong>，该值在 <strong>currencies</strong> 关系中没有匹配项。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>不会违反任何约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>错误。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>如果我们将元组 (ARS, Argentine Peso) 插入 <strong>currencies</strong> 关系，将违反什么约束？</p>
+<ul>
+<li><p><strong>currencies</strong> 关系上的主键。</p></li>
+<li><p><strong>currencies</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p>不会违反任何约束。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p><strong>currencies</strong> 关系上的主键。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，ARS 与之前表中的货币代码不同。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>currencies</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，ARS 与之前表中的货币代码不同，并且外键约束 <strong>principal_currency_code</strong> 的值必须在 <strong>currencies</strong> 的 <strong>currency_code</strong> 列中，但反之则不然。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，外键约束 <strong>principal_currency_code</strong> 的值必须在 <strong>currencies</strong> 的 <strong>currency_code</strong> 列中，但反之则不然。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>不会违反任何约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>如果我们将元组 (AQ, Antarctica, NULL) 插入 <strong>countries</strong> 关系，将违反什么约束？（是的，南极洲在技术上并不是一个国家，但他们确实有 ISO 国家代码。）</p>
+<ul>
+<li><p><strong>countries</strong> 关系上的主键。</p></li>
+<li><p><strong>countries</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p>不会违反任何约束。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p><strong>countries</strong> 关系上的主键。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，AQ 与之前表中的国家代码不同。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>countries</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，AQ 与之前表中的国家代码不同。<strong>principal_currency_code</strong> 的值为 NULL，这是外键定义下允许的。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>不，<strong>principal_currency_code</strong> 的值为 NULL，这是外键定义下允许的。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>不会违反任何约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>如果我们将 <strong>currencies</strong> 中的元组 (AUD, Australian Dollar) 修改为 (DKK, Australian Dollar)，将违反什么约束？</p>
+<ul>
+<li><p><strong>currencies</strong> 关系上的主键。</p></li>
+<li><p><strong>currencies</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p></li>
+<li><p>不会违反任何约束。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul>
+<li><p><strong>currencies</strong> 关系上的主键。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确，但是否可能违反其他约束？</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>currencies</strong> 关系上的主键和 <strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确。DKK 重复了 <strong>currencies</strong> 中的现有货币代码，并且该更改还会将 AUD 从货币列表中移除，而 AUD 被 <strong>countries</strong> 中的两个行引用。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>principal_currency_code</strong> 的外键约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确，但是否可能违反其他约束？</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>不会违反任何约束。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>错误。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<ul>
+<li><p>将表达式拖到其求值结果。</p>
+<ul class="simple">
+<li><p>true AND unknown</p></li>
+<li><p>true OR unknown</p></li>
+<li><p>false AND true</p></li>
+</ul>
+<ul class="simple">
+<li><p>unknown</p></li>
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><p>true AND unknown &lt;-&gt; unknown</p></li>
+<li><p>true OR unknown &lt;-&gt; true</p></li>
+<li><p>false AND true &lt;-&gt; false</p></li>
+</ul>
+</div>
+<ul>
+<li><p>将表达式拖到其求值结果。</p>
+<ul class="simple">
+<li><p>NOT false</p></li>
+<li><p>unknown AND false</p></li>
+<li><p>false OR unknown</p></li>
+</ul>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+<li><p>unknown</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><p>NOT false &lt;-&gt; true</p></li>
+<li><p>unknown AND false &lt;-&gt; false</p></li>
+<li><p>false OR unknown &lt;-&gt; unknown</p></li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>This section has some questions you can use to check your understanding of the relational model of the database.</p>
+<ul>
+<li><p>Drag the term to its matching definition.</p>
+<ul class="simple">
+<li><p>set</p></li>
+<li><p>relation</p></li>
+<li><p>attribute</p></li>
+<li><p>domain</p></li>
+<li><p>relation schema</p></li>
+</ul>
+<ul class="simple">
+<li><p>A named property of a tuple</p></li>
+<li><p>A collection of distinct values</p></li>
+<li><p>A set of values which attribute values belong to</p></li>
+<li><p>A definition of the attributes and domains of a relation</p></li>
+<li><p>A set of tuples from the same domain</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>set &lt;-&gt; A collection of distinct values</p></li>
+<li><p>relation &lt;-&gt; A set of tuples from the same domain</p></li>
+<li><p>attribute &lt;-&gt; A named property of a tuple</p></li>
+<li><p>domain &lt;-&gt; A set of values which attribute values belong to</p></li>
+<li><p>relation schema &lt;-&gt; A definition of the attributes and domains of a relation</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>What is the definition of <em>tuple</em> as used in the relational model?</p>
+<ul>
+<li><p>An ordered collection of values; each position in the tuple is associated with a domain.</p></li>
+<li><p>A set of values associated with a named attribute; each attribute is associated with a domain.</p></li>
+<li><p>Either or both of the above definitions may be used, depending on the context.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>An ordered collection of values; each position in the tuple is associated with a domain.</p>
+<ul>
+<li><p>This is one definition.</p></li>
+</ul>
+</li>
+<li><p>A set of values associated with a named attribute; each attribute is associated with a domain.</p>
+<ul>
+<li><p>This is one definition.</p></li>
+</ul>
+</li>
+<li><p>Either or both of the above definitions may be used, depending on the context.</p>
+<ul>
+<li><p>Correct.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>Which of these best describes a relation?</p>
+<ul>
+<li><p>A collection of tuples in order by primary key value.  Each tuple must be unique and have the same number and types of attributes.</p></li>
+<li><p>A collection of tuples in no particular order.  Each tuple must be unique and have the same number and types of attributes.</p></li>
+<li><p>A collection of tuples in no particular order, possibly with duplicates.  Each tuple must have the same number and types of attributes.</p></li>
+<li><p>A collection of tuples in no particular order.  Each tuple must be unique.  Each tuple has its own attributes, which may differ from tuple to tuple.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>A collection of tuples in order by primary key value.  Each tuple must be unique and have the same number and types of attributes.</p>
+<ul>
+<li><p>Relations have no intrinsic ordering.</p></li>
+</ul>
+</li>
+<li><p>A collection of tuples in no particular order.  Each tuple must be unique and have the same number and types of attributes.</p>
+<ul>
+<li><p>Correct.</p></li>
+</ul>
+</li>
+<li><p>A collection of tuples in no particular order, possibly with duplicates.  Each tuple must have the same number and types of attributes.</p>
+<ul>
+<li><p>Tuples in a relation must be distinct, that is, there cannot be duplicate tuples.</p></li>
+</ul>
+</li>
+<li><p>A collection of tuples in no particular order.  Each tuple must be unique.  Each tuple has its own attributes, which may differ from tuple to tuple.</p>
+<ul>
+<li><p>Tuples in a relation must come from the same domain of tuples; that is, each tuple shares the same definition in terms of attributes and associated domains.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The next four questions concern the two relations pictured below, which map ISO (International Organization for Standardization) country codes to country names and ISO currency codes, and currency codes to the name of the currency.  The primary key for <strong>countries</strong> is <strong>country_code</strong>, and the primary key for <strong>currencies</strong> is <strong>currency_code</strong>.  The <strong>principal_currency_code</strong> column in <strong>countries</strong> is a foreign key referencing <strong>currency_code</strong> in <strong>currencies</strong>.  Obviously this represents a subset of available data, for space reasons.</p>
+<img alt="A table showing tuples for the countries relation.  The countries listed are Australia (AU), Somalia (SO), Thailand (TH), Mexico (MX), Kiribati (KI), and Denmark (DK)." src="../../_images/countries.svg" />
+<img alt="A table showing tuples for the currencies relation.  The currencies listed are the Mexican Peso (MXN), Australian Dollar (AUD, used by Australia and Kiribati), the Danish Krone (DKK), the Thai Baht (THB), and the Somali Shilling (SOS)." src="../../_images/currencies.svg" />
+<ul class="simple">
+<li><p>What constraint or constraints would be violated if we insert the tuple (DK, Danmark, DKK) into the <strong>countries</strong> relation?</p>
+<ul>
+<li><p>Primary key on the <strong>countries</strong> relation.</p></li>
+<li><p>Primary key on the <strong>countries</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>No constraints would be violated.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>Primary key on the <strong>countries</strong> relation.</p>
+<ul>
+<li><p>Correct.</p></li>
+</ul>
+</li>
+<li><p>Primary key on the <strong>countries</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>DKK is a currency code in the <strong>currencies</strong> relation.</p></li>
+</ul>
+</li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>DKK is a currency code in the <strong>currencies</strong> relation.</p></li>
+</ul>
+</li>
+<li><p>No constraints would be violated.</p>
+<ul>
+<li><p>Incorrect.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>What constraint or constraints would be violated if we delete the tuple (AU, Australia, AUD) from the <strong>countries</strong> relation?</p>
+<ul>
+<li><p>Primary key on the <strong>countries</strong> relation.</p></li>
+<li><p>Primary key on the <strong>countries</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>No constraints would be violated.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>Primary key on the <strong>countries</strong> relation.</p>
+<ul>
+<li><p>No, the <strong>country_code</strong> column will still contain unique, non-null entries.</p></li>
+</ul>
+</li>
+<li><p>Primary key on the <strong>countries</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>No, the <strong>country_code</strong> column will still contain unique, non-null entries, and all <strong>principal_currency_code</strong> values still match values in the <strong>currencies</strong> relation.</p></li>
+</ul>
+</li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>No, all <strong>principal_currency_code</strong> values still match values in the <strong>currencies</strong> relation.</p></li>
+</ul>
+</li>
+<li><p>No constraints would be violated.</p>
+<ul>
+<li><p>Correct.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>What constraint or constraints would be violated if we delete the tuple (THB, Baht) from the <strong>currencies</strong> relation?</p>
+<ul>
+<li><p>Primary key on the <strong>currencies</strong> relation.</p></li>
+<li><p>Primary key on the <strong>currencies</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>No constraints would be violated.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>Primary key on the <strong>currencies</strong> relation.</p>
+<ul>
+<li><p>No, the <strong>currency_code</strong> column will still contain unique, non-null entries.</p></li>
+</ul>
+</li>
+<li><p>Primary key on the <strong>currencies</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>No, the <strong>currency_code</strong> column will still contain unique, non-null entries.</p></li>
+</ul>
+</li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>Correct.  The entry for Thailand in <strong>countries</strong> will have a <strong>principal_currency_code</strong> that is not matched by anything in the <strong>currencies</strong> relation.</p></li>
+</ul>
+</li>
+<li><p>No constraints would be violated.</p>
+<ul>
+<li><p>Incorrect.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>What constraint or constraints would be violated if we insert the tuple (ARS, Argentine Peso) into the <strong>currencies</strong> relation?</p>
+<ul>
+<li><p>Primary key on the <strong>currencies</strong> relation.</p></li>
+<li><p>Primary key on the <strong>currencies</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>No constraints would be violated.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>Primary key on the <strong>currencies</strong> relation.</p>
+<ul>
+<li><p>No, ARS is distinct from the currency codes previously in the table.</p></li>
+</ul>
+</li>
+<li><p>Primary key on the <strong>currencies</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>No, ARS is distinct from the currency codes previously in the table, and the foreign key constrains <strong>principal_currency_code</strong> values to be in the <strong>currency_code</strong> column of <strong>currencies</strong>, but not vice-versa.</p></li>
+</ul>
+</li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>No, the foreign key constrains <strong>principal_currency_code</strong> values to be in the <strong>currency_code</strong> column of <strong>currencies</strong>, but not vice-versa.</p></li>
+</ul>
+</li>
+<li><p>No constraints would be violated.</p>
+<ul>
+<li><p>Correct.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>What constraint or constraints would be violated if we insert the tuple (AQ, Antarctica, NULL) into the <strong>countries</strong> relation?  (Yes, Antarctica is technically not a country, but they do have an ISO country code.)</p>
+<ul>
+<li><p>Primary key on the <strong>countries</strong> relation.</p></li>
+<li><p>Primary key on the <strong>countries</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>No constraints would be violated.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>Primary key on the <strong>countries</strong> relation.</p>
+<ul>
+<li><p>No, AQ is distinct from the country codes previously in the table.</p></li>
+</ul>
+</li>
+<li><p>Primary key on the <strong>countries</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>No, AQ is distinct from the country codes previously in the table.  The <strong>principal_currency_code</strong> value is NULL, which is allowed under the definition of a foreign key.</p></li>
+</ul>
+</li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>No, the <strong>principal_currency_code</strong> value is NULL, which is allowed under the definition of a foreign key.</p></li>
+</ul>
+</li>
+<li><p>No constraints would be violated.</p>
+<ul>
+<li><p>Correct.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>What constraint or constraints would be violated if we modify the tuple (AUD, Australian Dollar) in <strong>currencies</strong> to be (DKK, Australian Dollar)?</p>
+<ul>
+<li><p>Primary key on the <strong>currencies</strong> relation.</p></li>
+<li><p>Primary key on the <strong>currencies</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p></li>
+<li><p>No constraints would be violated.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>Primary key on the <strong>currencies</strong> relation.</p>
+<ul>
+<li><p>True, but might another constraint be violated?</p></li>
+</ul>
+</li>
+<li><p>Primary key on the <strong>currencies</strong> relation and the foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>Correct.  DKK duplicates an existing currency code in <strong>currencies</strong>, and the change would also remove AUD from the list of currencies, which is referenced by two rows in <strong>countries</strong>.</p></li>
+</ul>
+</li>
+<li><p>Foreign key constraint on <strong>principal_currency_code</strong>.</p>
+<ul>
+<li><p>True, but might another constraint be violated?</p></li>
+</ul>
+</li>
+<li><p>No constraints would be violated.</p>
+<ul>
+<li><p>Incorrect.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul>
+<li><p>Drag the expression to the outcome of its evaluation.</p>
+<ul class="simple">
+<li><p>true AND unknown</p></li>
+<li><p>true OR unknown</p></li>
+<li><p>false AND true</p></li>
+</ul>
+<ul class="simple">
+<li><p>unknown</p></li>
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>true AND unknown &lt;-&gt; unknown</p></li>
+<li><p>true OR unknown &lt;-&gt; true</p></li>
+<li><p>false AND true &lt;-&gt; false</p></li>
+</ul>
+</div>
+<ul>
+<li><p>Drag the expression to the outcome of its evaluation.</p>
+<ul class="simple">
+<li><p>NOT false</p></li>
+<li><p>unknown AND false</p></li>
+<li><p>false OR unknown</p></li>
+</ul>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+<li><p>unknown</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>NOT false &lt;-&gt; true</p></li>
+<li><p>unknown AND false &lt;-&gt; false</p></li>
+<li><p>false OR unknown &lt;-&gt; unknown</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div><hr class="docutils" />
+<p><strong>Notes</strong></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id21" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">1</a><span class="fn-bracket">]</span></span>
+<p>There are many notations for Boolean logic operators.  For simplicity, we will simply use NOT, AND, and OR instead of more compact notation.</p>
+</aside>
+</aside>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. 关系数据库理论" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              3. 关系数据库理论
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../02-relational-algebra/relational-algebra.html" class="md-footer__link md-footer__link--next" aria-label="Next: 3.2. 关系代数" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              3.2. 关系代数
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

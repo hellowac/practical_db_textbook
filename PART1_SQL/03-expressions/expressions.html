@@ -1,0 +1,1953 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>1.3. 表达式 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.3. 表达式
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">SQL</span></a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">SQL</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-sql-basics/sql-basics.html" class="md-nav__link">
+        <span class="md-ellipsis">基础</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-data-retrieval/data-retrieval.html" class="md-nav__link">
+        <span class="md-ellipsis">数据检索</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">表达式</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">表达式</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">表达式</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">列表达式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">文字</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">运算符和函数</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运算符和函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">比较运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">数学运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">字符串运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">布尔运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">日期和时间运算符和函数</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">NULL</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NULL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id17" class="md-nav__link">
+    <span class="md-ellipsis">排序和 NULL</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-9" class="md-nav__link">
+    <span class="md-ellipsis">条件表达式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id19" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-multiple-tables/multiple-tables.html" class="md-nav__link">
+        <span class="md-ellipsis">多个表上的查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-data-modification/data-modification.html" class="md-nav__link">
+        <span class="md-ellipsis">修改数据</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-table-creation/table-creation.html" class="md-nav__link">
+        <span class="md-ellipsis">数据类型和创建表</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-constraints/constraints.html" class="md-nav__link">
+        <span class="md-ellipsis">键和约束</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-subqueries/subqueries.html" class="md-nav__link">
+        <span class="md-ellipsis">子查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-grouping-and-aggregation/grouping-and-aggregation.html" class="md-nav__link">
+        <span class="md-ellipsis">分组和聚合</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-set-operations/set-operations.html" class="md-nav__link">
+        <span class="md-ellipsis">集合运算</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-advanced-topics/advanced-topics.html" class="md-nav__link">
+        <span class="md-ellipsis">高级主题</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">表达式</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">列表达式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">文字</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">运算符和函数</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运算符和函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-3" class="md-nav__link">
+    <span class="md-ellipsis">比较运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-4" class="md-nav__link">
+    <span class="md-ellipsis">数学运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-5" class="md-nav__link">
+    <span class="md-ellipsis">字符串运算符和函数</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-6" class="md-nav__link">
+    <span class="md-ellipsis">布尔运算符</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-7" class="md-nav__link">
+    <span class="md-ellipsis">日期和时间运算符和函数</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    <span class="md-ellipsis">NULL</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NULL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id17" class="md-nav__link">
+    <span class="md-ellipsis">排序和 NULL</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-9" class="md-nav__link">
+    <span class="md-ellipsis">条件表达式</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id19" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART1_SQL/03-expressions/expressions.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="expressions-chapter"><span id="id1"></span><span class="section-number">1.3. </span>表达式<a class="headerlink" href="#expressions-chapter" title="Link to this heading">¶</a></h1>
+<p><strong>Expressions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2" id="index-0">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在 SQL 中,*表达式* 是可以被 <em>评估</em> 的事物——任何产生值的东西。一些例子包括文字值、运算符表达式和函数调用表达式。表达式在 SQL 查询的大多数子句中使用;例如,在 <strong>SELECT</strong> 子句中,表达式产生我们从查询中看到的返回值,而在 <strong>WHERE</strong> 子句中,表达式决定是否返回某一行。您还可以对表达式使用 <strong>ORDER BY</strong>,稍后我们将看到表达式的其他用法。本章将探讨一些最常见的表达式类型;在后面的章节中将介绍更多的表达式。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>An <em>expression</em> in SQL is a thing that can be <em>evaluated</em> - anything that results in a value.  Some examples include literal values, operator expressions, and function call expressions.  Expressions are used in most clauses of a SQL query; for example, in the <strong>SELECT</strong> clause, expressions result in the values we see returned from the query, while in the <strong>WHERE</strong> clause, expressions determine whether or not a row is returned from the query.  You can also <strong>ORDER BY</strong> expressions, and later we will see other uses for expressions.  This chapter will explore some of the most common expression types; additional expressions will be introduced in later chapters.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">1.3.1. </span>本章中使用的表<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Tables used in this chapter</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>我们将在本章中再次使用 <strong>simple_books</strong> 和 <strong>simple_authors</strong> 表。提醒:您可以在 <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a> 中阅读这些表的完整说明。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We will again be working with the <strong>simple_books</strong> and <strong>simple_authors</strong> tables for this chapter.  Reminder: you can read a full explanation of these tables in <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>.</p>
+</div>
+</div>
+</div><h2 id="index-1"><span id="id3"></span><span class="section-number">1.3.2. </span>列表达式<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h2>
+<p><strong>Column expressions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在 SQL 语句中使用列名会产生一个特殊的表达式,该表达式计算当前处理行中存储在该列中的值。因此,当我们运行</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_column</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;J.R.R. Tolkien&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>查询执行将逐行检查 <strong>simple_books</strong> 表,以评估表达式 <code class="docutils literal notranslate"><span class="pre">author</span> <span class="pre">=</span> <span class="pre">'J.R.R.</span> <span class="pre">Tolkien'</span></code>。这个表达式使用 <strong>=</strong> 运算符将 <strong>author</strong> 列的值与字面值 <code class="docutils literal notranslate"><span class="pre">'J.R.R.</span> <span class="pre">Tolkien'</span></code> 进行比较。如果两者相同,则整个表达式评估为 <code class="docutils literal notranslate"><span class="pre">True</span></code>,该行将包含在输出中;否则,该行将被排除。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The use of a column name in a SQL statement produces a special expression which evaluates to the value stored in that column for the current row being processed.  So, when we run</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_column</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;J.R.R. Tolkien&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>the query execution examines each row of the table <strong>simple_books</strong> in turn to evaluate the expression <code class="docutils literal notranslate"><span class="pre">author</span> <span class="pre">=</span> <span class="pre">'J.R.R.</span> <span class="pre">Tolkien'</span></code>.  This expression compares the value of the <strong>author</strong> column to the literal value <code class="docutils literal notranslate"><span class="pre">'J.R.R.</span> <span class="pre">Tolkien'</span></code> using the <strong>=</strong> operator.  If the two are the same, the overall expression evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code>, and the row is included in the output; otherwise, the row is excluded.</p>
+</div>
+</div>
+</div><h2 id="index-2"><span id="id4"></span><span class="section-number">1.3.3. </span>文字<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h2>
+<p><strong>Literals</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>文字面量是以数据库可以识别和理解的形式表达的简单值。 SQL 中只有几种基本类型的文字面量,尽管这些可以在数据库中转换为许多不同的类型。我们将在 <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a> 中进一步讨论 SQL 数据类型。您将遇到的主要文字面量包括:</p>
+<ul class="simple">
+<li><p>数字:这些以常规方式表示,例如 <code class="docutils literal notranslate"><span class="pre">-1</span></code>、 <code class="docutils literal notranslate"><span class="pre">3.14159</span></code>、 <code class="docutils literal notranslate"><span class="pre">0.0008</span></code>。根据数据库的不同,您还可以使用科学记数法或其他格式的数字文字,例如 <code class="docutils literal notranslate"><span class="pre">6.02e23</span></code> (表示 <span class="math notranslate nohighlight">\(6.02 \times 10^{23}\)</span>)。</p></li>
+<li><p>字符串:这些是用单引号括起来的字符字符串,例如 <code class="docutils literal notranslate"><span class="pre">'apple'</span></code>。如果您需要表达包含单引号的文字字符串,只需将单引号写两次;这可能比较难以阅读,但会产生预期的结果。以下查询演示了这一点:</p></li>
+</ul>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_literal</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;The Handmaid&#39;&#39;s Tale&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<ul class="simple">
+<li><p>布尔值: <code class="docutils literal notranslate"><span class="pre">True</span></code> 或 <code class="docutils literal notranslate"><span class="pre">False</span></code>。 但请注意,并非所有 SQL 实现都支持布尔文字。</p></li>
+<li><p>日期和时间值。不同 SQL 实现对日期和时间的接受表示法差异很大。</p></li>
+<li><p>特殊值 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。我们将在下面详细讨论 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。</p></li>
+</ul>
+<p>您可以在 <strong>SELECT</strong> 子句中请求文字表达式——这在某些情况下是有用的。在这种情况下,文字在您查询的每一行中被评估为其自身。例如:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>如果您在上面的交互式工具中尝试此查询,请注意输出提供的列名基于所选的文字表达式。稍后我们将看到如何更改输出中列的名称,以使其更有意义。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Literals are simple values expressed in a form that the database recognizes and understands.  There are only a few basic types of literals in SQL, although these can be converted to many different types within a database.  We will discuss SQL data types further in <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a>.  The main literals you will encounter are:</p>
+<ul class="simple">
+<li><p>Numbers: these are expressed in the usual fashion, for example, <code class="docutils literal notranslate"><span class="pre">-1</span></code>, <code class="docutils literal notranslate"><span class="pre">3.14159</span></code>, <code class="docutils literal notranslate"><span class="pre">0.0008</span></code>. Depending on the database, you may also be able to use numeric literals in scientific notation or other formats, for instance, <code class="docutils literal notranslate"><span class="pre">6.02e23</span></code> (which stands for <span class="math notranslate nohighlight">\(6.02 \times 10^{23}\)</span>).</p></li>
+<li><p>Character strings: these are strings of characters enclosed in single quotes, for example, <code class="docutils literal notranslate"><span class="pre">'apple'</span></code>.  If you need to express a literal character string which contains a single quote, you simply write the single quote twice; this is tricky to read, but produces the desired result.  This is shown in the following query:</p></li>
+</ul>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_literal</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;The Handmaid&#39;&#39;s Tale&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<ul class="simple">
+<li><p>Boolean values: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.  Note, however, that not all SQL implementations support Boolean literals.</p></li>
+<li><p>Date and time values. The accepted notations for dates and times vary widely among different SQL implementations.</p></li>
+<li><p>The special value <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. We will talk more about <code class="docutils literal notranslate"><span class="pre">NULL</span></code> below.</p></li>
+</ul>
+<p>You can ask for literal expressions in the <strong>SELECT</strong> clause - this is sometimes useful.  In this case, the literal is evaluated as itself for each row in the table you are querying.  For example:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>If you try this query in the interactive tool above, note that the output provides column names based on the literal expressions selected.  Later we will see how to change the names of columns in the output if we want to make them more meaningful.</p>
+</div>
+</div>
+</div><h2 id="id5"><span class="section-number">1.3.4. </span>运算符和函数<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p><strong>Operators and functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 定义了一些对其各种类型有用的操作。这些操作有些使用简单的运算符,类似于数学表达式,而其他则呈现为函数。<a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b"><span class="std std-ref">Appendix B</span></a> 提供了 SQL 标准定义的运算符和函数的详细列表,但我们将在此讨论一些最常用的运算符和函数,以及它们的使用示例。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>SQL defines a number of useful operations on its various types.  Some of these use simple operators, as in mathematical expressions, while others take the form of functions.  <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b"><span class="std std-ref">Appendix B</span></a> provides extensive lists of the operators and functions defined by the SQL standard, but we will discuss some of the most commonly used ones here, along with examples of their use.</p>
+</div>
+</div>
+</div><h3 id="index-3"><span id="id6"></span><span class="section-number">1.3.4.1. </span>比较运算符<a class="headerlink" href="#index-3" title="Link to this heading">¶</a></h3>
+<p><strong>Comparison operators</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>我们已经在查询的 <strong>WHERE</strong> 子句中看到使用等于运算符 (<strong>=</strong>) 来测试某列是否等于一个字面值。我们可以使用不等于运算符 (<strong>&lt;&gt;</strong>) 来测试不等式:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_comparison</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>尽管这并不是标准用法,但大多数数据库也识别 <strong>!=</strong> 作为不等式运算符。(请注意,SQL 不使用 <strong>==</strong>,这是许多编程语言中用于测试相等的运算符。虽然 SQLite 将其识别为相等比较运算符,但 <strong>请不要使用它</strong>,因为这会成为一个难以改掉的习惯。)</p>
+<p>我们还可以测试一个值是否小于 (<strong>&lt;</strong>)、大于 (<strong>&gt;</strong>)、小于或等于 (<strong>&lt;=</strong>) 或大于或等于 (<strong>&gt;=</strong>) 其他某个值。还有一个三元运算符 <strong>BETWEEN</strong>,用于测试一个值是否在两个其他值之间(详情见附录 B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-comparison-operators"><span class="std std-ref">比较运算符</span></a>)。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>We’ve already seen the equality operator (<strong>=</strong>) used to test if some column is equal to a literal value in the <strong>WHERE</strong> clause of queries.  We could instead test for inequality using the (<strong>&lt;&gt;</strong>) operator:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_comparison</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Though it is non-standard, most databases also recognize <strong>!=</strong> as an inequality operator.  (Note that SQL does not use <strong>==</strong>, which is used to test for equality in many programming languages.  While SQLite does recognize it as an equality comparison operator, <strong>do not use it</strong>, as it will be a difficult habit to break.)</p>
+<p>We can also test to see if a value is less than (<strong>&lt;</strong>), greater than (<strong>&gt;</strong>), less than or equal to (<strong>&lt;=</strong>), or greater than or equal to (<strong>&gt;=</strong>) some other value.  There is also a ternary operator, <strong>BETWEEN</strong>, that tests if a value is between two other values (see Appendix B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-comparison-operators"><span class="std std-ref">比较运算符</span></a> for details).</p>
+</div>
+</div>
+</div><h3 id="index-4"><span id="id7"></span><span class="section-number">1.3.4.2. </span>数学运算符<a class="headerlink" href="#index-4" title="Link to this heading">¶</a></h3>
+<p><strong>Mathematics</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>你可以期待基本的算术运算符能够处理任何数字值:加法 (<strong>+</strong>)、减法 (<strong>-</strong>)、乘法 (<strong>*</strong>) 和除法 (<strong>/</strong>) 是标准的。你的数据库可能实现了其他运算符,但确保你阅读了数据库的文档,以确认其他运算符的功能符合你的预期。你实际上可以将数据库用作简单的计算器！尝试运行以下查询:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_math</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="mi">302</span><span class="p">.</span><span class="mi">78</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">14</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(对于 Oracle 用户:Oracle 要求所有 <strong>SELECT</strong> 查询都必须有 <strong>FROM</strong> 子句,因此提供了一个特殊的表 <strong>dual</strong>,用于不使用列并返回一行的查询。因此,在 Oracle 中使用 <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">4</span> <span class="pre">+</span> <span class="pre">7</span> <span class="pre">FROM</span> <span class="pre">dual;</span></code>。)</p>
+<p>SQL 标准还提供了许多有用的数学运算函数,例如对数 (<strong>log</strong>, <strong>ln</strong>, <strong>log10</strong>)、指数 (<strong>exp</strong>)、平方根 (<strong>sqrt</strong>)、模 (<strong>mod</strong>)、向下取整和向上取整 (<strong>floor</strong>, <strong>ceiling</strong> 或 <strong>ceil</strong>)、三角函数 (<strong>sin</strong>, <strong>cos</strong> 等) 等。以下是一些示例:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span><span class="n">e5</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>如果你正在处理财务或科学记录等数字数据,你很可能会在 SQL 中使用数学运算符。在 <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a> 中,我们将讨论用于存储数字的不同数据类型:整数、十进制数和浮点值。每种类型在不同问题中都有应用。</p>
+<p>作为一个有些牵强的示例,考虑找出一本书出版的世纪。在英语中,第一个世纪传统上被认为是编号为 1 到 100 的年份。每过 100 年,世纪数加 1,因此第 20 世纪包括 1901 到 2000 年。</p>
+<p>通过简单的数学,我们可以提取出数据库中每本书出版的世纪:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="n">title</span><span class="p">,</span>
+<span class="n">floor</span><span class="p">((</span><span class="n">publication_year</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">99</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">century</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>注意使用括号来强制操作顺序:加法运算在除法之前执行,然后除法的结果提供给 <strong>floor()</strong> 函数。我们还引入了一个新概念——重命名操作,以便给结果列一个更具信息性的名称。<strong>AS</strong> 关键字让我们能够在查询的输出中重命名列。我们将在 <a class="reference internal" href="../04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a> 中学习更多关于使用 <strong>AS</strong> 的内容。</p>
+<p>有关标准运算符和函数的完整列表,请参见附录 B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-math-operators"><span class="std std-ref">数学运算符和函数</span></a>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>You can expect the basic arithmetic operators to work with any numeric values: addition (<strong>+</strong>), subtraction (<strong>-</strong>), multiplication (<strong>*</strong>), and division (<strong>/</strong>) are standard.  Your database may implement others, but make sure you read the documentation for your database to ensure other operators do what you think they do.  You can actually use your database as a simple calculator!  Try running these:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_math</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="mi">302</span><span class="p">.</span><span class="mi">78</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">14</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(Note for Oracle users: Oracle requires all <strong>SELECT</strong> queries to have a <strong>FROM</strong> clause, so the special table <strong>dual</strong> is provided for queries that use no columns and return one row.  Thus, use <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">4</span> <span class="pre">+</span> <span class="pre">7</span> <span class="pre">FROM</span> <span class="pre">dual;</span></code> in Oracle.)</p>
+<p>The SQL standard additionally provides functions for many useful mathematical operations, such as logarithms (<strong>log</strong>, <strong>ln</strong>, <strong>log10</strong>), exponentials (<strong>exp</strong>), square root (<strong>sqrt</strong>), modulus (<strong>mod</strong>), floor and ceiling (<strong>floor</strong>, <strong>ceiling</strong> or <strong>ceil</strong>), trigonometric functions (<strong>sin</strong>, <strong>cos</strong>, etc.), and more.  Some examples:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">log10</span><span class="p">(</span><span class="mi">1</span><span class="n">e5</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>You will most likely find yourself using mathematical operators in SQL if you are working with numerical data such as financial or scientific records.  In <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a> we will discuss some of the different data types available for storing numbers: integers, decimal numbers, and floating point values.  Each has applications to various problems.</p>
+<p>As a somewhat contrived example of applying mathematical operators to an actual table, consider the problem of finding out which century a book was published in.  In the English language, the 1st century is traditionally considered to be the years numbered 1 - 100.  Each subsequent 100 years adds 1 to the century, so the 20th century included the years 1901 - 2000.</p>
+<p>With a little math, we can extract the century in which each book in our database was published:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="n">title</span><span class="p">,</span>
+<span class="n">floor</span><span class="p">((</span><span class="n">publication_year</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">99</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">century</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Note the use of parentheses to enforce an order of operations: the addition operation occurs before the division, and then the result of the division is provided to the <strong>floor()</strong> function.  We have also introduced something new - a renaming operation to give our result column a more informative name. The <strong>AS</strong> keyword lets us rename a column in the output of our query.  We will learn more about using <strong>AS</strong> in <a class="reference internal" href="../04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a>.</p>
+<p>See Appendix B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-math-operators"><span class="std std-ref">数学运算符和函数</span></a> for a complete list of standard operators and functions.</p>
+</div>
+</div>
+</div><h3 id="index-5"><span id="id8"></span><span class="section-number">1.3.4.3. </span>字符串运算符和函数<a class="headerlink" href="#index-5" title="Link to this heading">¶</a></h3>
+<p><strong>Character string operators and functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 提供了两个非常有用的字符串运算符。运算符 <strong>||**(两个竖线)用于字符串连接。我们在许多情况下希望将一个字符串附加到另一个字符串上。例如,如果我们不喜欢 **simple_books</strong> 表的多列输出,可以使用字符串连接生成更熟悉的数据表示:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_string</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;, by &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(关于实现的说明:在 SQL Server 中,你需要使用 <strong>+</strong> 而不是 <strong>||</strong>;在 MySQL 中,你需要使用 MySQL 的 <strong>concat</strong> 函数,例如 <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">concat(title,</span> <span class="pre">',</span> <span class="pre">by</span> <span class="pre">',</span> <span class="pre">author)</span> <span class="pre">FROM</span> <span class="pre">simple_books;</span></code>。)</p>
+<p><strong>LIKE</strong> 运算符是一个布尔运算符,几乎专门用于 <strong>WHERE</strong> 子句。<strong>LIKE</strong> 提供了非常简单的模式匹配功能。一个 <em>模式</em> 只是一个字符串,可以包含常规文本和特殊的 <em>通配符</em> 字符,这些字符可以匹配一个或多个未指定的字符。两个通配符是 <strong>%</strong>,可以匹配任意长度的字符串(包括零个字符),和 <strong>_</strong>,可以匹配任意单个字符。常规文本则完全匹配自身。(如果你熟悉标准的 <em>正则表达式</em> 语法,**%** 通配符对应于正则表达式中的 “.*”,而 <strong>_</strong> 通配符对应于 “.”。)</p>
+<p>考虑这样一种情况:我们记得一个作者的名字,但不记得全名,希望查找具有该名字的作者。<strong>%</strong> 通配符可以用于表示未知的名字部分:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;Isabel %&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>由于 <strong>%</strong> 可以匹配任意字符串,模式 <code class="docutils literal notranslate"><span class="pre">'Isabel</span> <span class="pre">%'</span></code> 可以匹配 “Isabel Allende”、”Isabel Granada” 或 “Isabel del Puerto”(虽然这些中只有一个在我们的 <strong>simple_authors</strong> 表中)。</p>
+<p>同样,如果我们记得名字的最后部分,但不记得开始部分,我们可以再次使用 <strong>%</strong> 通配符:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;% Ginsberg&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>我们甚至可以多次使用通配符:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Earth%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>现在,假设我们对使用首字母而不是全名的作者感兴趣。首字母看起来像某个单个字符后跟一个句点——这两个都是必需的。以下是使用 <strong>%</strong> 和 <strong>_</strong> 通配符的查询示例:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;_.%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>除了这些运算符外,SQL 还提供了一些对字符字符串操作的有用函数。函数 <strong>upper</strong> 和 <strong>lower</strong> 分别将字符串转换为全大写或全小写字符。当然,并不是所有语言都区分大写和小写,因此这些函数在某些地区可能不适用。你可以在想要返回全大写或全小写字符串时使用 <strong>upper</strong> 或 <strong>lower</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>如果你不确定数据库中字符串的大小写,也可以在模式匹配时使用它们:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">lower</span><span class="p">(</span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%love%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>SQL 还提供了用于子字符串提取或替换、查找子字符串位置、修剪字符串前后空格(或其他字符)等任务的函数,还有更多功能。请参见附录 B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-string-operators"><span class="std std-ref">字符串运算符和函数</span></a> 以获取更多信息。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>SQL provides two very useful string operators. The operator <strong>||</strong> (two vertical bars) is used for string concatenation.  There are many instances in which we want to append one string to another.  For example, if we do not like the multi-column output from our <strong>simple_books</strong> table, we could use string concatenation to produce a more familiar representation of the data:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_string</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;, by &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(Note about implementations: in SQL Server, you will need to use <strong>+</strong> instead of <strong>||</strong>; in MySQL, you will need to use the MySQL <strong>concat</strong> function, e.g. <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">concat(title,</span> <span class="pre">',</span> <span class="pre">by</span> <span class="pre">',</span> <span class="pre">author)</span> <span class="pre">FROM</span> <span class="pre">simple_books;</span></code>.)</p>
+<p>The <strong>LIKE</strong> operator is a Boolean operator that is used almost exclusively in the <strong>WHERE</strong> clause.  <strong>LIKE</strong> provides very simple pattern matching capabilities in SQL.  A <em>pattern</em> is just a string that can contain regular text and special <em>wildcard</em> characters, which can match one or many unspecified characters.  The two wildcards are <strong>%</strong>, which can match any string of zero or more characters, and <strong>_</strong>, which can match exactly one of any character. Normal text matches itself exactly.  (If you are familiar with standard <em>regular expression</em> syntax, the <strong>%</strong> wildcard corresponds to “.*” as used in a regular expression, and the <strong>_</strong> wildcard corresponds to “.”.)</p>
+<p>Consider the case in which we recall the first name of an author, but not the full name, and wish to look up authors with that first name.  The <strong>%</strong> wildcard can be used here to stand in for the unknown part of the name:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;Isabel %&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Since the <strong>%</strong> can match any string, the pattern <code class="docutils literal notranslate"><span class="pre">'Isabel</span> <span class="pre">%'</span></code> would match “Isabel Allende”, “Isabel Granada”, or “Isabel del Puerto” for example (only one of these is in our <strong>simple_authors</strong> table, though).</p>
+<p>Similarly, if we remember the last part of the name, but not the start, we can use the <strong>%</strong> wildcard again:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;% Ginsberg&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>We can even use the wildcard more than once:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Earth%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Now, suppose we are interested in authors who use an initial instead of their full first name.  An initial looks like some single character followed by a period - both are required.  Here’s what the query would look like, using both the <strong>%</strong> and <strong>_</strong> wildcards:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;_.%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>In addition to these operators, SQL provides a number of useful functions that act on character strings.  The functions <strong>upper</strong> and <strong>lower</strong> convert strings to all uppercase or lowercase characters, respectively.  Not all languages distinguish between uppercase and lowercase, of course, so these functions may not be applicable in certain locales.  You can use <strong>upper</strong> or <strong>lower</strong> whenever you want to get back strings in all uppercase or lowercase:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">upper</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>You can also use them when pattern matching if you aren’t sure of the capitalization of the strings in your database:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">lower</span><span class="p">(</span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%love%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>SQL also provides functions for tasks such as substring extraction or replacement, finding the location of a substring, trimming whitespace (or other characters) from the front and/or back of a string, and many more.  See Appendix B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-string-operators"><span class="std std-ref">字符串运算符和函数</span></a> for these.</p>
+</div>
+</div>
+</div><h3 id="index-6"><span id="id9"></span><span class="section-number">1.3.4.4. </span>布尔运算符<a class="headerlink" href="#index-6" title="Link to this heading">¶</a></h3>
+<p><strong>Boolean operators</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>如 <a class="reference internal" href="../02-data-retrieval/data-retrieval.html#data-retrieval-chapter"><span class="std std-numref">Chapter 1.2</span></a> 中讨论的,**SELECT** 查询的 <strong>WHERE</strong> 子句在 <strong>WHERE</strong> 关键字后期望一个布尔表达式。SQL 中的一些布尔表达式包括使用比较运算符的表达式,或使用 <strong>LIKE</strong> 运算符的表达式。许多函数也会返回布尔值。</p>
+<p>SQL 提供了操作布尔值的逻辑运算符。这些运算符是 <strong>AND</strong>、<strong>OR</strong> 和 <strong>NOT</strong>,它们执行其名称所暗示的逻辑操作。例如,如果我们有一个形式为 <code class="docutils literal notranslate"><span class="pre">expr1</span> <span class="pre">AND</span> <span class="pre">expr2</span></code> 的表达式,当且仅当 <code class="docutils literal notranslate"><span class="pre">expr1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">expr2</span></code> 都评估为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时,结果才为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。类似地,``expr1 OR expr2`` 在 <code class="docutils literal notranslate"><span class="pre">expr1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">expr2</span></code> 中至少有一个为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时评估为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。最后,``NOT`` 会反转真值:<code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">True</span></code> 结果为 <code class="docutils literal notranslate"><span class="pre">False</span></code>,而 <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">False</span></code> 结果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<p>这些逻辑运算符允许我们从更简单的布尔表达式构建复杂的布尔表达式,以表达我们希望在 <strong>WHERE</strong> 子句中使用的特定逻辑条件。例如,我们可能对自 2000 年以来出版的奇幻书籍感兴趣:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_boolean</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>或者,我们可能对奇幻或科幻类书籍感兴趣:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>如果我们简单地讨厌科幻,我们可以写:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>这与以下查询结果相同:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>对于涉及 <strong>AND</strong>、<strong>OR</strong> 和 <strong>NOT</strong> 组合的更复杂表达式,我们可能需要使用括号来使我们的意思更清晰。在 SQL 中,**NOT** 在 <strong>AND</strong> 之前应用,**AND** 在 <strong>OR</strong> 之前应用。例如,或许我们对 2000 年后出版的除奇幻书籍以外的任何书籍感兴趣。我们可能会想写:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>然而,这并不完全正确(试试吧！)。由于 <strong>NOT</strong> 首先应用,这个查询返回的书籍 a) 不是奇幻书籍且 b) 自 2000 年以来出版。表达式 <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">genre</span> <span class="pre">=</span> <span class="pre">'fantasy'</span> <span class="pre">AND</span> <span class="pre">publication_year</span> <span class="pre">&gt;</span> <span class="pre">2000</span></code> 相当于 <code class="docutils literal notranslate"><span class="pre">(NOT</span> <span class="pre">genre</span> <span class="pre">=</span> <span class="pre">'fantasy')</span> <span class="pre">AND</span> <span class="pre">(publication_year</span> <span class="pre">&gt;</span> <span class="pre">2000)</span></code>。要获得我们最初想要的结果,我们需要明确使用括号:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="p">(</span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>你可以看到,上述查询只排除了书籍列表中的书籍:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>同样,我们可能对科幻或奇幻书籍感兴趣,但只有在它们是 2000 年后出版的情况下。比较以下两个查询:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="p">(</span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>第一个查询返回 <em>任何</em> 科幻书籍,以及 2000 年后出版的奇幻书籍。第二个查询返回期望的结果: 2000 年后出版的奇幻或科幻类书籍。</p>
+<p>要更全面地讨论布尔运算符,我们需要了解更多关于 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值的信息,这将在下面讨论。有关 SQL 布尔运算符的完整文档,请参见附录 B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-boolean-operators"><span class="std std-ref">布尔运算符</span></a>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>As discussed in <a class="reference internal" href="../02-data-retrieval/data-retrieval.html#data-retrieval-chapter"><span class="std std-numref">Chapter 1.2</span></a>, the <strong>WHERE</strong> clause of a <strong>SELECT</strong> query expects a Boolean expression after the <strong>WHERE</strong> keyword.  Some expressions that are Boolean in SQL include expressions using comparison operators, or an expression using the <strong>LIKE</strong> operator.  Many functions also result in a Boolean value.</p>
+<p>SQL provides logical operators that operate on Boolean values.  These operators are <strong>AND</strong>, <strong>OR</strong>, and <strong>NOT</strong>, which perform the logical operations that their names imply.  For example, if we have an expression of the form <code class="docutils literal notranslate"><span class="pre">expr1</span> <span class="pre">AND</span> <span class="pre">expr2</span></code>, the result is <code class="docutils literal notranslate"><span class="pre">True</span></code> if and only if both <code class="docutils literal notranslate"><span class="pre">expr1</span></code> and <code class="docutils literal notranslate"><span class="pre">expr2</span></code> evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>.  Similarly, <code class="docutils literal notranslate"><span class="pre">expr1</span> <span class="pre">OR</span> <span class="pre">expr2</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> if at least one of <code class="docutils literal notranslate"><span class="pre">expr1</span></code> and <code class="docutils literal notranslate"><span class="pre">expr2</span></code> are <code class="docutils literal notranslate"><span class="pre">True</span></code>.  Finally, <code class="docutils literal notranslate"><span class="pre">NOT</span></code> inverts the truth value:  <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">True</span></code> results in <code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">False</span></code> results in <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>These logical operators allow us to build up complex Boolean expressions from simpler Boolean expressions to express the particular logical conditions we want for our <strong>WHERE</strong> clause.  So, for example, we might be interested in fantasy books published since the year 2000:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_boolean</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Or, we might be interested in books in either the fantasy or science fiction genres:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>If we simply hate science fiction, we might write</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>which gives the same result as</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>For more complex expressions involving combinations of <strong>AND</strong>, <strong>OR</strong>, and <strong>NOT</strong>, we may need to use parentheses to make our meaning clear.  In SQL, <strong>NOT</strong> is applied before <strong>AND</strong>, and <strong>AND</strong> is applied before <strong>OR</strong>. For example, perhaps we are interested in any books other than fantasy books published after the year 2000.  We might be tempted to write</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>However, this isn’t quite right (try it!).  Since the <strong>NOT</strong> is applied first, this query returns books that a) are not fantasy and b) were published since the year 2000.  The expression <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">genre</span> <span class="pre">=</span> <span class="pre">'fantasy'</span> <span class="pre">AND</span> <span class="pre">publication_year</span> <span class="pre">&gt;</span> <span class="pre">2000</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">(NOT</span> <span class="pre">genre</span> <span class="pre">=</span> <span class="pre">'fantasy')</span> <span class="pre">AND</span> <span class="pre">(publication_year</span> <span class="pre">&gt;</span> <span class="pre">2000)</span></code>.  To get what we originally wanted, we need to use parentheses explicitly:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="p">(</span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>You can see that the above query only excludes books in the list:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Similarly, we might be interested in either science fiction or fantasy books, but only if they were published after 2000.  Compare the two queries below:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="p">(</span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>The first of these queries returns <em>any</em> science fiction books, along with fantasy books published after 2000.  The second returns the desired result: books published after 2000 in either the fantasy or science fiction genres.</p>
+<p>For a fuller discussion of Boolean operators, we need to know more about <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values, which will be discussed below.  See Appendix B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-boolean-operators"><span class="std std-ref">布尔运算符</span></a> for complete documentation on the SQL Boolean operators.</p>
+</div>
+</div>
+</div><h3 id="index-7"><span id="id10"></span><span class="section-number">1.3.4.5. </span>日期和时间运算符和函数<a class="headerlink" href="#index-7" title="Link to this heading">¶</a></h3>
+<p><strong>Date and time operators and functions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>日期和时间数据在许多数据库应用中极为重要,例如支持政府或金融机构的应用。SQL 提供了广泛的功能来管理日期和时间。不幸的是,这是一个不同 SQL 实现之间在遵循 SQL 标准方面差异很大的领域。有关更全面的讨论,请参见附录 B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-datetime-operators"><span class="std std-ref">日期和时间运算符和函数</span></a>,并查阅您的数据库实现文档以了解其在日期和时间处理方面提供的功能。</p>
+<p>大多数数据库实现的一个有用 SQL 函数是 <strong>CURRENT_DATE</strong> 函数(还可以尝试 <strong>CURRENT_TIME</strong> 和 <strong>CURRENT_TIMESTAMP</strong>):</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_datetime</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>我们将在 <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a> 中看到如何使用此函数在新创建的行中自动记录日期。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Date and time data are extremely important in many database applications, such as those supporting governmental or financial institutions.  SQL provides extensive functionality for managing dates and times.  Unfortunately, this is an area where different SQL implementations vary widely in their conformance to the SQL standard. See Appendix B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-datetime-operators"><span class="std std-ref">日期和时间运算符和函数</span></a> for a fuller discussion, and consult your database implementation’s documentation to see what capabilities it offers with respect to date and time handling.</p>
+<p>One useful SQL function that most databases implement is the <strong>CURRENT_DATE</strong> function (also try <strong>CURRENT_TIME</strong> and <strong>CURRENT_TIMESTAMP</strong>):</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_datetime</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>We will see in <a class="reference internal" href="../06-table-creation/table-creation.html#table-creation-chapter"><span class="std std-numref">Chapter 1.6</span></a> how this function can be used to automatically record the date in a newly created row.</p>
+</div>
+</div>
+</div><h2 id="null"><span id="index-8"></span><span class="section-number">1.3.5. </span>NULL<a class="headerlink" href="#null" title="Link to this heading">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2">
+<input checked type="radio" id="__tabbed_11_1" name="__tabbed_11"><input type="radio" id="__tabbed_11_2" name="__tabbed_11"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_11_1">
+中文</label><label class="tabbed-label" for="__tabbed_11_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在许多数据库应用中,有时需要记录某个数据方面的 <em>缺失信息</em>。例如,在查询我们的 <strong>authors</strong> 表时,可以看到 <strong>death</strong> 列中的一些条目是空白的。这可能意味着该行的作者在数据输入时尚未去世,因此该列对该作者不适用;即没有死亡日期。此外,一些 <strong>birth</strong> 日期是空白的;在这种情况下,该列显然适用于作者——他们显然在某个时候出生！然而,输入数据的人并不知道这一信息,因此没有任何内容被输入。</p>
+<p>这些 <em>不适用</em> 或 <em>未知</em> 的数据条目概念在 SQL 中通过一个特殊值来表示: <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。 <a class="footnote-reference brackets" href="#id20" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值表示信息的缺失。当我们查询 <strong>authors</strong> 表时,结果中的空白并不表示数据库中存在空字符串。相反,``NULL`` 值代表缺失的信息。不幸的是,``NULL`` 并没有告诉我们数据缺失的 <em>原因</em>——是因为不适用还是仅仅未知。如果这个区分对您的数据库很重要,您需要使用额外的列来指示 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 的含义,或者使用其他非 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 的值。</p>
+<p>因为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 确实是信息的缺失,表达式中使用的 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值通常在评估时会导致结果为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。例如,``2 + NULL`` 的结果是什么？我们根本无法知道——<code class="docutils literal notranslate"><span class="pre">NULL</span></code> 没有告诉我们任何信息,因此结果是未知的,即 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。</p>
+<p>这种行为的一个非常重要的结果是,``NULL`` 值无法与任何东西进行有用的比较,即使是其他 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值！也就是说,像 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">NULL</span></code> 这样的表达式永远不会为 <code class="docutils literal notranslate"><span class="pre">True</span></code>,即使 <em>x</em> 本身包含 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。这可能看起来不符合直觉,但如果您把表达式 <code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">=</span> <span class="pre">NULL</span></code> 理解为在问“这个未知的东西和另一个未知的东西是否相同？”,您就会明白答案应该是“未知”,即 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。 <a class="footnote-reference brackets" href="#id21" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>要检查一个值是否为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 或非 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>,需要使用特殊运算符:<strong>IS NULL</strong> 和 <strong>IS NOT NULL</strong>。例如,如果我们想找出没有死亡日期的作者,我们可以执行以下查询:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_null</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>您可以通过在上述查询中将 <strong>IS NULL</strong> 替换为 <strong>IS NOT NULL</strong> 来查找我们确实有死亡日期的作者。</p>
+<p>如果我们改为写以下查询,会发生什么呢？</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在这种情况下,表达式 <code class="docutils literal notranslate"><span class="pre">death</span> <span class="pre">=</span> <span class="pre">NULL</span></code> 将在表中的每一行评估为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。<strong>WHERE</strong> 子句将过滤这些结果,因为它只接受评估为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 的表达式,而 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 并不等同于 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值有时可能会使我们迷失方向。考虑寻找所有在 2000 年或之后仍然健在的作者的问题。可能会很想写一个查询,例如:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2000-12-31&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>这是一个完全有效的查询——以这种标准格式表示的日期可以在我们的数据库中进行比较。然而,如果您运行这个查询,您会发现并不是所有在世的作者都包含在结果中。这再次发生,是因为那些行中的 <strong>death</strong> 列包含了 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值:将这些与 <code class="docutils literal notranslate"><span class="pre">'2000-01-01'</span></code> 进行比较也会得到 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>,因此 <strong>WHERE</strong> 子句将它们过滤掉。</p>
+<p>在这种情况下,我们需要使用更多的逻辑,查询数据库如下:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2000-12-31&#39;</span><span class="w"> </span><span class="k">AND</span>
+<span class="w">    </span><span class="p">(</span><span class="n">death</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2000-01-01&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>这个查询是正确的,但您可能想知道为什么。我们说过在表达式中使用的 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 通常会导致结果为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>,但这里我们有一个使用 <strong>AND</strong> 和 <strong>OR</strong> 运算符的复合布尔表达式。那么,为什么我们不会再次失去所有在世的作者呢？实际上,布尔运算符是一个例外。这是因为,当在布尔表达式中使用时,``NULL`` 意味着我们根本无法知道该值是 <code class="docutils literal notranslate"><span class="pre">True</span></code> 还是 <code class="docutils literal notranslate"><span class="pre">False</span></code>;该值是未知的。然而,**OR** 表达式只要求一个操作数评估为 <code class="docutils literal notranslate"><span class="pre">True</span></code>,就会返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>:在布尔逻辑中,``True OR True`` 为 <code class="docutils literal notranslate"><span class="pre">True</span></code>,``True OR False`` 也是 <code class="docutils literal notranslate"><span class="pre">True</span></code>。无论哪种方式,我们得到的都是 <code class="docutils literal notranslate"><span class="pre">True</span></code>,因此不知道它可能是什么并不重要。因此,括号中的表达式在其中任何一个条件为真时都是 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<p>另一方面,``False OR NULL`` 会返回 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。在这种情况下,``NULL`` 代表 <code class="docutils literal notranslate"><span class="pre">True</span></code> 还是 <code class="docutils literal notranslate"><span class="pre">False</span></code> 实际上很重要,因为两者会导致不同的结果。由于我们不知道结果,因此返回 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。</p>
+<p>因为布尔表达式可以结果为 <code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code> 或 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>,我们称 SQL 为 <a href="#id13"><span class="problematic" id="id14">*</span></a>三值逻辑*(而非真正的布尔逻辑)。附录 B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-boolean-operators"><span class="std std-ref">布尔运算符</span></a> 提供了这种三值逻辑的真值表,但正如上面所示,您通常可以通过简单地将 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 理解为“未知”来推导出答案。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In many database applications, it is sometimes necessary to record the <em>absence of information</em> on some aspect of a piece of data.  For example, in querying our <strong>authors</strong> table, we can see that some entries in the <strong>death</strong> column are blank.  This probably means that the author for that row had not yet died at the time the data was entered, and thus the column was simply not applicable for that author; there is no death date.  Additionally, some <strong>birth</strong> dates are blank; in this case, the column certainly applies to the author - they were clearly born at some point!  However, that information was unknown to the person entering the data into the table, so nothing was entered.</p>
+<p>These notions of data entries that are <em>not applicable</em> or <em>unknown</em> are captured with a special value in SQL:  <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. <a class="footnote-reference brackets" href="#id22" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values represent the absence of information.  When we query the <strong>authors</strong> table, the blanks in our result do not indicate that empty strings are in the database.  Instead, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values stand in for the missing information.  Unfortunately, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> does not tell us the <em>reason</em> the data is missing - whether it is not applicable or simply unknown.  If this distinction is important for your database, you will need to use extra columns to indicate the meaning of the <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, or use some value other than <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>Because <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is truly an absence of information, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values used in expressions usually result in <code class="docutils literal notranslate"><span class="pre">NULL</span></code> when the expression is evaluated.  For example, what is the result of <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">NULL</span></code>?  We simply cannot know - the <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is not telling us anything, so the result is unknown, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>A very important consequence of this behavior is that <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values cannot be usefully compared with anything, even other <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values!  That is, an expression like <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">NULL</span></code> is never <code class="docutils literal notranslate"><span class="pre">True</span></code> even if <em>x</em> itself contains <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  This might seem counterintuitive, but if you think of the expression <code class="docutils literal notranslate"><span class="pre">NULL</span> <span class="pre">=</span> <span class="pre">NULL</span></code> as asking the question, “Is this unknown thing the same as this other unknown thing?”, you can see that the answer should be “unknown”, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. <a class="footnote-reference brackets" href="#id23" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
+<p>To find out if a value is <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or not <code class="docutils literal notranslate"><span class="pre">NULL</span></code> requires special operators: <strong>IS NULL</strong> and <strong>IS NOT NULL</strong>.  For example, if we want to discover authors for whom we have no death date, we would execute the query:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_null</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>You can discover authors for whom we do have death dates by replacing <strong>IS NULL</strong> with <strong>IS NOT NULL</strong> in the above query.</p>
+<p>What happens if we instead write the following query?</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>In this case, the expression <code class="docutils literal notranslate"><span class="pre">death</span> <span class="pre">=</span> <span class="pre">NULL</span></code> will evaluate to <code class="docutils literal notranslate"><span class="pre">NULL</span></code> for every row in the table.  The <strong>WHERE</strong> clause will filter these out, because it only accepts expressions that evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is not the same as <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> values can sometimes lead us astray.  Consider the question of finding all authors who were alive in the year 2000 or later.  It might be tempting to write a query such as</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2000-12-31&#39;</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>This is a perfectly valid query - dates in this standard format can be compared in this fashion in our database.  However, if you run the query, you will see that not all of our living authors are in the result.  This happened, again, because the <strong>death</strong> column in those rows contained <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values: comparing these to <code class="docutils literal notranslate"><span class="pre">'2000-01-01'</span></code> also yielded <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, and the <strong>WHERE</strong> clause therefore filtered them out.</p>
+<p>In this case, we need to use more logic, and query the database thus:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2000-12-31&#39;</span><span class="w"> </span><span class="k">AND</span>
+<span class="w">    </span><span class="p">(</span><span class="n">death</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2000-01-01&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>This works correctly, but you might be wondering why.  We said that <code class="docutils literal notranslate"><span class="pre">NULL</span></code> used in expressions usually results in <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, but here we have a compound Boolean expression using the operators <strong>AND</strong> and <strong>OR</strong>.  So why are we not again losing all living authors?  Well, it turns out that Boolean operators are an exception.  This is because, when used in Boolean expressions, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> means that we simply cannot know if the value is <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>; the value is unknown.  However, the <strong>OR</strong> expression only requires one operand to evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> in order to return <code class="docutils literal notranslate"><span class="pre">True</span></code>: <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">OR</span> <span class="pre">True</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and so is <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">OR</span> <span class="pre">False</span></code> in Boolean logic.  Either way, we get <code class="docutils literal notranslate"><span class="pre">True</span></code>, so not knowing which it might be doesn’t matter.  Therefore the expression in the parentheses is <code class="docutils literal notranslate"><span class="pre">True</span></code> if either one of the two conditions within it is true.</p>
+<p>On the other hand, <code class="docutils literal notranslate"><span class="pre">False</span> <span class="pre">OR</span> <span class="pre">NULL</span></code> will give us <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  In this case, whether the <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is standing in for <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> actually matters, because each gives a different outcome. Since we do not know the outcome, the result is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>Because Boolean expressions can result in <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, we say that SQL has <em>three-valued logic</em> (not truly Boolean logic).  Appendix B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-boolean-operators"><span class="std std-ref">布尔运算符</span></a> provides truth tables for this three-valued logic, but as shown above, you can usually work out the answer by simply thinking of <code class="docutils literal notranslate"><span class="pre">NULL</span></code> as meaning “unknown”.</p>
+</div>
+</div>
+</div><h3 id="id17"><span class="section-number">1.3.5.1. </span>排序和 NULL<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p><strong>Ordering and NULLs</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2">
+<input checked type="radio" id="__tabbed_12_1" name="__tabbed_12"><input type="radio" id="__tabbed_12_2" name="__tabbed_12"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_12_1">
+中文</label><label class="tabbed-label" for="__tabbed_12_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>鉴于您无法有意义地将 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 与其他值进行比较,当我们 <strong>ORDER BY</strong> 包含 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值的列时会发生什么？不幸的是,这取决于您使用的数据库实现。您需要查阅数据库文档(或简单地进行实验)以查看其默认行为。标准确实提供了一种方式来指定 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值应该排序到顶部还是底部。比较以下两个查询:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="n">NULLS</span><span class="w"> </span><span class="k">FIRST</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="n">NULLS</span><span class="w"> </span><span class="k">LAST</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(注意:<strong>NULLS FIRST</strong> 和 <strong>NULLS LAST</strong> 修饰符在 MySQL 或 SQL Server 中不受支持。)</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Given that you cannot meaningfully compare <code class="docutils literal notranslate"><span class="pre">NULL</span></code> with other values, what happens when we <strong>ORDER BY</strong> a column containing <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values?  Unfortunately, it depends on which database implementation you are working with.  You will need to consult your database documentation (or simply try an experiment) to see what its default behavior is.  The standard does provide a way to specify whether <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values should sort to the top or bottom.  Compare these two queries:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="n">NULLS</span><span class="w"> </span><span class="k">FIRST</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="n">NULLS</span><span class="w"> </span><span class="k">LAST</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>(Note: the <strong>NULLS FIRST</strong> and <strong>NULLS LAST</strong> modifiers are not supported in MySQL or SQL Server.)</p>
+</div>
+</div>
+</div><h2 id="index-9"><span id="id18"></span><span class="section-number">1.3.6. </span>条件表达式<a class="headerlink" href="#index-9" title="Link to this heading">¶</a></h2>
+<p><strong>Conditional expressions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2">
+<input checked type="radio" id="__tabbed_13_1" name="__tabbed_13"><input type="radio" id="__tabbed_13_2" name="__tabbed_13"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_13_1">
+中文</label><label class="tabbed-label" for="__tabbed_13_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>SQL 提供了用于简单条件逻辑的表达式。基本的条件表达式是 <strong>CASE</strong> 表达式,它有两种形式。在最一般的形式中,**CASE** 允许您根据条件列表指定表达式应该评估的结果。其效果类似于某些编程语言中的 if/else 或 switch/case 语句。</p>
+<p><strong>CASE</strong> 表达式的基本形式为</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result1</span>
+<span class="w">    </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result2</span><span class="p">]</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="k">result</span><span class="p">]</span>
+<span class="k">END</span>
+</code></pre></div>
+</div>
+<p><strong>CASE</strong> 关键字首先出现,后面跟着一个或多个 <strong>WHEN</strong> 子句,给出条件及其为真时所需的结果。第一个为真的条件决定了返回的结果。如果没有条件评估为 <code class="docutils literal notranslate"><span class="pre">True</span></code>,则使用 <strong>ELSE</strong> 结果(如果提供),或者如果没有 <strong>ELSE</strong> 子句则返回 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。表达式以 <strong>END</strong> 关键字结束。</p>
+<p>例如,我们可以将书籍分成不同的类别,也许用于图书馆中的不同区域,使用 <strong>CASE</strong>:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_case</span>
+
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span>
+<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;history&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;non-fiction&#39;</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;general fiction&#39;</span>
+<span class="w">    </span><span class="k">END</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在这里,我们包含了一些在当前数据集中不存在的类别的测试。一个图书馆应用程序可能有许多类别,每个类别包含多个类型。使用 <strong>CASE</strong> 表达式是输出书籍及其类别的一种方式,尽管这取决于对数据库中所有可能类型的了解。一种更数据驱动的方法是通过使用 <em>join</em> 查找另一个数据库表中的类别,这一技术我们将在 <a class="reference internal" href="../04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a> 中讨论。</p>
+<p>另一种 <strong>CASE</strong> 形式将表达式与可能的值匹配。上述查询可以使用这种形式重写为:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span>
+<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="n">genre</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;history&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;non-fiction&#39;</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;general fiction&#39;</span>
+<span class="w">    </span><span class="k">END</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>此外,还有两个执行特定条件逻辑的函数。<strong>COALESCE</strong> 函数接受可变数量的参数。该函数的结果是参数列表中第一个非 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 的表达式,如果所有参数都是 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>,则返回 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。这对于用更具描述性的值替换 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值很有用:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="s1">&#39;died: &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">death</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;living&#39;</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>最后,**NULLIF** 函数接受两个参数:如果参数相等,则该函数返回 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>,否则返回第一个参数。这可以用于用 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 替换特定值。例如,</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="k">NULLIF</span><span class="p">(</span><span class="n">genre</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>SQL provides expressions for doing simple conditional logic.  The basic conditional expression in SQL is the <strong>CASE</strong> expression, which comes in two forms.  In the most general form, <strong>CASE</strong> lets you specify what the expression should evaluate to depending on a list of conditions.  The effect is similar to using if/else or switch/case statements in some programming languages.</p>
+<p>The basic form of the <strong>CASE</strong> expression is</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result1</span>
+<span class="w">    </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="n">condition2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">result2</span><span class="p">]</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="k">result</span><span class="p">]</span>
+<span class="k">END</span>
+</code></pre></div>
+</div>
+<p>The <strong>CASE</strong> keyword comes first, followed by one or more <strong>WHEN</strong> clauses giving a condition and the desired result if the condition is true.  The first true condition determines the result that will be returned.  If none of the conditions evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the <strong>ELSE</strong> result is used, if provided, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if there is no <strong>ELSE</strong> clause.  The expression is finished with the <strong>END</strong> keyword.</p>
+<p>For example, we could put our books into different categories, maybe for different sections in a library, using <strong>CASE</strong>:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">expressions_example_case</span>
+
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span>
+<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;history&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;non-fiction&#39;</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;general fiction&#39;</span>
+<span class="w">    </span><span class="k">END</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Here we have included tests for some genres not present in our current dataset.  A library application might have many categories, each encompassing multiple genres.  Using a <strong>CASE</strong> expression would be one way to output books with their categories, although it depends on knowledge of all the possible genres in our database.  A more data-driven way would be to look up categories in another database table using a <em>join</em>, a technique we will discuss in <a class="reference internal" href="../04-multiple-tables/multiple-tables.html#joins-chapter"><span class="std std-numref">Chapter 1.4</span></a>.</p>
+<p>Another form of <strong>CASE</strong> matches an expression to possible values.  The above query can be rewritten using this form:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span>
+<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="n">genre</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;speculative fiction&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;history&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;non-fiction&#39;</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;general fiction&#39;</span>
+<span class="w">    </span><span class="k">END</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Additionally, there are two functions that perform specialized conditional logic.  The <strong>COALESCE</strong> function takes a variable number of arguments.  The result of the function is the first non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code> expression in the argument list, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if all arguments are <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  This can be useful for replacing <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values with more descriptive values:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="s1">&#39;died: &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">death</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;living&#39;</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Finally, the <strong>NULLIF</strong> function takes two arguments: if the arguments are equal, the function results in <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, otherwise it results in the first argument.  This can be used to replace specific values with <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  For example,</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="k">NULLIF</span><span class="p">(</span><span class="n">genre</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h2 id="id19"><span class="section-number">1.3.7. </span>自检练习<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<p><strong>Self-check exercises</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2">
+<input checked type="radio" id="__tabbed_14_1" name="__tabbed_14"><input type="radio" id="__tabbed_14_2" name="__tabbed_14"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_14_1">
+中文</label><label class="tabbed-label" for="__tabbed_14_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节包含一些使用上述文本中相同的书籍和作者数据库的练习。如果您遇到困难,请点击练习下方的“显示答案”按钮以查看正确答案。</p>
+<ul class="simple">
+<li><p>编写查询以查找从 1980 年到 2000 年出版的所有书籍,并按出版年份排序。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<p>通常在 SQL 中实现同一目标有多种方法。以下是两种解决方案:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1980</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2000</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">publication_year</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1980</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2000</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">publication_year</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找名字以字母 “J” 开头的作者。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;J%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找在 1950 年到 1999 年之间写的书籍,排除诗歌。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1950</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1999</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找在 1950 年之前或 1999 年之后写的书籍,排除科学小说。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1950</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1999</span><span class="p">)</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找标题以字母 “T” 或 “I” 开头的书籍,属于小说、幻想或诗歌类型。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;T%&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;I%&#39;</span><span class="p">)</span>
+<span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fiction&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找没有出生日期的作者。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以查找 1915 年后出生的已故作者。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;1915-12-31&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>编写查询以获取书名和作者,以及它们所写的世纪,写成“Twentieth Century”这种形式(您只需考虑 20 世纪和 21 世纪)。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1900</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2000</span>
+<span class="w">        </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Twentieth Century&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2100</span>
+<span class="w">        </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Twenty-first Century&#39;</span>
+<span class="w">    </span><span class="k">END</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">century</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>This section contains some exercises using the same books and authors database used in the text above.  If you get stuck, click on the “Show answer” button below the exercise to see a correct answer.</p>
+<ul class="simple">
+<li><p>Write a query to find all books published from the year 1980 through the year 2000, in order by publication year.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<p>There are usually many ways to achieve the same goal in SQL.  Here are two solutions:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1980</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2000</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">publication_year</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1980</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2000</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">publication_year</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find the authors whose name starts with the letter “J”.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;J%&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find books written between 1950 and 1999, excluding poetry.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1950</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1999</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find books written before 1950 or after 1999, excluding science fiction.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1950</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1999</span><span class="p">)</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;science fiction&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find books with a title beginning with the letters “T” or “I”, in the fiction, fantasy, or poetry genres.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;T%&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;I%&#39;</span><span class="p">)</span>
+<span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fiction&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;fantasy&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;poetry&#39;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find authors for whom we have no birth date.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find deceased authors born after 1915.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">simple_authors</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">death</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">AND</span><span class="w"> </span><span class="n">birth</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;1915-12-31&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query giving book titles and authors together with the century in which they were written, spelled out like ‘Twentieth Century’ (you only need to worry about the 20th - 21st centuries).</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p">,</span>
+<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1900</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2000</span>
+<span class="w">        </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Twentieth Century&#39;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2100</span>
+<span class="w">        </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Twenty-first Century&#39;</span>
+<span class="w">    </span><span class="k">END</span>
+<span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="n">century</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">simple_books</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><hr class="docutils" />
+<p><strong>Notes</strong></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id20" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">1</a><span class="fn-bracket">]</span></span>
+<p>数据库学者们经常拒绝将 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 称为 <em>值</em>。如果 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 真的是一个值,那么它应该能够与自己及其他值进行比较。一个替代的说法是将列视为处于 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <em>状态</em>,而不是说它包含一个 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值。然而,这一区别在其他 SQL 环境中,如分组和聚合(在 <a class="reference internal" href="../09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a> 中讨论)会失效。由于这些和其他原因,``NULL`` 在 SQL 中的包含是有争议的。</p>
+</aside>
+<aside class="footnote brackets" id="id21" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">2</a><span class="fn-bracket">]</span></span>
+<p>这导致了 SQL 中一个不幸的逻辑不一致:当 <em>x</em> 为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 时,表达式 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span></code> 的结果为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。从逻辑上讲,答案应该是 <code class="docutils literal notranslate"><span class="pre">True</span></code>,无论 <em>x</em> 是什么。</p>
+</aside>
+<aside class="footnote brackets" id="id22" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">3</a><span class="fn-bracket">]</span></span>
+<p>Database scholars frequently reject calling <code class="docutils literal notranslate"><span class="pre">NULL</span></code> a <em>value</em>.  If <code class="docutils literal notranslate"><span class="pre">NULL</span></code> were truly a value, then it should be comparable to itself and other values.  One alternative is to say that a column is in a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> <em>state</em>, rather than that it contains a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> value.  However, this distinction breaks down in other SQL settings, such as grouping and aggregation (discussed in <a class="reference internal" href="../09-grouping-and-aggregation/grouping-and-aggregation.html#grouping-chapter"><span class="std std-numref">Chapter 1.9</span></a>).  Because of this and other concerns, the inclusion of <code class="docutils literal notranslate"><span class="pre">NULL</span></code> in SQL is controversial.</p>
+</aside>
+<aside class="footnote brackets" id="id23" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">4</a><span class="fn-bracket">]</span></span>
+<p>This results in an unfortunate logical inconsistency in SQL: the expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">NULL</span></code> when <em>x</em> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  Logically, the answer should be <code class="docutils literal notranslate"><span class="pre">True</span></code>, regardless of what <em>x</em> is.</p>
+</aside>
+</aside>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../02-data-retrieval/data-retrieval.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1.2. 数据检索" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              1.2. 数据检索
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../04-multiple-tables/multiple-tables.html" class="md-footer__link md-footer__link--next" aria-label="Next: 1.4. 多个表上的查询" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              1.4. 多个表上的查询
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script id="MathJax-script" src="../../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

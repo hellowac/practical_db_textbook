@@ -1,0 +1,1417 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>1.9. 分组和聚合 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.9. 分组和聚合
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART2_DATA_MODELING/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">SQL</span></a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="SQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">SQL</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-sql-basics/sql-basics.html" class="md-nav__link">
+        <span class="md-ellipsis">基础</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-data-retrieval/data-retrieval.html" class="md-nav__link">
+        <span class="md-ellipsis">数据检索</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-expressions/expressions.html" class="md-nav__link">
+        <span class="md-ellipsis">表达式</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-multiple-tables/multiple-tables.html" class="md-nav__link">
+        <span class="md-ellipsis">多个表上的查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-data-modification/data-modification.html" class="md-nav__link">
+        <span class="md-ellipsis">修改数据</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-table-creation/table-creation.html" class="md-nav__link">
+        <span class="md-ellipsis">数据类型和创建表</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-constraints/constraints.html" class="md-nav__link">
+        <span class="md-ellipsis">键和约束</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-subqueries/subqueries.html" class="md-nav__link">
+        <span class="md-ellipsis">子查询</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">分组和聚合</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">分组和聚合</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">分组和聚合</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表格</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-0" class="md-nav__link">
+    <span class="md-ellipsis">聚合统计数据</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">分组</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">过滤分组数据</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-set-operations/set-operations.html" class="md-nav__link">
+        <span class="md-ellipsis">集合运算</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-advanced-topics/advanced-topics.html" class="md-nav__link">
+        <span class="md-ellipsis">高级主题</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART2_DATA_MODELING/index.html" class="md-nav__link">
+        <span class="md-ellipsis">数据模型</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">分组和聚合</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">本章中使用的表格</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-0" class="md-nav__link">
+    <span class="md-ellipsis">聚合统计数据</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-1" class="md-nav__link">
+    <span class="md-ellipsis">分组</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-2" class="md-nav__link">
+    <span class="md-ellipsis">过滤分组数据</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id8" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART1_SQL/09-grouping-and-aggregation/grouping-and-aggregation.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="grouping-chapter"><span id="id1"></span><span class="section-number">1.9. </span>分组和聚合<a class="headerlink" href="#grouping-chapter" title="Link to this heading">¶</a></h1>
+<p><strong>Grouping and aggregation</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>前面的章节集中于数据的存储和检索机制。SQL 还提供了对数据进行简单分析的功能。在本章中，我们将讨论数据分区的方法以及对分区进行简单统计计算的方法。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Previous chapters have focused on mechanisms for storing and retrieving data.  SQL also provides facilities for simple analyses of the data.  In this chapter, we discuss methods of partitioning data and computing simple statistics on the partitions.</p>
+</div>
+</div>
+</div><h2 id="id2"><span class="section-number">1.9.1. </span>本章中使用的表格<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Tables used in this chapter</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本章中，我们将主要使用 <strong>bookstore_inventory</strong> 和 <strong>bookstore_sales</strong> 表，这些表模拟了一个二手书商可能参考的简单数据库。<strong>bookstore_inventory</strong> 表列出了书店库存的印刷书籍或最近销售的书籍，包括书籍的状态和标价。当书店销售一本书时，会在 <strong>bookstore_sales</strong> 表中添加一条记录。该表列出了所售书籍的 <strong>stock_number</strong>、销售日期和付款方式。<strong>stock_number</strong> 列是库存中每本书的唯一标识符，可用于连接这两个表。</p>
+<p>我们还将使用 <strong>authors</strong> 表来说明 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 与聚合函数的交互。</p>
+<p>有关这些表的完整描述，请参见 <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>For this chapter, we will primarily work with the tables <strong>bookstore_inventory</strong> and <strong>bookstore_sales</strong>, which simulate a simple database that a seller of used books might reference.  The <strong>bookstore_inventory</strong> table lists printed books that the bookstore either has in stock or has sold recently, along with the condition of the book and the asking price.  When the bookstore sells a book, a record is added to the <strong>bookstore_sales</strong> table.  This table lists the <strong>stock_number</strong> of the book sold, the date sold, and the type of payment.  The column <strong>stock_number</strong> is a unique identifier for each book in the inventory, and can be used to join the tables.</p>
+<p>We will also use the <strong>authors</strong> table to illustrate the interaction of <code class="docutils literal notranslate"><span class="pre">NULL</span></code> with aggregate functions.</p>
+<p>A full description of these tables can be found in <a class="reference internal" href="../../appendix-a-datasets/datasets.html#appendix-a"><span class="std std-ref">Appendix A</span></a>.</p>
+</div>
+</div>
+</div><h2 id="index-0"><span id="id3"></span><span class="section-number">1.9.2. </span>聚合统计数据<a class="headerlink" href="#index-0" title="Link to this heading">¶</a></h2>
+<p><strong>Aggregate statistics</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p><em>聚合统计</em> 是在整个数据集上计算的值。计数、总和和平均值是聚合统计的示例。SQL 提供了多个聚合函数来计算这些统计值。本节将涵盖一些最常用的函数；有关 SQL 定义的所有聚合函数的文档，请参见附录 B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-aggregate-functions"><span class="std std-ref">聚合函数</span></a>。</p>
+<p>我们首先使用 <strong>COUNT</strong> 聚合函数来说明聚合函数的基本规则。在最简单的情况下，<strong>COUNT</strong> 可用于返回表中的行数：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">grouping_example_aggregate</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>如果添加 <strong>WHERE</strong> 子句，<strong>COUNT</strong> 只会考虑符合 <strong>WHERE</strong> 子句的行：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在聚合函数中使用 <strong>*</strong> 是 <strong>COUNT</strong> 特有的；它仅表示我们希望计算行数，而不是特定的列。其他聚合函数需要应用于某一列或表达式。当应用于某一列或表达式时，<strong>COUNT</strong> 和其他聚合函数会忽略 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值。例如，观察在 <strong>authors</strong> 表的不同列上应用 <strong>COUNT</strong> 时的结果：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">author_id</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">birth</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">death</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在上述每个结果中，我们为 <strong>SELECT</strong> 子句中的每个函数获得一个数字。只返回一行，因为我们（此时）将聚合函数应用于与（可选）**WHERE** 子句匹配的所有行。这一行代表数据的 <em>摘要</em>。作为摘要，数据的细节无法包含；当使用任何聚合函数时，尝试检索任何非聚合列的表达式都是错误的。以下查询在除了 SQLite 的所有数据库中都会导致错误：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>虽然 SQLite 不会给我们错误，但返回的数据表明了为什么在大多数数据库中这是一个错误；返回的 <strong>title</strong> 值仅代表表中的一行，而 <strong>COUNT(*)</strong> 值是整个表的摘要。这两者不匹配。</p>
+<p>除了 <strong>COUNT</strong>，SQLite 实现的最常见聚合函数还有 <strong>SUM</strong>、<strong>AVG</strong>、<strong>MIN</strong> 和 <strong>MAX</strong>。SQL 还定义了许多其他聚合函数，包括方差和标准差等统计函数。与 <strong>COUNT</strong> 一样，该函数的参数是一个列或表达式，会针对每一行进行评估；<code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值会被丢弃。对于所有聚合函数（除了 <strong>COUNT</strong>），如果参数在每一行上都评估为 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>，那么结果也是 <a href="#id4"><span class="problematic" id="id5">``</span></a>NULL``（对于 <strong>COUNT</strong>，结果是零）。</p>
+<p>您可能能猜到这些聚合函数的含义：</p>
+<ul class="simple">
+<li><p><strong>SUM</strong> 计算总和，只能应用于数字</p></li>
+<li><p><strong>AVG</strong> 计算平均值，只能应用于数字</p></li>
+<li><p><strong>MIN</strong> 根据值类型的正常排序顺序查找最小值</p></li>
+<li><p><strong>MAX</strong> 根据值类型的正常排序顺序查找最大值</p></li>
+</ul>
+<p>我们可以将这些函数应用于 <strong>bookstore_inventory</strong> 的 <strong>price</strong> 列：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>除了忽略 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值外，可以通过在聚合函数的参数前加上 <strong>DISTINCT</strong> 关键字来指示应忽略重复值。这在与 <strong>COUNT</strong> 结合使用时特别有用。例如，如果我们想知道库存中的书籍总数与唯一书名的数量，我们可以写：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p><em>Aggregate statistics</em> are values computed on entire sets of data.  Counts, sums, and averages are examples of aggregate statistics.  SQL provides a number of aggregate functions for computing such statistics.  This section will cover some of the most commonly used functions; for documentation on all of the aggregate functions defined by SQL, see Appendix B - <a class="reference internal" href="../../appendix-b-reference/reference.html#appendix-b-aggregate-functions"><span class="std std-ref">聚合函数</span></a>.</p>
+<p>We start by using the <strong>COUNT</strong> aggregate function to illustrate the basic rules for aggregate functions.  At its simplest, <strong>COUNT</strong> can be used to return the number of rows in a table:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">grouping_example_aggregate</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>If you add a <strong>WHERE</strong> clause, <strong>COUNT</strong> will only consider rows matching the <strong>WHERE</strong> clause:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cash&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>The use of <strong>*</strong> within the aggregate function is unique to <strong>COUNT</strong>; it simply means that we want to count rows, rather than any particular column.  Other aggregate functions require application to a column or expression.  When applied to a column or expression, <strong>COUNT</strong> and the other aggregate functions ignore <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values.  For example, observe the result when applying <strong>COUNT</strong> to different columns of the <strong>authors</strong> table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">author_id</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">birth</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">death</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">authors</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>In each of the results above, we obtain a single number for each function in the <strong>SELECT</strong> clause.  Only one row is returned, because we are (at the moment) applying the aggregate function to all rows matching the (optional) <strong>WHERE</strong> clause.  This row represents a <em>summary</em> of the data.  As a summary, details of the data cannot be included; it is an error to try to retrieve any expressions on the columns other than aggregates, when any aggregate function is used.  The following query will result in an error in every database except SQLite:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>While SQLite does not give us an error, the data returned demonstrates why this is an error in most databases; the returned <strong>title</strong> value represents just one row of the table, while the <strong>COUNT(*)</strong> value is a summary of the whole table.  These two things do not match.</p>
+<p>In addition to <strong>COUNT</strong>, the most common aggregate functions implemented by SQLite are <strong>SUM</strong>, <strong>AVG</strong>, <strong>MIN</strong>, and <strong>MAX</strong>.  SQL defines a number of other aggregate functions as well, including statistical functions such as variance and standard deviation.  As with <strong>COUNT</strong>, the argument of the function is a column or expression, which is evaluated for every row; <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values are discarded.  For all aggregates except <strong>COUNT</strong>, if the argument evaluates to <code class="docutils literal notranslate"><span class="pre">NULL</span></code> for every row, then the result is <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (for <strong>COUNT</strong> the result is zero).</p>
+<p>You can probably guess the meaning of these aggregate functions:</p>
+<ul class="simple">
+<li><p><strong>SUM</strong> computes the sum, and can only be applied to numbers</p></li>
+<li><p><strong>AVG</strong> computes the average, and can only be applied to numbers</p></li>
+<li><p><strong>MIN</strong> finds the minimum value according to the normal sort order for the value type</p></li>
+<li><p><strong>MAX</strong> finds the maximum value according to the normal sort order for the value type</p></li>
+</ul>
+<p>We can apply all of these to the <strong>price</strong> column of <strong>bookstore_inventory</strong>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>In addition to ignoring <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values, it is possible to indicate that duplicate values should be ignored by putting the <strong>DISTINCT</strong> keyword before the argument of the aggregate function.  This is mostly useful when combined with <strong>COUNT</strong>.  For example, if we want to know the total number of books versus the number of unique titles in our inventory, we could write:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h2 id="index-1"><span id="id6"></span><span class="section-number">1.9.3. </span>分组<a class="headerlink" href="#index-1" title="Link to this heading">¶</a></h2>
+<p><strong>Grouping</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>聚合在应用于整个表或与 <strong>WHERE</strong> 子句匹配的一组行时非常有用。然而，有时我们希望从一个表中获取多个计数、总和或平均值；我们可能希望对某些行的子集进行这些统计，并按某个公共属性进行组织。例如，我们的 <strong>bookstore_inventory</strong> 表包含不同状态的书籍；我们可能想分别了解我们对“良好”状态书籍和“一般”状态书籍的平均定价，等等。</p>
+<p>SQL 为此提供了 <strong>GROUP BY</strong> 子句。<strong>GROUP BY</strong> 允许我们指定一个属性，例如书籍的状态，以将表组织成 <em>组</em>。特定组的成员资格基于 <strong>GROUP BY</strong> 表达式；每组的所有成员在该表达式上具有相同的值。这些组形成数据的 <em>分区</em>；每一行（如果使用，则匹配可选的 <strong>WHERE</strong> 子句）都被分配到一个组中，并且没有行被分配到多个组。</p>
+<p>在 <strong>GROUP BY</strong> 生效的情况下，我们现在可以检索关于每个组的整体信息；我们输出的每一行将代表一个组的信息。如果我们在 <strong>SELECT</strong> 子句中放入聚合函数表达式，则聚合会单独应用于每个组的行。除了聚合之外，我们还可以 <strong>SELECT</strong> <strong>GROUP BY</strong> 表达式——这是被允许的（并且是有意义的），因为每组中的所有行对于该表达式将具有相同的值。您通常希望包括分组表达式作为组的标签——否则，您将不知道每个聚合表达式属于哪个组！</p>
+<p><strong>GROUP BY</strong> 子句紧接在 <strong>WHERE</strong> 子句之后，或在没有 <strong>WHERE</strong> 子句时紧接在 <strong>FROM</strong> 之后。以下是按书籍状态对我们的书店库存进行分组的示例：</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">grouping_example_grouping</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>如果我们想排除已售出的书籍，可以添加 <strong>WHERE</strong> 子句（在这里我们使用一个子查询，如 <a class="reference internal" href="../08-subqueries/subqueries.html#subqueries-chapter"><span class="std std-numref">Chapter 1.8</span></a> 中讨论的那样）：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">)</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>也可以按多个表达式进行分组，在这种情况下，每组由所有表达式的唯一设置定义。我们的 <strong>bookstore_sales</strong> 表包含书籍售出的日期信息以及购买时使用的付款类型。我们可能非常希望了解按月份或按付款类型的销售总额，或两者都了解。为了获取支付的价格，我们将需要连接 <strong>bookstore_inventory</strong> 表。</p>
+<p>首先，让我们按月份检索销售总额（在这里我们将使用 SQLite 的 substring() 函数提取两位数的月份；在其他数据库中，可能可以通过名称提取月份）：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="k">substring</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">date_sold</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+<span class="k">SUM</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_sales</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>请注意，我们可以在 <strong>GROUP BY</strong> 子句中使用在 <strong>SELECT</strong> 子句中定义的别名“month”，而无需重写函数表达式。</p>
+<p>现在，让我们按月份 <em>和</em> 付款类型细分我们的销售总额：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="k">substring</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">date_sold</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+<span class="n">s</span><span class="p">.</span><span class="n">payment</span><span class="p">,</span>
+<span class="k">SUM</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_sales</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">payment</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">payment</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>在这里，我们还按分组表达式进行了排序，以确保我们的组以一致的方式出现。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Aggregates can be very useful when applied to an entire table or to a set of rows matching a <strong>WHERE</strong> clause.  Sometimes, though, we want more than one count, or sum, or average from a table; we may want these statistics over some subsets of rows, organized by some common attribute.  For example, our <strong>bookstore_inventory</strong> table includes books in different conditions; we might be interested in the average price we are charging for books in “good” condition separately from books in “fair” condition, and so forth.</p>
+<p>SQL provides the <strong>GROUP BY</strong> clause for this purpose.  <strong>GROUP BY</strong> lets us specify an attribute, such as the condition of a book, by which to organize a table into <em>groups</em>.  Membership in a specific group is based on the <strong>GROUP BY</strong> expression; all members of a group share the same value for the expression.  The groups form a <em>partition</em> of the data; every row (matching the optional <strong>WHERE</strong> clause, if used) is assigned to a group, and no row is assigned to more than one group.</p>
+<p>With <strong>GROUP BY</strong> in effect, we can now retrieve information about each group as a whole; each row of our output will represent information about one group.  If we put an aggregate function expression in our <strong>SELECT</strong> clause, the aggregate is applied to each group’s rows separately.  In addition to aggregates, we can <strong>SELECT</strong> the <strong>GROUP BY</strong> expression - this is allowed (and makes sense) because all of the rows in each group will have the same value for the expression. You usually want to include the grouping expression as a label for the group - otherwise you will not know what group each aggregate expression belongs to!</p>
+<p>The <strong>GROUP BY</strong> clause comes immediately after the <strong>WHERE</strong> clause, or after <strong>FROM</strong> if there is no <strong>WHERE</strong> clause.  Here is an example of grouping on our bookstore inventory by book condition:</p>
+<p>download: <a class="reference external" href="/_static/textbook.sqlite3">sqlite3 file</a></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="n">grouping_example_grouping</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>If we want to exclude books that have already been sold, we could add a <strong>WHERE</strong> clause (here we use a subquery as discussed in <a class="reference internal" href="../08-subqueries/subqueries.html#subqueries-chapter"><span class="std std-numref">Chapter 1.8</span></a>):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">)</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>It is also possible to group by more than one expression, in which case each group is defined by a unique setting for all of the expressions.  Our <strong>bookstore_sales</strong> table contains information about the date in which a book was sold, as well as the type of payment used in the purchase.  We might be very interested in knowing sales totals by month, or by type of payment, or both.  To get the price that was paid, we will have to join in the <strong>bookstore_inventory</strong> table.</p>
+<p>To start with, let’s retrieve sales totals by month (here we will use SQLite’s substring() function to extract the 2-digit month number; in other databases it may be possible to extract a month by name):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="k">substring</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">date_sold</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+<span class="k">SUM</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_sales</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Note that we can use the alias “month” defined in our <strong>SELECT</strong> clause in our <strong>GROUP BY</strong> clause without having to rewrite the function expression.</p>
+<p>Now, let’s break down our total sales by type of month <em>and</em> type of payment:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="k">substring</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">date_sold</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+<span class="n">s</span><span class="p">.</span><span class="n">payment</span><span class="p">,</span>
+<span class="k">SUM</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_sales</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">payment</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">payment</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Here we have sorted by our grouping expressions as well, just to ensure that our groups come out in a consistent fashion.</p>
+</div>
+</div>
+</div><h3 id="index-2"><span id="id7"></span><span class="section-number">1.9.3.1. </span>过滤分组数据<a class="headerlink" href="#index-2" title="Link to this heading">¶</a></h3>
+<p><strong>Filtering grouped data</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>当我们进行分组时，我们生成了一组新的行，代表数据中存在的组。如果在查询中包含 <strong>WHERE</strong> 子句，它将应用于 <em>分组之前</em> 的数据。因此，<strong>WHERE</strong> 子句不能用于过滤由分组生成的行集。如果我们想过滤分组后的数据，必须使用 <strong>HAVING</strong> 子句。</p>
+<p><strong>HAVING</strong> 子句的工作方式与 <strong>WHERE</strong> 子句类似，但适用于由分组生成的行集。使用 <strong>HAVING</strong>，我们可以按分组后可用的表达式进行过滤：任何我们分组的表达式（我们的组标签）或对组的聚合函数。<strong>HAVING</strong> 子句位于 <strong>GROUP BY</strong> 子句之后。</p>
+<p>在这里，我们使用 <strong>HAVING</strong> 列出我们书店库存中有多于一本副本的书籍，并按副本数量排序：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>当然，我们可以在同一查询中同时使用 <strong>WHERE</strong> 和 <strong>HAVING</strong>——在这里，我们按作者和书名对尚未售出的书籍进行分组；然后我们报告有多本副本的书名（组）：</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">)</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>When we group, we are generating a new set of rows representing the groups present in our data.  If we include a <strong>WHERE</strong> clause in our query, it is applied to the data <em>before</em> grouping.  The <strong>WHERE</strong> clause, then, cannot be used to filter the set of rows produced by grouping.  If we want to filter the grouped data, we must do so using a <strong>HAVING</strong> clause.</p>
+<p>The <strong>HAVING</strong> clause works just like the <strong>WHERE</strong> clause, but applies to the set of rows generated by grouping.  Using <strong>HAVING</strong>, we can filter by expressions available to us after grouping: any expressions that we grouped by (our group labels), or aggregate functions on the groups.  The <strong>HAVING</strong> clause comes after the <strong>GROUP BY</strong> clause.</p>
+<p>Here we use <strong>HAVING</strong> to list books for which we have more than one copy in our bookstore inventory, in order by the number of copies:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>We can, of course, use both <strong>WHERE</strong> and <strong>HAVING</strong> in the same query - here we group books that have not been sold by author and title; then we report  the titles (groups) with multiple copies:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">stock_number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="p">)</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">title</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div><h2 id="id8"><span class="section-number">1.9.4. </span>自检练习<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p><strong>Self-check exercises</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节包含关于分组和聚合的练习，使用 <strong>bookstore_inventory</strong> 和 <strong>bookstore_sales</strong> 表。如果你遇到困难，可以点击练习下方的“显示答案”按钮查看正确答案。</p>
+<ul class="simple">
+<li><p>写一个查询，计算我们库存中作者 Toni Morrison 的书籍数量。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Toni Morrison&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，查找 ‘good’ 状态书籍的最低、最高和平均价格。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;good&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，找出在我们库存中写书的不同作者数量。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">author</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，按作者获取书籍的平均价格；按最高平均价格排序。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，按作者和状态获取书籍的平均价格；按作者和状态排序。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，给出按状态分组的已售书籍数量和这些书籍的总销售额。排除支付类型为 ‘trade in’ 的书籍。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">books_sold</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sales</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">payment</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;trade in&#39;</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，找出哪些作者的书籍平均价格低于 3 个货币单位。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，获取每种可能的书籍状态的最大价格和最小价格之间的差。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>写一个查询，找出我们库存中任何书籍的最高价格，并列出该价格的书籍。<em>提示</em>：你需要为这个查询使用子查询。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>This section contains exercises on grouping and aggregation, using the <strong>bookstore_inventory</strong> and <strong>bookstore_sales</strong> tables.  If you get stuck, click on the “Show answer” button below the exercise to see a correct answer.</p>
+<ul class="simple">
+<li><p>Write a query to count the number of books in our inventory by the author Toni Morrison.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Toni Morrison&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find the minimum, maximum, and average price of a book in ‘good’ condition.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;good&#39;</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find out how many different authors have written books in our inventory.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">author</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to get the average price of a book, by author; sort by highest average price first.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to get the average price of a book, by author and condition; sort by author and condition.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to give the number of books sold and the total sales from those books, grouped by condition.  Exclude books for the payment type ‘trade in’.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">books_sold</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sales</span>
+<span class="k">FROM</span>
+<span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">i</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">bookstore_sales</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">stock_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">stock_number</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">payment</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;trade in&#39;</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find which authors’ books have an average price less than 3 units of currency.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">author</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to get the difference between the maximum and minimum price of a book for each possible book condition.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to find the maximum price of any book in our inventory and list the books with that price.  <em>Hint</em>: you will need to use a subquery for this one.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">bookstore_inventory</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../08-subqueries/subqueries.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1.8. 子查询" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              1.8. 子查询
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../10-set-operations/set-operations.html" class="md-footer__link md-footer__link--next" aria-label="Next: 1.10. 集合运算" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              1.10. 集合运算
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>

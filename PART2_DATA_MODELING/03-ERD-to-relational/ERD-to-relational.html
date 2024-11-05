@@ -1,0 +1,2807 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>2.3. 将 ERD 转换为关系模型 - 数据库实用入门  documentation</title>
+      
+    
+    
+      
+        
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.4b4a8c74e2ff2ab5b.min.css?v=afa97f93" />
+        <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#id1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-header__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数据库实用入门  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.3. 将 ERD 转换为关系模型
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/preface.html" class="md-tabs__link">
+      <span class="md-ellipsis">前言</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART1_SQL/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">SQL</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../index.html" class="md-tabs__link md-tabs__link--active">
+      <span class="md-ellipsis">数据模型</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-tabs__link">
+      <span class="md-ellipsis">关系数据库理论</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../references/references.html" class="md-tabs__link">
+      <span class="md-ellipsis">引用</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-a-datasets/datasets.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../appendix-b-reference/reference.html" class="md-tabs__link">
+      <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../front-matter/acknowledgments.html" class="md-tabs__link">
+      <span class="md-ellipsis">致谢</span>
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数据库实用入门  documentation" class="md-nav__button md-logo" aria-label="数据库实用入门  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    数据库实用入门  documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    practical_db_textbook-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/preface.html" class="md-nav__link">
+        <span class="md-ellipsis">前言</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART1_SQL/index.html" class="md-nav__link">
+        <span class="md-ellipsis">SQL</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../index.html"><span class="md-ellipsis">数据模型</span></a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="数据模型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">数据模型</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction/introduction.html" class="md-nav__link">
+        <span class="md-ellipsis">数据建模简介</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-ERD/ERD.html" class="md-nav__link">
+        <span class="md-ellipsis">实体关系图</span>
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">将 ERD 转换为关系模型</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        <span class="md-ellipsis">将 ERD 转换为关系模型</span>
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">将 ERD 转换为关系模型</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    <span class="md-ellipsis">实体</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">常规实体</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">弱实体</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">关系</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">多对多</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">一对多</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">一对一</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id10" class="md-nav__link">
+    <span class="md-ellipsis">高元数关系</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11" class="md-nav__link">
+    <span class="md-ellipsis">识别关系</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id12" class="md-nav__link">
+    <span class="md-ellipsis">多值属性</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id13" class="md-nav__link">
+    <span class="md-ellipsis">完整的模型转换</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id14" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-other-notations/other-notations.html" class="md-nav__link">
+        <span class="md-ellipsis">ERD 替代方案和变体</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html" class="md-nav__link">
+        <span class="md-ellipsis">关系数据库理论</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/references.html" class="md-nav__link">
+        <span class="md-ellipsis">引用</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-a-datasets/datasets.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix A:<wbr> 本书使用的示例数据集</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix-b-reference/reference.html" class="md-nav__link">
+        <span class="md-ellipsis">Appendix B:<wbr> SQL 参考</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../front-matter/acknowledgments.html" class="md-nav__link">
+        <span class="md-ellipsis">致谢</span>
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">将 ERD 转换为关系模型</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#id1" class="md-nav__link">
+    <span class="md-ellipsis">实体</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id2" class="md-nav__link">
+    <span class="md-ellipsis">常规实体</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id3" class="md-nav__link">
+    <span class="md-ellipsis">弱实体</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id4" class="md-nav__link">
+    <span class="md-ellipsis">关系</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id5" class="md-nav__link">
+    <span class="md-ellipsis">多对多</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id6" class="md-nav__link">
+    <span class="md-ellipsis">一对多</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id7" class="md-nav__link">
+    <span class="md-ellipsis">一对一</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id10" class="md-nav__link">
+    <span class="md-ellipsis">高元数关系</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id11" class="md-nav__link">
+    <span class="md-ellipsis">识别关系</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id12" class="md-nav__link">
+    <span class="md-ellipsis">多值属性</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id13" class="md-nav__link">
+    <span class="md-ellipsis">完整的模型转换</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#id14" class="md-nav__link">
+    <span class="md-ellipsis">自检练习</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+  <a href="https://github.com/hellowac/practical_db_textbook-zh-cn/blob/main/docs/PART2_DATA_MODELING/03-ERD-to-relational/ERD-to-relational.rst" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+  </a>
+
+<h1 id="erd"><span id="erd-to-relational-chapter"></span><span class="section-number">2.3. </span>将 ERD 转换为关系模型<a class="headerlink" href="#erd" title="Link to this heading">¶</a></h1>
+<p><strong>Converting ERD to a relational model</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2" id="index-0">
+<input checked type="radio" id="__tabbed_1_1" name="__tabbed_1"><input type="radio" id="__tabbed_1_2" name="__tabbed_1"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_1_1">
+中文</label><label class="tabbed-label" for="__tabbed_1_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本章中，我们将解释从实体关系模型创建关系数据库的过程。虽然许多步骤主要是机械的，但在这个过程中需要做出一些决策。我们将探讨每个决策的权衡。我们将使用第 <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">2.2</span></a> 章中的计算机制造商数据模型作为例子。</p>
+<p>本章假设你熟悉关系数据库模型的基本知识，包括表和主键及外键约束。必要的基础知识在第一部分（第 <a class="reference internal" href="../../PART1_SQL/01-sql-basics/sql-basics.html#basics-chapter"><span class="std std-numref">1.1</span></a> 章和第 <a class="reference internal" href="../../PART1_SQL/07-constraints/constraints.html#constraints-chapter"><span class="std std-numref">1.7</span></a> 章）或第三部分（第 <a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/01-relational-model/relational-model.html#relational-model-chapter"><span class="std std-numref">Chapter 3.1</span></a> 章）中涵盖。</p>
+<p>表示关系数据库的方法有很多种：逻辑或物理数据模型（第 <a class="reference internal" href="../04-other-notations/other-notations.html#other-notations-chapter"><span class="std std-numref">Chapter 2.4</span></a> 章）、文本或表格描述，或者 SQL 代码。你使用哪种方法将取决于你的开发过程和需求。在本章中，我们将提供以表格格式呈现的简单文本描述。</p>
+<p>我们从基本转换规则开始，逐步转换示例数据模型的各个部分。我们转换后得到的完整表格集将在本章末尾给出。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In this chapter we explain the process of creating a relational database from an entity-relationship model.  While many steps are largely mechanical, a number of decisions need to be made along the way.  We will explore the trade-offs for each decision.  We will use the computer manufacturer data model from <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">Chapter 2.2</span></a> as our example.</p>
+<p>This chapter assumes you are familiar with the basics of the relational model of the database, including tables and primary and foreign key constraints.  The necessary foundations are covered in either Part I (Chapters <a class="reference internal" href="../../PART1_SQL/01-sql-basics/sql-basics.html#basics-chapter"><span class="std std-numref">1.1</span></a> and <a class="reference internal" href="../../PART1_SQL/07-constraints/constraints.html#constraints-chapter"><span class="std std-numref">1.7</span></a>) or Part III (<a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/01-relational-model/relational-model.html#relational-model-chapter"><span class="std std-numref">Chapter 3.1</span></a>).</p>
+<p>There are many ways to represent the relational database: logical or physical data models (<a class="reference internal" href="../04-other-notations/other-notations.html#other-notations-chapter"><span class="std std-numref">Chapter 2.4</span></a>), text or tabular descriptions, or SQL code.  Which you use will depend on your development process and needs.  In this chapter, we will provide simple text descriptions in tabular format.</p>
+<p>We start with the basic conversion rules, converting pieces of our example data model as we go.  The full set of tables resulting from our conversion is given at the end of the chapter.</p>
+</div>
+</div>
+</div><h2 id="id1"><span class="section-number">2.3.1. </span>实体<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p><strong>Entities</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+<input checked type="radio" id="__tabbed_2_1" name="__tabbed_2"><input type="radio" id="__tabbed_2_2" name="__tabbed_2"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_2_1">
+中文</label><label class="tabbed-label" for="__tabbed_2_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>从 ERD 创建关系数据库的第一步是为数据模型中的每个实体创建一个表。弱实体需要与常规实体稍有不同的处理，因此我们将单独处理它们，从常规实体开始。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>The first step in building a relational database from an ERD is creating a table from each entity in the data model.  Weak entities need slightly different handling than regular entities, so we will address them separately, starting with regular entities.</p>
+</div>
+</div>
+</div><h3 id="id2"><span class="section-number">2.3.1.1. </span>常规实体<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><strong>Regular entities</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+<input checked type="radio" id="__tabbed_3_1" name="__tabbed_3"><input type="radio" id="__tabbed_3_2" name="__tabbed_3"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_3_1">
+中文</label><label class="tabbed-label" for="__tabbed_3_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>首先，为表格决定一个名称——这并不一定要与实体名称相同！表格的命名方案有很多。如果你为有命名标准的公司或组织建立数据库，当然要遵循这些标准。否则，选择一种基本的方法并保持一致。例如，一些数据库为表格使用复数名词，而其他数据库则使用单数名词。在我们来自 <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">Chapter 2.2</span></a> 的数据模型中，实体 <strong>employee</strong> 可以变成一个名为 <strong>employee</strong> 或 <strong>employees</strong> 的表格。另一个命名问题是表格名称包含多个单词；一些数据库选择将这些单词连在一起，而其他数据库则使用下划线字符。例如，实体 <strong>assembly line</strong> 可以变成一个名为 <strong>assemblyline</strong> 或 <strong>assembly_line</strong> 的表格。在下面的示例中，我们将使用单数名词和下划线。</p>
+<p>实体的大多数属性应转换为新表中的列。不要为派生属性创建列，因为这些值不打算存储。也不要为多值属性创建列；我们稍后会处理这些问题。对于复合属性，仅为组件属性创建列，而不是复合属性本身。与实体一样，你需要为每个新列决定一个名称，这个名称不必与属性名称相同。你还需要为列指定类型和任何约束。确定某些列的适当类型可能需要咨询你的数据领域专家。根据需要添加约束。下面的描述中，我们将使用简单的类型和约束描述，而不是 SQL 语法。</p>
+<p>选择一个关键属性（每个常规实体至少应有一个），并使用由它创建的列作为新表的主键。如果实体有多个关键属性，你需要决定哪个最适合作为主键。通常，较简单的主键比复杂的主键更受欢迎。如果需要，你可以将其他关键属性生成的列约束为非空且唯一，类似于主键列。例如，员工表可以使用公司生成的 ID 号码作为主键，同时包括一个政府颁发的 ID 号码列，并希望约束以防止重复。</p>
+<p>以下是我们对 <strong>employee</strong> 实体的 ERD 描述：</p>
+<img alt="员工实体及其属性" src="../../_images/employee.svg" />
+<p>以下是将 <strong>employee</strong> 实体初步转换为名为 <strong>employee</strong> 的关系表：</p>
+<table class="lined-table docutils data align-default" id="id17">
+<caption><span class="caption-text">表 <strong>employee</strong> （初步）</span><a class="headerlink" href="#id17" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>约束</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pay_rate</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pay_type</p></td>
+<td><p>character</p></td>
+<td><p>‘s’ 或 ‘h’</p></td>
+<td><p>s = 固定薪资, h = 时薪</p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>键</strong></p>
+<p>主键: id</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>这还不是最终的 <strong>employee</strong> 表！当我们处理 <strong>employee</strong> 实体参与的关系时，我们将向表中添加额外的列。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>First, decide on a name for the table - this does not have to be the same as the entity name!  There are many naming schemes for tables.  If you are building a database for a company or organization that has naming standards, you will of course want to follow those.  Otherwise, choose a basic approach and be consistent.  For example, some databases use plural nouns for tables, while others use singular nouns.  In our data model from <a class="reference internal" href="../02-ERD/ERD.html#erd-chapter"><span class="std std-numref">Chapter 2.2</span></a>, the entity <strong>employee</strong> might become a table named <strong>employee</strong> or <strong>employees</strong>.  Another naming issue arises with table names containing multiple words; some databases choose to run these together, while others employ underscore characters.  For example, the entity <strong>assembly line</strong> could become a table named <strong>assemblyline</strong> or <strong>assembly_line</strong>.  In our examples below, we will use singular nouns and underscores.</p>
+<p>Most attributes for the entity should be converted to columns in the new table.  Do not create columns for derived attributes, as these values are not intended to be stored.  Do not create columns for multivalued attributes; we will address these later.  For composite attributes, create columns only for the component attributes, not the composite itself.  As with entities, you will need to decide on a name for each new column, which does not have to be the same as the attribute name.  You will also need to specify a type and any constraints for the column.  Determining appropriate types for some columns may require consultation with your data domain experts.  Constraints may be added as appropriate.  In the descriptions below, we will use simple type and constraint descriptions, rather than SQL syntax.</p>
+<p>Choose a key attribute (every regular entity should have at least one) and use the column created from it as the primary key for the new table.  If the entity has multiple key attributes, you will need to decide which one makes most sense as a primary key.  Simpler primary keys are usually preferred over more complex ones.  If desired, you can constrain the columns resulting from other keys to be not null and unique similar to primary key columns.  For example, an employee table might use a company generated ID number as its primary key, and also include a column for a government issued ID number which we would want to constrain to prevent duplicates.</p>
+<p>Here is our ERD depiction of the <strong>employee</strong> entity:</p>
+<img alt="The employee entity and its attributes" src="../../_images/employee.svg" />
+<p>Here is a preliminary conversion of the <strong>employee</strong> entity into a relational table named <strong>employee</strong>:</p>
+<table class="lined-table docutils data align-default" id="id18">
+<caption><span class="caption-text">Table <strong>employee</strong> (preliminary)</span><a class="headerlink" href="#id18" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pay_rate</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pay_type</p></td>
+<td><p>character</p></td>
+<td><p>‘s’ or ‘h’</p></td>
+<td><p>s = salaried, h = hourly</p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: id</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This is not yet the final <strong>employee</strong> table!  We will add additional columns to the table when we address the relationships that the <strong>employee</strong> entity participates in.</p>
+</div>
+</div>
+</div><h3 id="id3"><span class="section-number">2.3.1.2. </span>弱实体<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><strong>Weak entities</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+<input checked type="radio" id="__tabbed_4_1" name="__tabbed_4"><input type="radio" id="__tabbed_4_2" name="__tabbed_4"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_4_1">
+中文</label><label class="tabbed-label" for="__tabbed_4_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>弱实体几乎以与常规实体相同的方式转换为表格。然而，请记住，弱实体没有标识键属性。相反，它具有一个部分键，必须与父实体的键结合。在我们的示例中，<strong>assembly line</strong> 实体是弱实体。它的部分键是特定工厂内的组装线编号，必须与工厂标识结合以实现完整的标识。</p>
+<p>因此，从弱实体创建的表必须将父实体的键作为额外列纳入。新表的主键将由从父键和部分键创建的列组成。此外，从父键创建的列应被约束为始终匹配父表中的某个键，使用外键约束。</p>
+<p>以下是 <strong>assembly line</strong> 及其父实体 <strong>factory</strong> 的 ERD：</p>
+<img alt="组装线和工厂实体，它们的属性，以及连接它们的包含关系" src="../../_images/assembly_line.svg" />
+<p>根据上述指南，我们应该创建 <strong>factory</strong> 和 <strong>assembly_line</strong> 表，并在 <strong>assembly_line</strong> 中包含一个用于 <strong>factory</strong> 的 <strong>city</strong> 列值的列。这些“借用”列的名称一个好的选择是将原表和列名称连接在一起；在我们的例子中，这给我们提供了列 <strong>factory_city</strong>。（我们将使用“借用”这个术语来指代在一个表中插入一列以存储相关表的主键列值的过程。）以下是 <strong>factory</strong> 的初步转换和 <strong>assembly line</strong> 的最终转换：</p>
+<table class="lined-table docutils data align-default" id="id19">
+<caption><span class="caption-text">表 <strong>factory</strong> （初步）</span><a class="headerlink" href="#id19" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>约束</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>键</strong></p>
+<p>主键: city</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id20">
+<caption><span class="caption-text">表 <strong>assembly_line</strong></span><a class="headerlink" href="#id20" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>列名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>约束</p></th>
+<th class="head"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>throughput</p></td>
+<td><p>real</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>键</strong></p>
+<p>主键: factory_city, number</p>
+<p>外键: factory_city → factory (city)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>Weak entities are converted into tables in nearly the same way as regular entities.  However, recall that a weak entity has no identifying key attribute.  Instead, it has a partial key, which must be combined with the key of the parent entity.  In our example, the <strong>assembly line</strong> entity is weak.  Its partial key, the number of the assembly line within a particular factory, must be combined with the factory identity for full identification.</p>
+<p>The table created from a weak entity must therefore incorporate the key from the parent entity as an additional column.  The primary key for the new table will be composed of the columns created from the parent key and from the partial key.  Additionally, the column created from the parent key should be constrained to always match some key in the parent table, using a foreign key constraint.</p>
+<p>Here is the ERD of <strong>assembly line</strong> and its parent entity, <strong>factory</strong>:</p>
+<img alt="The assembly line and factory entities, their attributes, and the contains relationship connecting them" src="../../_images/assembly_line.svg" />
+<p>Using the above guidelines, we should create tables <strong>factory</strong> and <strong>assembly_line</strong>, and include a column in <strong>assembly_line</strong> for values from the <strong>city</strong> column of <strong>factory</strong>.  A good choice of name for these “borrowed” columns is to concatenate the original table and column names together; in our case, this gives us the column <strong>factory_city</strong>.  (We will use the term “borrow” in reference to this process of inserting a column in one table to hold values from the primary key column of a related table.)  Here is the preliminary conversion of <strong>factory</strong> and the final conversion of <strong>assembly line</strong>:</p>
+<table class="lined-table docutils data align-default" id="id21">
+<caption><span class="caption-text">Table <strong>factory</strong> (preliminary)</span><a class="headerlink" href="#id21" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: city</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id22">
+<caption><span class="caption-text">Table <strong>assembly_line</strong></span><a class="headerlink" href="#id22" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>factory_city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>throughput</p></td>
+<td><p>real</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: factory_city, number</p>
+<p>Foreign key: factory_city → factory (city)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h2 id="id4"><span class="section-number">2.3.2. </span>关系<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p><strong>Relationships</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+<input checked type="radio" id="__tabbed_5_1" name="__tabbed_5"><input type="radio" id="__tabbed_5_2" name="__tabbed_5"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_5_1">
+中文</label><label class="tabbed-label" for="__tabbed_5_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>关系可以通过几种不同的方法处理，具体取决于关系的基数比。一般来说，我们可以创建一个表来表示该关系。这种表称为 <em>交叉引用(cross-reference)</em> 表，并作为与参与关系的两个（或更多）表之间的三方连接的中介。正如我们将看到的，一些基数比允许更简单的解决方案。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Relationships can be handled using a few different approaches, depending on the cardinality ratio of the relationship.  Most generally, we can create a table to represent the relationship.  This kind of table is known as a <em>cross-reference</em> table, and acts as an intermediary in a three-way join with the two (or more) tables whose entities participate in the relationship.  As we will see, some cardinality ratios permit simpler solutions.</p>
+</div>
+</div>
+</div><h3 id="id5"><span class="section-number">2.3.2.1. </span>多对多<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p><strong>Many-to-many</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+<input checked type="radio" id="__tabbed_6_1" name="__tabbed_6"><input type="radio" id="__tabbed_6_2" name="__tabbed_6"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_6_1">
+中文</label><label class="tabbed-label" for="__tabbed_6_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>多对多关系是最一般类型的关系；适应多对多关系的数据库结构也可以适应一对多或一对一关系，因为“一”只是“多”的一个特殊情况。多对多关系的挑战在于如何表示一张表中的记录与另一张表中的多条记录之间的连接。虽然现代 SQL 允许在表中使用数组值列，但并不是所有数据库都支持它们。传统的解决方案是创建一个交叉引用表。</p>
+<p>给定表 <strong>A</strong> 和表 <strong>B</strong>，我们创建一个交叉引用表，其中列对应于 <strong>A</strong> 和 <strong>B</strong> 的主键。交叉引用表中的每一行存储来自 <strong>A</strong> 的一个主键值与来自 <strong>B</strong> 的一个主键值的唯一配对。因此，每一行表示 <strong>A</strong> 中的一行与 <strong>B</strong> 中的一行之间的单个连接。如果 <strong>A</strong> 中的一行与 <strong>B</strong> 中的多行相关联，则会有多条记录具有相同的 <strong>A</strong> 主键值，并与每个相关的 <strong>B</strong> 主键值配对。</p>
+<p>例如，我们的 ERD 指示 <strong>vendor</strong> 和 <strong>part</strong> 实体之间存在多对多关系。一个计算机部件（如 8TB 硬盘）可以来自多个供应商，而供应商可以销售多种不同的计算机部件：</p>
+<img alt="供应商和部件实体，它们的属性，以及连接它们的供应关系" src="../../_images/supplies.svg" />
+<p>我们按照上述指导原则创建表 <strong>vendor</strong> 和 <strong>part</strong>，然后创建交叉引用表 <strong>vendor_part</strong>。（通常将交叉引用表命名为与两个相关表的名称组合在一起，尽管当然可以使用其他方案。）请注意，<strong>supplies</strong> 关系还有一个关系属性 <strong>price</strong>，我们可以将其合并到交叉引用表中。结果，结合一些虚构数据，见下图：</p>
+<img alt="表 vendor、part 和 vendor_part 以及示例数据" src="../../_images/vendor_part_xref.svg" />
+<p>交叉引用表中的数据在多个方面受到约束。首先，我们只想存储行之间的关系一次，因此我们将相关表的主键组合作为交叉引用表的主键。在我们的例子中，主键是 <strong>vendor_name</strong> 和 <strong>part_number</strong> 的组合。其次，每个借用的主键列应受到约束，只能保存在原始表中存在的值，使用外键约束。</p>
+<p>以下是 <strong>vendor</strong>、<strong>part</strong> 和 <strong>vendor_part</strong> 交叉引用表的描述：</p>
+<table class="lined-table docutils data align-default" id="id23">
+<caption><span class="caption-text">表 <strong>vendor</strong></span><a class="headerlink" href="#id23" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>email</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>phone</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id24">
+<caption><span class="caption-text">表 <strong>part</strong></span><a class="headerlink" href="#id24" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>description</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: part_number</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id25">
+<caption><span class="caption-text">表 <strong>vendor_part</strong></span><a class="headerlink" href="#id25" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>vendor_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>price</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: vendor_name, part_number</p>
+<p>Foreign key: vendor_name → vendor (name)</p>
+<p>Foreign key: part_number → part (part_number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>Many-to-many relationships are the most general type of relationship; a database structure accommodating a many-to-many relationship can also accommodate one-to-many or one-to-one relationships, as “one” is just a special case of “many”.  The challenge for many-to-many relationships is how to represent a connection from a record in one table to multiple records in the other table.  While modern SQL allows array valued columns in tables, not all databases support them.  The traditional solution is to create a cross-reference table.</p>
+<p>Given a table <strong>A</strong> and a table <strong>B</strong>, we create a cross-reference table with columns corresponding to the primary keys of <strong>A</strong> and <strong>B</strong>.  Each row in the cross-reference table stores one unique pairing of a primary key value from <strong>A</strong> with a primary key value from <strong>B</strong>.  Each row thus represents a single connection between one row in <strong>A</strong> with one row in <strong>B</strong>.  If a row in <strong>A</strong> is related to multiple rows in <strong>B</strong>, then there will be multiple entries with the same <strong>A</strong> primary key value, paired with each related <strong>B</strong> primary key value.</p>
+<p>For example, our ERD indicates a many-to-many relationship between the entities <strong>vendor</strong> and <strong>part</strong>.  A computer part (such as an 8TB hard drive) can come from multiple sellers, while sellers can sell multiple different computer parts:</p>
+<img alt="The vendor and part entities, their attributes, and the supplies relationship connecting them" src="../../_images/supplies.svg" />
+<p>We create tables <strong>vendor</strong> and <strong>part</strong> following the guidelines above, and then create the cross-reference table <strong>vendor_part</strong>.  (It is common to name a cross-reference table using the names of the two tables being related, although other schemes can of course be used.)  Note that the <strong>supplies</strong> relationship also has a relationship attribute, <strong>price</strong>, which we can incorporate into the cross-reference table.  The result, with some fictional data, is pictured below:</p>
+<img alt="The tables vendor, part, and vendor_part with sample data" src="../../_images/vendor_part_xref.svg" />
+<p>Data in the cross-reference table is constrained in several ways.  First, we only want to store the relationship between rows once, so we make the combination of primary keys from the related tables into a primary key for the cross-reference table.  In our example, the primary key is the combination of <strong>vendor_name</strong> and <strong>part_number</strong>.  Second, each of the borrowed primary key columns should be constrained to only hold values that are present in the original tables, using foreign key constraints.</p>
+<p>Table descriptions for <strong>vendor</strong>, <strong>part</strong>, and the <strong>vendor_part</strong> cross-reference table are given below:</p>
+<table class="lined-table docutils data align-default" id="id26">
+<caption><span class="caption-text">Table <strong>vendor</strong></span><a class="headerlink" href="#id26" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>email</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>phone</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id27">
+<caption><span class="caption-text">Table <strong>part</strong></span><a class="headerlink" href="#id27" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>description</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: part_number</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id28">
+<caption><span class="caption-text">Table <strong>vendor_part</strong></span><a class="headerlink" href="#id28" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>vendor_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>price</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: vendor_name, part_number</p>
+<p>Foreign key: vendor_name → vendor (name)</p>
+<p>Foreign key: part_number → part (part_number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h3 id="id6"><span class="section-number">2.3.2.2. </span>一对多<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p><strong>One-to-many</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+<input checked type="radio" id="__tabbed_7_1" name="__tabbed_7"><input type="radio" id="__tabbed_7_2" name="__tabbed_7"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_7_1">
+中文</label><label class="tabbed-label" for="__tabbed_7_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>作为多对多关系的特例，一对多关系可以使用交叉引用表在数据库中实现，如上所述。然而，我们还有另一个选择。注意到关系的“多”侧的行最多可以与“一个”侧的行相关联，我们可以选择通过在“多”侧表中存储“一个”侧表的主键来捕捉这种关系。</p>
+<p>在我们的 ERD 中，<strong>employee</strong> 实体与 <strong>factory</strong> 及其自身之间参与了一对多关系：</p>
+<img alt="员工和工厂实体及其属性，以及监督、管理和工作于关系" src="../../_images/one_to_many1.svg" />
+<p><strong>employee</strong> 和 <strong>factory</strong> 之间也存在一对一关系，我们将在下一节中处理。</p>
+<p>首先考虑 <strong>works at</strong> 关系，我们看到每个员工最多只在一个工厂工作。因此，我们可以在 <strong>employee</strong> 表中包含一个工厂城市的列。为了与之前的选择保持一致，我们将该列命名为 <strong>factory_city</strong>。此列应受到外键约束，引用 <strong>factory</strong> 表。</p>
+<p>我们还需要处理 <strong>supervises</strong> 关系。与上述方法类似，我们应在 <strong>employee</strong> 表中包含一个列，存储来自 <strong>employee</strong> 表的主键。然而，我们应仔细考虑为这个新增列命名；<strong>employee_id</strong> 将是一个非常误导的选择！更好的选择是考虑将要存储的员工的角色，并将列命名为 <strong>supervisor_id</strong>。</p>
+<p>经过这些更改，<strong>employee</strong> 表现在如下所示：</p>
+<table class="lined-table docutils data align-default" id="id29">
+<caption><span class="caption-text">表 <strong>employee</strong></span><a class="headerlink" href="#id29" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pay_rate</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pay_type</p></td>
+<td><p>character</p></td>
+<td><p>‘s’ or ‘h’</p></td>
+<td><p>s = salaried, h = hourly</p></td>
+</tr>
+<tr class="row-odd"><td><p>factory_city</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>supervisor_id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: id</p>
+<p>Foreign key: factory_city → factory (city)</p>
+<p>Foreign key: supervisor_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>使用交叉引用表代替上述方案是一个完全有效的选择，如果有任何可能性数据模型可能会更改，使得一对多关系变为多对多关系，这可能更可取。在我们的示例 ERD 中，特定计算机型号只在一个工厂生产（而工厂可以生产多种不同的型号）；然而，如果在某个时候我们想允许在多个地点生产模型，这也并不奇怪。我们可能选择为 <strong>factory</strong> 和 <strong>model</strong> 之间的关系使用交叉引用表，以预见这一可能性。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>As a special case of many-to-many relationships, one-to-many relationships can be implemented in the database using a cross-reference table as above.  We have another choice, however.  Observing that rows on the “many” side of the relationship can be associated with at most one row from the “one” side, we can choose to capture the relationship by storing the primary key of the “one” side table in the “many” side table.</p>
+<p>In our ERD, the <strong>employee</strong> entity participates in one-to-many relationships with both <strong>factory</strong> and itself:</p>
+<img alt="The employee and factory entities and their attributes, and the supervises, manages, and works at relationships" src="../../_images/one_to_many1.svg" />
+<p>There is also a one-to-one relationship between <strong>employee</strong> and <strong>factory</strong>, which we will deal with in the next section.</p>
+<p>Considering first the <strong>works at</strong> relationship, we see that each employee works at no more than one factory.  Therefore, we can include a column for the factory’s city in the <strong>employee</strong> table.  For consistency with previous choices, we will call this column <strong>factory_city</strong>.  This column should be constrained by a foreign key referencing the <strong>factory</strong> table.</p>
+<p>We also have the <strong>supervises</strong> relationship to deal with.  In the same fashion as above, we should include a column in the <strong>employee</strong> table containing primary keys from the <strong>employee</strong> table.  However, we should give careful consideration to the name we give this added column; <strong>employee_id</strong> would be a very misleading choice!  A better choice is to consider the role of the employee whose id will be stored, and call the column <strong>supervisor_id</strong>.</p>
+<p>With these changes, the <strong>employee</strong> table now looks like:</p>
+<table class="lined-table docutils data align-default" id="id30">
+<caption><span class="caption-text">Table <strong>employee</strong></span><a class="headerlink" href="#id30" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pay_rate</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pay_type</p></td>
+<td><p>character</p></td>
+<td><p>‘s’ or ‘h’</p></td>
+<td><p>s = salaried, h = hourly</p></td>
+</tr>
+<tr class="row-odd"><td><p>factory_city</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>supervisor_id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: id</p>
+<p>Foreign key: factory_city → factory (city)</p>
+<p>Foreign key: supervisor_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Using a cross-reference table instead of the above scheme is a perfectly valid choice, and may be preferable if there is any chance the data model might change such that the one-to-many relationship becomes many-to-many.  In our example ERD, a given computer model is built at only one factory (while factories can build multiple different models); however, it would not be surprising if, at some point, we want to allow for models to be built at multiple locations.  We might choose to use a cross-reference table for the relationship between <strong>factory</strong> and <strong>model</strong> in anticipation of this possibility.</p>
+</div>
+</div>
+</div><h3 id="id7"><span class="section-number">2.3.2.3. </span>一对一<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p><strong>One-to-one</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+<input checked type="radio" id="__tabbed_8_1" name="__tabbed_8"><input type="radio" id="__tabbed_8_2" name="__tabbed_8"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_8_1">
+中文</label><label class="tabbed-label" for="__tabbed_8_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>一对一关系可以被视为一对多关系的特例，因此您可以使用适合一对多关系的任何方法。在大多数情况下，最好是从一个表中借用主键作为另一个表中的外键。使用这种方法，您可以从任一侧借用；然而，通常一种选择比另一种选择更可取。</p>
+<p>在我们的示例中，<strong>employee</strong> 和 <strong>factory</strong> 之间存在一对一关系 <strong>manages</strong>。因此，我们可以在 <strong>employee</strong> 表中添加另一列，这次是员工管理的工厂的城市。然而，大多数员工并不管理工厂，因此该列最终将包含许多 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 值。</p>
+<p>另一方面，每个工厂都应该有一位经理（由 <strong>factory</strong> 在关系中的完全参与隐含）。因此，在 <strong>factory</strong> 表中添加一列用于表示管理该工厂的员工是完全合理的。这是另一个情况下，给该列命名为员工在此关系中的角色是有意义的，因此我们将新列命名为 <strong>manager_id</strong>。</p>
+<p>这是完成的 <strong>factory</strong> 表：</p>
+<table class="lined-table docutils data align-default" id="id31">
+<caption><span class="caption-text">表 <strong>factory</strong></span><a class="headerlink" href="#id31" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>manager_id</p></td>
+<td><p>integer</p></td>
+<td><p>see note <a class="footnote-reference brackets" href="#id15" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: city</p>
+<p>Foreign key: manager_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>在一些少见的情况下，处理一对一关系可能通过简单地将参与的表合并为一个表来进行。这种情况应该留给两者在关系中都有完全参与的情况。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>One-to-one relationships can be considered a special case of one-to-many relationships, so you can utilize either approach suitable for one-to-many relationships.  In most cases, it will be preferable to borrow the primary key from one table as a foreign key in the other table.  Using this approach, you could borrow from either side; however, one choice is often preferable to another.</p>
+<p>In our example, we have a one-to-one relationship, <strong>manages</strong>, between <strong>employee</strong> and <strong>factory</strong>.  We could therefore add another column to the <strong>employee</strong> table, this time for the city of the factory that the employee manages.  However, most employees do not manage factories, so the column will end up containing many <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values.</p>
+<p>On the other hand, every factory should have a manager (implied by the total participation of <strong>factory</strong> in the relationship). It makes perfect sense, then, to add a column to the <strong>factory</strong> table for the employee managing the factory.  This is another situation in which it makes sense to name the column for the role of the employee in this relationship, so we will call the new column <strong>manager_id</strong>.</p>
+<p>Here is the completed <strong>factory</strong> table:</p>
+<table class="lined-table docutils data align-default" id="id32">
+<caption><span class="caption-text">Table <strong>factory</strong></span><a class="headerlink" href="#id32" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>manager_id</p></td>
+<td><p>integer</p></td>
+<td><p>see note <a class="footnote-reference brackets" href="#id16" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: city</p>
+<p>Foreign key: manager_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>In some rare cases, it may make sense to handle a one-to-one relationship by simply merging the participating tables into one table.  This should probably be reserved for situations in which both entities have total participation in the relationship.</p>
+</div>
+</div>
+</div><h3 id="id10"><span class="section-number">2.3.2.4. </span>高元数关系<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p><strong>Higher arity relationships</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2">
+<input checked type="radio" id="__tabbed_9_1" name="__tabbed_9"><input type="radio" id="__tabbed_9_2" name="__tabbed_9"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_9_1">
+中文</label><label class="tabbed-label" for="__tabbed_9_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>对于有三个或更多参与者的关系，包含每个参与表的主键的交叉引用表是最佳选择。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>For relationships with three or more participants, a cross-reference table incorporating primary keys from each of the participating tables is the best choice.</p>
+</div>
+</div>
+</div><h3 id="id11"><span class="section-number">2.3.2.5. </span>识别关系<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p><strong>Identifying relationships</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2">
+<input checked type="radio" id="__tabbed_10_1" name="__tabbed_10"><input type="radio" id="__tabbed_10_2" name="__tabbed_10"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_10_1">
+中文</label><label class="tabbed-label" for="__tabbed_10_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>识别弱实体的关系必然是一对多或一对一。但是，弱实体的转换已经包含来自父表的主键值列。这足以捕获关系。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>Identifying relationships for weak entities are necessarily one-to-many or one-to-one.  However, the conversion of the weak entity already incorporates a column containing primary key values from the parent table.  This suffices to capture the relationship.</p>
+</div>
+</div>
+</div><h2 id="id12"><span class="section-number">2.3.3. </span>多值属性<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p><strong>Multivalued attributes</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2">
+<input checked type="radio" id="__tabbed_11_1" name="__tabbed_11"><input type="radio" id="__tabbed_11_2" name="__tabbed_11"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_11_1">
+中文</label><label class="tabbed-label" for="__tabbed_11_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>多值属性可以用于建模几种不同的场景。因此，在关系数据库中存储多值数据有多种选择。</p>
+<p>在最简单的情况下，当需要存储任意值的列表时，但没有特别期望这些值在数据库搜索中被检查，这时可以使用多值属性。在这种情况下，对于支持此类列的数据库，数组值列可能是合适的选择。</p>
+<p>当需要查询与多值属性相关的值时，或者对于不支持数组值列的数据库，最好的选择可能是创建一个简单的表，包含两个列，一个用于拥有表的主键，一个用于值本身。表中的每个条目将一个值与实体的实例关联。</p>
+<p>在我们的示例中，计算机模型可以面向不同应用程序的客户，例如游戏、视频编辑或商业用途。这在我们的数据模型中用多值 <strong>application</strong> 属性表示：</p>
+<img alt="模型实体及其属性" src="../../_images/multivalued.svg" />
+<p>因此，我们可以使用以下两个表实现模型实体及其属性：</p>
+<table class="lined-table docutils data align-default" id="id33">
+<caption><span class="caption-text">表 <strong>model</strong> (初步)</span><a class="headerlink" href="#id33" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name, number</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table docutils data align-default" id="id34">
+<caption><span class="caption-text">表 <strong>model_application</strong> (初步)</span><a class="headerlink" href="#id34" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>model_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>model_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: model_name, model_number, application</p>
+<p>Foreign key: (model_name, model_number) → model (name, number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>许多应用程序还要求与多值属性相关联的值限制在某个值列表中。在这种情况下，使用一个额外的表。额外的表仅用于包含允许的值，从而允许我们将数据限制为这些值。对于更复杂的值，可以添加一个人工标识符作为主键，并在多值属性表中使用主键而不是值本身，此时多值属性表变成交叉引用表。对于简单值的小列表（如我们的示例），这会增加不必要的复杂性。</p>
+<p>在我们的示例中，我们将使用引用此简单表的外键约束来约束 <strong>application</strong> 列：</p>
+<table class="lined-table docutils data align-default" id="id35">
+<caption><span class="caption-text">表 <strong>application</strong></span><a class="headerlink" href="#id35" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td><p>gaming, business, etc.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: application</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block docutils">
+<p>Multivalued attributes can be used to model a few different scenarios.  As a result, there are multiple choices for how to store multivalued data in a relational database.</p>
+<p>In the simplest case, a multivalued attribute is used when a list of arbitrary values needs to be stored, but there is no particular expectation that the values will be examined in a search of the database.  In this case, an array-valued column may be an appropriate choice for databases that support such columns.</p>
+<p>When there is a need to query the values associated with a multivalued attribute, or for databases that do not support array-valued columns, the best choice may be to make a simple table with two columns, one for the primary key of the owning table, and one for the values themselves.  Each entry in the table associates one value with the instance of the entity.</p>
+<p>In our example, computer models can be marketed to customers for different applications, such as gaming, video editing, or business use.  This is represented in our data model with the multivalued <strong>application</strong> attribute:</p>
+<img alt="The model entity and its attributes" src="../../_images/multivalued.svg" />
+<p>We might, then, implement the model entity and its attributes using the following two tables:</p>
+<table class="lined-table docutils data align-default" id="id36">
+<caption><span class="caption-text">Table <strong>model</strong> (preliminary)</span><a class="headerlink" href="#id36" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name, number</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="lined-table in this case docutils data align-default" id="id37">
+<caption><span class="caption-text">Table <strong>model_application</strong> (preliminary)</span><a class="headerlink" href="#id37" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>model_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>model_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: model_name, model_number, application</p>
+<p>Foreign key: (model_name, model_number) → model (name, number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Many applications also require the values associated with a multivalued attribute to be restricted to a certain list of values.  In this case, an additional table is used.  The additional table exists just to contain the allowed values, allowing us to constrain the data to just those values.  For more complex values, an artificial identifier may be added as a primary key, and the primary key used in the multivalued attribute table instead of the values themselves, in which case the multivalued attribute table becomes a cross-reference table. For small lists of simple values (as in our example), this adds unnecessary complication.</p>
+<p>For our example, we will constrain the <strong>application</strong> column using a foreign key constraint referencing this simple table:</p>
+<table class="lined-table docutils data align-default" id="id38">
+<caption><span class="caption-text">Table <strong>application</strong></span><a class="headerlink" href="#id38" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td><p>gaming, business, etc.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: application</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><h2 id="id13"><span class="section-number">2.3.4. </span>完整的模型转换<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<p><strong>Full model conversion</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2">
+<input checked type="radio" id="__tabbed_12_1" name="__tabbed_12"><input type="radio" id="__tabbed_12_2" name="__tabbed_12"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_12_1">
+中文</label><label class="tabbed-label" for="__tabbed_12_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>在本节中，我们将收集所有从示例数据模型中产生的表，使用上述概述的方法。对于每个表，我们将包含一个简短的说明，阐述该表与数据模型的关系。</p>
+<table class="lined-table docutils data align-default" id="id39">
+<caption><span class="caption-text">表 <strong>employee</strong></span><a class="headerlink" href="#id39" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pay_rate</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pay_type</p></td>
+<td><p>character</p></td>
+<td><p>‘s’ or ‘h’</p></td>
+<td><p>s = salaried, h = hourly</p></td>
+</tr>
+<tr class="row-odd"><td><p>factory</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>supervisor_id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: id</p>
+<p>Foreign key: factory_city → factory (city)</p>
+<p>Foreign key: supervisor_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>employee</strong> 表包含 <strong>employee</strong> 实体的属性列以及实现 <strong>works at</strong> 和 <strong>supervises</strong> 关系的外键。</p>
+<table class="lined-table docutils data align-default" id="id40">
+<caption><span class="caption-text">表 <strong>factory</strong></span><a class="headerlink" href="#id40" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>manager_id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: city</p>
+<p>Foreign key: manager_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>factory</strong> 表包含 <strong>factory</strong> 实体的属性列以及实现 <strong>manages</strong> 关系的外键。<strong>throughput</strong> 属性在表中没有反映，因为它是一个派生属性。一个工厂的产出可以通过对该工厂的所有装配线的产出求和来计算。</p>
+<table class="lined-table docutils data align-default" id="id41">
+<caption><span class="caption-text">表 <strong>assembly_line</strong></span><a class="headerlink" href="#id41" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>factory_city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>throughput</p></td>
+<td><p>real</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: factory_city, number</p>
+<p>Foreign key: factory_city → factory (city)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>assembly_line</strong> 表实现了 <strong>assembly line</strong> 弱实体。它包含一个引用 <strong>factory</strong> 父实体的外键。其主键由父实体键 (<strong>factory_city</strong>) 和部分键 (<strong>number</strong>) 组成。</p>
+<table class="lined-table docutils data align-default" id="id42">
+<caption><span class="caption-text">表 <strong>model</strong></span><a class="headerlink" href="#id42" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>factory_city</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name, number</p>
+<p>Foreign key: factory_city → factory (city)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>model</strong> 表包含 <strong>model</strong> 实体的属性列。仅包含复合属性 <strong>designation</strong> 的组件属性；由于 <strong>designation</strong> 也是 <strong>model</strong> 的关键属性，<strong>model</strong> 表具有复合主键。该表还包含一个实现 <strong>builds</strong> 关系的外键。如上文所述，<strong>builds</strong> 关系也可以使用连接 <strong>factory</strong> 和 <strong>builds</strong> 的交叉引用表来实现，但我们在这里选择了更简单的解决方案。我们假设计算机模型的标识包括计算机系列的名称（例如 “Orion”）和某个特定版本的计算机系列，我们称之为模型的 “number”。这些版本可能包含字母和数字（例如 “xz450”），这就是为什么命名为 “number” 的列实现为文本类型。</p>
+<table class="lined-table docutils data align-default" id="id43">
+<caption><span class="caption-text">表 <strong>model_application</strong></span><a class="headerlink" href="#id43" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>model_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>model_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: model_name, model_number, application</p>
+<p>Foreign key: (model_name, model_number) → model (name, number)</p>
+<p>Foreign key: application → application (application)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>在这种情况下 <strong>model_application</strong> 表实现了 <strong>model</strong> 实体的多值属性 <strong>application</strong>。表的每一行包含描述特定计算机模型的单个 <strong>application</strong> 值。注意，由于 <strong>model</strong> 实体具有复合主键，<strong>model_application</strong> 表具有引用其父级的复合外键（<em>而不是*为父键的每个组件提供两个独立的外键）。此外，我们限制 **application*</em> 中的值来自于 <strong>application</strong> 表（如下）中包含的一组可能值。</p>
+<table class="lined-table docutils data align-default" id="id44">
+<caption><span class="caption-text">表 <strong>application</strong></span><a class="headerlink" href="#id44" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td><p>gaming, business, etc.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: application</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>application</strong> 表包含一个简单的唯一值列表，可插入到 <strong>model_application</strong> 表中。</p>
+<table class="lined-table docutils data align-default" id="id45">
+<caption><span class="caption-text">表 <strong>part</strong></span><a class="headerlink" href="#id45" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>description</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: part_number</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>part</strong> 表包含 <strong>part</strong> 实体的属性列。此处的列 <strong>part_number</strong> 类似于上面的模型 “number”，可以包含字符和数字，因此我们再次使用文本类型的列。</p>
+<table class="lined-table docutils data align-default" id="id46">
+<caption><span class="caption-text">表 <strong>model_part</strong></span><a class="headerlink" href="#id46" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>model_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>model_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: model_name, model_number, part_number</p>
+<p>Foreign key: (model_name, model_number) → model (name, number)</p>
+<p>Foreign key: part_number → part (part_number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>model_part</strong> 表是一个交叉引用表，实现了 <strong>can use</strong> 关系。</p>
+<table class="lined-table docutils data align-default" id="id47">
+<caption><span class="caption-text">表 <strong>vendor</strong></span><a class="headerlink" href="#id47" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>email</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>phone</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>vendor</strong> 表包含 <strong>vendor</strong> 实体的属性列。仅反映 <strong>contact info</strong> 属性的组件属性。</p>
+<table class="lined-table docutils data align-default" id="id48">
+<caption><span class="caption-text">表 <strong>vendor_part</strong></span><a class="headerlink" href="#id48" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>vendor_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>price</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: vendor_name, part_number</p>
+<p>Foreign key: vendor_name → vendor (name)</p>
+<p>Foreign key: part_number → part (part_number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>vendor_part</strong> 表是一个交叉引用表，实现了 <strong>supplies</strong> 关系。除了与其相关的表的外键外，它还包含关系的 <strong>price</strong> 属性列。</p>
+</div>
+<div class="tabbed-block docutils">
+<p>In this section, we collect together all of the tables produced from our example data model, using the approach outlined above.  For each table we include a short explanation of how the table relates to the data model.</p>
+<table class="lined-table docutils data align-default" id="id49">
+<caption><span class="caption-text">Table <strong>employee</strong></span><a class="headerlink" href="#id49" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>position</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>pay_rate</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>pay_type</p></td>
+<td><p>character</p></td>
+<td><p>‘s’ or ‘h’</p></td>
+<td><p>s = salaried, h = hourly</p></td>
+</tr>
+<tr class="row-odd"><td><p>factory</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>supervisor_id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: id</p>
+<p>Foreign key: factory_city → factory (city)</p>
+<p>Foreign key: supervisor_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>employee</strong> table contains columns for the attributes of the <strong>employee</strong> entity and foreign keys implementing the relationships <strong>works at</strong> and <strong>supervises</strong>.</p>
+<table class="lined-table docutils data align-default" id="id50">
+<caption><span class="caption-text">Table <strong>factory</strong></span><a class="headerlink" href="#id50" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>manager_id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: city</p>
+<p>Foreign key: manager_id → employee (id)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>factory</strong> table contains columns for the attributes of the <strong>factory</strong> entity and a foreign key implementing the relationship <strong>manages</strong>.  The <strong>throughput</strong> attribute is not reflected in the table, as it is a derived attribute.  The throughput of a factory can be computed by summing the throughputs of the assembly lines in the factory.</p>
+<table class="lined-table docutils data align-default" id="id51">
+<caption><span class="caption-text">Table <strong>assembly_line</strong></span><a class="headerlink" href="#id51" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>factory_city</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>integer</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>throughput</p></td>
+<td><p>real</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: factory_city, number</p>
+<p>Foreign key: factory_city → factory (city)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>assembly_line</strong> table implements the <strong>assembly line</strong> weak entity.  It incorporates a foreign key referencing the <strong>factory</strong> parent entity.  Its primary key is composed of the parent entity key (<strong>factory_city</strong>) and the partial key (<strong>number</strong>).</p>
+<table class="lined-table docutils data align-default" id="id52">
+<caption><span class="caption-text">Table <strong>model</strong></span><a class="headerlink" href="#id52" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>factory_city</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name, number</p>
+<p>Foreign key: factory_city → factory (city)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>model</strong> table contains columns for the attributes of the <strong>model</strong> entity.  Only the component attributes of the composite attribute <strong>designation</strong> are included; as <strong>designation</strong> was also the key attribute for <strong>model</strong>, the <strong>model</strong> table has a composite primary key.  The table also includes a foreign key implementing the <strong>builds</strong> relationship.  As mentioned in the text above, the <strong>builds</strong> relationship could alternatively be implemented using a cross-reference table connecting <strong>factory</strong> and <strong>builds</strong>, but we have opted for the simpler solution here.  We assume that the designation of computer models includes the name of the computer line (e.g. “Orion”) and some particular version of the computer line, which we call the “number” of the model.  These versions may contain letters as well as numbers (e.g., “xz450”), which is why a column named “number” is implemented as text.</p>
+<table class="lined-table in this case docutils data align-default" id="id53">
+<caption><span class="caption-text">Table <strong>model_application</strong></span><a class="headerlink" href="#id53" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>model_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>model_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: model_name, model_number, application</p>
+<p>Foreign key: (model_name, model_number) → model (name, number)</p>
+<p>Foreign key: application → application (application)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>model_application</strong> table implements the multivalued attribute <strong>application</strong> of the <strong>model</strong> entity.  Each row of the table contains a single <strong>application</strong> value describing a particular computer model.  Note that, as the <strong>model</strong> entity has a composite primary key, the <strong>model_application</strong> table has a composite foreign key referencing its parent (<em>not</em> two separate foreign keys for each component of the parent key).  Additionally, we constrain the values in <strong>application</strong> to come from a set list of possible values, contained in the <strong>application</strong> table (below).</p>
+<table class="lined-table docutils data align-default" id="id54">
+<caption><span class="caption-text">Table <strong>application</strong></span><a class="headerlink" href="#id54" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>application</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td><p>gaming, business, etc.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: application</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>application</strong> table contains a simple list of unique values which are available to insert into the <strong>model_application</strong> table.</p>
+<table class="lined-table docutils data align-default" id="id55">
+<caption><span class="caption-text">Table <strong>part</strong></span><a class="headerlink" href="#id55" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>description</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: part_number</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>part</strong> table contains columns for the attributes of the <strong>part</strong> entity.  The column <strong>part_number</strong> here, similar to the model “number” above, can contain characters as well as numbers, so again we use a text type column.</p>
+<table class="lined-table docutils data align-default" id="id56">
+<caption><span class="caption-text">Table <strong>model_part</strong></span><a class="headerlink" href="#id56" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>model_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>model_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: model_name, model_number, part_number</p>
+<p>Foreign key: (model_name, model_number) → model (name, number)</p>
+<p>Foreign key: part_number → part (part_number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>model_part</strong> table is a cross-reference table implementing the <strong>can use</strong> relationship.</p>
+<table class="lined-table docutils data align-default" id="id57">
+<caption><span class="caption-text">Table <strong>vendor</strong></span><a class="headerlink" href="#id57" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>email</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>phone</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: name</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>vendor</strong> table contains columns for the attributes of the <strong>vendor</strong> entity.  Only the component attributes of the <strong>contact info</strong> attribute are reflected.</p>
+<table class="lined-table docutils data align-default" id="id58">
+<caption><span class="caption-text">Table <strong>vendor_part</strong></span><a class="headerlink" href="#id58" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>vendor_name</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>part_number</p></td>
+<td><p>text</p></td>
+<td><p>not null</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>price</p></td>
+<td><p>currency</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p><strong>Keys</strong></p>
+<p>Primary key: vendor_name, part_number</p>
+<p>Foreign key: vendor_name → vendor (name)</p>
+<p>Foreign key: part_number → part (part_number)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>vendor_part</strong> table is a cross-reference table implementing the <strong>supplies</strong> relationship.  In addition to the foreign keys for the tables it relates to, it contains a column for the <strong>price</strong> attribute of the relationship.</p>
+</div>
+</div>
+</div><h2 id="id14"><span class="section-number">2.3.5. </span>自检练习<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<p><strong>Self-check exercises</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2">
+<input checked type="radio" id="__tabbed_13_1" name="__tabbed_13"><input type="radio" id="__tabbed_13_2" name="__tabbed_13"><div class="tabbed-labels docutils">
+<label class="tabbed-label" for="__tabbed_13_1">
+中文</label><label class="tabbed-label" for="__tabbed_13_2">
+英文</label></div>
+<div class="tabbed-content docutils">
+<div class="tabbed-block docutils">
+<p>本节包含一些问题，您可以用来检查自己如何将ERD转换为关系数据库的理解。</p>
+<ul class="simple">
+<li><p>我们的ERD中的实体变成了关系数据库中的表。关系变成了什么？</p>
+<ul>
+<li><p>A: 表</p></li>
+<li><p>B: 外键</p></li>
+<li><p>C: 表的合并</p></li>
+<li><p>D: 以上所有</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><p>A: 任何关系都可以转换为交叉引用表。这是唯一的可能性吗？</p></li>
+<li><p>B: 一对一和一对多关系可以转换为我们数据库中的外键。这些是唯一的基数比率吗？</p></li>
+<li><p>C: 一对一关系可以导致表的合并，尽管这很少见。</p></li>
+</ul>
+<ul class="simple">
+<li><p>D: 上述每种方法都可以应用，具体取决于关系的基数比率和其他因素。</p></li>
+</ul>
+</div>
+<ul>
+<li><p>考虑下面的ERD。我们创建表 <strong>a</strong> 和 <strong>b</strong>，每个表都有一个名为 “id” 的主键列。（假设有其他未显示的属性列。）转换 <strong>A</strong> 和 <strong>B</strong> 之间的关系的最简单方法是什么？</p>
+<img alt="实体A和B各自具有关键属性ID。A和B之间的关系是多对一（A侧为多）。" src="../../_images/self_test_many_to_one.svg" />
+<ul class="simple">
+<li><p>A: 创建一个名为 “a_id” 的列在表 <strong>b</strong> 中，并将其设为引用表 <strong>a</strong> 的外键。</p></li>
+<li><p>B: 在表 <strong>a</strong> 中创建一个名为 “b_id” 的列，并将其设为引用表 <strong>b</strong> 的外键。</p></li>
+<li><p>C: 创建一个交叉引用表 <strong>a_b</strong>，包含作为外键引用 <strong>a</strong> 和 <strong>b</strong> 的列 <strong>a_id</strong> 和 <strong>b_id</strong>。</p></li>
+<li><p>D: 将表 <strong>a</strong> 和 <strong>b</strong> 合并为一个新表。</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><p>A: 由于表 <strong>b</strong> 中的一行可能与表 <strong>a</strong> 中的多行相关，我们需要在列 <strong>a_id</strong> 中存储多个ID值。 一些数据库会允许这样做，但这会使查询和更新变得复杂。</p></li>
+</ul>
+<ul class="simple">
+<li><p>B: 这是最简单的解决方案，假设我们不期望将来关系变为多对多。</p></li>
+</ul>
+<ul class="simple">
+<li><p>C: 这是一个允许的转换。它是最简单的吗？</p></li>
+<li><p>D: 这不是一个好的选择；虽然这样的结构可以使其正常工作，但不被认为是好的数据库设计，容易出错。</p></li>
+</ul>
+<p>我们会说这个表没有得到适当的*规范化*。我们将在 <a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html#relational-theory-part"><span class="std std-numref">Part 3</span></a> 中探讨规范化。</p>
+</div>
+<ul class="simple">
+<li><p>考虑下面的ERD。我们创建表 <strong>r</strong>，主键列为 <strong>id</strong>。表 <strong>w</strong> 应该是什么样的？</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><p>A: 部分关键不能成为主键。它们并不代表弱实体实例的唯一标识符。</p></li>
+<li><p>B: 部分关键不能成为主键。它们并不代表弱实体实例的唯一标识符。</p></li>
+</ul>
+<ul class="simple">
+<li><p>C: 正确。</p></li>
+</ul>
+<ul class="simple">
+<li><p>D: 父键不足以成为弱实体的主键；在 <strong>w</strong> 中会有多行具有相同的 <strong>r_id</strong> 值。 因此，它不能成为主键。</p></li>
+</ul>
+</div>
+<ul>
+<li><p>考虑下面的ERD。我们创建表 <strong>c</strong> 和 <strong>d</strong>，每个表都有一个名为 “id” 的主键列。我们应该如何处理 <strong>C</strong> 和 <strong>D</strong> 之间的关系？</p>
+<img alt="实体C和D各自具有关键属性ID。C和D之间的关系是多对多，并具有名为 &quot;x&quot; 的属性。" src="../../_images/self_test_relationship_attribute.svg" />
+</li>
+<li><p>A: 从一个表借用主键作为另一个表中的外键（任一方向都可以）。在具有外键列的表中添加名为 “x” 的列。</p></li>
+<li><p>B: 创建一个交叉引用表 <strong>c_d</strong>，其列为 <strong>c_id</strong>、<strong>d_id</strong> 和 <strong>x</strong>。使用 <strong>c_id</strong> 和 <strong>d_id</strong> 作为复合主键。对 <strong>c_id</strong> 和 <strong>d_id</strong> 添加外键约束，分别引用 <strong>c</strong> 和 <strong>d</strong>。</p></li>
+<li><p>C: 创建一个交叉引用表 <strong>c_d</strong>，其列为 <strong>c_id</strong> 和 <strong>d_id</strong>。使用 <strong>c_id</strong> 和 <strong>d_id</strong> 作为复合主键。 对 <strong>c_id</strong> 和 <strong>d_id</strong> 添加外键约束，分别引用 <strong>c</strong> 和 <strong>d</strong>。创建另一个表 <strong>c_d_x</strong>，其列为 <strong>c_id</strong>、<strong>d_id</strong> 和 <strong>x</strong>。表 <strong>c_d_x</strong> 具有主键 <strong>x</strong>，并在 <strong>c_id</strong> 和 <strong>d_id</strong> 上具有外键约束，引用表 <strong>c_d</strong>。</p></li>
+<li><p>D: 创建一个交叉引用表 <strong>c_d</strong>，其列为 <strong>c_id</strong> 和 <strong>d_id</strong>。使用 <strong>c_id</strong> 和 <strong>d_id</strong> 作为复合主键。对 <strong>c_id</strong> 和 <strong>d_id</strong> 添加外键约束，分别引用 <strong>c</strong> 和 <strong>d</strong>。在 <strong>c</strong> 或 <strong>d</strong> 中添加列 <strong>x</strong>。</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>A: 这不是一个好的选择；虽然这样的结构可以使其正常工作，但不被认为是好的数据库设计，容易出错。</dt><dd><p>我们会说这个表没有得到适当的*规范化*。我们将在 <a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html#relational-theory-part"><span class="std std-numref">Part 3</span></a> 中探讨规范化。</p>
+</dd>
+</dl>
+</li>
+</ul>
+<ul class="simple">
+<li><p>B: 正确。</p></li>
+</ul>
+<ul class="simple">
+<li><p>C: 这几乎可以工作（您需要为 <strong>c_d_x</strong> 使用不同的主键），但不必要地复杂。</p></li>
+<li><p>D: <strong>x</strong> 的值会因不同的 <strong>c</strong> 和 <strong>d</strong> 组合而异。例如，如果我们把列放在 <strong>c</strong> 中，就没有好的方法捕捉 <strong>x</strong> 对 <strong>d</strong> 的依赖关系。</p></li>
+</ul>
+</div>
+<ul>
+<li><p>以下哪项陈述是 <em>错误</em> 的？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A: 复合属性会为每个组件生成列以及复合列。</p></li>
+<li><p>B: 多值属性通常需要在数据库中添加一个额外的表。</p></li>
+<li><p>C: 不会为派生属性创建列。</p></li>
+<li><p>D: 如果实体具有复合键属性，则结果表将具有复合主键。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">显示答案</p>
+<ul class="simple">
+<li><p>A: 我们不为复合属性创建列，仅创建组件。</p></li>
+</ul>
+<ul class="simple">
+<li><p>B: 这是真的。在某些情况下，可能可以使用数组值列来处理多值属性，但否则我们需要一个或多个额外的表。</p></li>
+<li><p>C: 这是真的。派生属性不打算存储，因为它们可以从数据库中的其他值计算得出。</p></li>
+<li><p>D: 这是真的。</p></li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block docutils">
+<p>This section has some questions you can use to check your understanding of how to convert ERDs to a relational database.</p>
+<ul class="simple">
+<li><p>Entities in our ERD become tables in our relational database.  What do relationships become?</p>
+<ul>
+<li><p>A: Tables</p></li>
+<li><p>B: Foreign keys</p></li>
+<li><p>C: Merging of tables</p></li>
+<li><p>D: All of the above</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>A: Any relationship can be converted into a cross-reference table.  Is that the only possibility?</p></li>
+<li><p>B: One-to-one and one-to-many relationships can be converted into foreign keys in our database.  Are those the only cardinality ratios?</p></li>
+<li><p>C: One-to-one relationships can result in merging tables, although this is rare.</p></li>
+</ul>
+<ul class="simple">
+<li><p>D: Each of the methods above can be applied, depending on the cardinality ratio of the relationship and other factors.</p></li>
+</ul>
+</div>
+<ul>
+<li><p>Consider the ERD below.  We create tables <strong>a</strong> and <strong>b</strong>, each of which have a primary key column named “id”.  (Assume there are additional columns from attributes not shown.)  What is the simplest way to convert the relationship between <strong>A</strong> and <strong>B</strong>?</p>
+<img alt="Entities A and B each with key attribute ID.  The relationship between A and B is many-to-one (many on the A side)." src="../../_images/self_test_many_to_one.svg" />
+<p>A:  Create a column named “a_id” in table <strong>b</strong>, and make it a foreign key referencing table <strong>a</strong>.</p>
+<p>B:   Create a column named “b_id” in table <strong>a</strong>, and make it a foreign key referencing table <strong>b</strong>.</p>
+<p>C:   Create a cross-reference table, <strong>a_b</strong>, containing columns <strong>a_id</strong> and <strong>b_id</strong> as foreign keys referencing <strong>a</strong> and <strong>b</strong> respectively.</p>
+<p>D:   Merge tables <strong>a</strong> and <strong>b</strong> into a new table.</p>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<p>A: Since a row in <strong>b</strong> could be related to multiple rows in <strong>a</strong>, we would need to store multiple ID values in column <strong>a_id</strong>.
+Some databases would permit this, but it would complicate queries and updates on the database.</p>
+<p>B: This is the simplest solution, assuming we do not expect the relationship to change to many-to-many in the future.</p>
+<p>C: This is an allowable conversion.  Is it the simplest?</p>
+<p>D: This is not a good choice; while such a structure can be made to work, it is not considered good database design and is prone to errors.
+We would say that this table is not properly <em>normalized</em>.  We explore normalization in <a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html#relational-theory-part"><span class="std std-numref">Part 3</span></a>.</p>
+</div>
+<ul>
+<li><p>Consider the ERD below.  We create table <strong>r</strong> with primary key column <strong>id</strong>.  What should table <strong>w</strong> look like?</p>
+<img alt="Entity R with key ID, and weak entity W with partial key partial.  The identifying relationship between R and W is one-to-many." src="../../_images/self_test_weak.svg" />
+<ul class="simple">
+<li><p>A:  The table should have a column <strong>partial</strong> as primary key.  Additionally, create a cross-reference table <strong>r_w</strong>.</p></li>
+<li><p>B:  The table should have columns <strong>partial</strong> and <strong>r_id</strong>.  The primary key is <strong>partial</strong>.
+Add a foreign key constraint on <strong>r_id</strong> referencing <strong>r</strong>.</p></li>
+<li><p>C:  The table should have columns <strong>partial</strong> and <strong>r_id</strong>.  The primary key is a composite of <strong>r_id</strong> and <strong>partial</strong>.
+Add a foreign key constraint on <strong>r_id</strong> referencing <strong>r</strong>.</p></li>
+<li><p>D:  The table should have columns <strong>partial</strong> and <strong>r_id</strong>.  The primary key is <strong>r_id</strong>.  Add a foreign key constraint on <strong>r_id</strong> referencing <strong>r</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>A: Partial keys cannot become primary keys.  They do not represent unique identifiers for the instances of the weak entity.</p></li>
+<li><p>B: Partial keys cannot become primary keys.  They do not represent unique identifiers for the instances of the weak entity.</p></li>
+</ul>
+<ul class="simple">
+<li><p>C: Correct.</p></li>
+</ul>
+<ul class="simple">
+<li><dl class="simple">
+<dt>D: The parent key is not a sufficient key for the weak entity; there will be multiple rows in <strong>w</strong> with the same values for <strong>r_id</strong>.</dt><dd><p>Therefore it cannot be a primary key.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<ul>
+<li><p>Consider the ERD below.  We create tables <strong>c</strong> and <strong>d</strong>, each of which have a primary key column named “id”.  How should we handle the relationship between <strong>C</strong> and <strong>D</strong>?</p>
+<img alt="Entities C and D each with key attribute ID.  The relationship between C and D is many-to-many and has an attribute named &quot;x&quot;." src="../../_images/self_test_relationship_attribute.svg" />
+<ul class="simple">
+<li><p>A:  Borrow the primary key from one table as a foreign key into the other table (either direction is fine).  Add a column named “x” into the table with the foreign key column.</p></li>
+<li><p>B:  Create a cross reference table <strong>c_d</strong> with columns <strong>c_id</strong>, <strong>d_id</strong>, and <strong>x</strong>.  Make a composite primary key using <strong>c_id</strong> and <strong>d_id</strong>. Add foreign key constraints on <strong>c_id</strong> and <strong>d_id</strong> referencing <strong>c</strong> and <strong>d</strong>, respectively.</p></li>
+<li><p>C:  Create a cross reference table <strong>c_d</strong> with columns <strong>c_id</strong> and <strong>d_id</strong>.  Make a composite primary key using <strong>c_id</strong> and <strong>d_id</strong>.
+Add foreign key constraints on <strong>c_id</strong> and <strong>d_id</strong> referencing <strong>c</strong> and <strong>d</strong>, respectively.  Create another table, <strong>c_d_x</strong>, with columns <strong>c_id</strong>, <strong>d_id</strong>, and <strong>x</strong>.  Table <strong>c_d_x</strong> has primary key <strong>x</strong>, and a foreign key constraint on <strong>c_id</strong> and <strong>d_id</strong> referencing table <strong>c_d</strong>.</p></li>
+<li><p>D:  Create a cross reference table <strong>c_d</strong> with columns <strong>c_id</strong> and <strong>d_id</strong>.  Make a composite primary key using <strong>c_id</strong> and <strong>d_id</strong>. Add foreign key constraints on <strong>c_id</strong> and <strong>d_id</strong> referencing <strong>c</strong> and <strong>d</strong>, respectively.  Add column <strong>x</strong> to either <strong>c</strong> or <strong>d</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>A: This is not a good choice; while such a structure can be made to work, it is not considered good database design and is prone to errors.</dt><dd><p>We would say that this table is not properly <em>normalized</em>.  We explore normalization in <a class="reference internal" href="../../PART3_RELATIONAL_DATABASE_THEORY/index.html#relational-theory-part"><span class="std std-numref">Part 3</span></a>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<ul class="simple">
+<li><p>B: Correct.</p></li>
+</ul>
+<ul class="simple">
+<li><p>C: This could almost work (you would need a different primary key for <strong>c_d_x</strong>), but it is unnecessarily complicated.</p></li>
+<li><p>D: The values for <strong>x</strong> will differ for different combinations of <strong>c</strong> and <strong>d</strong>. There is no good way to capture the dependence of <strong>x</strong> on <strong>d</strong>, for example, if we put the column in <strong>c</strong>.</p></li>
+</ul>
+</div>
+<ul>
+<li><p>Which of the following statements is <em>false</em>?</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Composite attributes result in columns for each component as well as the composite.</p></li>
+<li><p>Multivalued attributes usually require an additional table in the database.</p></li>
+<li><p>No column is created for derived attributes.</p></li>
+<li><p>If an entity has a composite key attribute, the resulting table will have a composite primary key.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Show answer</p>
+<ul class="simple">
+<li><p>We do not create a column for the composite, just the components.</p></li>
+</ul>
+<ul class="simple">
+<li><p>This is true.  In some cases it may be possible to use array-valued columns to handle a multivalued attribute, but otherwise we need an additional table or tables.</p></li>
+<li><p>This is true.  Derived attributes are not intended to be stored, as they can be computed from other values in the database.</p></li>
+<li><p>This is true.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div><hr class="docutils" />
+<p><strong>Notes</strong></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">1</a><span class="fn-bracket">]</span></span>
+<p>由于 <strong>factory</strong> 在 <strong>manages</strong> 关系中的完全参与，似乎我们应该限制 <strong>manager_id</strong> 列永远不包含 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>。添加这样的约束时需要谨慎。虽然工厂“必须”有一个经理，但有时工厂可能没有经理，例如，当一名经理离开公司而尚未确定新经理时。如果 <strong>manager_id</strong> 列被限制为永远不包含 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>，那么在数据库中正确反映真实情况将变得困难。一般来说，在选择约束列之前，请谨慎并检查所有边缘情况。</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">2</a><span class="fn-bracket">]</span></span>
+<p>Due to the total participation of <strong>factory</strong> in the <strong>manages</strong> relationship, it might seem we should constrain the <strong>manager_id</strong> column to never contain <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  Some care should be taken in adding such constraints.  While a factory “must” have a manager, there may be times when a factory has no manager, e.g., when a manager leaves the company and a new manager has not yet been identified.  If the <strong>manager_id</strong> column is constrained to never hold <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, it will be difficult to correctly reflect the true situation in the database.  In general, use caution and examine all of your edge cases before choosing to constrain a column.</p>
+</aside>
+</aside>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../02-ERD/ERD.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2.2. 实体关系图" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              2.2. 实体关系图
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../04-other-notations/other-notations.html" class="md-footer__link md-footer__link--next" aria-label="Next: 2.4. ERD 替代方案和变体" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              2.4. ERD 替代方案和变体
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, Christopher Painter&amp;#8209;Wakefield.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.1.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.share", "toc.follow", "toc.sticky", "content.tabs.link", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.f9d9eeeb247ace16c.min.js?v=8ec58cb5"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    
+  </body>
+</html>
