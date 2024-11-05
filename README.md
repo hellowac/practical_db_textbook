@@ -8,7 +8,7 @@
 
 ```shell
 # 安装依赖, 建议在虚拟环境中
-pip install requirements.docx.txt
+pip install requirements.doc.txt
 
 # 调试
 sphinx-autobuild -W cn_docs _build/html
