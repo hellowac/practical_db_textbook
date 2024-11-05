@@ -1,3 +1,4 @@
 pymdown-extensions
 sphinx-immaterial
 sphinx-togglebutton
+myst_parser
